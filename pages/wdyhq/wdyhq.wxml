@@ -1,0 +1,71 @@
+<view style='position:relative;width:100%;'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">未使用</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">已使用</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">已失效</view>
+  </view>
+
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{currentTab==0?height1+150:(currentTab==1?height2+90:height3+90)}}rpx;' bindchange="bindChange">
+    <swiper-item>
+
+      <view>
+         <block wx:for="{{wsy}}" wx:key="id" wx:for-item="item"> 
+          <view  style='position:relative;top:{{item.id*30+30}}rpx;height:180rpx;margin-left:24rpx;margin-right:24rpx;'>
+            <!-- <image src='{{item.src}}' style='height:180rpx;width:702rpx;'></image> -->
+            <!--左侧金额-->
+            <view class='back' >
+            <text style='position:relative;top:40rpx;font-size:40rpx;color:#fff;'>￥2000\n</text>
+            <text style='position:relative;top:50rpx;font-size:25rpx;color:#fff;'>卖满20000元</text>
+            </view>
+            <!--右侧详情-->
+            <text style='position:relative;top:-180rpx;left:250rpx;font-size:25rpx;color:#666;'>商家入驻 自动发送</text>
+            <text style='position:relative;top:-70rpx;left:50rpx;font-size:25rpx;color:#999;'>2018.03.10-2018.04.10</text>
+            <button bindtap='goShopping' style='position:relative;top:-140rpx;left:250rpx;height:50rpx;width:160rpx;border:0.1rpx solid #297ff2;border-radius:25rpx;font-size:25rpx;line-height:50rpx;color:#297ff2;background-color:#fff;'>立即使用</button>
+
+          </view>
+         </block> 
+      </view>
+
+      <button bindtap='toYhq'style='position:relative;width:60%;height:90rpx;top:{{height1/7+60}}rpx;font-size:34rpx;color:#333;background-color:#fff;text-align:center;'>去领券中心看看
+      </button>
+    </swiper-item>
+
+
+    <swiper-item>
+      <view>
+        <block wx:for="{{ysy}}" wx:key="id" wx:for-item="item">
+          <view style='position:relative;top:{{item.id*30+30}}rpx;height:180rpx;margin-left:24rpx;margin-right:24rpx;'>
+<view class='back_two' >
+            <text style='position:relative;top:40rpx;font-size:40rpx;color:#fff;'>￥2000\n</text>
+            <text style='position:relative;top:50rpx;font-size:25rpx;color:#fff;'>卖满20000元</text>
+            </view>
+            <!--右侧详情-->
+            <text style='position:relative;top:-180rpx;left:250rpx;font-size:25rpx;color:#666;'>商家入驻 自动发送</text>
+            <text style='position:relative;top:-70rpx;left:50rpx;font-size:25rpx;color:#999;'>2018.03.10-2018.04.10</text>
+          </view>
+        </block>
+      </view>
+      <view style='position:relative;top:{{height2/7+30}}rpx;font-size:30rpx;color:#666;text-align:center;'>—— 期待更多优惠 ——
+      </view>
+    </swiper-item>
+
+
+    <swiper-item>
+      <view>
+        <block wx:for="{{ysx}}" wx:key="id" wx:for-item="item">
+          <view style='position:relative;top:{{item.id*30+30}}rpx;height:180rpx;margin-left:24rpx;margin-right:24rpx;'>
+<view class='back_two' >
+            <text style='position:relative;top:40rpx;font-size:40rpx;color:#fff;'>￥2000\n</text>
+            <text style='position:relative;top:50rpx;font-size:25rpx;color:#fff;'>卖满20000元</text>
+            </view>
+            <!--右侧详情-->
+            <text style='position:relative;top:-180rpx;left:250rpx;font-size:25rpx;color:#666;'>商家入驻 自动发送</text>
+            <text style='position:relative;top:-70rpx;left:50rpx;font-size:25rpx;color:#999;'>2018.03.10-2018.04.10</text>
+          </view>
+        </block>
+      </view>
+      <view style='position:relative;top:{{height3/7+30}}rpx;font-size:30rpx;color:#666;text-align:center;'>—— 期待更多优惠 ——
+      </view>
+    </swiper-item>
+  </swiper>
+</view>

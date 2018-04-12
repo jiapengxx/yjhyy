@@ -1,0 +1,47 @@
+/* pages/company_shop/company_shop.wxss */
+
+page {
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+.t1 {
+  position: relative;
+  top: 0rpx;
+  font-family: PingFangSC-Regular, sans-serif;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.t2 {
+  position: relative;
+  height: 56rpx;
+  width: 490rpx;
+  text-indent: 2em;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: PingFangSC-Regular, sans-serif;
+  color: #666;
+  font-size: 20rpx;
+}
+
+.t3 {
+  position: relative;
+  width: 100rpx;
+  left: -40rpx;
+  top: -70rpx;
+  color: #666;
+  font-size: 20rpx;
+}
+
+.t4 {
+  position: relative;
+  bottom: 0rpx;
+  width: 290rpx;
+  height: 30rpx;
+  background-color: pink;
+  font-size: 20rpx;
+  color: #e91d1d;
+}

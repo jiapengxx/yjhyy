@@ -1,0 +1,53 @@
+/* pages/wdtz/wdtz.wxss */
+
+.time {
+  text-indent: 1em;
+  height: 30rpx;
+  width: 100rpx;
+  font-size: 22rpx;
+  color: #333;
+}
+
+.time-on {
+  text-indent: 1em;
+  height: 30rpx;
+  width: 100rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.count {
+  text-indent: 0.5em;
+  height: 30rpx;
+  width: 70rpx;
+  font-size: 22rpx;
+  color: #333;
+}
+
+.count-on {
+  text-indent: 0.5em;
+  height: 30rpx;
+  width: 70rpx;
+  font-size: 22rpx;
+  color: #999;
+}
+
+.message {
+  position: relative;
+  top: 50rpx;
+  height: 150rpx;
+  width: 100%;
+  font-size: 30rpx;
+  color: #333;
+  text-indent: 2em;
+}
+
+.message-on {
+  position: relative;
+  top: 50rpx;
+  height: 150rpx;
+  width: 100%;
+  font-size: 30rpx;
+  text-indent: 2em;
+  color: #999;
+}

@@ -1,0 +1,43 @@
+<view style='position:relative;width:100%;'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">商家优惠券</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">个人优惠券</view>
+  </view>
+
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{currentTab==0?height1+364:height2+364}}rpx;' bindchange="bindChange">
+    <swiper-item>
+    <view style='height:200rpx;width:100%;'>
+      <image src='https://tanghuzhao.com.cn/Public/images/banner_sjyhq.png' style='height:200rpx;width:100%;'></image>
+    </view>
+
+        <view style='height:164rpx;width:100%;'>
+      <image src='https://tanghuzhao.com.cn/Public/images/sjyhq_gg.png' style='position:relative;top:40rpx;left:190rpx;height:84rpx;width:370rpx;'></image>
+    </view>
+
+        <block wx:for="{{sjyhq}}" wx:key="id" wx:for-item="item">
+        <view style='position:relative;top:{{item.id*40+40}}rpx;height:150rpx;margin-left:24rpx;margin-right:24rpx;'>
+        <image src='{{item.src}}' style='height:150rpx;width:702rpx;'></image>
+        </view>
+        </block>
+    </swiper-item>
+
+
+    <swiper-item>
+    <view style='height:200rpx;width:100%;'>
+      <image src='https://tanghuzhao.com.cn/Public/images/banner_gryhq.png' style='height:200rpx;width:100%;'></image>
+    </view>
+
+        <view style='height:164rpx;width:100%;'>
+      <image src='https://tanghuzhao.com.cn/Public/images/gryhq_gg.png' style='position:relative;top:40rpx;left:190rpx;height:84rpx;width:370rpx;'></image>
+    </view>
+
+    <view style='margin-left:50rpx;margin-right:50rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+      <block wx:for="{{gryhq}}" wx:key="id" wx:for-item="item">
+      <image src='{{item.src}}' style='position:relative;top:40rpx;height:138rpx;width:300rpx;'></image>
+      </block>
+      </view>
+      <view style='position:relative;top:40rpx;font-size:30rpx;color:#666;text-align:center;'>—— 期待更多优惠 ——</view>
+    </swiper-item>
+
+  </swiper>
+</view>

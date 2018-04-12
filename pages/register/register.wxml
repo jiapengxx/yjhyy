@@ -1,0 +1,12 @@
+<!--pages/register/register.wxml-->
+<image src='https://tanghuzhao.com.cn/Public/images/logo.png' style='position:absolute;top:35rpx;left:264rpx;height:220rpx;width:220rpx;'></image>
+<input bindblur='tel'style='position:absolute;top:290rpx;left:126rpx;height:66rpx;width:500rpx;border:0.1rpx solid gainsboro;border-radius:5px;'type='number' placeholder='请输入手机号' placeholder-style='left:30rpx;font-size:24rpx;color:#999999;'></input>
+<input style='position:absolute;top:416rpx;left:126rpx;height:66rpx;width:270rpx;border:0.1rpx solid gainsboro;border-radius:5px;'placeholder='请输入验证码'  placeholder-style='left:30rpx;font-size:24rpx;color:#999999;'></input>
+<button hidden='{{switch_one}}' bindtap='getCode' style='position:absolute;top:416rpx;left:440rpx;height:66rpx;width:186rpx;background-color:blue;font-size:26rpx;color:#ffffff;border-radius:33rpx;'>发送验证码</button>
+
+
+<button hidden='{{switch_two}}' bindtap='reGetCode' style='position:absolute;top:416rpx;left:440rpx;height:66rpx;width:250rpx;background-color:blue;font-size:26rpx;color:#ffffff;border-radius:33rpx;'>重新获取({{time}}s)</button>
+ 
+   <!-- <text hidden='{{switch_three}}' style="margin:44rpx; font-size:30rpx">验证码已经发送到您的手机\n如长时间没有收到，请点击“重新获取”</text>   -->
+
+<button bindtap='register' style='position:absolute;top:542rpx;left:126rpx;height:74rpx;width:500rpx;background-color:blue;font-size:36rpx;color:#ffffff;'>注册</button>

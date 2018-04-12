@@ -1,0 +1,77 @@
+{
+  "pages": [
+    "pages/company_index/company_index",
+    "pages/company_shop/company_shop",
+    "pages/company_search/company_search",
+    "pages/index/index",
+    "pages/recruitment/recruitment",
+    "pages/product/detail",
+    "pages/search/search",
+    "pages/user/user",
+    "pages/company_user/company_user",
+    "pages/user/dingdan",
+    "pages/user/tuihuo",
+    "pages/order/pay",
+    "pages/order/detail",
+    "pages/order/downline",
+    "pages/cart/cart",
+    "pages/company_cart/company_cart",
+    "pages/live/live",
+    "pages/listdetail/listdetail",
+    "pages/address/address",
+    "pages/searchPage/searchPage",
+    "pages/address/user-address/user-address",
+    "pages/category/index",
+    "pages/ritual/ritual",
+    "pages/rituall/rituall",
+    "pages/shop_store/shop_store",
+    "pages/register/register",
+    "pages/wdgz/wdgz",
+    "pages/yhq/yhq",
+    "pages/yjfk/yjfk",
+    "pages/wdtz/wdtz",
+    "pages/wdyhq/wdyhq",
+    "pages/company_category/company_category"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#4BA3FE",
+    "navigationBarTitleText": "北京医佳护健康医疗中心",
+    "navigationBarTextStyle": "#ffffff"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/company_index/company_index",
+        "iconPath": "images/home-icon.png",
+        "selectedIconPath": "images/homeSelected-icon.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/company_shop/company_shop",
+        "iconPath": "images/shop-icon.png",
+        "selectedIconPath": "images/shopSelected-icon.png",
+        "text": "商家"
+      },
+      {
+        "pagePath": "pages/company_cart/company_cart",
+        "iconPath": "images/cart-icon.png",
+        "selectedIconPath": "images/cartSelected-icon.png",
+        "text": "购物车"
+      },
+      {
+        "pagePath": "pages/recruitment/recruitment",
+        "iconPath": "images/recruitment-icon.png",
+        "selectedIconPath": "images/recruitmentSelected-icon.png",
+        "text": "商家入驻"
+      },
+      {
+        "pagePath": "pages/company_user/company_user",
+        "iconPath": "images/mine-icon.png",
+        "selectedIconPath": "images/mineSelected-icon.png",
+        "text": "我的"
+      }
+    ]
+  }
+}

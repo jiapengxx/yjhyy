@@ -1,0 +1,48 @@
+<!-- index.wxml -->
+
+<import src="../../utils/tabBar.wxml"/>
+<template is="tabBar" data="{{tabBar}}"/> 
+
+ <scroll-view scroll-y style=" position:fixed;top:0px;height:90.5%;"> 
+<view class="page">
+  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+    <navigator url="../product/detail?productId={{item.product_id}}"  wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item.photo}}" class="slide-image" width="100%" height="200"  />
+      </swiper-item>
+    </navigator>
+  </swiper>
+  <view class='mContainer'>
+<image id='1' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/lsyd.png' bindtap='fiveBlocks' >直播</image>
+  <image id='2' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/jkmr.png' bindtap='fiveBlocks'>健康美容</image>
+  <image id='3' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/jkysl.png' bindtap='fiveBlocks'>健康饮食</image>
+  <image id='4' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/xyl.png' bindtap='fiveBlocks'>西药类</image>
+    <image id='5' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/zyzyl.png' bindtap='fiveBlocks'>中医中药</image>
+</view>
+  
+    
+    <view class="cont">
+      <navigator class="pr" url="../product/detail?productId={{item.id}}" hover-class="changestyle"
+                 wx:for="{{productData}}">
+        <image class="photo" src="{{item.photo_x}}"></image>
+        <view class="title">{{item.name}}</view>
+        <view style="display:flex;line-height:50rpx;padding:10rpx 0;">
+          <view class="gmxx" style="  color: red;">¥ {{item.price_yh}}</view>
+          <view class="gmx">¥ {{item.price}}</view>
+        </view>
+        <view style="display:flex;line-height:50rpx;color:#999">
+          <view class="gmxx" style="font-size:28rpx;width:30%">
+            <text wx:if="item.is_show==1">新品</text>
+            <text wx:elif="item.is_hot==1">热销</text>
+            <text wx:else>推荐</text>
+          </view>
+          <view class="ku" style="width:60%">销量：{{item.shiyong}}</view>
+        </view>
+      </navigator>
+    </view>
+    <view class="clear mt10" bindtap="getMore">点击查看更多</view>
+  </view>
+
+
+ 
+</scroll-view > 

@@ -1,0 +1,47 @@
+<view style='height:88rpx;width:702rpx;margin-left:24rpx;'>
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="16"></icon>
+        <input bindblur='hideInput' type="text" class="weui-search-bar__input" placeholder="搜索症状、药品、品牌" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="16"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="16"></icon>
+        <view class="weui-search-bar__text">搜索症状、药品、品牌</view>
+      </label>
+    </view>
+    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length>0}}">
+    </view>
+  </view>
+
+
+<view style='height:370rpx;width:702rpx;margin-left:24rpx;'>
+<view style='position:relative;top:30rpx;height:100rpx;width:702rpx;display:flex;flex-direction:row;'>
+
+<image src='../../images/yp1.png' style='height:100rpx;width:100rpx;'></image>
+
+<view style='padding-left:20rpx;width:382rpx;'>
+<text style='position:absolute;top:0rpx;font-family:PingFangSC-Regular,sans-serif;color:#000000;font-size:26rpx;'>阿莫西林胶囊旗舰店\n</text>
+<text class='text2'>阿莫西林胶囊，适用于敏感菌引起的多种疾病\n</text>
+<text style='position:relative;top:20rpx;font-family:PingFangSC-Regular,sans-serif;color:#898989;font-size:20rpx;border:0.1rpx solid #898989'>儿童用药</text>
+<text style='position:relative;top:20rpx;left:20rpx;font-family:PingFangSC-Regular,sans-serif;color:#898989;font-size:20rpx;border:0.1rpx solid #898989'>老人用药</text>
+</view>
+
+<view style='width:200rpx;'>
+ <image src='../../images/pos.png' style='height:37rpx;width:29rpx;'></image>
+<text style='font-family:PingFangSC-Regular,sans-serif;color:#898989;font-size:20rpx;'>北京1.1km</text> 
+</view>
+
+</view>
+
+<view style='position:relative;top:54rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;'>
+<image src='../../images/yp2.png' style='height:180rpx;width:212rpx;'></image>
+<image src='../../images/yp3.png' style='height:180rpx;width:212rpx;'></image>
+<image src='../../images/yp4.png' style='height:180rpx;width:212rpx;'></image>
+</view>
+</view>
+<view style='position:relative;top:0rpx;height:16rpx;background-color:#ebebeb'></view>
+
+

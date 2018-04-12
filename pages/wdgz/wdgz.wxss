@@ -1,0 +1,61 @@
+/* pages/company_shop/company_shop.wxss */
+
+page {
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.swiper-tab {
+  border-bottom: 0.1rpx solid #777;
+  text-align: center;
+  width: 100%;
+  line-height: 80rpx;
+
+}
+
+.swiper-tab-list {
+  background-color: whitesmoke;
+  font-size: 36rpx;
+  display: inline-block;
+  width: 50%;
+  color: #333;
+}
+
+.on {
+  color: #4BA3FE;
+  border-bottom: 5rpx solid #4BA3FE;
+}
+.swiper-box {
+  height: 100%;
+  display: block;
+  width: 100%;
+}
+
+.point {
+  position: relative;
+  top: -130rpx;
+  left: 600rpx;
+  height: 10rpx;
+  width: 56rpx;
+}
+
+.point_on {
+  position: relative;
+  top: -130rpx;
+  left: 450rpx;
+  height: 10rpx;
+  width: 56rpx;
+}
+
+.cancel {
+  display: none;
+}
+
+.cancel_on {
+  position: relative;
+  top: -234rpx;
+  line-height: 162rpx;
+  left: 265rpx;
+  height: 162rpx;
+  width: 216rpx;
+  background-color: #fe0100;
+}

@@ -1,0 +1,147 @@
+@import "/wxSearch/wxSearch.wxss";
+page{
+    background-color:#ffffff;
+    font-family:-apple-system-font,Helvetica Neue,Helvetica,sans-serif;   
+}
+.banner{
+  width: 100%;
+  height: 300rpx;
+}
+.swiper-container{
+  width: 100%;
+  position: relative;  
+}
+.swiper_box {
+  width: 100%;
+  height:300rpx;
+}
+
+swiper-item image {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  height:300rpx;
+}
+.swiper-container .dots{  
+  position: absolute;  
+  left: 0;  
+  right: 0;  
+  bottom: 20rpx;  
+  display: flex;  
+  justify-content: center;  
+}  
+.swiper-container .dots .dot{  
+  margin: 0 8rpx;  
+  width: 14rpx;  
+  height: 14rpx;  
+  background: #fff;  
+  border-radius: 50%;  
+  transition: all .6s;  
+  opacity: .5;
+}  
+.swiper-container .dots .dot.active{  
+  width: 14rpx;  
+  opacity: 1;
+}
+
+.swiper-tab {
+  width: 100%;
+  border-top: 1rpx solid #777;
+  border-bottom: 1rpx solid #777;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+
+.swiper-tab-list {
+  font-size: 35rpx;
+  display: inline-block;
+  width: 25%;
+  color: #333;
+}
+
+.on {
+  color:#4BA3FE;
+  border-bottom: 5rpx solid #4BA3FE;
+}
+
+.swiper-box {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.swiper-box view {
+  text-align: center;
+}
+
+.page__bd {
+    padding-bottom: 20rpx;
+}
+.page__bd_spacing {
+    padding-left: 30rpx;
+    padding-right: 30rpx;
+}
+
+.page__ft{
+    padding-bottom: 20rpx;
+    text-align: center;
+}
+
+.page__title {
+    text-align: left;
+
+}
+
+.page__desc {
+    margin-top: 10rpx;
+    color: #888888;
+    text-align: left;
+
+}
+.search{
+  position: absolute;
+  height: 66rpx;
+  width: 91%;
+  left: 30rpx;
+  top: 34rpx;
+}
+.searchbar-result{
+    margin-top: 0;
+}
+.searchbar-result:before{
+    display: none; 
+}
+.weui-cell{
+
+}
+/* pages/list/list.wxss */  
+.weui-search-bar {  
+    position:relative;  
+    padding:12rpx 20rpx;  
+    display:-webkit-box;  
+    display:-webkit-flex;  
+    display:flex;  
+    box-sizing:border-box;  
+    background-color:#EFEFF4;  
+    border-top:0 solid #D7D6DC;  
+    border-bottom:0 solid #D7D6DC;  
+    border-radius:8rpx;  
+}   
+.search-log{  
+    border:2rpx solid #eee !important;  
+    display:inline-block !important;  
+    margin-left:20rpx !important;  
+    margin-top:10rpx !important;  
+    border-radius:10rpx;  
+    padding-left:28rpx;  
+    padding-right:28rpx;  
+    box-sizing:border-box;  
+    text-align:center;  
+    text-decoration:none;  
+    line-height:2.55555556;  
+}  
+.clear-search-log{  
+    text-align: center;  
+}
+

@@ -1,0 +1,224 @@
+<view style='position:relative;width:100%;'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">综合</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">附近</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">销量</view>
+    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">评价</view>
+  </view>
+
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{height}}rpx;' bindchange="bindChange">
+    <swiper-item>
+      <block wx:for="{{hot_good}}" wx:key="id" wx:for-item="item">
+
+        <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
+          <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
+          <view style='height:150rpx;width:150rpx;'>
+          <image  src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
+          </view>
+            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+              <text class='t1'>{{item.name}}\n</text>
+              <text class='t2'>{{item.introduce}}\n</text>
+              <text class='t4'>{{item.type_name}}</text>
+            </view>
+            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
+              <image bindtap='callPhone'  src='../../images/callPhone.png'  style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
+              <image bindtap='position'src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+              <view class='t3'>北京{{item.distance}}km</view>
+            </view>
+          </view>
+
+          <view>
+          <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
+            <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[1].product_id}}' src='{{host}}/Data/{{item.goods[1].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[2].product_id}}' src='{{host}}/Data/{{item.goods[2].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+          </view>
+
+<view style='position:relative;top:100rpx;height:112rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text id='{{item.goods[0].product_id}}' style='font-size:26rpx;color:#333333;'>{{item.goods[0].pro_name}}\n{{}}\n</text>
+              <text id='{{item.goods[1].product_id}}' style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[0].price}}\n</text>
+              <text id='{{item.goods[2].product_id}}' style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[1].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[1].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[2].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[2].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+          </view>
+
+          </view>
+          
+          
+
+        </view>
+        <view style='border-bottom: 0.1rpx solid #777;'></view>
+      </block>
+      
+    </swiper-item>
+    <swiper-item>
+      <block wx:for="{{place_store1}}" wx:key="id" wx:for-item="item">
+
+         <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
+          <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
+          <view style='height:150rpx;width:150rpx;'>
+          <image  src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
+          </view>
+            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+              <text class='t1'>{{item.name}}\n</text>
+              <text class='t2'>{{item.introduce}}\n</text>
+              <text class='t4'>{{item.type_name}}</text>
+            </view>
+            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
+              <image src='{{item.p2}}' style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
+              <image src='{{item.p3}}' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+              <view class='t3'>北京{{item.distance}}km</view>
+            </view>
+          </view>
+
+          <view>
+          <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
+            <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[1].product_id}}' src='{{host}}/Data/{{item.goods[1].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[2].product_id}}' src='{{host}}/Data/{{item.goods[2].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+          </view>
+
+<view style='position:relative;top:100rpx;height:112rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text id='{{item.goods[0].product_id}}' style='font-size:26rpx;color:#333333;'>{{item.goods[0].pro_name}}\n{{}}\n</text>
+              <text id='{{item.goods[1].product_id}}' style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[0].price}}\n</text>
+              <text id='{{item.goods[2].product_id}}' style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[1].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[1].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[2].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[2].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+          </view>
+
+          </view>
+          
+          
+
+        </view>
+        <view style='border-bottom: 0.1rpx solid #777;'></view>
+      </block>
+    </swiper-item>
+    <swiper-item>
+     <block wx:for="{{num_store1}}" wx:key="id" wx:for-item="item">
+
+         <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
+          <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
+          <view style='height:150rpx;width:150rpx;'>
+          <image  src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
+          </view>
+            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+              <text class='t1'>{{item.name}}\n</text>
+              <text class='t2'>{{item.introduce}}\n</text>
+              <text class='t4'>{{item.type_name}}</text>
+            </view>
+            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
+              <image src='{{item.p2}}' style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
+              <image src='{{item.p3}}' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+              <view class='t3'>北京{{item.distance}}km</view>
+            </view>
+          </view>
+
+          <view>
+          <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
+            <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[1].product_id}}' src='{{host}}/Data/{{item.goods[1].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[2].product_id}}' src='{{host}}/Data/{{item.goods[2].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+          </view>
+
+<view style='position:relative;top:100rpx;height:112rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text id='{{item.goods[0].product_id}}' style='font-size:26rpx;color:#333333;'>{{item.goods[0].pro_name}}\n{{}}\n</text>
+              <text id='{{item.goods[1].product_id}}' style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[0].price}}\n</text>
+              <text id='{{item.goods[2].product_id}}' style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[1].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[1].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[2].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[2].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+          </view>
+
+          </view>
+          
+          
+
+        </view>
+        <view style='border-bottom: 0.1rpx solid #777;'></view>
+      </block>
+    </swiper-item>
+    <swiper-item>
+     <block wx:for="{{hot_good}}" wx:key="id" wx:for-item="item">
+
+        <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
+          <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
+          <view style='height:150rpx;width:150rpx;'>
+          <image  src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
+          </view>
+            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+              <text class='t1'>{{item.name}}\n</text>
+              <text class='t2'>{{item.introduce}}\n</text>
+              <text class='t4'>{{item.type_name}}</text>
+            </view>
+            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
+              <image src='{{item.p2}}' style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
+              <image src='{{item.p3}}' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+              <view class='t3'>北京{{item.distance}}km</view>
+            </view>
+          </view>
+
+          <view>
+          <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
+            <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[1].product_id}}' src='{{host}}/Data/{{item.goods[1].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[2].product_id}}' src='{{host}}/Data/{{item.goods[2].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+          </view>
+
+<view style='position:relative;top:100rpx;height:112rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text id='{{item.goods[0].product_id}}' style='font-size:26rpx;color:#333333;'>{{item.goods[0].pro_name}}\n{{}}\n</text>
+              <text id='{{item.goods[1].product_id}}' style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[0].price}}\n</text>
+              <text id='{{item.goods[2].product_id}}' style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[1].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[1].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[2].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[2].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+          </view>
+
+          </view>
+          
+          
+
+        </view>
+        <view style='border-bottom: 0.1rpx solid #777;'></view>
+      </block>
+    </swiper-item>
+  </swiper>
+</view>

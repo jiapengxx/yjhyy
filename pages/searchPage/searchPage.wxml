@@ -1,0 +1,83 @@
+<view class="page__bd">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索症状、药品、品牌" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch' bindblur='hideInput' focus="{{inputShowed}}" value="{{inputVal}}" />
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索症状、药品、品牌</view>
+      </label>
+    </view>
+    <button class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="toSearch">搜索</button>
+  </view>
+</view>
+
+
+
+
+<!-- <view class="goods-container">
+  <view class="goods-box" wx:for-items="{{goods}}" wx:key="{{index}}" bindtap="toDetailsTap" data-id="{{item.id}}">
+    <view class="img-box">
+      <image src="{{item.pic}}_m" class="image" mode="aspectFill" lazy-load="true" />
+    </view>
+    <view class="goods-title">{{item.name}}</view>
+    <view style='display:flex;'>
+      <view class="goods-price">¥ {{item.minPrice}}</view>
+      <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view>
+    </view>
+  </view>
+</view> -->
+
+
+
+
+ <block wx:for-items="{{goods}}" bindtap="toDetailsTap" wx:for-item="item" wx:key="id">
+
+ <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
+          <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
+          <view style='height:150rpx;width:150rpx;'>
+          <image  src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
+          </view>
+            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+              <text class='t1'>{{item.name}}\n</text>
+              <text class='t2'>{{item.introduce}}\n</text>
+              <text class='t4'>{{item.type_name}}</text>
+            </view>
+            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
+              <image src='{{item.p2}}' style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
+              <image src='{{item.p3}}' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+              <view class='t3'>北京{{item.distance}}km</view>
+            </view>
+          </view>
+
+          <view>
+          <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
+            <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[1].product_id}}' src='{{host}}/Data/{{item.goods[1].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+            <image id='{{item.goods[2].product_id}}' src='{{host}}/Data/{{item.goods[2].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
+          </view>
+
+<view style='position:relative;top:100rpx;height:112rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text id='{{item.goods[0].product_id}}' style='font-size:26rpx;color:#333333;'>{{item.goods[0].pro_name}}\n{{}}\n</text>
+              <text id='{{item.goods[1].product_id}}' style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[0].price}}\n</text>
+              <text id='{{item.goods[2].product_id}}' style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[1].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[1].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+            <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
+              <text style='font-size:26rpx;color:#333333;'>{{item.goods[2].pro_name}}\n{{}}\n</text>
+              <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[2].price}}\n</text>
+              <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
+            </view>
+          </view>
+          </view>
+        </view>
+        <view style='border-bottom: 0.1rpx solid #777;'></view>
+</block>
+<view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>

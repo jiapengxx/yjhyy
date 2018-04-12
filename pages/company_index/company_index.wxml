@@ -1,0 +1,165 @@
+<view style='position:relative;height:88rpx;width:100%;background-color:#efeff4;'>
+  <!-- <text style='position:relative;top:20rpx;left:30rpx;font-family:font-size:24rpx;color:#ffffff;'>商家版</text> -->
+  <view style='position:relative;top:20rpx;left:120rpx;width:510rpx;'>
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input bindblur='hideInput' type="text" class="weui-search-bar__input" placeholder="搜索症状、药品、品牌" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索症状、药品、品牌</view>
+      </label>
+    </view>
+    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length>0}}">
+    </view>
+  </view>
+
+  <!-- <image src='../../images/phone.jpg' style='position:absolute;top:20rpx;right:20rpx;height:46rpx;width:46rpx;'></image> -->
+</view>
+<view class="swiper-container">
+  <swiper class="swiper_box" autoplay="true" interval="3000" duration="1000" bindchange="swiperchange">
+    <block wx:for="{{banners}}" wx:key="id">
+      <swiper-item>
+        <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{host}}/Data/{{item.src}}" class="slide-image" width="100%" height="300rpx" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots">
+    <block wx:for="{{banners}}" wx:key="unique">
+      <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+    </block>
+  </view>
+</view>
+
+
+
+<view class='mContainer'>
+  <block wx:for="{{tttype}}" wx:key="id">
+        <image id='{{item.t_id}}' bindtap='fiveBlocks' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src="{{item.src}}">{{item.type_name}}</image>
+    </block>
+</view>
+
+
+<view style='position:relative;height:30rpx;width:100%;background-color:#EFEFF4;'>
+</view>
+
+<view style='position:relative;height:144rpx;width:100%;'>
+  <image style='position:relative;top:35rpx;left:30rpx;height:74rpx;width:69rpx;' src='https://tanghuzhao.com.cn/Public/images/jrkb.png'></image>
+  <textarea style='position:relative;top:-75rpx;left:110rpx;height:124rpx;width:80%;'>标题标题标题标题标题标题标题标题标题标题标题标题标题标题标</textarea>
+</view>
+<!-- 直播 -->
+<view bindtap='toLive' style='position:relative;height:258rpx;width:100%;'>
+  <image src='https://tanghuzhao.com.cn/Public/images/live.png' style='height:258rpx;width:100%;'></image>
+</view>
+
+<view style='position:relative;height:30rpx;width:100%;'>
+</view>
+
+<!-- <view style='position:relative;height:100rpx;width:100%;background-color:#4BA3FE;text-align:center;'>
+<text style='position:relative;top:20rpx;font-size:40rpx;color:#ffffff'>--优/惠/券--</text>
+</view> -->
+
+<view style='position:relative;height:10rpx;width:100%;'>
+</view>
+<!-- 优惠卷 -->
+<view bindtap='toYhq' style='position:relative;height:172rpx;width:100%;'>
+  <image src='https://tanghuzhao.com.cn/Public/images/card.png' style='height:172rpx;width:100%;'></image>
+</view>
+
+
+<view style='position:relative;height:30rpx;width:100%;'>
+</view>
+
+<!-- <view style='position:relative;height:100rpx;width:100%;background-color:#4BA3FE;text-align:center;'>
+<text style='position:relative;top:20rpx;font-size:40rpx;color:#ffffff'>--附/近--</text>
+</view> -->
+
+<view style='position:relative;height:10rpx;width:100%;'>
+</view>
+
+
+
+<scroll-view scroll-y style='position:relative;width:100%;height:925rpx;'  >
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">距离最近</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">销量最高</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">评价最高</view>
+    <!-- <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">全部</view> -->
+  </view>
+
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{height}}rpx;' bindchange="bindChange">
+    <swiper-item>
+      <block wx:for="{{sseller}}" wx:key="id" wx:for-item="item">
+        <view id='{{item.store_id}}' bindtap='toBtoC'  style='height:174rpx;border-bottom:0.1rpx solid grey;'>
+          <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
+            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;' ></image>
+          </view>
+          <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
+            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
+            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
+            <!-- {{item.distance}} -->
+            <text style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>评价:{{item.evaluate}}</text>
+            <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
+            <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>介绍:{{item.introduce}}</text>
+          </view>
+        </view>
+      </block>
+    </swiper-item>
+
+    <swiper-item>
+      <block wx:for="{{store}}" wx:key="id" wx:for-item="item">
+        <view id='{{item.store_id}}' bindtap='toBtoC'  style='height:174rpx;border-bottom:0.1rpx solid grey;'>
+          <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
+            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;' ></image>
+          </view>
+          <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
+            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
+            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
+            <!-- {{item.distance}} -->
+            <text style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>评价:{{item.evaluate}}</text>
+            <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
+            <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>介绍:{{item.introduce}}</text>
+          </view>
+        </view>
+      </block>
+    </swiper-item>
+
+
+    <swiper-item>
+      <!-- <block wx:for="{{evaluate}}" wx:key="id" wx:for-item="item"> -->
+      <block wx:for="{{sseller}}" wx:key="id" wx:for-item="item">
+        <view id='{{item.store_id}}' bindtap='toBtoC'  style='height:174rpx;border-bottom:0.1rpx solid grey;'>
+          <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
+            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;' ></image>
+          </view>
+          <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
+            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
+            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
+            <!-- {{item.distance}} -->
+            <text style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>评价:{{item.evaluate}}</text>
+            <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
+            <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>介绍:{{item.introduce}}</text>
+          </view>
+        </view>
+      </block>
+    </swiper-item>
+    <!-- <swiper-item>
+    <view>全部</view>
+  </swiper-item> -->
+  </swiper>
+</scroll-view>
+
+<!-- <view style='position:relative;top:30rpx;height:100rpx;width:100%;background-color:#4BA3FE;text-align:center;'>
+<text style='position:relative;top:20rpx;font-size:40rpx;color:#ffffff'>--联/系/我/们--</text>
+</view> -->
+
+<view style='position:relative;top:30rpx;width:100%;text-align:center;background-color:whitesmoke;'>
+  <text bindtap='position' style='position:relative;left:30rpx;font-size:35rpx;color:#333333'>北京医佳护健康医疗科技有限公司</text>
+  <!-- <image src='../../images/position.jpg' style='position:relative;top:10rpx;left:30rpx;height:46rpx;width:46rpx;'></image> -->
+  <text>\n</text>
+  <text bindtap='call' style='position:relative;left:30rpx;font-size:35rpx;color:#333333'>咨询电话:010-123456</text>
+</view>

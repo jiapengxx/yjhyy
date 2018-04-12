@@ -119,6 +119,12 @@
     </view>
   </form>
 </view>
+<<<<<<< HEAD
 <!-- <view hidden='{{switch2}}' style='text-align:center;'>
 正在审核，请等待
 </view> -->
+=======
+<view hidden='{{switch2}}' style='text-align:center;'>
+正在审核，请等待
+</view>
+>>>>>>> 第一次更新

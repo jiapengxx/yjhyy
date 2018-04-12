@@ -22,7 +22,11 @@
   
     
     <view class="cont">
+<<<<<<< HEAD
       <navigator class="pr" url="../product/detail?productId={{item.id}}" hover-class="changestyle"
+=======
+      <navigator class="pr" url="../product/detail?pro_id={{item.id}}" hover-class="changestyle"
+>>>>>>> 第一次更新
                  wx:for="{{productData}}">
         <image class="photo" src="{{item.photo_x}}"></image>
         <view class="title">{{item.name}}</view>

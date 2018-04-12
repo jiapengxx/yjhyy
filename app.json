@@ -9,6 +9,12 @@
     "pages/search/search",
     "pages/user/user",
     "pages/company_user/company_user",
+<<<<<<< HEAD
+=======
+    "pages/company_user/dingdan",
+    "pages/company_user/shoucang",
+    "pages/company_user/tuihuo",
+>>>>>>> 第一次更新
     "pages/user/dingdan",
     "pages/user/tuihuo",
     "pages/order/pay",
@@ -32,7 +38,10 @@
     "pages/wdtz/wdtz",
     "pages/wdyhq/wdyhq",
     "pages/company_category/company_category"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 第一次更新
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -139,10 +139,15 @@ Page({
       success: function (res) {
         var imgeList = that.data.imageList.concat
           (res.tempFilePaths);
+<<<<<<< HEAD
         var src=that.data.srcs;
         src[id] = imgeList;
         // app.d.src=src;
         that.src = src;
+=======
+        var src=that.data.srcs
+        src[id] = imgeList
+>>>>>>> 第一次更新
 if(id==0){
   that.setData({
     flag0:true,
@@ -164,7 +169,10 @@ if(id==0){
     srcs: src,
   })
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 第一次更新
       }
     })
   },
@@ -173,12 +181,16 @@ if(id==0){
     wx.previewImage({
       urls: [this.data.srcs[dataid]]
     });
+<<<<<<< HEAD
     
     // cosole.log(urls+"asd");
+=======
+>>>>>>> 第一次更新
   },
   formSubmit: function (e) {
     var that=this;
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
+<<<<<<< HEAD
     
   // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
     console.log(that.src);
@@ -247,14 +259,70 @@ if(id==0){
     //     })
     //   }
     // })
+=======
+    wx.request({
+      url: app.d.hostUrl + '/Api/BIndex/seller_add',
+      method: 'post',
+      data: {
+        code: e.detail.value.code,
+        self_name: e.detail.value.self_name,
+        card_id: e.detail.value.card_id,
+        tel_id: e.detail.value.tel_id,
+        user: e.detail.value.user,
+        pwd: e.detail.value.pwd,
+        place: e.detail.value.place,
+        code: e.detail.value.code,
+        code: e.detail.value.code,
+        place_desc: e.detail.value.place_desc,
+        introduce: e.detail.value.introduce,
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        //--init data 
+        var status = res.data.status;
+        if (status == 1) {
+          that.setData({     
+          });
+        } else {
+          wx.showToast({
+            title: res.data.err,
+            duration: 2000,
+          });
+        }
+      },
+      error: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000,
+        });
+      },
+    });
+    wx.showToast({
+      title: '提交成功',
+      success: function () {
+        wx.reLaunch({
+          url: '../company_index/company_index',
+        })
+      }
+    })
+>>>>>>> 第一次更新
     // wx.setStorage({
     //   key: 'switch',
     //   data: 'true',
     // })
+<<<<<<< HEAD
     // this.setData({
     //   switch1: true,
     //   switch2: false
     // })
+=======
+    this.setData({
+      switch1: true,
+      switch2: false
+    })
+>>>>>>> 第一次更新
   },
 
   bindRegionChange: function (e) {

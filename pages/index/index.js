@@ -185,15 +185,28 @@ Page({
         var prolist = res.data.prolist;
         var brand = res.data.brand;
         var course = res.data.course;
+<<<<<<< HEAD
         var store=res.data.store;
+=======
+        var store = res.data.store;
+>>>>>>> 第一次更新
         //that.initProductData(data);
         that.setData({
           imgUrls: ggtop,
           proCat: procat,
           productData: prolist,
           brand: brand,
+<<<<<<< HEAD
           course: course
         });
+=======
+          course: course,
+          store: store
+        });
+        wx.setNavigationBarTitle({ title:store.name,})
+        console.log(store);
+        console.log(that.data.productData);
+>>>>>>> 第一次更新
         console.log(that.data.imgUrls)
         console.log(app.d.store_Id)
         //endInitData

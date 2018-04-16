@@ -1,0 +1,82 @@
+/* pages/company_shop/company_shop.wxss */
+
+page {
+  font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+}
+
+.swiper-tab {
+  border-bottom: 0.1rpx solid #777;
+  text-align: center;
+  width: 100%;
+  line-height: 80rpx;
+
+}
+
+.swiper-tab-list {
+  background-color: whitesmoke;
+  font-size: 36rpx;
+  display: inline-block;
+  width: 50%;
+  color: #333;
+}
+
+.on {
+  color: #4BA3FE;
+  border-bottom: 5rpx solid #4BA3FE;
+}
+.swiper-box {
+  height: 100%;
+  display: block;
+  width: 100%;
+}
+
+.swiper-box view {
+
+}
+
+.t1 {
+  position: absolute;
+  top: 0rpx;
+  left: 180rpx;
+  font-family: PingFangSC-Regular, sans-serif;
+  color: #333;
+  font-size: 26rpx;
+}
+
+.t2 {
+  position: absolute;
+  left: 180rpx;
+  top: 46rpx;
+  height: 56rpx;
+  width: 490rpx;
+  text-indent: 2em;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: PingFangSC-Regular, sans-serif;
+  color: #666;
+  font-size: 20rpx;
+}
+
+.t3 {
+  position: relative;
+  top: -5rpx;
+  left: 10rpx;
+  font-family: PingFangSC-Regular, sans-serif;
+  color: #666;
+  font-size: 20rpx;
+}
+
+.t4 {
+  position: absolute;
+  bottom: 0rpx;
+  left: 180rpx;
+  width: 290rpx;
+  height: 30rpx;
+  background-color: pink;
+  font-size: 20rpx;
+  color: #e91d1d;
+}

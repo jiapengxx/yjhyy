@@ -1,0 +1,51 @@
+<view class="swiper-container">
+  <swiper class="swiper_box" autoplay="true" interval="3000" duration="1000" bindchange="swiperchange">
+    <block wx:for="{{banners}}" wx:key="id">
+      <swiper-item>
+        <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{item.picUrl}}" class="slide-image" width="100%" height="300rpx" />
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots">
+    <block wx:for="{{banners}}" wx:key="unique">
+      <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+    </block>
+  </view>
+</view>
+<view style='position:relative;width:100%;'>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">正在直播</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">教学课程</view>
+  </view>
+
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{currentTab==0?326:280}}rpx;  border-bottom:{{currentTab==0?0:0.1}}rpx solid gainsboro;' bindchange="bindChange">
+    <swiper-item>
+      <block wx:for="{{switch1}}" wx:key="id" wx:for-item="item">
+        <view style='height:326rpx;width:750rpx;'>
+          <image src='{{item.pic1}}' style='position:absolute;top:40rpx;left:24rpx;width:344rpx;height:200rpx;'></image>
+          <image src='{{item.pic2}}' style='position:absolute;top:40rpx;right:24rpx;width:344rpx;height:200rpx;'></image>
+          <text style='position:absolute;top:260rpx;left:24rpx;width:344rpx;height:66rpx;font-size:24rpx;color:#333333;'>{{item.content1}}（正在直播）</text>
+          <text style='position:absolute;top:260rpx;right:24rpx;width:344rpx;height:66rpx;font-size:24rpx;color:#333333;'>{{item.content2}}（正在直播）</text>
+
+        </view>
+      </block>
+    </swiper-item>
+
+    <swiper-item>
+      <block wx:for="{{switch2}}" wx:key="id" wx:for-item="item">
+        <view style='height:280rpx;width:750rpx;'>
+          <image src='{{item.pic1}}' bindtap='live_do' style='position:absolute;top:40rpx;left:24rpx;width:300rpx;height:200rpx;'></image>
+          <view style='position:absolute;top:40rpx;right:24rpx;width:372rpx;height:200rpx;'>
+          <text style='position:absolute;top:0rpx;left:0rpx;width:372rpx;font-size:26rpx;color:#333333;'>{{item.title}}</text>
+          <text style='position:absolute;top:40rpx;left:0rpx;width:372rpx;font-size:24rpx;color:#999999; display: -webkit-box;word-break: break-all;-webkit-box-orient: vertical;-webkit-line-clamp:3;overflow:hidden;text-overflow:ellipsis;text-indent:2em;'>{{item.content}}</text>
+          <image src='https://tanghuzhao.com.cn/Public/images/play_icon.png' style='position:absolute;bottom:5rpx;right:90rpx;height:24rpx;width:15rpx;'></image>
+          <text style='position:absolute;bottom:0rpx;right:0rpx;width:80rpx;font-size:22rpx;color:#999999;'>{{item.count}}</text>
+          
+          </view>
+        </view>
+        
+      </block>
+    </swiper-item>
+
+  </swiper>
+</view>

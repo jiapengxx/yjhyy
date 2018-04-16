@@ -1,0 +1,125 @@
+<view hidden='{{switch1}}'>
+  <view style='background-color:plum;height:88rpx'>
+    <text style='position:relative;left:200rpx;top:20rpx;'>您还未申请商家</text>
+    <text style='position:relative;left:350rpx;top:20rpx;'>绑定</text>
+  </view>
+  <form bindsubmit="formSubmit">
+    <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
+      <text style='position:relative;left:30rpx;top:25rpx;width:40%'>服务商代码：</text>
+      <input name='code' style='position:relative;top:-30rpx;left:300rpx;width:80%' placeholder='请输入服务商代码'></input>
+    </view>
+    <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
+      <text style='position:relative;left:30rpx;top:25rpx;width:40%'>姓名：</text>
+      <input name='self_name' style='position:relative;top:-30rpx;left:300rpx;width:80%' placeholder='请输入姓名'></input>
+    </view>
+    <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
+      <text style='position:relative;left:30rpx;top:25rpx;width:40%'>身份证号：</text>
+      <input name='card_id' style='position:relative;top:-30rpx;left:300rpx;width:80%' placeholder='请输入身份证号'></input>
+    </view>
+
+    <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
+      <text style='position:relative;left:30rpx;top:25rpx;width:40%'>手机号码：</text>
+      <input name='tel_id' style='position:relative;top:-30rpx;left:300rpx;width:80%' placeholder='请输入手机号码'></input>
+    </view>
+
+    <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
+      <text style='position:relative;left:30rpx;top:25rpx;width:40%'>登录账号：</text>
+      <input name='user' style='position:relative;top:-30rpx;left:300rpx;width:80%' placeholder='请输入登录账号'></input>
+    </view>
+    <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
+      <text style='position:relative;left:30rpx;top:25rpx;width:40%'>登录密码：</text>
+      <input name='pwd' style='position:relative;top:-30rpx;left:300rpx;width:80%' placeholder='请输入登录密码'></input>
+    </view>
+    <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
+      <text style='position:relative;left:30rpx;top:25rpx;width:40%'>位置：</text>
+      <picker name='place' style='position:relative;top:-30rpx;left:160rpx;width:70%;height:50rpx;' mode="region" bindchange="bindRegionChange" value="{{region}}">
+        <view style='font-size:30rpx;text-align:center;'>
+          {{region[0]}} {{region[1]}} {{region[2]}}
+          <image src='https://tanghuzhao.com.cn/Public/images/pullDown.png' style='position:absolute;top:25rpx;right:-35rpx;height:21rpx;width:36rpx;'></image>
+        </view>
+      </picker>
+    </view>
+
+    <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
+      <text style='position:relative;left:30rpx;top:25rpx;width:40%'>详细地址：</text>
+      <input name='place_desc' style='position:relative;top:-30rpx;left:300rpx;width:80%' placeholder='请输入详细地址'></input>
+    </view>
+
+
+
+
+    <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
+      <text style='position:relative;left:30rpx;top:25rpx;width:40%'>产品分类：</text>
+     <view class="phone_one" bindtap="clickPerson">
+  <view  class="phone_personal">
+  <text name='type_id'>{{firstPerson}}</text>
+  </view>
+  <image src='https://tanghuzhao.com.cn/Public/images/pullDown.png' class="personal_image {{selectArea ? 'rotateRight' :''}}"></image>
+  <!-- 三目法判断图片要不要旋转180。 -->
+</view>
+<view class="person_box">
+  <view class="phone_select" hidden="{{selectPerson}}">
+    <block wx:for="{{types}}" wx:key="id" wx:for-item="item">
+      <view class="select_one" bindtap="mySelect" data-me="{{item.type_name}}">{{item.type_name}}</view>
+    </block>
+  </view>
+  </view>
+
+
+    </view>
+
+
+
+    <image style='height:20rpx;width:100%;background-color:gainsboro'></image>
+
+    <view style='height:1150rpx;'>
+
+      <text style='position:relative;top:50rpx;left:30rpx;'>身份证照片</text>
+      <view style='position:relative;height:140rpx;flex-wrap:nowrap;'>
+         <!-- <image bindtap='bindAdd' src='../../images/add.png' style='position:relative;top:100rpx;left:30rpx;height:140rpx;width:300rpx;'></image>  -->
+         <image   id='0' src="{{flag0?srcs[0]:'https://tanghuzhao.com.cn/Public/images/add.png'}}"bindlongpress="previewImage" bindtap="chooseImage" style='position:relative;top:100rpx;left:30rpx;height:140rpx;width:300rpx;'></image>
+
+<image  id='1' src="{{flag1?srcs[1]:'https://tanghuzhao.com.cn/Public/images/add.png'}}"bindlongpress="previewImage" bindtap="chooseImage" style='position:relative;top:100rpx;right:-120rpx;height:140rpx;width:300rpx;'></image> 
+
+
+        
+         <!-- <image bindtap='bindAdd' src='../../images/add.png' style='position:relative;top:100rpx;right:-120rpx;height:140rpx;width:300rpx;'></image>  -->
+        <text style='position:relative;top:150rpx;left:-475rpx;'>正面</text>
+        <text>\n</text>
+        <text style='position:relative;top:95rpx;left:525rpx;'>反面</text>
+
+      </view>
+
+      <text style='position:relative;top:250rpx;left:30rpx;'>品牌logo</text>
+      <view>
+        <!-- <image bindtap='bindAdd' src='../../images/add.png' style='position:relative;top:310rpx;left:30rpx;height:140rpx;width:300rpx;'></image> -->
+
+<image  id='2' src="{{flag2?srcs[2]:'https://tanghuzhao.com.cn/Public/images/add.png'}}"bindlongpress="previewImage" bindtap="chooseImage" style='position:relative;top:310rpx;left:30rpx;height:140rpx;width:300rpx;'></image>
+
+      </view>
+
+      <text style='position:relative;top:400rpx;left:30rpx;'>营业执照</text>
+      <view>
+        <!-- <image bindtap='bindAdd' src='../../images/add.png' style='position:relative;top:460rpx;left:30rpx;height:140rpx;width:300rpx;'></image> -->
+
+<image  id='3' src="{{flag3?srcs[3]:'https://tanghuzhao.com.cn/Public/images/add.png'}}"bindlongpress="previewImage" bindtap="chooseImage" style='position:relative;top:460rpx;left:30rpx;height:140rpx;width:300rpx;'></image>
+
+      </view>
+    </view>
+
+    <image style='height:20rpx;width:100%;background-color:gainsboro'></image>
+
+    <view style='height:450rpx;'>
+      <text style='position:relative;top:10rpx;left:30rpx;'>介绍</text>
+      <textarea name='introduce' placeholder='请输入介绍' style='position:relative;top:25rpx;left:30rpx;height:350rpx;width:690rpx;'>
+      </textarea>
+    </view>
+    <view style='height:250rpx;background-color:gainsboro'>
+      <button formType="submit"   style='position:relative;top:87.5rpx;width:580rpx;background:lightblue;'>提交</button>
+    </view>
+  </form>
+</view>
+ <view hidden='{{switch2}}' style='text-align:center;'>
+正在审核，请等待
+</view> 
+

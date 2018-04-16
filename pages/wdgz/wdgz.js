@@ -11,30 +11,51 @@ Page({
     height: 0,
     currentTab: 0,
     flag: true,
-    shoucang_good: [
-
-      { id: 0, logo_good: 'https://tanghuzhao.com.cn/Public/images/logo_good.png', good_pic: 'https://tanghuzhao.com.cn/Public/images/good_sc.png', good_name: '人参健脾丸（8粒/盒）', good_price: '￥12.00' }, 
-      { id: 1, logo_good: 'https://tanghuzhao.com.cn/Public/images/logo_good.png', good_pic: 'https://tanghuzhao.com.cn/Public/images/good_sc.png', good_name: '人参健脾丸（8粒/盒）', good_price: '￥12.00' }, 
-      { id: 2, logo_good: 'https://tanghuzhao.com.cn/Public/images/logo_good.png', good_pic: 'https://tanghuzhao.com.cn/Public/images/good_sc.png', good_name: '人参健脾丸（8粒/盒）', good_price: '￥12.00' }, 
-      { id: 3, logo_good: 'https://tanghuzhao.com.cn/Public/images/logo_good.png', good_pic: 'https://tanghuzhao.com.cn/Public/images/good_sc.png', good_name: '人参健脾丸（8粒/盒）', good_price: '￥12.00' }, 
-      { id: 4, logo_good: 'https://tanghuzhao.com.cn/Public/images/logo_good.png', good_pic: 'https://tanghuzhao.com.cn/Public/images/good_sc.png', good_name: '人参健脾丸（8粒/盒）', good_price: '￥12.00' }, 
-      { id: 5, logo_good: 'https://tanghuzhao.com.cn/Public/images/logo_good.png', good_pic: 'https://tanghuzhao.com.cn/Public/images/good_sc.png', good_name: '人参健脾丸（8粒/盒）', good_price: '￥12.00' }, 
-      { id: 6, logo_good: 'https://tanghuzhao.com.cn/Public/images/logo_good.png', good_pic: 'https://tanghuzhao.com.cn/Public/images/good_sc.png', good_name: '人参健脾丸（8粒/盒）', good_price: '￥12.00' }, 
-      { id: 7, logo_good: 'https://tanghuzhao.com.cn/Public/images/logo_good.png', good_pic: 'https://tanghuzhao.com.cn/Public/images/good_sc.png', good_name: '人参健脾丸（8粒/盒）', good_price: '￥12.00' },
-    ],
-    wdgz: [{ id: 0, logo_sj: 'https://tanghuzhao.com.cn/Public/images/logo_sj.png', name: '同仁堂大药房', }, { id: 1, logo_sj: 'https://tanghuzhao.com.cn/Public/images/logo_sj.png', name: '同仁堂大药房', }, { id: 2, logo_sj: 'https://tanghuzhao.com.cn/Public/images/logo_sj.png', name: '同仁堂大药房', }
-  ]
+    host: app.d.hostImg,
+    shoucang_good: [],
+    gz_store: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var count1 = this.data.shoucang_good.length
-    var count2 = this.data.wdgz.length
-    this.setData({
-      height1: 410 * parseInt((count1 + 1) / 2),
-      height2: 165 * count2,
+    var that = this
+    wx.request({
+      url: app.d.hostUrl + '/Api/BCollet/show',
+      method: 'post',
+      data: {
+        user_id: app.d.userId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var cl_product = res.data.cl_product
+        var cl_store = res.data.cl_store
+        console.log(cl_product)
+        console.log(cl_store)
+        that.setData({
+          shoucang_good: cl_product,
+          gz_store: cl_store
+        });
+        console.log(that.data.shoucang_good)
+        console.log(that.data.gz_store)
+        var count1 = that.data.shoucang_good.length
+        var count2 = that.data.gz_store.length
+        console.log(count1)
+        console.log(count2)
+        that.setData({
+          height1: 440 * parseInt((count1 + 1) / 2),
+          height2: 165 * count2,
+        })
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
     })
   },
 

@@ -1,4 +1,5 @@
 // pages/wdtz/wdtz.js
+var app=getApp()
 Page({
 
   /**
@@ -26,8 +27,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-this.setData({
-})
+    var that = this
+    wx.request({
+      url: app.d.hostUrl + '/Api/User/inform',
+      method: 'post',
+      data: {
+        uid: app.d.userId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+     var time=res.data.addtime
+     var date=new Date()
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
     },
 
   /**
@@ -83,5 +103,6 @@ this.setData({
     var item_id = e.target.id
     console.log(e.target.id)
     //对请求到的数组中flag值进行修改并提交数据
+
   }
 })

@@ -90,7 +90,7 @@ Page({
       pro_id: option.pro_id,
     });
     that.loadProductDetail();
-
+console.log(that.data.pro_id)
   },
 // 商品详情数据获取
   loadProductDetail:function(){

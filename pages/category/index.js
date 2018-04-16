@@ -19,7 +19,9 @@ Page({
         wx.request({
             url: app.d.ceshiUrl + '/Api/Category/index',
             method:'post',
-            data: {},
+            data: {
+              store_id:app.d.store_Id
+            },
             header: {
                 'Content-Type':  'application/x-www-form-urlencoded'
             },

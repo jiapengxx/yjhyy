@@ -15,6 +15,7 @@ Page({
     tttype: [],
     sseller: [],
     store:[],
+    store2:[],
     host:app.d.hostImg
     
   },
@@ -57,9 +58,10 @@ Page({
       },
       success: function (res) {
         var ad = res.data.ad;
-        var ttype = res.data.type;
+        var ttype  = res.data.type;
         var seller = res.data.store;
         var store1 = res.data.store1;
+        var store2 =  res.data.store2
         
         //that.initProductData(data);
         that.setData({  
@@ -67,6 +69,7 @@ Page({
           tttype: ttype,
           sseller: seller,
           store:store1,
+          store2:store2,
           
         });
       console.log(app.d.latitude);
@@ -100,7 +103,7 @@ Page({
         });
       }
     })
-    console.log("sseller"+this.data.sseller.length)
+
   },
 
   toLive: function () {
@@ -135,20 +138,21 @@ Page({
       swiperCurrent: e.detail.current
     })
   },
-  tapBanner: function (e) {
-    if (e.currentTarget.dataset.id != 0) {
-      wx.navigateTo({
-        url: "../" + (e.currentTarget.dataset.id == 1001 ? '' : '')
-        // 预留商品详情
-        // url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id   
-      })
-    }
-  },
+  // tapBanner: function (e) {
+  //   if (e.currentTarget.dataset.id != 0) {
+  //     wx.navigateTo({
+  //       url: "../" + (e.currentTarget.dataset.id == 1001 ? '' : '')
+  //        预留商品详情
+  //        url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id   
+  //     })
+  //   }
+  // },
   fiveBlocks: function (e) {
     var type_id = e.target.id
     wx.navigateTo({
       url: '../company_category/company_category?type_id=' + type_id,
     })
+    
     console.log(type_id)
   },
   toBtoC: function (e) {

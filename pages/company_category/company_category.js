@@ -22,6 +22,7 @@ Page({
       method: 'post',
       data: {
         current: 1,
+        type_id:type_id
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -123,7 +124,7 @@ Page({
   toGoodsDetail: function (e) {
     var goods_Id = e.target.id;
     wx.navigateTo({
-      url: '../product/detail?goods_Id=' + goods_Id,
+      url: '../product/detail?pro_id=' + goods_Id,
     })
     console.log(goods_Id)
   }

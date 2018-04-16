@@ -20,11 +20,31 @@ App({
       url: data.url,
       filePath: data.path[i],
       name: 'file',//这里根据自己的实际情况改
-      formData: data.data,//这里是上传图片时一起上传的数据
+      formData: {
+        code_one: data.data.code_one,
+        code: data.data.code,
+        self_name: data.data.self_name,
+        card_id: data.data.card_id,
+        tel_id: data.data.tel_id,
+        user: data.data.user,
+        pwd: data.data.pwd,
+        city: data.data.city,
+        quyu:data.data.quyu,
+        sheng:data.data.sheng,
+        code: data.data.code,
+        code: data.data.code,
+        place_desc: data.data.place_desc,
+        introduce: data.data.introduce,
+        uid:data.data.uid,
+        urli:i,
+        p_desc:data.data.p_desc
+      },
+      //这里是上传图片时一起上传的数据
       success: (resp) => {
         success++;//图片上传成功，图片上传成功的变量+1
         console.log(resp)
         console.log(i);
+        
         //这里可能有BUG，失败也会执行这里,所以这里应该是后台返回过来的状态码为成功时，这里的success才+1
       },
       fail: (res) => {

@@ -52,7 +52,7 @@
       <text style='position:relative;left:30rpx;top:25rpx;width:40%'>产品分类：</text>
      <view class="phone_one" bindtap="clickPerson">
   <view  class="phone_personal">
-  <text name='产品分类：'>{{firstPerson}}</text>
+  <text name='type_id'>{{firstPerson}}</text>
   </view>
   <image src='https://tanghuzhao.com.cn/Public/images/pullDown.png' class="personal_image {{selectArea ? 'rotateRight' :''}}"></image>
   <!-- 三目法判断图片要不要旋转180。 -->
@@ -119,12 +119,7 @@
     </view>
   </form>
 </view>
-<<<<<<< HEAD
-<!-- <view hidden='{{switch2}}' style='text-align:center;'>
+ <view hidden='{{switch2}}' style='text-align:center;'>
 正在审核，请等待
-</view> -->
-=======
-<view hidden='{{switch2}}' style='text-align:center;'>
-正在审核，请等待
-</view>
->>>>>>> 第一次更新
+</view> 
+

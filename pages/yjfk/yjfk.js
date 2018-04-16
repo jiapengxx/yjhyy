@@ -26,10 +26,6 @@ Page({
   upload: function () {
     // console.log(this.data.img1.uploadedImagesPaths);
     var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
-<<<<<<< HEAD
-    console.log(uploadedImagesPaths);
-=======
->>>>>>> 第一次更新
     app.uploadimg({
       url: app.d.hostUrl + '/Api/BIndex/upload_do',//这里是你图片上传的接口
       path: uploadedImagesPaths,//这里是选取的图片的地址数组

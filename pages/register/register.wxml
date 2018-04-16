@@ -1,7 +1,7 @@
 <!--pages/register/register.wxml-->
 <image src='https://tanghuzhao.com.cn/Public/images/logo.png' style='position:absolute;top:35rpx;left:264rpx;height:220rpx;width:220rpx;'></image>
 <input bindblur='tel'style='position:absolute;top:290rpx;left:126rpx;height:66rpx;width:500rpx;border:0.1rpx solid gainsboro;border-radius:5px;'type='number' placeholder='请输入手机号' placeholder-style='left:30rpx;font-size:24rpx;color:#999999;'></input>
-<input style='position:absolute;top:416rpx;left:126rpx;height:66rpx;width:270rpx;border:0.1rpx solid gainsboro;border-radius:5px;'placeholder='请输入验证码'  placeholder-style='left:30rpx;font-size:24rpx;color:#999999;'></input>
+<input bindblur='checkInput' style='position:absolute;top:416rpx;left:126rpx;height:66rpx;width:270rpx;border:0.1rpx solid gainsboro;border-radius:5px;'placeholder='请输入验证码'  placeholder-style='left:30rpx;font-size:24rpx;color:#999999;'></input>
 <button hidden='{{switch_one}}' bindtap='getCode' style='position:absolute;top:416rpx;left:440rpx;height:66rpx;width:186rpx;background-color:blue;font-size:26rpx;color:#ffffff;border-radius:33rpx;'>发送验证码</button>
 
 

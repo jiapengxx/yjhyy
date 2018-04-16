@@ -1,4 +1,5 @@
 var app=getApp();
+var count=0
 Page({
 
   /**
@@ -15,9 +16,10 @@ Page({
     flag2:false,
     flag3:false,
     selectPerson: true,
-    firstPerson: '',
+    content: '',
     selectArea: false,
-    types: []
+    types: [],
+  
   },
 
   /**
@@ -122,6 +124,111 @@ Page({
   onShareAppMessage: function () {
 
   },
+  code: function (e) {
+    if (e.detail.value.length === 0) {
+      wx.showToast({
+        title: '服务商代码不能为空！',
+        icon: 'loading'
+      })
+    } else {
+      this.setData({
+        count: ++count
+      })
+      
+    }
+    console.log(count)
+  },
+  name: function (e) {
+    if (e.detail.value.length === 0) {
+      wx.showToast({
+        title: '姓名不能为空！',
+        icon: 'loading'
+      })
+    } else {
+      this.setData({
+        count: ++count
+      })
+    }
+    console.log(count)
+  },
+  account: function (e) {
+    if (e.detail.value.length === 0) {
+      wx.showToast({
+        title: '登录账号不能为空！',
+        icon: 'loading'
+      })
+    } else {
+      this.setData({
+        count: ++count
+      })
+    }
+    console.log(count)
+  },
+  pwd: function (e) {
+    if (e.detail.value.length === 0) {
+      wx.showToast({
+        title: '登录密码不能为空！',
+        icon: 'loading'
+      })
+    } else {
+      this.setData({
+        count: ++count
+      })
+    }
+    console.log(count)
+  },
+  address: function (e) {
+    if (e.detail.value.length === 0) {
+      wx.showToast({
+        title: '详细地址不能为空！',
+        icon: 'loading'
+      })
+    } else {
+      this.setData({
+        count: ++count
+      })
+    }
+    console.log(count)
+  },
+
+  tel: function (e) {
+    if (e.detail.value.length === 0) {
+      wx.showToast({
+        title: '手机号不能为空！',
+        icon: 'loading'
+      })
+    }
+    else if (!(/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value))) {
+      wx.showToast({
+        title: '手机号格式不正确！',
+        icon: 'loading'
+      })
+    } else {
+      this.setData({
+        count: ++count
+      })
+    }
+    console.log(count)
+  },
+  ID: function (e) {
+    if (e.detail.value.length === 0) {
+      wx.showToast({
+        title: '身份证不能为空！',
+        icon: 'loading'
+      })
+    } else if (!/^\d{17}(\d|X|x)$/.test(e.detail.value)) {
+        wx.showToast({
+          title: '身份证长度或格式错误！',
+          icon: 'loading'
+        })
+    }
+    else {
+      this.setData({
+        count: ++count
+      })
+    }
+    console.log(count)
+  },
   clickPerson: function () {
     var selectPerson = this.data.selectPerson;
     if (selectPerson == true) {
@@ -139,10 +246,14 @@ Page({
   //点击切换
   mySelect: function (e) {
     this.setData({
-      firstPerson: e.target.dataset.me,
+      content: e.target.dataset.me,
       selectPerson: true,
       selectArea: false,
     })
+    if (this.data.content.length!=0){
+      count:++count
+    }
+    console.log(count)
   },
   chooseImage: function (event) {
     var id = event.target.id;
@@ -179,9 +290,15 @@ Page({
     flag3: true,
     srcs: src,
   })
-}
-      }
+} }
     })
+if(this.data.srcs.length==4){
+this.setData({
+  count:++count
+})
+}
+console.log(count)
+
   },
   previewImage: function (e) {
     var dataid = e.target.id;
@@ -190,7 +307,21 @@ Page({
     });
 
   },
+  introduce:function(e){
+    if (e.detail.value.length === 0) {
+      wx.showToast({
+        title: '介绍不能为空！',
+        icon: 'loading'
+      })
+    } else {
+      this.setData({
+        count: ++count
+      })
+    }
+    console.log(count)
+  },
   formSubmit: function (e) {
+    if(count==14){
     var that=this;
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
   // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
@@ -225,6 +356,12 @@ Page({
         })
       }
     })
+    }else{
+      wx.showToast({
+        title: '请将信息填充完整！',
+        icon: 'loading'
+      })
+    }
     // wx.setStorage({
     //   key: 'switch',
     //   data: 'true',
@@ -240,6 +377,11 @@ Page({
     this.setData({
       region: e.detail.value
     })
-    this.region = e.detail.value;
+    if (this.data.region.length!=0){
+      this.setData({
+        count:++count
+      })
+    }
+    console.log(count)
   },
 })

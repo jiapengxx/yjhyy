@@ -406,6 +406,7 @@ Page({
         var data = res.data;
         if(data.status == 1){
           var ptype = e.currentTarget.dataset.type;
+          console.log(data.cart_id);
           if(ptype == 'buynow'){
             wx.redirectTo({
               url: '../order/pay?cartId='+data.cart_id

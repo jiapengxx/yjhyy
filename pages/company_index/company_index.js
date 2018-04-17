@@ -46,6 +46,7 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
+    console.log(app.d.latitude+"1111");
     wx.request({
       url: app.d.ceshiUrl + '/Api/BIndex/show',
       method: 'post',

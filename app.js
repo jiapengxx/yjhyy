@@ -11,6 +11,26 @@ App({
     // ceshiUrl: 'http://www.xshoph.com/index.php',
     ceshiUrl: 'https://tanghuzhao.com.cn/index.php',
   },
+  position: function () {
+    var that = this
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        // wx.openLocation({
+        //   latitude: 40.0164199815,
+        //   longitude: 116.4756077528,
+        //   address: '北京市朝阳区时代凌宇大厦容创路17号(容创路与创达二路交叉口)',
+        // })
+        // that.d.latitude = latitude;
+        app.d.latitude = latitude;
+        // that.d.longitude = longitude;
+        // that.d.userId = userId;
+        app.d.longitude = longitude;
+      }
+    })
+  },
   uploadimg: function (data) {
       var that = this,
       i = data.i ? data.i : 0,//当前上传的哪张图片
@@ -101,25 +121,6 @@ App({
       });
     }
   },
-  position: function () {
-    var that = this
-    wx.getLocation({
-      type: 'gcj02',
-      success: function (res) {
-        // console.log(res);
-        var latitude = res.latitude;
-        var longitude= res.longitude;
-        // wx.openLocation({
-        //   latitude: 40.0164199815,
-        //   longitude: 116.4756077528,
-        //   address: '北京市朝阳区时代凌宇大厦容创路17号(容创路与创达二路交叉口)',
-        // })
-        that.d.latitude = latitude;
-        that.d.longitude = longitude;
-        // that.d.userId = userId;
-      }
-    })
-  },
   getUserSessionKey: function (code) {
     //用户的订单状态
     var that = this;
@@ -142,7 +143,6 @@ App({
           });
           return false;
         }
-
         that.globalData.userInfo['sessionId'] = data.session_key;
         that.globalData.userInfo['openid'] = data.openid;
         that.onLoginUser();

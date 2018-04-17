@@ -275,21 +275,25 @@ Page({
           flag0:true,
           srcs:src,
         })
+        console.log('id=0:'+that.data.srcs)
 }else if(id==1){
   that.setData({
     flag1: true,
     srcs: src,
   })
+  console.log('id=1:' + that.data.srcs)
 } else if (id == 2) {
   that.setData({
     flag2: true,
     srcs: src,
   })
+  console.log('id=2:' + that.data.srcs)
 }else if(id==3){
   that.setData({
     flag3: true,
     srcs: src,
   })
+  console.log('id=3:' + that.data.srcs)
 } }
     })
 if(this.data.srcs.length==4){
@@ -305,7 +309,6 @@ console.log(count)
     wx.previewImage({
       urls: [this.data.srcs[dataid]]
     });
-
   },
   introduce:function(e){
     if (e.detail.value.length === 0) {

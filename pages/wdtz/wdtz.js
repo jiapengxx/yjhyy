@@ -36,7 +36,10 @@ Page({
         for (var i = 0; i < inform.length; i++) {
           console.log(inform[i].addtime)
           var now = new Date(inform[i].addtime);
-          console.log('i:' + i + now.getFullYear())
+          var now2 = new Date(456464565);
+          //456464565是inform[i].addtime的值
+          console.log('i:' + i+';' + now.getFullYear())
+          console.log('i:' + i+';'+ now2.getFullYear())
           that.setData({
             time: that.data.time.concat({ i: i, date: (now.getFullYear() + '.' + (now.getMonth() + 1) + '.' + now.getDate()), time: (now.getHours() + '.' + now.getMinutes()) })
           })

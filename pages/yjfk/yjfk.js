@@ -32,8 +32,9 @@ Page({
       data:{
          code: Math.random(10000, 99999),
          uid:app.d.userId,
-         p_desc:111
-      }
+         p_desc:"asdasdsad"
+      },
+     
     });
   },
  

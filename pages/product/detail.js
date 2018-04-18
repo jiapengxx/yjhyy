@@ -90,7 +90,7 @@ Page({
       pro_id: option.pro_id,
     });
     that.loadProductDetail();
-
+console.log(that.data.pro_id)
   },
 // 商品详情数据获取
   loadProductDetail:function(){
@@ -406,7 +406,6 @@ Page({
         var data = res.data;
         if(data.status == 1){
           var ptype = e.currentTarget.dataset.type;
-          console.log(data.cart_id);
           if(ptype == 'buynow'){
             wx.redirectTo({
               url: '../order/pay?cartId='+data.cart_id

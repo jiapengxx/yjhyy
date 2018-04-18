@@ -22,11 +22,11 @@
 </view>
 <view class="swiper-container">
   <swiper class="swiper_box" autoplay="true" interval="3000" duration="1000" bindchange="swiperchange">
-    <block wx:for="{{banners}}" wx:key="id">
+    <navigator url="../product/detail?pro_id={{item.p_id}}"  wx:for="{{banners}}">
       <swiper-item>
-        <image bindtap="tapBanner" data-id="{{item.businessId}}" src="{{host}}/Data/{{item.src}}" class="slide-image" width="100%" height="300rpx" />
+        <image  src="{{host}}/Data/{{item.src}}" class="slide-image" width="100%" height="300rpx" />
       </swiper-item>
-    </block>
+    </navigator>
   </swiper>
   <view class="dots">
     <block wx:for="{{banners}}" wx:key="unique">
@@ -49,7 +49,7 @@
 
 <view style='position:relative;height:144rpx;width:100%;'>
   <image style='position:relative;top:35rpx;left:30rpx;height:74rpx;width:69rpx;' src='https://tanghuzhao.com.cn/Public/images/jrkb.png'></image>
-  <textarea style='position:relative;top:-75rpx;left:110rpx;height:124rpx;width:80%;'>李克强要求优先提速远程医疗:让优质医疗...-中华人民共和国人民政府</textarea>
+  <textarea style='position:relative;top:-75rpx;left:130rpx;height:120rpx;width:80%;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;'>李克强要求优先提速远程医疗:让优质医疗...-中华人民共和国人民政府</textarea>
 </view>
 <!-- 直播 -->
 <view bindtap='toLive' style='position:relative;height:258rpx;width:100%;'>

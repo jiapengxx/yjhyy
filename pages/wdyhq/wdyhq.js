@@ -38,6 +38,7 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        //获取时间戳,确定失效优惠券
         var now = Date.now();
         console.log(now)
         var sale = res.data.sale;
@@ -72,27 +73,37 @@ Page({
           height2: 210 * count2,
           height3: 210 * count3,
         })
-        console.log(sale)
-        var date = new Date()
+        console.log(that.data.wsy)
         var time = ''
         var a1 = ''
         var b1 = ''
+        console.log(that.data.times)
         for (var i = 0; i < count1; i++) {
+          var start_date = new Date(parseInt(that.data.wsy[i].start_time))
+          var end_date = new Date(parseInt(that.data.wsy[i].end_time))
           that.setData({
-            start: (date.getFullYear(sale[i].start_time) + '.' + (date.getMonth(sale[i].start_time) + 1) + '.' + (date.getDate(sale[i].start_time))),
-            end: (date.getFullYear(sale[i].end_time) + '.' + (date.getMonth(sale[i].end_time) + 1) + '.' + (date.getDate(sale[i].end_time))),
+            start: start_date.getFullYear() + '.' + (start_date.getMonth() + 1) + '.' + start_date.getDate(),
+            end: end_date.getFullYear() + '.' + (end_date.getMonth() + 1) + '.' + end_date.getDate(),
+          })
+          that.setData({
             a1: that.data.start,
             b1: that.data.end,
+
+          })
+          that.setData({
             time: that.data.a1 + '-' + that.data.b1,
+          })
+          that.setData({
             times: that.data.times.concat({
               time: that.data.time
             })
           })
+          //赋值与输出先后问题
           console.log(i + ':' + that.data.a1)
           console.log(i + ':' + that.data.b1)
+          console.log(that.data.times)
         }
         console.log(that.data.times)
-        console.log(that.data.end) 
       },
       fail: function (e) {
         wx.showToast({

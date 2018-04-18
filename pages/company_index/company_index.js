@@ -139,15 +139,15 @@ Page({
       swiperCurrent: e.detail.current
     })
   },
-  tapBanner: function (e) {
-    if (e.currentTarget.dataset.id != 0) {
-      wx.navigateTo({
-        url: "../" + (e.currentTarget.dataset.id == 1001 ? '' : '')
-        // 预留商品详情
-        // url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id   
-      })
-    }
-  },
+  // tapBanner: function (e) {
+  //   if (e.currentTarget.dataset.id != 0) {
+  //     wx.navigateTo({
+  //       url: "../" + (e.currentTarget.dataset.id == 1001 ? '' : '')
+  //        预留商品详情
+  //        url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id   
+  //     })
+  //   }
+  // },
   fiveBlocks: function (e) {
     var type_id = e.target.id
     wx.navigateTo({

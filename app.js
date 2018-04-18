@@ -28,6 +28,8 @@ App({
         // that.d.longitude = longitude;
         // that.d.userId = userId;
         app.d.longitude = longitude;
+        that.d.latitude = latitude;
+        that.d.longitude = longitude;
       }
     })
   },

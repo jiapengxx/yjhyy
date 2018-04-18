@@ -12,6 +12,8 @@ var phoneNum = null, identifyCode = null, password = null, rePassword = null;
 
 Page({
   data: {
+    telphone:'',
+    check:'',
     time: currentTime,
     switch_one: false,
     switch_two: true,
@@ -30,6 +32,11 @@ Page({
   },
 
   tel: function (e) {
+    var telphone = e.detail.value
+    this.setData({
+      telphone: telphone
+    })
+    console.log(e.detail.value)
     if (e.detail.value.length === 0) {
       this.setData({
         tel: '',
@@ -56,12 +63,13 @@ Page({
   },
   getCode: function () {
     var that = this
+    console.log(that.data.telphone)
     wx.request({
       url: app.d.ceshiUrl + '/Api/User/register',
       method: 'post',
       data: {
-        uid:app.d.userId,
-        check:check
+        tel: that.data.telphone,
+        uid:app.d.userId
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -69,15 +77,10 @@ Page({
       success: function (res) {
         var check = res.data.check;
         var time = res.data.time;
-        //that.initProductData(data);
         that.setData({
           checks: check,
           times: time
         });
-        // console.log(that.data.banners);
-        //   console.log(ttype);
-        // console.log(that.data.sseller);
-        //endInitData
       },
       fail: function (e) {
         wx.showToast({
@@ -145,16 +148,23 @@ Page({
       })
     }
   },
-
+  checkInput:function(e){
+    var check = e.detail.value
+    this.setData({
+      check:check,
+    })
+    console.log(this.data.check)
+  },
 register:function(){
   var that = this
+  console.log('phone:' + that.data.telphone, 'check:' + that.data.check)
     wx.request({
       url: app.d.ceshiUrl + '/Api/User/check_do',
       method: 'post',
       data: {
-        check:check,
-        uid:uid,
-        tel:tel
+        uid:app.d.userId,
+        tel: that.data.telphone,
+        check:that.data.check
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -168,10 +178,6 @@ register:function(){
         //   checks: check,
         //   times:time
         // });
-        // console.log(that.data.banners);
-        //   console.log(ttype);
-        // console.log(that.data.sseller);
-        //endInitData
       },
       fail: function (e) {
         wx.showToast({
@@ -194,7 +200,6 @@ register:function(){
 
   }
 },
-
 
 
   nextStep: function () {

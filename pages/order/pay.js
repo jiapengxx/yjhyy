@@ -27,8 +27,6 @@ Page({
   },
   loadProductDetail:function(){
     var that = this;
-    console.log(that.data.cartId);
-    console.log(11111);
     wx.request({
       url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
       method:'post',

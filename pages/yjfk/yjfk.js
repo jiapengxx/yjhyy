@@ -4,6 +4,7 @@ var app=getApp();
 const ImageUploader = require('../common/image_uploader/image_uploader.js');
 Page({
   data: {
+    Content:'',
     img1: ImageUploader.mergeData({
       sourceType: ['camera', 'album'], //上传图片的来源，相机/相册
       sizeType: ['compressed'],//上传前是否压缩，默认压缩
@@ -19,22 +20,35 @@ Page({
       
   }),
   },
+  getContent:function(e){
+    var content=e.detail.value
+this.setData({
+  content:content
+})
+    console.log(this.data.content)
+  },
   onLoad: function () {
-    console.log("打开啦")
     new ImageUploader(this, 'img1');
   },
   upload: function () {
+    var that=this
     // console.log(this.data.img1.uploadedImagesPaths);
     var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
+    var Content=this.data.content
+    
+this.setData({
+  Content: Content
+})
     app.uploadimg({
-      url: app.d.hostUrl + '/Api/BIndex/upload_do',//这里是你图片上传的接口
-      path: uploadedImagesPaths,//这里是选取的图片的地址数组
+      url: app.d.hostUrl + '/Api/BIndex/upload_do',
+      //这里是你图片上传的接口
+      path: uploadedImagesPaths,
+      //这里是选取的图片的地址数组
       data:{
          code: Math.random(10000, 99999),
          uid:app.d.userId,
-         p_desc:"asdasdsad"
+         p_desc:that.data.Content
       },
-     
     });
   },
  

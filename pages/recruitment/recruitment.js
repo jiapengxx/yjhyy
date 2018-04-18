@@ -1,5 +1,5 @@
-var app=getApp();
-var count=0
+var app = getApp();
+var count = 0
 Page({
 
   /**
@@ -10,16 +10,16 @@ Page({
     switch1: false,
     switch2: true,
     imageList: '',
-    srcs: ['','','',''],
-    flag0:false,
-    flag1:false,
-    flag2:false,
-    flag3:false,
+    srcs: ['', '', '', ''],
+    flag0: false,
+    flag1: false,
+    flag2: false,
+    flag3: false,
     selectPerson: true,
     content: '',
     selectArea: false,
     types: [],
-  
+
   },
 
   /**
@@ -28,7 +28,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '/Api/BType/index',  
+      url: app.d.ceshiUrl + '/Api/BType/index',
       method: 'post',
       data: {
       },
@@ -38,7 +38,7 @@ Page({
       success: function (res) {
         var ad = res.data.ad;
         that.setData({
-          types:ad
+          types: ad
         });
 
       },
@@ -53,18 +53,18 @@ Page({
       url: app.d.ceshiUrl + '/Api/BIndex/recruitment_index',
       method: 'post',
       data: {
-        user_id:app.d.userId
+        user_id: app.d.userId
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         console.log(res.data.status);
-        if (res.data.status==2){
-        that.setData({
-          switch2:false,
-          switch1:true
-        })
+        if (res.data.status == 2) {
+          that.setData({
+            switch2: false,
+            switch1: true
+          })
         }
       },
       fail: function (e) {
@@ -73,14 +73,14 @@ Page({
           duration: 2000
         });
       },
-    });    
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-   
+
   },
 
   /**
@@ -134,7 +134,7 @@ Page({
       this.setData({
         count: ++count
       })
-      
+
     }
     console.log(count)
   },
@@ -217,10 +217,10 @@ Page({
         icon: 'loading'
       })
     } else if (!/^\d{17}(\d|X|x)$/.test(e.detail.value)) {
-        wx.showToast({
-          title: '身份证长度或格式错误！',
-          icon: 'loading'
-        })
+      wx.showToast({
+        title: '身份证长度或格式错误！',
+        icon: 'loading'
+      })
     }
     else {
       this.setData({
@@ -250,8 +250,8 @@ Page({
       selectPerson: true,
       selectArea: false,
     })
-    if (this.data.content.length!=0){
-      count:++count
+    if (this.data.content.length != 0) {
+      count: ++count
     }
     console.log(count)
   },
@@ -266,43 +266,47 @@ Page({
       success: function (res) {
         var imgeList = that.data.imageList.concat
           (res.tempFilePaths);
-        var src=that.data.srcs;
+        var src = that.data.srcs;
         src[id] = imgeList;
         // app.d.src=src;
         that.src = src;
-      if(id==0){
-        that.setData({
-          flag0:true,
-          srcs:src,
-        })
-        console.log('id=0:'+that.data.srcs)
-}else if(id==1){
-  that.setData({
-    flag1: true,
-    srcs: src,
-  })
-  console.log('id=1:' + that.data.srcs)
-} else if (id == 2) {
-  that.setData({
-    flag2: true,
-    srcs: src,
-  })
-  console.log('id=2:' + that.data.srcs)
-}else if(id==3){
-  that.setData({
-    flag3: true,
-    srcs: src,
-  })
-  console.log('id=3:' + that.data.srcs)
-} }
+        if (id == 0) {
+          that.setData({
+            flag0: true,
+            srcs: src,
+          })
+          console.log('id=0:' + that.data.srcs)
+          console.log('id=0:' + that.data.srcs.length)
+        } else if (id == 1) {
+          that.setData({
+            flag1: true,
+            srcs: src,
+          })
+          console.log('id=1:' + that.data.srcs)
+          console.log('id=1:' + that.data.srcs.length)
+        } else if (id == 2) {
+          that.setData({
+            flag2: true,
+            srcs: src,
+          })
+          console.log('id=2:' + that.data.srcs)
+          console.log('id=2:' + that.data.srcs.length)
+        } else if (id == 3) {
+          that.setData({
+            flag3: true,
+            srcs: src,
+          })
+          console.log('id=3:' + that.data.srcs)
+          console.log('id=3:' + that.data.srcs.length)
+        }
+        if (that.data.srcs.length == 4) {
+          that.setData({
+            count: ++count
+          })
+        }
+        console.log(count)
+      }
     })
-if(this.data.srcs.length==4){
-this.setData({
-  count:++count
-})
-}
-console.log(count)
-
   },
   previewImage: function (e) {
     var dataid = e.target.id;
@@ -310,7 +314,7 @@ console.log(count)
       urls: [this.data.srcs[dataid]]
     });
   },
-  introduce:function(e){
+  introduce: function (e) {
     if (e.detail.value.length === 0) {
       wx.showToast({
         title: '介绍不能为空！',
@@ -324,42 +328,42 @@ console.log(count)
     console.log(count)
   },
   formSubmit: function (e) {
-    if(count==14){
-    var that=this;
-    console.log('form发生了submit事件，携带数据为：', e.detail.value)
-  // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
+    if (count == 14) {
+      var that = this;
+      console.log('form发生了submit事件，携带数据为：', e.detail.value)
+      // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
 
-  app.uploadimg({
-    url: app.d.hostUrl + '/Api/BIndex/seller_add',//这里是你图片上传的接口
-    path: that.src,//这里是选取的图片的地址数组
-    data: {
-      code_one: Math.random(10000, 99999),
-      code: e.detail.value.code,
-      self_name: e.detail.value.self_name,
-      card_id: e.detail.value.card_id,
-      tel_id: e.detail.value.tel_id,
-      user: e.detail.value.user,
-      pwd: e.detail.value.pwd,
-      sheng: that.region[0],
-      city: that.region[1],
-      quyu: that.region[2],
-      code: e.detail.value.code,
-      code: e.detail.value.code,
-      place_desc: e.detail.value.place_desc,
-      introduce: e.detail.value.introduce,
-      type_id: e.detail.value.type_id,
-      uid: app.d.userId,
-    }
-  });
-    wx.showToast({
-      title: '提交成功',
-      success: function () {
-        wx.reLaunch({
-          url: '../company_index/company_index',
-        })
-      }
-    })
-    }else{
+      app.uploadimg({
+        url: app.d.hostUrl + '/Api/BIndex/seller_add',//这里是你图片上传的接口
+        path: that.data.srcs,//这里是选取的图片的地址数组
+        data: {
+          code_one: Math.random(10000, 99999),
+          code: e.detail.value.code,
+          self_name: e.detail.value.self_name,
+          card_id: e.detail.value.card_id,
+          tel_id: e.detail.value.tel_id,
+          user: e.detail.value.user,
+          pwd: e.detail.value.pwd,
+          sheng: that.data.region[0],
+          city: that.data.region[1],
+          quyu: that.data.region[2],
+          code: e.detail.value.code,
+          code: e.detail.value.code,
+          place_desc: e.detail.value.place_desc,
+          introduce: e.detail.value.introduce,
+          type_id: e.detail.value.type_id,
+          uid: app.d.userId,
+        }
+      });
+      wx.showToast({
+        title: '提交成功',
+        success: function () {
+          wx.reLaunch({
+            url: '../company_index/company_index',
+          })
+        }
+      })
+    } else {
       wx.showToast({
         title: '请将信息填充完整！',
         icon: 'loading'
@@ -380,9 +384,9 @@ console.log(count)
     this.setData({
       region: e.detail.value
     })
-    if (this.data.region.length!=0){
+    if (this.data.region.length != 0) {
       this.setData({
-        count:++count
+        count: ++count
       })
     }
     console.log(count)

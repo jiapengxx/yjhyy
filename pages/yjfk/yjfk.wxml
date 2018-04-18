@@ -5,7 +5,7 @@
 </view>
 
 <view style='height:200rpx;width:100%;'>
-<textarea style='position:relative;height:140rpx;font-size:26rpx;width:702rpx;left:24rpx;top:30rpx;' placeholder='请描述详细问题和意见'></textarea>
+<textarea bindblur='getContent' style='position:relative;height:140rpx;font-size:26rpx;width:702rpx;left:24rpx;top:30rpx;' placeholder='请描述详细问题和意见'></textarea>
 </view>
 
 

@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inform:[],
+    inform: [],
     time: [],
     flags: false
 
@@ -31,17 +31,14 @@ Page({
         var inform = res.data.inform
         var time = []
         that.setData({
-          inform:inform
+          inform: inform
         })
+        console.log(inform)
         for (var i = 0; i < inform.length; i++) {
           console.log(inform[i].addtime)
-          var now = new Date(inform[i].addtime);
-          var now2 = new Date(456464565);
-          //456464565是inform[i].addtime的值
-          console.log('i:' + i+';' + now.getFullYear())
-          console.log('i:' + i+';'+ now2.getFullYear())
+          var now = new Date(parseInt(inform[i].addtime));
           that.setData({
-            time: that.data.time.concat({ i: i, date: (now.getFullYear() + '.' + (now.getMonth() + 1) + '.' + now.getDate()), time: (now.getHours() + '.' + now.getMinutes()) })
+            time: that.data.time.concat({ i: i, date: (now.getFullYear() + '.' + (now.getMonth() + 1) + '.' + now.getDate()), time: (now.getHours() + ':' + now.getMinutes()) })
           })
         }
         console.log(inform.length)

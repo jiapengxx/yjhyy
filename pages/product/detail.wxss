@@ -101,6 +101,7 @@ text-align: center
 }
 .canshu span{
    color: #333;
+   text-indent: 1.5rem;
 }
 .swiper-tab{  
     width: 100%;  
@@ -113,7 +114,7 @@ text-align: center
 .swiper-tab-list{  
   font-size: 29rpx;  
     display: inline-block;  
-    width: 49.5%;  
+    width: 33%;  
     color: #333; 
     
 

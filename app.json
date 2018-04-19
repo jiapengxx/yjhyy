@@ -36,7 +36,8 @@
     "pages/wdtz/wdtz",
     "pages/wdyhq/wdyhq",
     "pages/company_category/company_category",
-    "pages/live/live_do"
+    "pages/live/live_do",
+    "pages/share/share"
   ],
   "window": {
     "backgroundTextStyle": "light",

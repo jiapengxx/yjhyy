@@ -5,7 +5,7 @@ App({
     // hostUrl: 'http://www.xshoph.com/index.php',
     hostImg: 'https://tanghuzhao.com.cn',
     hostVideo: 'http://zhubaotong-file.oss-cn-beijing.aliyuncs.com',
-    userId: 1,
+    userId: 0,
     appId: "",
     appKey: "",
     // ceshiUrl: 'http://www.xshoph.com/index.php',
@@ -24,10 +24,6 @@ App({
         //   address: '北京市朝阳区时代凌宇大厦容创路17号(容创路与创达二路交叉口)',
         // })
         // that.d.latitude = latitude;
-        app.d.latitude = latitude;
-        // that.d.longitude = longitude;
-        // that.d.userId = userId;
-        app.d.longitude = longitude;
         that.d.latitude = latitude;
         that.d.longitude = longitude;
       }

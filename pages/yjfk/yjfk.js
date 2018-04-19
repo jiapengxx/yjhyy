@@ -4,7 +4,6 @@ var app=getApp();
 const ImageUploader = require('../common/image_uploader/image_uploader.js');
 Page({
   data: {
-    content:'',
     Content:'',
     img1: ImageUploader.mergeData({
       sourceType: ['camera', 'album'], //上传图片的来源，相机/相册

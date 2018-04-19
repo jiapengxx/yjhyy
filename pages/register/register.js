@@ -62,11 +62,10 @@ Page({
 
   },
   getCode: function () {
-   
     var that = this
     console.log(that.data.telphone)
     wx.request({
-      url: app.d.ceshiUrl + '/Api/User/register',
+      url: app.d.ceshiUrl + '/Api/User/check_do',
       method: 'post',
       data: {
         tel: that.data.telphone,
@@ -82,6 +81,17 @@ Page({
           checks: check,
           times: time
         });
+        if (res.data.status == 0) {
+          wx.showToast({
+            title: res.data.err,
+            duration: 2000
+          });
+        }
+        if (res.data.status == 1) {
+          wx.showToast({
+            title: '验证码已发送',
+          })
+        }
       },
       fail: function (e) {
         wx.showToast({
@@ -141,25 +151,7 @@ Page({
           })
         }
       }, 1000)
-    } else {
-      wx.showToast({
-        title: '短信已发到您的手机，请稍后重试!',
-        icon: 'loading',
-        duration: 700
-      })
-    }
-  },
-  checkInput:function(e){
-    var check = e.detail.value
-    this.setData({
-      check:check,
-    })
-    console.log(this.data.check)
-  },
-register:function(){
-  var that = this
-  console.log('phone:' + that.data.telphone, 'check:' + that.data.check)
-    wx.request({
+      wx.request({
       url: app.d.ceshiUrl + '/Api/User/check_do',
       method: 'post',
       data: {
@@ -179,6 +171,22 @@ register:function(){
         //   checks: check,
         //   times:time
         // });
+        if(res.data.status==0){
+          wx.showToast({
+            title: res.data.err,
+            duration: 2000
+          });
+        }
+        if(res.data.status==1){
+          wx.showToast({
+          title: '注册成功',
+          })
+      setTimeout(function () {
+        wx.reLaunch({
+          url: '../company_index/company_index',
+        })
+        }, 3000)
+        }
       },
       fail: function (e) {
         wx.showToast({
@@ -187,20 +195,80 @@ register:function(){
         });
       },
     })
-  if(true){
-    wx.showToast({
-      title: '注册成功',
-    })
-    setTimeout(function () {
-      wx.reLaunch({
-        url: '../company_index/company_index',
+    } else {
+      wx.showToast({
+        title: '短信已发到您的手机，请稍后重试!',
+        icon: 'loading',
+        duration: 700
       })
-    }, 3000)
-    
-
-
-  }
+    }
+  },
+  checkInput:function(e){
+    var check = e.detail.value
+    this.setData({
+      check:check,
+    })
+    console.log(this.data.check)
+  },
+register:function(){
+  var that = this
+  console.log('phone:' + that.data.telphone, 'check:' + that.data.check)
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/User/register',
+      method: 'post',
+      data: {
+        uid:app.d.userId,
+        tel: that.data.telphone,
+        check:that.data.check
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var check = res.data.check;
+        var time =res.data.time;
+        console.log(that.check);
+        //that.initProductData(data);
+        // that.setData({
+        //   checks: check,
+        //   times:time
+        // });
+        if(res.data.status==0){
+          wx.showToast({
+            title: res.data.err,
+            duration: 2000
+          });
+        }
+        if(res.data.status==1){
+          wx.showToast({
+          title: '注册成功',
+          })
+      setTimeout(function () {
+        wx.reLaunch({
+          url: '../company_index/company_index',
+        })
+        }, 3000)
+        }
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
+//   if(true){
+//     wx.showToast({
+//       title: '注册成功',
+//     })
+//     setTimeout(function () {
+//       wx.reLaunch({
+//         url: '../company_index/company_index',
+//       })
+//     }, 3000)
+//  }
 },
+
 
   nextStep: function () {
     var that = this

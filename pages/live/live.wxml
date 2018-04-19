@@ -34,7 +34,7 @@
     <swiper-item>
       <block wx:for="{{switch2}}" wx:key="id" wx:for-item="item">
         <view style='height:280rpx;width:750rpx;'>
-          <image src='{{item.pic1}}' style='position:absolute;top:40rpx;left:24rpx;width:300rpx;height:200rpx;'></image>
+          <image src='{{item.pic1}}' bindtap='live_do' style='position:absolute;top:40rpx;left:24rpx;width:300rpx;height:200rpx;'></image>
           <view style='position:absolute;top:40rpx;right:24rpx;width:372rpx;height:200rpx;'>
           <text style='position:absolute;top:0rpx;left:0rpx;width:372rpx;font-size:26rpx;color:#333333;'>{{item.title}}</text>
           <text style='position:absolute;top:40rpx;left:0rpx;width:372rpx;font-size:24rpx;color:#999999; display: -webkit-box;word-break: break-all;-webkit-box-orient: vertical;-webkit-line-clamp:3;overflow:hidden;text-overflow:ellipsis;text-indent:2em;'>{{item.content}}</text>

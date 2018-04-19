@@ -87,12 +87,14 @@ Page({
    */
   onPullDownRefresh: function () {
 
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+
 
   },
 
@@ -106,6 +108,5 @@ Page({
     var item_id = e.target.id
     console.log(e.target.id)
     //对请求到的数组中flag值进行修改并提交数据
-
   }
 })

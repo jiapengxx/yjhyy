@@ -37,12 +37,15 @@
     "pages/wdyhq/wdyhq",
     "pages/company_category/company_category",
     "pages/jrkb/jrkb",
-    "pages/newsDetail/newsDetail"
+    "pages/newsDetail/newsDetail",
+    "pages/live/live_do",
+    "pages/share/share"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#4BA3FE",
-    "navigationBarTitleText": "北京医佳护健康医疗中心",
+    "navigationBarTitleText": "云康医护",
     "navigationBarTextStyle": "#ffffff"
   },
   "tabBar": {
@@ -57,7 +60,7 @@
         "pagePath": "pages/company_shop/company_shop",
         "iconPath": "images/shop-icon.png",
         "selectedIconPath": "images/shopSelected-icon.png",
-        "text": "商家"
+        "text": "药店"
       },
       {
         "pagePath": "pages/company_cart/company_cart",

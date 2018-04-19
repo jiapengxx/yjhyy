@@ -116,8 +116,6 @@ text-align: center
     display: inline-block;  
     width: 33%;  
     color: #333; 
-    
-
 } 
 .swiper-box{
   background: #fff;

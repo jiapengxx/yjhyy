@@ -69,5 +69,10 @@ Page({
       })
     }
   },
+  live_do: function () {
+    wx.navigateTo({
+      url: "/pages/live/live_do"
+    })
+  }
 
 })

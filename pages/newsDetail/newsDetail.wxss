@@ -1,0 +1,40 @@
+/* pages/newsDetail/newsDetail.wxss */
+
+.title {
+  margin-left: 70rpx;
+  margin-right: 70rpx;
+  height: 100rpx;
+  border: 0.1rpx solid purple;
+  font-size: 36rpx;
+  color: #333;
+  font-weight: 700;
+  text-align: center;
+}
+
+.date-time {
+  margin-left: 300rpx;
+  margin-right: 300rpx;
+  height: 30rpx;
+  border: 0.1rpx solid green;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.content {
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+  border: 0.1rpx solid red;
+  font-size: 26rpx;
+  color: #333;
+  text-indent: 1.5rem;
+}
+
+.pic {
+  position: relative;
+  margin-top: 25rpx;
+  margin-bottom: 25rpx;
+  left: 22rpx;
+  width: 650rpx;
+  height: 378rpx;
+  border: 0.1rpx solid pink;
+}

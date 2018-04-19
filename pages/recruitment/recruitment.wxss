@@ -1,9 +1,4 @@
 /* pages/recruitment/recruitment.wxss */
-
-
-
-
-
 .phone_personal{
     width: 100%;
     color:#333;
@@ -21,7 +16,7 @@
     justify-content: space-between;
     background-color:#fff;
     width:69%;
-    height:99rpx;
+    height:98rpx;
     margin:0 auto;
     border-radius: 10rpx;
     border-bottom:2rpx solid rgb(255, 255, 255);

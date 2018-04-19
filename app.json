@@ -35,7 +35,9 @@
     "pages/yjfk/yjfk",
     "pages/wdtz/wdtz",
     "pages/wdyhq/wdyhq",
-    "pages/company_category/company_category"
+    "pages/company_category/company_category",
+    "pages/jrkb/jrkb",
+    "pages/newsDetail/newsDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

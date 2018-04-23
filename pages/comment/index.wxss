@@ -1,1 +1,47 @@
-/* pages/comment/index.wxss */
+/* pages/pjsd/pjsd.wxss */
+@import '../common/image_uploader/image_uploader.wxss';
+.stars1 {
+  position: relative;
+  top: -30rpx;
+  left: 192rpx;
+  width: 320rpx;
+  height: 35rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.textarea {
+  position: relative;
+  top: 24rpx;
+  left: 24rpx;
+  width: 702rpx;
+  height: 160rpx;
+  font-size: 26rpx;
+  color: #999;
+}
+
+.stars2 {
+  position: relative;
+  top: -40rpx;
+  left: 356rpx;
+  width: 320rpx;
+  height: 35rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.star {
+  width: 32rpx;
+  height: 32rpx;
+}
+
+.button {
+  position: relative;
+  top: 50rpx;
+  width: 300rpx;
+  height: 64rpx;
+  background-color: #fd9e2e;
+  line-height: 64rpx;
+}

@@ -6,6 +6,12 @@ var WxParse = require('../../wxParse/wxParse.js');
 Page({
   firstIndex: -1,
   data:{
+    host: app.d.hostImg,
+    flag:1,
+    All:[],
+    Medium:[],
+    Good:[],
+    Bad:[],
     bannerApp:true,
     winWidth: 0,
     winHeight: 0,
@@ -26,7 +32,6 @@ Page({
      commodityAttr:[],
      attrValueList: []
   },
-
   // 弹窗
   setModalStatus: function (e) {
     var animation = wx.createAnimation({
@@ -34,16 +39,12 @@ Page({
       timingFunction: "linear",
       delay: 0
     })
-
     this.animation = animation
     animation.translateY(300).step();
-    
     this.setData({
       animationData: animation.export()
     })
-
     if (e.currentTarget.dataset.status == 1) {
-
       this.setData(
         {
           showModalStatus: true
@@ -83,7 +84,6 @@ Page({
   },
   // 传值
   onLoad: function (option) {  
- 
     //this.initNavHeight();
     var that = this;
     that.setData({
@@ -92,7 +92,8 @@ Page({
       u_id:option.u_id
     });
     that.loadProductDetail();
-console.log(that.data.pro_id)
+    that.loadProductEvaluate();
+console.log(that.data.pro_id)    
   },
 // 商品详情数据获取
   loadProductDetail:function(){
@@ -139,6 +140,74 @@ console.log(that.data.pro_id)
       },
     });
   },
+//商品评价数据获取
+  loadProductEvaluate: function () {
+    console.log("aaaaa")
+    var that = this;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Comment/comment_show',
+      method: 'post',
+      data: {
+        pid: that.data.pro_id,
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data)
+        //点击获取出各功能页中  各种参数
+        //点击判断 渲染的内容  wx：if
+        var all = res.data.product_dp
+.all
+        var good = res.data.product_dp
+.good
+        var bad = res.data.product_dp
+.bad
+        var medium = res.data.product_dp
+.medium
+        that.setData({
+          All:all,
+          Good:good,
+          Medium:medium,
+          Bad:bad
+        })
+        console.log(that.data.All)
+        console.log(that.data.Good)
+        console.log(that.data.Medium)
+        console.log(that.data.Bad)
+      },
+      error: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000,
+        });
+      },
+    });
+  },
+getFlag:function(e){
+  var ID=e.target.id
+  if(ID==1){
+  this.setData({
+    flag:1
+  })
+  }
+  if (ID == 2) {
+    this.setData({
+      flag: 2
+    })
+  }
+  if (ID == 3) {
+    this.setData({
+      flag: 3
+    })
+  }
+  if (ID == 4) {
+    this.setData({
+      flag: 4
+    })
+  }
+
+},
 // 属性选择
   onShow: function () {
     this.setData({

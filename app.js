@@ -62,9 +62,19 @@ App({
         success++;//图片上传成功，图片上传成功的变量+1
         console.log(resp)
         console.log(i);
-        wx.showToast({
+        // wx.showToast({
+        //   title: '提交成功',
+        //   icon: 'loading'
+        // })
+        wx.showModal({
           title: '提交成功',
-          icon: 'loading'
+          content: '即将跳转到用户中心',
+          showCancel:false,
+          success: function () {
+          wx.switchTab({
+            url: '../company_user/company_user',
+          })
+          }
         })
         //这里可能有BUG，失败也会执行这里,所以这里应该是后台返回过来的状态码为成功时，这里的success才+1
       },

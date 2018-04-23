@@ -42,7 +42,7 @@
             </view>
             <!--右侧详情-->
             <view style='position:relative;top:-180rpx;left:250rpx;font-size:25rpx;color:#666;'>{{item.title}}</view>
-            <view style='position:relative;top:-70rpx;left:250rpx;font-size:25rpx;color:#999;'>{{times[idx].time}}</view>
+            <view style='position:relative;top:-70rpx;left:250rpx;font-size:25rpx;color:#999;'>{{times1[idx].time1}}</view>
           </view>
         </block>
       </view>
@@ -61,7 +61,7 @@
             </view>
             <!--右侧详情-->
             <view style='position:relative;top:-180rpx;left:250rpx;font-size:25rpx;color:#666;'>{{item.title}}</view>
-            <view style='position:relative;top:-70rpx;left:250rpx;font-size:25rpx;color:#999;'>{{times[idx].time}}</view>
+            <view style='position:relative;top:-70rpx;left:250rpx;font-size:25rpx;color:#999;'>{{times2[idx].time2}}</view>
           </view>
         </block>
       </view>

@@ -17,14 +17,13 @@
     <view class="weui-cells searchbar-result" wx:if="{{inputVal.length>0}}">
     </view>
   </view>
-
   <!-- <image src='../../images/phone.jpg' style='position:absolute;top:20rpx;right:20rpx;height:46rpx;width:46rpx;'></image> -->
 </view>
 <view class="swiper-container">
   <swiper class="swiper_box" autoplay="true" interval="3000" duration="1000" bindchange="swiperchange">
-    <navigator url="../product/detail?pro_id={{item.p_id}}"  wx:for="{{banners}}">
+    <navigator url="../product/detail?pro_id={{item.p_id}}" wx:for="{{banners}}">
       <swiper-item>
-        <image  src="{{host}}/Data/{{item.src}}" class="slide-image" width="100%" height="300rpx" />
+        <image src="{{host}}/Data/{{item.src}}" class="slide-image" width="100%" height="300rpx" />
       </swiper-item>
     </navigator>
   </swiper>
@@ -35,55 +34,57 @@
   </view>
 </view>
 
-
-
 <view class='mContainer'>
   <block wx:for="{{tttype}}" wx:key="id">
-        <image id='{{item.t_id}}' bindtap='fiveBlocks' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src="{{item.src}}">{{item.type_name}}</image>
-    </block>
+    <image id='{{item.t_id}}' bindtap='fiveBlocks' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src="{{item.src}}">{{item.type_name}}</image>
+  </block>
 </view>
 
+<!-- <view style='position:relative;height:30rpx;width:100%;background-color:#EFEFF4;'>
+</view> -->
 
-<view style='position:relative;height:30rpx;width:100%;background-color:#EFEFF4;'>
-</view>
-
-<view style='position:relative;height:144rpx;width:100%;'>
+<!--今日快报-->
+<!-- <view style='position:relative;height:144rpx;width:100%;'>
   <image style='position:relative;top:35rpx;left:30rpx;height:74rpx;width:69rpx;' src='https://tanghuzhao.com.cn/Public/images/jrkb.png'></image>
-  <textarea style='position:relative;top:-75rpx;left:130rpx;height:120rpx;width:80%;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;'>李克强要求优先提速远程医疗:让优质医疗...-中华人民共和国人民政府</textarea>
-</view>
-<!-- 直播 -->
-<view bindtap='toLive' style='position:relative;height:258rpx;width:100%;'>
+  <text style='position:relative;top:-75rpx;left:130rpx;height:120rpx;width:80%;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;'>李克强要求优先提速远程医疗:让优质医疗...-中华人民共和国人民政府</text>
+</view> -->
+<!-- 直播 --><!-- 优惠卷 -->
+<!-- <view bindtap='toLive' style='position:relative;height:258rpx;width:100%;'>
   <image src='https://tanghuzhao.com.cn/Public/images/live.png' style='height:258rpx;width:100%;'></image>
 </view>
-
-<view style='position:relative;height:30rpx;width:100%;'>
-</view>
-
-<!-- <view style='position:relative;height:100rpx;width:100%;background-color:#4BA3FE;text-align:center;'>
-<text style='position:relative;top:20rpx;font-size:40rpx;color:#ffffff'>--优/惠/券--</text>
-</view> -->
-
-<view style='position:relative;height:10rpx;width:100%;'>
-</view>
-<!-- 优惠卷 -->
+<view style='position:relative;height:30rpx;width:100%;'></view>
 <view bindtap='toYhq' style='position:relative;height:172rpx;width:100%;'>
   <image src='https://tanghuzhao.com.cn/Public/images/card.png' style='height:172rpx;width:100%;'></image>
+</view> -->
+<view style='position:relative;width:750rpx;height:160rpx;'>
+<view style='position:relative;width:702rpx;top:14rpx;left:24rpx;height:60rpx;background-color:#fff;border-radius:30rpx;z-index:20;'>
+<text style='position:relative;left:20rpx;font-size:30rpx;color:#333;font-weight:900;'>今日快报</text>
+<text style='position:relative;left:44rpx;font-size:26rpx;color:#333;'>{{}}李克强要求优先提速远程医疗</text>
+
+<text bindtap='toJrkb' style='position:relative;left:160rpx;font-size:28rpx;color:#333;'>更多</text>
 </view>
+<image src='../../images/sp1.png' style='position:relative;top:-60rpx;width:750rpx;height:160rpx;z-index:10;'></image>
+</view>
+<image src='../../images/sp2.png'style='position:relative;top:-2rpx;width:750rpx;height:300rpx;'></image>
+
+<view style='width:750rpx;height:300rpx;'>
+<image src='../../images/sp3.png' style='position:relative;top:0rpx;width:750rpx;height:300rpx;z-index:10;'></image>
+<view style='position:relative;top:-280rpx;left:30rpx;width:400rpx;height:250rpx;border-radius:10rpx;background-color:whitesmoke;z-index:20;opacity: 0.7;'>
+<text style='position:relative;left:44rpx;font-size:33rpx;color:#683226;word-break:keep-all;'>老姜祛风湿泡脚丸\n</text>
+<text style='position:relative;left:44rpx;font-size:25rpx;color:#333;word-break:keep-all;'>老姜泡脚胜吃补药  30颗/盒\n</text>
+<text style='position:relative;left:120rpx;font-size:30rpx;color:red;'>￥198</text>
+<text style='position:relative;left:130rpx;text-decoration-line: line-through;font-size:25rpx;color:grey;'>￥210</text>
+<button style='width:200rpx;height:70rpx;background-color:red;color:white;line-height:70rpx;font-size:26rpx;'>立刻购买</button>
+</view>
+</view>
+
+
+
 
 
 <view style='position:relative;height:30rpx;width:100%;'>
 </view>
-
-<!-- <view style='position:relative;height:100rpx;width:100%;background-color:#4BA3FE;text-align:center;'>
-<text style='position:relative;top:20rpx;font-size:40rpx;color:#ffffff'>--附/近--</text>
-</view> -->
-
-<view style='position:relative;height:10rpx;width:100%;'>
-</view>
-
-
-
-<scroll-view scroll-y style='position:relative;width:100%;height:925rpx;'  >
+<scroll-view scroll-y style='position:relative;width:100%;height:925rpx;'>
   <view class="swiper-tab">
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">距离最近</view>
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">销量最高</view>
@@ -94,22 +95,24 @@
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{height}}rpx;' bindchange="bindChange">
     <swiper-item>
       <block wx:for="{{sseller}}" wx:key="id" wx:for-item="item">
-        <view id='{{item.store_id}}' bindtap='toBtoC'  style='height:174rpx;border-bottom:0.1rpx solid grey;'>
+        <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
-            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;' ></image>
+            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
             <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
             <!-- {{item.distance}} -->
+
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
-  评价:
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<1?2:3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<2?(item.grade<1.5?1:2):3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<3?(item.grade<2.5?1:2):3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
-</view>
+              评价:
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<1?2:3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<2?(item.grade<1.5?1:2):3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<3?(item.grade<2.5?1:2):3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
+            </view>
+
             <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
             <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>介绍:{{item.introduce}}</text>
           </view>
@@ -119,22 +122,22 @@
 
     <swiper-item>
       <block wx:for="{{store}}" wx:key="id" wx:for-item="item">
-        <view id='{{item.store_id}}' bindtap='toBtoC'  style='height:174rpx;border-bottom:0.1rpx solid grey;'>
+        <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
-            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;' ></image>
+            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
             <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
             <!-- {{item.distance}} -->
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
-  评价:
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<1?2:3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<2?(item.grade<1.5?1:2):3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<3?(item.grade<2.5?1:2):3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
-</view>
+              评价:
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<1?2:3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<2?(item.grade<1.5?1:2):3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<3?(item.grade<2.5?1:2):3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
+            </view>
             <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
             <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>介绍:{{item.introduce}}</text>
           </view>
@@ -146,9 +149,9 @@
     <swiper-item>
 
       <block wx:for="{{store2}}" wx:key="id" wx:for-item="item">
-        <view id='{{item.store_id}}' bindtap='toBtoC'  style='height:174rpx;border-bottom:0.1rpx solid grey;'>
+        <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
-            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;' ></image>
+            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
@@ -156,13 +159,13 @@
             <!-- {{item.distance}} -->
 
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
-  评价:
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<1?2:3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<2?(item.grade<1.5?1:2):3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<3?(item.grade<2.5?1:2):3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
-  <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
-</view>
+              评价:
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<1?2:3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<2?(item.grade<1.5?1:2):3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<3?(item.grade<2.5?1:2):3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
+              <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
+            </view>
 
             <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
             <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>介绍:{{item.introduce}}</text>

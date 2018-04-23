@@ -1,27 +1,20 @@
 <import src="../common/image_uploader/image_uploader.wxml" />
-
-
 <view style='height:41rpx;width:100%;background-color:#f5f5f5;'>
 </view>
-
 <view style='height:200rpx;width:100%;'>
 <textarea bindblur='getContent' style='position:relative;height:140rpx;font-size:26rpx;width:702rpx;left:24rpx;top:30rpx;' placeholder='请描述详细问题和意见'></textarea>
 </view>
-
-
 <view style='height:60rpx;width:100%;font-size:30rpx;color:#666666;background-color:#f5f5f5;text-align:center;'>
 图片（可选项，提供问题截图，最多四张）
 </view>
 <!--上传图片  -->
+
 <view style='height:164rpx;width:100%;' hidden='{{picSwitch}}'>
   <template is="image_uploader" data="{{...img1}}" />
 </view>
 
 <view style='height:40rpx;width:100%;background-color:#f5f5f5;'>
 </view>
-
 <view style='position:relative;top:40rpx;height:90rpx;width:100%;text-align:center;'>
-
 <button bindtap="upload" style='height:90rpx;width:650rpx;font-size:36rpx;color:#ffffff;background-color:#4BA3FE;'>提交</button>
-
 </view>

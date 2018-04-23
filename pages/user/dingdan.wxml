@@ -96,6 +96,7 @@
                 </navigator>
                 <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
                 <view class="sp_jg">¥：{{item.price}}</view>
+                <navigator url="../comment/index?orderId={{item.id}}&pid={{item.pid}}" class="font_12 red fl_r mr_5">评价</navigator>
                 <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
             </view>
         </view>

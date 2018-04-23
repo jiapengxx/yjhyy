@@ -14,9 +14,18 @@ Page({
     wsy: [],
     ysy: [],
     ysx: [],
+
     start: 0,
     end: 0,
     times: [],
+
+    start1: 0,
+    end1: 0,
+    times1: [],
+    
+    start2: 0,
+    end2: 0,
+    times2: [],
   },
 
   /**
@@ -42,26 +51,28 @@ Page({
         var now = Date.now();
         console.log(now)
         var sale = res.data.sale;
+        console.log(sale)
+        // types 1未使用 2已使用  time>now 未过期  time<now 已过期
         for (var i = 0; i < sale.length; i++) {
-          if (sale[i].status == 1) {
-            //未使用
-            that.setData({
-              wsy: that.data.wsy.concat(sale[i])
-            })
-          }
           if (sale[i].status == 2) {
-            //已使用
             that.setData({
               ysy: that.data.ysy.concat(sale[i])
             })
           }
-          if (sale[i].end_time > now) {
-            //获取当前时间戳
+          if (sale[i].status == 1 && sale[i].end_time < now) {
             that.setData({
               ysx: that.data.ysx.concat(sale[i])
             })
           }
+          if (sale[i].status == 1 && sale[i].end_time >=now) {
+            that.setData({
+              wsy: that.data.wsy.concat(sale[i])
+            })
+          }
         }
+        console.log(that.data.wsy)
+        console.log(that.data.ysy)
+        console.log(that.data.ysx)
         var count1 = that.data.wsy.length
         var count2 = that.data.ysy.length
         var count3 = that.data.ysx.length
@@ -77,10 +88,19 @@ Page({
         var time = ''
         var a1 = ''
         var b1 = ''
+
+        var time1 = ''
+        var a11 = ''
+        var b11 = ''
+
+        var time2 = ''
+        var a12 = ''
+        var b12 = ''
         console.log(that.data.times)
         for (var i = 0; i < count1; i++) {
-          var start_date = new Date(parseInt(that.data.wsy[i].start_time))
-          var end_date = new Date(parseInt(that.data.wsy[i].end_time))
+          //未使用时间处理
+          var start_date = new Date(parseInt(that.data.wsy[i].start_time)*1000)
+          var end_date = new Date(parseInt(that.data.wsy[i].end_time)*1000)
           that.setData({
             start: start_date.getFullYear() + '.' + (start_date.getMonth() + 1) + '.' + start_date.getDate(),
             end: end_date.getFullYear() + '.' + (end_date.getMonth() + 1) + '.' + end_date.getDate(),
@@ -88,7 +108,6 @@ Page({
           that.setData({
             a1: that.data.start,
             b1: that.data.end,
-
           })
           that.setData({
             time: that.data.a1 + '-' + that.data.b1,
@@ -98,12 +117,49 @@ Page({
               time: that.data.time
             })
           })
-          //赋值与输出先后问题
-          console.log(i + ':' + that.data.a1)
-          console.log(i + ':' + that.data.b1)
-          console.log(that.data.times)
         }
-        console.log(that.data.times)
+        for (var i = 0; i < count2; i++) {
+          //已使用时间处理
+          var start_date1 = new Date(parseInt(that.data.ysy[i].start_time) * 1000)
+          var end_date1 = new Date(parseInt(that.data.ysy[i].end_time) * 1000)
+          that.setData({
+            start1: start_date1.getFullYear() + '.' + (start_date1.getMonth() + 1) + '.' + start_date1.getDate(),
+            end1: end_date1.getFullYear() + '.' + (end_date1.getMonth() + 1) + '.' + end_date1.getDate(),
+          })
+          that.setData({
+            a11: that.data.start1,
+            b11: that.data.end1,
+          })
+          that.setData({
+            time1: that.data.a11 + '-' + that.data.b11,
+          })
+          that.setData({
+            times1: that.data.times1.concat({
+              time1: that.data.time1
+            }),
+          })
+        }
+        for (var i = 0; i < count3; i++) {
+          //已失效时间处理
+          var start_date2 = new Date(parseInt(that.data.ysx[i].start_time) * 1000)
+          var end_date2 = new Date(parseInt(that.data.ysx[i].end_time) * 1000)
+          that.setData({
+            start2: start_date2.getFullYear() + '.' + (start_date2.getMonth() + 1) + '.' + start_date2.getDate(),
+            end2: end_date2.getFullYear() + '.' + (end_date2.getMonth() + 1) + '.' + end_date2.getDate(),
+          })
+          that.setData({
+            a12: that.data.start2,
+            b12: that.data.end2,
+          })
+          that.setData({
+            time2: that.data.a12 + '-' + that.data.b12,
+          })
+          that.setData({
+            times2: that.data.times2.concat({
+              time2: that.data.time2
+            })
+          })
+        }
       },
       fail: function (e) {
         wx.showToast({

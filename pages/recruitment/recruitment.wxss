@@ -1,14 +1,9 @@
 /* pages/recruitment/recruitment.wxss */
-
-
-
-
-
 .phone_personal{
     width: 100%;
     color:#333;
-    height:99rpx;
-    line-height:99rpx;
+    height:80rpx;
+    line-height:80rpx;
     text-indent: 2rem;
 
 }
@@ -16,15 +11,15 @@
     display: flex; 
     /* 用flex布局更方便。 */
     position: relative;
-    top: -56rpx;
+    top: -45rpx;
     left: 118rpx;
     justify-content: space-between;
     background-color:#fff;
     width:69%;
-    height:99rpx;
+    height:80rpx;
     margin:0 auto;
     border-radius: 10rpx;
-    border-bottom:2rpx solid rgb(255, 255, 255);
+    border-bottom:1rpx solid rgb(255, 255, 255);
 }
 .person_box{
     position: relative;

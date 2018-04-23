@@ -36,8 +36,11 @@
     "pages/wdtz/wdtz",
     "pages/wdyhq/wdyhq",
     "pages/company_category/company_category",
+    "pages/jrkb/jrkb",
+    "pages/newsDetail/newsDetail",
     "pages/live/live_do",
     "pages/share/share"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

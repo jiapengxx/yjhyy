@@ -1,0 +1,34 @@
+/* pages/jrkb/jrkb.wxss */
+
+.container1 {
+  height: 186rpx;
+  margin-left: 24rpx;
+  margin-right: 24rpx;
+}
+.title {
+  position: relative;
+  top: 30rpx;
+  height: 84rpx;
+  width: 450rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #333;
+}
+.container2 {
+  position: relative;
+  top: 50rpx;
+  height: 48rpx;
+  width: 300rpx;
+  font-size: 28rpx;
+}
+.big_pic {
+  position: relative;
+  top: -111rpx;
+  left: 480rpx;
+  height: 124rpx;
+  width: 200rpx;
+}
+.eye_icon {
+  height: 24rpx;
+  width: 33rpx;
+}

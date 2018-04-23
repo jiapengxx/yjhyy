@@ -1,7 +1,3 @@
-
-<!--pages/index/detail.wxml-->
-
-
 <!--内容开始-->
 <view class="cont">
   <!--<image class="tp_image" src="{{itemData.photo_d}}"></image>-->
@@ -16,9 +12,7 @@
   <view class="gmxx">
     <view><span class="jiage">¥：{{itemData.price_yh}}</span> <span class="c6 fl_r font_14" style='color:#ccc'>库存：{{itemData.num}}</span> </view>
     <view class="font_14 c6">品牌：{{itemData.brand}}</view>
-    
     <view class="font_14 c6">支付：微信支付</view>
-
   </view>
 </view>
 
@@ -71,19 +65,14 @@
   </view>
 </view>
 
-
-
-
 <!--图文详情头部-->
 <view>
 <view class="swiper-tab">
   <view class="bre swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">图文详情</view>
   <view class="bre swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">产品参数</view>
     <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">评价</view>
-
 </view>
-<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
-
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==2?(All.length*440+238):(winHeight-31)}}rpx" bindchange="bindChange">
   <!-- 图文详情 -->
   <swiper-item>
     <import src="../../wxParse/wxParse.wxml"/> 
@@ -93,9 +82,6 @@
         </scroll-view>
     </view>
   </swiper-item>
-  
-
-
   <!-- 产品参数 -->
   <swiper-item>
         <view class="p_all">
@@ -118,9 +104,82 @@
     </view>
   </swiper-item>
 <!--评价  -->
+<swiper-item>
+<view style='height:100rpx;border-top:4rpx solid whitesmoke;'>
+<view style='margin-left:24rpx;margin-right:24rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+
+<view id='1' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;border-radius:10rpx;border:0.1rpx solid #ff9090;background-color:#fff;font-size:24rpx;color:red;'>
+<text style='position:relative;top:4rpx;left:40rpx;'>全部</text>
+<text style='position:relative;top:4rpx;left:50rpx;'>{{All.length}}</text>
+</view>
+
+<view id='2' bindtap='getFlag'  style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
+<text style='position:relative;top:4rpx;left:40rpx;'>好评</text>
+<text style='position:relative;top:4rpx;left:50rpx;'>{{Good.length}}</text>
+</view>
+
+<view id='3' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
+<text style='position:relative;top:4rpx;left:40rpx;'>中评</text>
+<text style='position:relative;top:4rpx;left:50rpx;'>{{Medium.length}}</text>
+</view>
+
+<view id='4' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
+<text style='position:relative;top:4rpx;left:40rpx;'>差评</text>
+<text style='position:relative;top:4rpx;left:50rpx;'>{{Bad.length}}</text>
+</view>
+</view>
+</view>
 
 
+<view style='width:100%;height:20rpx;background-color:whitesmoke;'></view>
 
+ <block wx:for="{{flag==1?All:(flag==2?Good:(flag==3?Medium:Bad))}}" wx:for-index="idx" wx:for-item="item"> 
+   
+<view wx:if="{{typeof(flag==1?All:(flag==2?Good:(flag==3?Medium:Bad)))==undefined}}" style='border-bottom:0.1rpx solid whitesmoke;'>
+<!--提交评论时携带 标志 是否有图片  -->
+<view style='height:440rpx;margin-left:24rpx;margin-right:24rpx;'>
+<image src='{{item.photo}}' style='position:relative;top:30rpx;width:58rpx;height:58rpx;border-radius:50%;'></image>
+<text style='position:relative;top:-15rpx;left:20rpx;font-size:24rpx;color:#333;'>{{item.uname}}</text>
+<view style='position:relative;left:80rpx;width:126rpx;height:14rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+<!--星星  -->
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<1?2:3}}.png'></image>
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<2?(item.num<1.5?1:2):3}}.png'></image>
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<3?(item.num<2.5?1:2):3}}.png'></image>
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<4?(item.num<3.5?1:2):3}}.png'></image>
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<5?(item.num<4.5?1:2):3}}.png'></image>
+</view>
+<!--日期  -->
+<text style='position:relative;top:-60rpx;left:560rpx;font-size:24rpx;color:#999;'>{{}}2018-03-07</text>
+<!--评论文字  -->
+<textarea style='position:relative;top:-30rpx;left:80rpx;width:600rpx;height:40rpx;font-size:30rpx;color:#333;'>{{item.concent}}</textarea>
+<!--图集  -->
+<view style='position:relative;width:510rpx;height:244rpx;top:-10rpx;left:80rpx;font-size:24rpx;color:#333;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+<image src='{{host}}/Data/{{item.img[0]}}' style='width:230rpx;height:244rpx;'></image>
+<image src='{{host}}/Data/{{item.img[1]}}' style='width:230rpx;height:244rpx;'></image>
+</view>
+</view>
+</view>
+
+<view wx:else style='border-bottom:0.1rpx solid whitesmoke;'>   
+<view style='height:168rpx;margin-left:24rpx;margin-right:24rpx;'>
+<image src='{{item.photo}}' style='position:relative;top:30rpx;width:58rpx;height:58rpx;border-radius:50%;'></image>
+<text style='position:relative;top:-15rpx;left:20rpx;font-size:24rpx;color:#333;'>{{item.uname}}</text>
+<view style='position:relative;left:80rpx;width:126rpx;height:14rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+<!--星星  -->
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<1?2:3}}.png'></image>
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<2?(item.num<1.5?1:2):3}}.png'></image>
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<3?(item.num<2.5?1:2):3}}.png'></image>
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<4?(item.num<3.5?1:2):3}}.png'></image>
+  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<5?(item.num<4.5?1:2):3}}.png'></image>
+</view>
+<!--日期  -->
+<text style='position:relative;top:-60rpx;left:560rpx;font-size:24rpx;color:#999;'>{{}}2018-03-07</text>
+<!--评论文字  -->
+<textarea style='position:relative;top:-30rpx;left:80rpx;width:600rpx;height:40rpx;font-size:30rpx;color:#333;'>{{item.concent}}</textarea>
+</view>
+</view> 
+ </block>   
+</swiper-item>
 </swiper>
 </view>
 <!---底部开始-->

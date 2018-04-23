@@ -1,2 +1,70 @@
-<!--pages/comment/index.wxml-->
-<text>pages/comment/index.wxml</text>
+<import src="../common/image_uploader/image_uploader.wxml" />
+<view style='border-top:0.1rpx solid whitesmoke;'>
+<view style='width:100%;height:186rpx;'>
+<image src='{{photo_x}}' style='position:relative;top:30rpx;left:24rpx;width:148rpx;height:126rpx;'></image>
+<text style='position:relative;top:-40rpx;left:40rpx;font-size:28rpx;font-weight:700;color:#333333;'>商品评分</text>
+<!--点击评价按钮传入当前产品的参数,渲染内容-->
+<view class='stars1'>
+<image class='star' src='../../images/{{item.grade<1?2:3}}.png'></image>
+<image class='star' src='../../images/{{item.grade<2?(item.grade<1.5?1:2):3}}.png'></image>
+<image class='star' src='../../images/{{item.grade<3?(item.grade<2.5?1:2):3}}.png'></image>
+<image class='star' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
+<image class='star' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
+</view>
+</view>
+<view style='width:100%;height:200rpx;background-color:whitesmoke;'>
+<textarea bindblur='getContent' class='textarea' placeholder='宝贝满足你的期待？说说它的优点和美中不足的地方' placeholder-style='font-size:26rpx;'></textarea>
+</view>
+<view style='width:100%;height:222rpx;'>
+<!-- <image src='../../images/camera.png' style='position:relative;top:20rpx;left:24rpx;width:140rpx;height:140rpx;'></image> -->
+
+<view style='height:140rpx;width:100%;' hidden='{{picSwitch}}'>
+  <template is="image_uploader" data="{{...img1}}" />
+</view>
+
+<view bindtap='radioChange' style='position:relative;top:20rpx;left:20rpx;width:170rpx;'>
+<!-- <image src='../../images/circle.png' style='position:relative;top:20rpx;left:20rpx;width:22rpx;height:22rpx;'></image> -->
+<radio checked="{{flag}}"/>
+ <text style='font-size:26rpx;color:#333333;'>匿名评价</text> 
+</view>
+
+</view>
+<view style='width:100%;height:20rpx;background-color:whitesmoke;'></view>
+<view>
+<view style='position:relative;top:30rpx;left:24rpx;width:702rpx;height:64rpx;border-bottom:0.1rpx solid whitesmoke;'>
+<image src='../../images/car.png' style='width:44rpx;height:34rpx;'></image>
+<text style='position:relative;left:20rpx;font-size:30rpx;color:#333333;'>物流服务评价</text>
+</view>
+<view style='position:relative;top:50rpx;left:50rpx'>
+<text style='font-size:28rpx;color:#333333;'>商品符合度</text>
+<view class='stars2'>
+<image id='1' bindtap='stars1' class='star' src='../../images/{{stars1[0]}}.png' ></image>
+<image id='2' bindtap='stars1' class='star' src='../../images/{{stars1[1]}}.png' ></image>
+<image id='3' bindtap='stars1' class='star' src='../../images/{{stars1[2]}}.png' ></image>
+<image id='4' bindtap='stars1' class='star' src='../../images/{{stars1[3]}}.png' ></image>
+<image id='5' bindtap='stars1' class='star' src='../../images/{{stars1[4]}}.png' ></image>
+</view>
+</view>
+<view style='position:relative;top:50rpx;left:50rpx'>
+<text style='font-size:28rpx;color:#333333;'>店家服务态度</text>
+<view class='stars2'>
+<image id='1' bindtap='stars2' class='star' src='../../images/{{stars2[0]}}.png' ></image>
+<image id='2' bindtap='stars2' class='star' src='../../images/{{stars2[1]}}.png' ></image>
+<image id='3' bindtap='stars2' class='star' src='../../images/{{stars2[2]}}.png' ></image>
+<image id='4' bindtap='stars2' class='star' src='../../images/{{stars2[3]}}.png' ></image>
+<image id='5' bindtap='stars2' class='star' src='../../images/{{stars2[4]}}.png' ></image>
+</view>
+</view>
+<view style='position:relative;top:50rpx;left:50rpx'>
+<text style='font-size:28rpx;color:#333333;'>物流发货速度</text>
+<view class='stars2'>
+<image id='1' bindtap='stars3' class='star' src='../../images/{{stars3[0]}}.png' ></image>
+<image id='2' bindtap='stars3' class='star' src='../../images/{{stars3[1]}}.png' ></image>
+<image id='3' bindtap='stars3' class='star' src='../../images/{{stars3[2]}}.png' ></image>
+<image id='4' bindtap='stars3' class='star' src='../../images/{{stars3[3]}}.png' ></image>
+<image id='5' bindtap='stars3' class='star' src='../../images/{{stars3[4]}}.png' ></image>
+</view>
+</view>
+</view>
+<button bindtap='upload' class='button'>提交</button>
+</view>

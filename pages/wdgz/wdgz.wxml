@@ -9,18 +9,21 @@
 
       <view style='margin-left:33rpx;margin-right:33rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
         <block wx:for="{{shoucang_good}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
-          <view style='position:relative;top:{{40+(idx/2|Int)*40}}rpx;height:390rpx;width:320rpx;border:0.1rpx solid #eee;'>
+
+          <navigator url="../product/detail?pro_id={{item.pro_id}}">
+           <view style='position:relative;top:{{40+(idx/2|Int)*40}}rpx;height:390rpx;width:320rpx;border:0.1rpx solid #eee;'>
+          <!--头像未添加  -->
             <image src='{{item.logo_good}}' style='position:relative;top:0rpx;left:0rpx;height:66rpx;width:66rpx;z-index:5;'></image>
             <image src="{{host}}/Data/{{item.photo_x}}"style='position:relative;top:-66rpx;left:26rpx;height:230rpx;width:270rpx;'></image>
              <view style='position:relative;top:-65rpx;left:26rpx;height:84rpx;width:270rpx;font-size:28rpx;color:#333333'>{{item.name}}</view>
             <view style='position:relative;top:-70rpx;text-align:center;font-size:26rpx;color:#dd3434'>{{item.price_yh}}
             </view>
-
           </view>
+          </navigator>
+         
         </block>
       </view>
     </swiper-item>
-
     <swiper-item>
       <block wx:for="{{gz_store}}" wx:for-index="idx" wx:for-item="item">
 

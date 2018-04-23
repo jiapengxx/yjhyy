@@ -75,3 +75,9 @@ page {
   font-size: 20rpx;
   color: #e91d1d;
 }
+.t5 {
+  background-color: pink;
+  font-size: 30rpx;
+  color: #e91d1d;
+  word-break:keep-all;  
+}

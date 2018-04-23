@@ -7,7 +7,13 @@ Page({
     total: 0,
     carts: []
   },
-
+  toDetail:function(e){
+    var pro_id = e.currentTarget.id
+    //去商品详情页,传入
+  wx.navigateTo({
+    url: '../product/detail?pro_id=' + pro_id,
+  })
+  },
   bindMinus: function (e) {
     var that = this;
     var index = parseInt(e.currentTarget.dataset.index);

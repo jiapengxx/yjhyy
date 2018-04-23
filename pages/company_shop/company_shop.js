@@ -13,6 +13,7 @@ Page({
    hot_good: [],
    place_store1:[], 
    num_store1:[],
+   comment_store1:[],
    host:app.d.hostImg
   },
 
@@ -34,12 +35,14 @@ Page({
         var seller = res.data.seller;
         var place_store = res.data.place_store;
         var num_store = res.data.num_store;
+        var comment_store=res.data.comment_store
         // console.log(seller);
         //that.initProductData(data);
         that.setData({
           hot_good: seller,
           place_store1: place_store,
           num_store1: num_store,
+          comment_store1: comment_store
           
         });
         that.setData({
@@ -49,6 +52,7 @@ Page({
         console.log(that.data.hot_good)
         console.log(that.data.place_store1)
         console.log(that.data.num_store1)
+        console.log(that.data.comment_store1)
       },
       fail: function (e) {
         wx.showToast({
@@ -60,6 +64,36 @@ Page({
     // this.setData({
     //   height: 582 * this.data.hot_good.length
     // })
+
+    //long1为商家经度 la1为商家纬度
+    var long1 = 116.44354;
+    var la1 = 39.9218;
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        var long2 = res.longitude;
+        var la2 = res.latitude;
+        console.log(long1, la1)
+        console.log(long2, la2)
+        that.setData({
+          long1: long1,
+          long2: long2,
+          la1: la1,
+          la2: la2
+        })
+        var rad1 = la1 * Math.PI / 180.0;
+        var rad2 = la2 * Math.PI / 180.0;
+        var a = la1 * Math.PI / 180.0 - la2 * Math.PI / 180.0;
+        var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
+        var r = 6378137;
+        var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+        that.setData({
+          distance: distance
+        })
+      },
+    })
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

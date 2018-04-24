@@ -8,7 +8,8 @@ Page({
   data: {
     inform: [],
     time: [],
-    flags: false
+    flags: false,
+    a:[]
 
   },
 

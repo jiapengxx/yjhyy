@@ -170,6 +170,7 @@ Page({
     app.editTabBar2();
     var that = this;
     console.log(that.data.tabBar.list)
+    console.log("1");
     wx.request({
       url: app.d.ceshiUrl + '/Api/Index/index',
       method: 'post',
@@ -186,6 +187,7 @@ Page({
         var brand = res.data.brand;
         var course = res.data.course;
         var store = res.data.store;
+        console.log("2");
         console.log(store);
         //that.initProductData(data);
         that.setData({
@@ -195,6 +197,7 @@ Page({
           brand: brand,
           course: course,
         });
+        console.log("3");
         wx.setNavigationBarTitle({ title:store.name,})
         console.log(store);
         console.log(that.data.productData);
@@ -209,7 +212,6 @@ Page({
         });
       },
     })
-   
   },
   fiveBlocks:function(e){
     var Id=e.target.id

@@ -184,8 +184,8 @@
 </view> -->
 
 <view style='position:relative;top:30rpx;width:100%;text-align:center;background-color:whitesmoke;'>
-  <text bindtap='position' style='position:relative;left:30rpx;font-size:35rpx;color:#333333'>北京医佳护健康医疗科技有限公司</text>
+  <text bindtap='position' style='font-size:35rpx;color:#333333'>北京医佳护健康医疗科技有限公司</text>
   <!-- <image src='../../images/position.jpg' style='position:relative;top:10rpx;left:30rpx;height:46rpx;width:46rpx;'></image> -->
   <text>\n</text>
-  <text bindtap='call' style='position:relative;left:30rpx;font-size:35rpx;color:#333333'>咨询电话:010-123456</text>
+  <text bindtap='call' style='font-size:35rpx;color:#333333'>咨询电话:010-123456</text>
 </view>

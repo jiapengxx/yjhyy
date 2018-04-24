@@ -63,26 +63,17 @@ Page({
         var seller = res.data.store;
         var store1 = res.data.store1;
         var store2 =  res.data.store2
-        
-        //that.initProductData(data);
         that.setData({  
           banners: ad,
           tttype: ttype,
           sseller: seller,
           store:store1,
-          store2:store2,
-          
+          store2:store2,        
         });
       console.log(app.d.latitude);
         that.setData({
           height: 176 * that.data.sseller.length,
         })
-        
-        // console.log(that.data.sseller);
-        // console.log(that.data.store);
-      //   console.log(ttype);
-       // console.log(that.data.sseller);
-        //endInitData
       },
       fail: function (e) {
         wx.showToast({

@@ -63,27 +63,32 @@
 
 <text bindtap='toJrkb' style='position:relative;left:160rpx;font-size:28rpx;color:#333;'>更多</text>
 </view>
-<image src='../../images/sp1.png' style='position:relative;top:-60rpx;width:750rpx;height:160rpx;z-index:10;'></image>
+<image src='{{hotGoods[3].img}}' style='position:relative;top:-60rpx;width:750rpx;height:160rpx;z-index:10;'></image>
 </view>
-<image src='../../images/sp2.png'style='position:relative;top:-2rpx;width:750rpx;height:300rpx;'></image>
+<view style='position:relative;height:15rpx;width:100%;'>
+</view>
+<!--引入三张产品图-->
 
 <view style='width:750rpx;height:300rpx;'>
-<image src='../../images/sp3.png' style='position:relative;top:0rpx;width:750rpx;height:300rpx;z-index:10;'></image>
-<view style='position:relative;top:-280rpx;left:30rpx;width:400rpx;height:250rpx;border-radius:10rpx;background-color:whitesmoke;z-index:20;opacity: 0.7;'>
-<text style='position:relative;left:44rpx;font-size:33rpx;color:#683226;word-break:keep-all;'>老姜祛风湿泡脚丸\n</text>
-<text style='position:relative;left:44rpx;font-size:25rpx;color:#333;word-break:keep-all;'>老姜泡脚胜吃补药  30颗/盒\n</text>
-<text style='position:relative;left:120rpx;font-size:30rpx;color:red;'>￥198</text>
-<text style='position:relative;left:130rpx;text-decoration-line: line-through;font-size:25rpx;color:grey;'>￥210</text>
-<button style='width:200rpx;height:70rpx;background-color:red;color:white;line-height:70rpx;font-size:26rpx;'>立刻购买</button>
-</view>
+<image bindtap='toGoodsDetail' id='{{hotGoods[0].pro_id}}' src='{{hotGoods[0].img}}' style='width:750rpx;height:300rpx;'></image>
 </view>
 
-
-
-
-
-<view style='position:relative;height:30rpx;width:100%;'>
+ <view style='position:relative;height:15rpx;width:100%'>
+</view> 
+<view style='width:750rpx;height:300rpx;'>
+<image bindtap='toGoodsDetail' id='{{hotGoods[1].pro_id}}' src='{{hotGoods[1].img}}' style='width:750rpx;height:300rpx;'></image>
 </view>
+
+<view style='position:relative;height:15rpx;width:100%;'>
+</view>
+
+<view style='width:750rpx;height:300rpx;'>
+<image bindtap='toGoodsDetail' id='{{hotGoods[2].pro_id}}' src='{{hotGoods[2].img}}' style='width:750rpx;height:300rpx;'></image>
+</view>
+
+<view style='position:relative;height:15rpx;width:100%;'>
+</view>
+
 <scroll-view scroll-y style='position:relative;width:100%;height:925rpx;'>
   <view class="swiper-tab">
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">距离最近</view>

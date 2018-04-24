@@ -16,7 +16,8 @@ Page({
     sseller: [],
     store:[],
     store2:[],
-    host:app.d.hostImg
+    host:app.d.hostImg,
+    hotGoods:[]
     
   },
   showInput: function () {
@@ -62,13 +63,15 @@ Page({
         var ttype  = res.data.type;
         var seller = res.data.store;
         var store1 = res.data.store1;
-        var store2 =  res.data.store2
+        var store2 =  res.data.store2;
+        var hotgood=  res.data.bpro
         that.setData({  
           banners: ad,
           tttype: ttype,
           sseller: seller,
           store:store1,
-          store2:store2,        
+          store2:store2, 
+          hotGoods:hotgood       
         });
       console.log(app.d.latitude);
         that.setData({
@@ -159,6 +162,12 @@ Page({
     })
     app.d.store_Id = store_Id;
     // console.log(store_Id)
+  },
+  toGoodsDetail:function(e){
+    var pro_id=e.target.id
+wx.navigateTo({
+  url: '../product/detail?pro_id=' + pro_id,
+})
   },
   call: function () {
     wx.makePhoneCall({

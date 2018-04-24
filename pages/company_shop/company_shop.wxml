@@ -10,10 +10,10 @@
       <block wx:for="{{hot_good}}" wx:key="id" wx:for-item="item">
         <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
           <view id='{{item.store_id}}' style='position:relative;top:40rpx;height:150rpx;width:500rpx;display:flex;flex-direction:row;' >
-          <view bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
+          <view id='{{item.store_id}}'  bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
           <image  src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
           </view>
-            <view bindtap='toBtoC' style='position:relative;left:30rpx;width:320rpx;height:150rpx;'>
+            <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;left:30rpx;width:320rpx;height:150rpx;'>
               <text class='t1'>{{item.name}}\n</text>
               <text class='t2'>{{item.introduce}}\n</text>
               <text class='t4'>{{item.type_name}}</text>

@@ -84,6 +84,7 @@ Page({
   },
   // 传值
   onLoad: function (option) {  
+console.log(option)
     //this.initNavHeight();
     var that = this;
     that.setData({
@@ -142,7 +143,6 @@ console.log(that.data.pro_id)
   },
 //商品评价数据获取
   loadProductEvaluate: function () {
-    console.log("aaaaa")
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Comment/comment_show',
@@ -546,7 +546,7 @@ getFlag:function(e){
     if (res.from === 'button') {
       return {
         title: '' +this.data.itemData.name,
-        path: '',
+        path: '/product/detail?uid=' + app.d.userId,
         imageUrl: '' + this.data.itemData.photo_x,
         success: function (res) {
           // 转发成功

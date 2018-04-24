@@ -9,11 +9,11 @@
     <swiper-item>
       <block wx:for="{{hot_good}}" wx:key="id" wx:for-item="item">
         <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
-          <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
-          <view style='height:150rpx;width:150rpx;'>
+          <view id='{{item.store_id}}' style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
+          <view bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
           <image  src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
           </view>
-            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+            <view bindtap='toBtoC' style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
               <text class='t1'>{{item.name}}\n</text>
               <text class='t2'>{{item.introduce}}\n</text>
               <text class='t4'>{{item.type_name}}</text>
@@ -24,12 +24,11 @@
          
             
             <view style='position:relative;top:-10rpx;left:-60rpx;width:200rpx;'>
-              <image bindtap='callPhone'  src='../../images/callPhone.png'  style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
-              <image bindtap='position'src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+              <image bindtap='callPhone'  src='../../images/callPhone.png'  style='position:relative;top:-28rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
+              <image bindtap='getPosition'src='../../images/position.png' style='position:relative;top:-28rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{item.distance}}km</view>
             </view>
           </view>
-
           <view>
           <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
             <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>

@@ -95,7 +95,19 @@ Page({
       title: "线下支付开通中，敬请期待!",
       duration: 3000
     });
-    return false;
+    // return false;
+    this.createProductOrder();
+  },
+  //金币支付
+  createProductOrderByJJ: function (e) {
+    this.setData({
+      paytype: 'gold',
+    });
+    // wx.showToast({
+    //   title: "线下支付开通中，敬请期待!",
+    //   duration: 3000
+    // });
+    // return false;
     this.createProductOrder();
   },
 

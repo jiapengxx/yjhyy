@@ -547,7 +547,7 @@ getFlag:function(e){
     if (res.from === 'button') {
       return {
         title: '' +this.data.itemData.name,
-        path: '',
+        path: 'product/detail?pro_id=270',
         imageUrl: '' + this.data.itemData.photo_x,
         success: function (res) {
           // 转发成功

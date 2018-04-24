@@ -119,6 +119,7 @@ console.log(that.data.pro_id)
           var content=pro.content;
           //that.initProductData(data);
           WxParse.wxParse('content', 'html', content, that, 3);
+          console.log(res.data.attrValueList);
           that.setData({
             itemData:pro,
             bannerItem:pro.img_arr,

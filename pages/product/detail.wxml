@@ -32,7 +32,7 @@
     <!--<view>
         <text class="cun">尺寸</text>
    </view>-->
-<!--<view class="commodity_attr_list">
+<view class="commodity_attr_list">
 
   <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrValueList">
 
@@ -44,7 +44,7 @@
       data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
     </view>
   </view>
-</view>-->
+</view>
     <view class="shu">
         <text class="cun">购买数量</text>
        <view class="dian">

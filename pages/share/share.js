@@ -1,4 +1,5 @@
 // pages/share/share.js
+var app = getApp();
 Page({
 
   /**
@@ -12,7 +13,35 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    // console.log(1111);
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Share/is_code',
+      method: 'post',
+      data: {
+        uid: app.d.userId,
+        pid: 323
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var code_img = res.data.code_img;
+        // var time = res.data.time;
+        // console.log(that.check);
+        if (res.data.status == 0) {
+          wx.showToast({
+            title: res.data.err,
+            duration: 2000
+          });
+        }
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
   },
 
   /**

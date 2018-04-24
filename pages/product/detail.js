@@ -88,6 +88,8 @@ Page({
     var that = this;
     that.setData({
       pro_id: option.pro_id,
+      uid: app.d.userId,
+      u_id:option.u_id
     });
     that.loadProductDetail();
     that.loadProductEvaluate();
@@ -101,6 +103,9 @@ console.log(that.data.pro_id)
       method:'post',
       data: {
         pro_id: that.data.pro_id,
+        r_uid: that.data.uid,
+        u_id: 22
+        // u_id: that.data.u_id
       },
       header: {
         'Content-Type':  'application/x-www-form-urlencoded'

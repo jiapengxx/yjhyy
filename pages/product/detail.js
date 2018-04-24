@@ -537,5 +537,24 @@ getFlag:function(e){
         currentTab: e.target.dataset.current
       })
     }
+  },
+  /**
+ * 用户点击右上角分享
+ */
+  onShareAppMessage: function (res) {
+
+    if (res.from === 'button') {
+      return {
+        title: '' +this.data.itemData.name,
+        path: '',
+        imageUrl: '' + this.data.itemData.photo_x,
+        success: function (res) {
+          // 转发成功
+        },
+        fail: function (res) {
+          // 转发失败
+        }
+      }
+    }
   }
 });

@@ -1,42 +1,18 @@
-// pages/newsDetail/newsDetail.js
-var app=getApp()
+// pages/jbtx/jbtx.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    host: app.d.hostImg,
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var news_id=options.news_id
-    var that = this;
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/News/detail',
-      method: 'post',
-      data: {
-        news_id: news_id, 
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        var info = res.data.info 
-        that.setData({
-          info: info 
-        })
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    })
+  
   },
 
   /**

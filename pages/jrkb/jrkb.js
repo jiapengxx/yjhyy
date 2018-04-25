@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    host: app.d.hostImg,
     news: []
   },
 
@@ -87,9 +88,10 @@ Page({
   onShareAppMessage: function () {
 
   },
-  newsDetail: function () {
+  newsDetail: function (e) {
+    var news_id=e.currentTarget.id
     wx.navigateTo({
-      url: '../newsDetail/newsDetail',
+      url: '../newsDetail/newsDetail?news_id=' + news_id,
       //可传参
     })
     this.setData({

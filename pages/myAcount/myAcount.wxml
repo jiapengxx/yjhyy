@@ -1,0 +1,40 @@
+<view style='width:750rpx;height:250rpx;background-color:#ee8411;'>
+<view style='position:relative;width:150rpx;top:30rpx;left:340rpx;font-size:20rpx;color:#fff;'>
+<text>金币（个）</text>
+</view>
+<view style='position:relative;width:150rpx;top:0rpx;left:590rpx;font-size:20rpx;color:#fff;'>
+<image src='../../images/wenhao.png' style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:24rpx;'></image>
+<text>什么是金币</text>
+</view>
+<view style='position:relative;width:350rpx;top:10rpx;left:308rpx;font-size:60rpx;color:#fff;'>{{}}1057</view>
+<view style='position:relative;top:10rpx;height:1rpx;width:750rpx;background:#fff;opicity:50%;'></view>
+<view bindtap='jbtx' style='position:relative;width:150rpx;top:30rpx;left:160rpx;font-size:24rpx;color:#fff;'>
+<image src='../../images/tixian.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:23rpx;'></image>
+<text>金币提现</text>
+</view>
+<view style='position:relative;width:150rpx;top:-3rpx;left:490rpx;font-size:24rpx;color:#fff;'>
+<image src='../../images/zhuanqu.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:24rpx;'></image>
+<text>赚取金币</text>
+</view>
+</view>
+
+
+<view style='position:relative;top:30rpx;width:750rpx;height:250rpx;background-color:#39404d;'>
+<view style='position:relative;width:150rpx;top:30rpx;left:340rpx;font-size:20rpx;color:#fff;'>
+<text>银币（个）</text>
+</view>
+<view style='position:relative;width:150rpx;top:0rpx;left:590rpx;font-size:20rpx;color:#fff;'>
+<image src='../../images/wenhao.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:24rpx;'></image>
+<text>什么是银币</text>
+</view>
+<view style='position:relative;width:350rpx;top:10rpx;left:308rpx;font-size:60rpx;color:#fff;'>{{}}2390</view>
+<view style='position:relative;top:10rpx;height:1rpx;width:750rpx;background:#fff;opicity:50%;'></view>
+<view style='position:relative;width:150rpx;top:30rpx;left:160rpx;font-size:24rpx;color:#fff;'>
+<image src='../../images/zhuanqu.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:23rpx;'></image>
+<text>赚取银币</text>
+</view>
+<view style='position:relative;width:150rpx;top:-3rpx;left:490rpx;font-size:24rpx;color:#fff;'>
+<image src='../../images/xiaofei.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:24rpx;'></image>
+<text>消费银币</text>
+</view>
+</view>

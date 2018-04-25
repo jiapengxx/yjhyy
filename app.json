@@ -39,8 +39,9 @@
     "pages/jrkb/jrkb",
     "pages/newsDetail/newsDetail",
     "pages/live/live_do",
-    "pages/share/share"
-
+    "pages/share/share",
+    "pages/myAcount/myAcount",
+    "pages/jbtx/jbtx"
   ],
   "window": {
     "backgroundTextStyle": "light",

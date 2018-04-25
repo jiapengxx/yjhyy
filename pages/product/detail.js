@@ -83,18 +83,17 @@ Page({
     };
   },
   // 传值
-  onLoad: function (option) {  
-console.log(option)
+  onLoad: function (option) {
     //this.initNavHeight();
     var that = this;
     that.setData({
       pro_id: option.pro_id,
       uid: app.d.userId,
-      u_id:option.u_id
     });
     that.loadProductDetail();
     that.loadProductEvaluate();
-console.log(that.data.pro_id)    
+console.log(that.data.pro_id) 
+console.log(that.data.uid)   
   },
 // 商品详情数据获取
   loadProductDetail:function(){
@@ -105,21 +104,20 @@ console.log(that.data.pro_id)
       data: {
         pro_id: that.data.pro_id,
         r_uid: that.data.uid,
-        u_id: 22
+        // u_id: 22
         // u_id: that.data.u_id
       },
       header: {
         'Content-Type':  'application/x-www-form-urlencoded'
       },
       success: function (res) {
-
-        //--init data 
         var status = res.data.status;
         if(status==1) {   
           var pro = res.data.pro;
           var content=pro.content;
           //that.initProductData(data);
           WxParse.wxParse('content', 'html', content, that, 3);
+          console.log(res.data.attrValueList);
           that.setData({
             itemData:pro,
             bannerItem:pro.img_arr,
@@ -141,6 +139,7 @@ console.log(that.data.pro_id)
       },
     });
   },
+
 //商品评价数据获取
   loadProductEvaluate: function () {
     var that = this;
@@ -425,6 +424,15 @@ getFlag:function(e){
 //添加到收藏
   addFavorites:function(e){
     var that = this;
+if(this.data.collect==0){
+  this.setData({
+    collect:1
+  })
+}else{
+  this.setData({
+    collect: 0
+  })
+}
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/col',
       method:'post',
@@ -436,6 +444,7 @@ getFlag:function(e){
         'Content-Type':  'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(res)
         // //--init data        
         var data = res.data;
         if(data.status == 1){
@@ -542,11 +551,13 @@ getFlag:function(e){
  * 用户点击右上角分享
  */
   onShareAppMessage: function (res) {
-
+    wx.showShareMenu({
+      withShareTicket: true
+    })
     if (res.from === 'button') {
       return {
         title: '' +this.data.itemData.name,
-        path: '/product/detail?uid=' + app.d.userId,
+        // path: '/product/detail?uid=' + app.d.userId,
         imageUrl: '' + this.data.itemData.photo_x,
         success: function (res) {
           // 转发成功

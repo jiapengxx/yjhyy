@@ -1,0 +1,29 @@
+
+<view style='height:50rpx;'></view>
+<view style='height:100rpx;background-color: #fff;'>
+<view style='position:relative;top:20rpx;left:24rpx;width:130rpx;height:rpx;border-right:1rpx whitesmoke solid;'>
+<image src='../../images/weixin.png' style='width:28rpx;height:28rpx;'></image>
+<text style='position:relative;top:0rpx;left:10rpx;color:#999;font-size:26rpx;'>微信</text>
+</view>
+
+<view style='position:relative;top:-36rpx;left:180rpx;width:220rpx;height:rpx;'>
+<image src='../../images/touxiang.png' style='width:38rpx;height:38rpx;'></image>
+<text style='position:relative;top:0rpx;left:10rpx;color:#999;font-size:26rpx;'>{{}}玩牌谁也不服</text>
+</view>
+</view>
+
+<view style='height:50rpx;background-color:whitesmoke;'></view>
+
+<view style='height:100rpx;background-color: #fff;'>
+<text style='position:relative;top:26rpx;left:24rpx;color:#999;font-size:26rpx;'>提现金额</text>
+<input placeholder='请输入提现金额' style='position:relative;top:-25rpx;left:160rpx;width:260rpx;height:rpx;'></input>
+</view>
+
+<view style='position:relative;left:24rpx;height:50rpx;background-color:whitesmoke;color:#666;font-size:24rpx;'>
+金币金额：{{}}1000
+</view>
+<view style='height:100rpx;background-color: #fff;'>
+<text style='position:relative;top:20rpx;left:24rpx;color:#333;font-size:30rpx;'>折现:</text>
+<text style='position:relative;top:20rpx;left:124rpx;color:#333;font-size:30rpx;'>{{}}0</text>
+</view>
+<button style='position:relative;top:50rpx;left:0rpx;height:80rpx;width:520rpx;border-radius:40rpx;color:#fff;font-size:36rpx;background-color:brown;opicity:50%;'>确认提现</button>

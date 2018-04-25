@@ -2,7 +2,7 @@
 var app = getApp()
 // var step = 1 // 当前操作的step  
 var maxTime = 60
-var currentTime = maxTime //倒计时的事件（单位：s）  
+var currentTime = maxTime //倒计时的事件（单位：s） 
 var interval = null
 var hintMsg = null // 提示  
 var check = require("../../utils/check.js")
@@ -30,13 +30,11 @@ Page({
       clearInterval(interval)
     }
   },
-
   tel: function (e) {
     var telphone = e.detail.value
     this.setData({
       telphone: telphone
     })
-    console.log(e.detail.value)
     if (e.detail.value.length === 0) {
       this.setData({
         tel: '',
@@ -61,9 +59,13 @@ Page({
     }
 
   },
+  //对获取验证码的条件进行判断,
+  //当手机号信息无误时才可操作
   getCode: function () {
     var that = this
-    console.log(that.data.telphone)
+    // if(){
+
+    // }
     wx.request({
       url: app.d.ceshiUrl + '/Api/User/check_do',
       method: 'post',
@@ -212,6 +214,10 @@ Page({
   },
 register:function(){
   var that = this
+  //注册前对表单内容进行检验
+  // if(){
+
+  // }
   console.log('phone:' + that.data.telphone, 'check:' + that.data.check)
     wx.request({
       url: app.d.ceshiUrl + '/Api/User/register',

@@ -15,11 +15,12 @@ Page({
   onLoad: function (options) {
     // console.log(1111);
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Share/is_code',
+      url: app.d.ceshiUrl + '/Api/Share/friendreal',
       method: 'post',
       data: {
         uid: app.d.userId,
-        pid: 323
+        pid: 323,
+        r_uid:8
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'

@@ -6,10 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    news: [{ title: '习近平三次检阅部队，都强调了什么？', eye_icon: '../../images/eye_icon.png', type: 1, count: 666, types: '央视新闻', pic: '../../images/big_pic.png', },
-    { title: '习近平三次检阅部队，都强调了什么？', eye_icon: '../../images/eye_icon.png', type: 2, count: 666, types: '央视新闻', pic: '../../images/big_pic.png', },
-    { title: '习近平三次检阅部队，都强调了什么？', eye_icon: '../../images/eye_icon.png', type: 1, count: 666, types: '央视新闻', pic: '../../images/big_pic.png', }
-    ]
+    news: []
   },
 
   /**
@@ -26,7 +23,12 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-
+        console.log(res)
+        var list=res.data.list
+        that.setData({
+          news:list
+        })
+       
       },
       fail: function (e) {
         wx.showToast({

@@ -84,12 +84,13 @@ Page({
   },
   // 传值
   onLoad: function (option) {  
+console.log(option)
     //this.initNavHeight();
     var that = this;
     that.setData({
       pro_id: option.pro_id,
       uid: app.d.userId,
-      u_id:option.u_id
+      r_uid: option.r_uid
     });
     that.loadProductDetail();
     that.loadProductEvaluate();
@@ -111,7 +112,6 @@ console.log(that.data.pro_id)
         'Content-Type':  'application/x-www-form-urlencoded'
       },
       success: function (res) {
-
         //--init data 
         var status = res.data.status;
         if(status==1) {   
@@ -143,7 +143,6 @@ console.log(that.data.pro_id)
   },
 //商品评价数据获取
   loadProductEvaluate: function () {
-    console.log("aaaaa")
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Comment/comment_show',
@@ -547,7 +546,7 @@ getFlag:function(e){
     if (res.from === 'button') {
       return {
         title: '' +this.data.itemData.name,
-        path: 'product/detail?pro_id=270',
+        path: '/product/detail?uid=' + app.d.userId,
         imageUrl: '' + this.data.itemData.photo_x,
         success: function (res) {
           // 转发成功

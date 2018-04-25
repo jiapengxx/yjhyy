@@ -10,27 +10,30 @@
   </swiper>
   <view class="title">{{itemData.name}}</view>
   <view class="gmxx">
-    <view><span class="jiage">¥：{{itemData.price_yh}}</span> <span class="c6 fl_r font_14" style='color:#ccc'>库存：{{itemData.num}}</span> </view>
-   
+    <view>
+      <span class="jiage">¥：{{itemData.price_yh}}</span>
+      <span class="c6 fl_r font_14" style='color:#ccc'>库存：{{itemData.num}}</span>
+    </view>
+
     <view class="font_14 c6" style='width:500rpx;'>品牌：{{itemData.brand}}</view>
 
     <view class="font_14 c6" style='width:500rpx;'>支付：微信支付</view>
-    <button open-type='share' style='position:absolute;left:500rpx;top:910rpx;width:200rpx;height:70rpx;background-color:red;color:white;line-height:70rpx;font-size:26rpx;'>分享有礼</button>
+    <button open-type='share' style='position:absolute;left:500rpx;top:910rpx;width:200rpx;height:70rpx;background-color:red;color:white;line-height:70rpx;font-size:26rpx;'>分享</button>
   </view>
 </view>
 
 <!--弹窗-->
 <view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
 <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
-<view class="close_icon" bindtap="setModalStatus" data-status="0">×</view>
+  <view class="close_icon" bindtap="setModalStatus" data-status="0">×</view>
   <view class="drawer_attr_content">
     <view class="text_center">
-         <image class="drawer_image" src="{{itemData.photo_x}}" ></image>
-         <view class="mingcheng">
-             <view>{{itemData.name}}</view>
-             <view style="font-size:29rpx;color:red">¥ {{itemData.price_yh}}</view>
-             <view  style="font-size:26rpx;color:#ccc">库存：{{itemData.num}}</view>
-         </view>
+      <image class="drawer_image" src="{{itemData.photo_x}}"></image>
+      <view class="mingcheng">
+        <view>{{itemData.name}}</view>
+        <view style="font-size:29rpx;color:red">¥ {{itemData.price_yh}}</view>
+        <view style="font-size:26rpx;color:#ccc">库存：{{itemData.num}}</view>
+      </view>
     </view>
     <!--<view>
         <text class="cun">尺寸</text>
@@ -45,161 +48,172 @@
   </view>
 </view>
     <view class="shu">
-        <text class="cun">购买数量</text>
-       <view class="dian">
+      <text class="cun">购买数量</text>
+      <view class="dian">
         <view class="stepper">
 
-       <!-- 减号 -->
-       <text class="{{minusStatuses[index]}}" data-alpha-beta="0" bindtap="changeNum">-</text>
-       <!-- 数值 -->
-       <view class="nownum">{{buynum}}</view>
-       <!-- 加号 -->
-       <text class="normal" data-alpha-beta="1" bindtap="changeNum">+</text>
+          <!-- 减号 -->
+          <text class="{{minusStatuses[index]}}" data-alpha-beta="0" bindtap="changeNum">-</text>
+          <!-- 数值 -->
+          <view class="nownum">{{buynum}}</view>
+          <!-- 加号 -->
+          <text class="normal" data-alpha-beta="1" bindtap="changeNum">+</text>
+        </view>
       </view>
-      </view>
-   </view>
-   <view class="footc" bindtap="addShopCart" data-type="buynow" data-status="1">
-立即购买
-</view>
+    </view>
+    <view class="footc" bindtap="addShopCart" data-type="buynow" data-status="1">
+      立即购买
+    </view>
   </view>
 </view>
 
 <!--图文详情头部-->
 <view>
-<view class="swiper-tab">
-  <view class="bre swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">图文详情</view>
-  <view class="bre swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">产品参数</view>
+  <view class="swiper-tab">
+    <view class="bre swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">图文详情</view>
+    <view class="bre swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">产品参数</view>
     <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">评价</view>
-</view>
-<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==2?(All.length*440+238):(winHeight-31)}}rpx" bindchange="bindChange">
-  <!-- 图文详情 -->
-  <swiper-item>
-    <import src="../../wxParse/wxParse.wxml"/> 
-    <view class="wxParse">
+  </view>
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==2?(All.length*440+238):(winHeight-31)}}rpx" bindchange="bindChange">
+    <!-- 图文详情 -->
+    <swiper-item>
+      <import src="../../wxParse/wxParse.wxml" />
+      <view class="wxParse">
         <scroll-view style="height:2000rpx;" scroll-y='true'>
-          <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+          <template is="wxParse" data="{{wxParseData:content.nodes}}" />
         </scroll-view>
-    </view>
-  </swiper-item>
-  <!-- 产品参数 -->
-  <swiper-item>
-        <view class="p_all">
-      <view class="canshu df">
-        <view class="name">商品名称：</view>
-        <view class="df_1 c3">{{itemData.name}}</view>
       </view>
-      <view class="canshu df">
-        <view class="name">商品编号：</view>
-        <view class="df_1 c3">{{itemData.pro_number}}</view>
+    </swiper-item>
+    <!-- 产品参数 -->
+    <swiper-item>
+      <view class="p_all">
+        <view class="canshu df">
+          <view class="name">商品名称：</view>
+          <view class="df_1 c3">{{itemData.name}}</view>
+        </view>
+        <view class="canshu df">
+          <view class="name">商品编号：</view>
+          <view class="df_1 c3">{{itemData.pro_number}}</view>
+        </view>
+        <view class="canshu df">
+          <view class="name">分类：</view>
+          <view class="df_1 c3">{{itemData.cat_name}}</view>
+        </view>
+        <view class="canshu df">
+          <view class="name">售后：</view>
+          <view class="df_1 c3">签收之日48小时无条件退货</view>
+        </view>
       </view>
-      <view class="canshu df">
-        <view class="name">分类：</view>
-        <view class="df_1 c3">{{itemData.cat_name}}</view>
+    </swiper-item>
+    <!--评价  -->
+    <swiper-item>
+      <view style='height:100rpx;border-top:4rpx solid whitesmoke;'>
+        <view style='margin-left:24rpx;margin-right:24rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+
+          <view id='1' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;border-radius:10rpx;border:0.1rpx solid #ff9090;background-color:#fff;font-size:24rpx;color:red;'>
+            <text style='position:relative;top:4rpx;left:40rpx;'>全部</text>
+            <text style='position:relative;top:4rpx;left:50rpx;'>{{All.length}}</text>
+          </view>
+
+          <view id='2' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
+            <text style='position:relative;top:4rpx;left:40rpx;'>好评</text>
+            <text style='position:relative;top:4rpx;left:50rpx;'>{{Good.length}}</text>
+          </view>
+
+          <view id='3' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
+            <text style='position:relative;top:4rpx;left:40rpx;'>中评</text>
+            <text style='position:relative;top:4rpx;left:50rpx;'>{{Medium.length}}</text>
+          </view>
+
+          <view id='4' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
+            <text style='position:relative;top:4rpx;left:40rpx;'>差评</text>
+            <text style='position:relative;top:4rpx;left:50rpx;'>{{Bad.length}}</text>
+          </view>
+        </view>
       </view>
-      <view class="canshu df">
-        <view class="name">售后：</view>
-        <view class="df_1 c3">签收之日48小时无条件退货</view>
-      </view>
-    </view>
-  </swiper-item>
-<!--评价  -->
-<swiper-item>
-<view style='height:100rpx;border-top:4rpx solid whitesmoke;'>
-<view style='margin-left:24rpx;margin-right:24rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
-
-<view id='1' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;border-radius:10rpx;border:0.1rpx solid #ff9090;background-color:#fff;font-size:24rpx;color:red;'>
-<text style='position:relative;top:4rpx;left:40rpx;'>全部</text>
-<text style='position:relative;top:4rpx;left:50rpx;'>{{All.length}}</text>
-</view>
-
-<view id='2' bindtap='getFlag'  style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
-<text style='position:relative;top:4rpx;left:40rpx;'>好评</text>
-<text style='position:relative;top:4rpx;left:50rpx;'>{{Good.length}}</text>
-</view>
-
-<view id='3' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
-<text style='position:relative;top:4rpx;left:40rpx;'>中评</text>
-<text style='position:relative;top:4rpx;left:50rpx;'>{{Medium.length}}</text>
-</view>
-
-<view id='4' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
-<text style='position:relative;top:4rpx;left:40rpx;'>差评</text>
-<text style='position:relative;top:4rpx;left:50rpx;'>{{Bad.length}}</text>
-</view>
-</view>
-</view>
 
 
-<view style='width:100%;height:20rpx;background-color:whitesmoke;'></view>
+      <view style='width:100%;height:20rpx;background-color:whitesmoke;'></view>
 
- <block wx:for="{{flag==1?All:(flag==2?Good:(flag==3?Medium:Bad))}}" wx:for-index="idx" wx:for-item="item"> 
-   
-<view wx:if="{{typeof(flag==1?All:(flag==2?Good:(flag==3?Medium:Bad)))==undefined}}" style='border-bottom:0.1rpx solid whitesmoke;'>
-<!--提交评论时携带 标志 是否有图片  -->
-<view style='height:440rpx;margin-left:24rpx;margin-right:24rpx;'>
-<image src='{{item.photo}}' style='position:relative;top:30rpx;width:58rpx;height:58rpx;border-radius:50%;'></image>
-<text style='position:relative;top:-15rpx;left:20rpx;font-size:24rpx;color:#333;'>{{item.uname}}</text>
-<view style='position:relative;left:80rpx;width:126rpx;height:14rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
-<!--星星  -->
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<1?2:3}}.png'></image>
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<2?(item.num<1.5?1:2):3}}.png'></image>
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<3?(item.num<2.5?1:2):3}}.png'></image>
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<4?(item.num<3.5?1:2):3}}.png'></image>
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<5?(item.num<4.5?1:2):3}}.png'></image>
-</view>
-<!--日期  -->
-<text style='position:relative;top:-60rpx;left:560rpx;font-size:24rpx;color:#999;'>{{}}2018-03-07</text>
-<!--评论文字  -->
-<textarea style='position:relative;top:-30rpx;left:80rpx;width:600rpx;height:40rpx;font-size:30rpx;color:#333;'>{{item.concent}}</textarea>
-<!--图集  -->
-<view style='position:relative;width:510rpx;height:244rpx;top:-10rpx;left:80rpx;font-size:24rpx;color:#333;display:flex;flex-wrap:wrap;justify-content:space-between;'>
-<image src='{{host}}/Data/{{item.img[0]}}' style='width:230rpx;height:244rpx;'></image>
-<image src='{{host}}/Data/{{item.img[1]}}' style='width:230rpx;height:244rpx;'></image>
-</view>
-</view>
-</view>
+      <block wx:for="{{flag==1?All:(flag==2?Good:(flag==3?Medium:Bad))}}" wx:for-index="idx" wx:for-item="item">
 
-<view wx:else style='border-bottom:0.1rpx solid whitesmoke;'>   
-<view style='height:168rpx;margin-left:24rpx;margin-right:24rpx;'>
-<image src='{{item.photo}}' style='position:relative;top:30rpx;width:58rpx;height:58rpx;border-radius:50%;'></image>
-<text style='position:relative;top:-15rpx;left:20rpx;font-size:24rpx;color:#333;'>{{item.uname}}</text>
-<view style='position:relative;left:80rpx;width:126rpx;height:14rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
-<!--星星  -->
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<1?2:3}}.png'></image>
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<2?(item.num<1.5?1:2):3}}.png'></image>
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<3?(item.num<2.5?1:2):3}}.png'></image>
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<4?(item.num<3.5?1:2):3}}.png'></image>
-  <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<5?(item.num<4.5?1:2):3}}.png'></image>
-</view>
-<!--日期  -->
-<text style='position:relative;top:-60rpx;left:560rpx;font-size:24rpx;color:#999;'>{{}}2018-03-07</text>
-<!--评论文字  -->
-<textarea style='position:relative;top:-30rpx;left:80rpx;width:600rpx;height:40rpx;font-size:30rpx;color:#333;'>{{item.concent}}</textarea>
-</view>
-</view> 
- </block>   
-</swiper-item>
-</swiper>
+        <view wx:if="{{typeof(flag==1?All:(flag==2?Good:(flag==3?Medium:Bad)))==undefined}}" style='border-bottom:0.1rpx solid whitesmoke;'>
+          <!--提交评论时携带 标志 是否有图片  -->
+          <view style='height:440rpx;margin-left:24rpx;margin-right:24rpx;'>
+            <image src='{{item.photo}}' style='position:relative;top:30rpx;width:58rpx;height:58rpx;border-radius:50%;'></image>
+            <text style='position:relative;top:-15rpx;left:20rpx;font-size:24rpx;color:#333;'>{{item.uname}}</text>
+            <view style='position:relative;left:80rpx;width:126rpx;height:14rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+              <!--星星  -->
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<1?2:3}}.png'></image>
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<2?(item.num<1.5?1:2):3}}.png'></image>
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<3?(item.num<2.5?1:2):3}}.png'></image>
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<4?(item.num<3.5?1:2):3}}.png'></image>
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<5?(item.num<4.5?1:2):3}}.png'></image>
+            </view>
+            <!--日期  -->
+            <text style='position:relative;top:-60rpx;left:560rpx;font-size:24rpx;color:#999;'>{{}}2018-03-07</text>
+            <!--评论文字  -->
+            <textarea style='position:relative;top:-30rpx;left:80rpx;width:600rpx;height:40rpx;font-size:30rpx;color:#333;'>{{item.concent}}</textarea>
+            <!--图集  -->
+            <view style='position:relative;width:510rpx;height:244rpx;top:-10rpx;left:80rpx;font-size:24rpx;color:#333;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+              <image src='{{host}}/Data/{{item.img[0]}}' style='width:230rpx;height:244rpx;'></image>
+              <image src='{{host}}/Data/{{item.img[1]}}' style='width:230rpx;height:244rpx;'></image>
+            </view>
+          </view>
+        </view>
+
+        <view wx:else style='border-bottom:0.1rpx solid whitesmoke;'>
+          <view style='height:168rpx;margin-left:24rpx;margin-right:24rpx;'>
+            <image src='{{item.photo}}' style='position:relative;top:30rpx;width:58rpx;height:58rpx;border-radius:50%;'></image>
+            <text style='position:relative;top:-15rpx;left:20rpx;font-size:24rpx;color:#333;'>{{item.uname}}</text>
+            <view style='position:relative;left:80rpx;width:126rpx;height:14rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+              <!--星星  -->
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<1?2:3}}.png'></image>
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<2?(item.num<1.5?1:2):3}}.png'></image>
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<3?(item.num<2.5?1:2):3}}.png'></image>
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<4?(item.num<3.5?1:2):3}}.png'></image>
+              <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<5?(item.num<4.5?1:2):3}}.png'></image>
+            </view>
+            <!--日期  -->
+            <text style='position:relative;top:-60rpx;left:560rpx;font-size:24rpx;color:#999;'>{{}}2018-03-07</text>
+            <!--评论文字  -->
+            <textarea style='position:relative;top:-30rpx;left:80rpx;width:600rpx;height:40rpx;font-size:30rpx;color:#333;'>{{item.concent}}</textarea>
+          </view>
+        </view>
+      </block>
+    </swiper-item>
+  </swiper>
 </view>
 <!---底部开始-->
 <view class="footfixed tc">
-  <view class="fl_l w40 font_12 hui03 df">
-          <view class="df_1 l_h15 pt5 bre">
-                <contact-button type="default-light" session-from="productId_{{itemData.id}}" class="ke">
-                <contact-button class="pos"></contact-button>
-                  <image class="icon_kf" src="/images/kefu.png" style="margin-right:20px;"></image>
-                  <view class="dbtext" style="line;margin-top:5px">客服</view>
-                </contact-button >
-          </view>
-            <view class="df_1 l_h15 pt5">
-                 <view bindtap="addFavorites">
-                    <image class="icon_kf" src="/images/shc.png" ></image>
-                    <view bindtap="addFavorites" class="dbtext">收藏</view>
-              </view>
-     </view>
+  <view class="fl_l w50 font_12 hui03 df">
+
+<!--去首页-->
+    <view class="df_1 l_h15 pt5 bre">
+      <view bindtap="addFavorites">
+        <image class="icon_kf" src="/images/shc.png"></image>
+        <view bindtap="addFavorites" class="dbtext">首页</view>
+      </view>
+    </view>
+<!--去客服-->
+    <view class="df_1 l_h15 pt5 bre">
+      <contact-button type="default-light" session-from="productId_{{itemData.id}}" class="ke">
+        <contact-button class="pos"></contact-button>
+        <image class="icon_kf" src="/images/kefu.png" style="margin-right:20px;"></image>
+        <view class="dbtext" style="line;margin-top:5px">客服</view>
+      </contact-button>
+    </view>
+<!--去收藏-->
+    <view class="df_1 l_h15 pt5">
+      <view bindtap="addFavorites">
+        <image class="icon_kf" src="/images/shc.png"></image>
+        <view bindtap="addFavorites" class="dbtext">收藏</view>
+      </view>
+    </view>
+
   </view>
-  <view class="fl_l w60">
+  <view class="fl_l w50">
     <view class="w50 fl_l bg_cheng white" bindtap="addShopCart" data-type="addcart">加入购物车</view>
     <view class="bg_red white w50 fl_l" bindtap="setModalStatus" data-status="1">立刻购买</view>
   </view>
-   </view>
+</view>

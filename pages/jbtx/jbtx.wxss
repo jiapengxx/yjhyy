@@ -1,0 +1,4 @@
+/* pages/jbtx/jbtx.wxss */
+page{ 
+   background-color: whitesmoke;
+   }

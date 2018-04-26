@@ -190,10 +190,10 @@
 
 <!--去首页-->
     <view class="df_1 l_h15 pt5 bre">
-      <view bindtap="addFavorites">
+      <navigator url='../index/index'>
         <image class="icon_kf" src="/images/shc.png"></image>
-        <view bindtap="addFavorites" class="dbtext">首页</view>
-      </view>
+        <view class="dbtext">首页</view>
+      </navigator>
     </view>
 <!--去客服-->
     <view class="df_1 l_h15 pt5 bre">
@@ -203,11 +203,11 @@
         <view class="dbtext" style="line;margin-top:5px">客服</view>
       </contact-button>
     </view>
-<!--去收藏-->
+<!--去收藏,图片状态需判断-->
     <view class="df_1 l_h15 pt5">
       <view bindtap="addFavorites">
-        <image class="icon_kf" src="/images/shc.png"></image>
-        <view bindtap="addFavorites" class="dbtext">收藏</view>
+        <image class="icon_kf" src="../../images/{{collect==0?3:1}}.png"></image>
+        <view bindtap="addFavorites" class="dbtext">{{collect==0?'已收藏':'未收藏'}}</view>
       </view>
     </view>
 

@@ -5,6 +5,7 @@ Page({
   data: {
     content: '',
     Content: '',
+    flag:0,
     // num1:0,
     // num2:0,
     // num3:0,
@@ -20,12 +21,13 @@ Page({
         formData: {},//这个字段可以设置传到后台的额外的参数
         //以上三个配置项详情请看小程序文档
       },
-
+       
     }),
     stars: [1, 1, 1, 1, 1],
     stars1: [1, 1, 1, 1, 1],
     stars2: [1, 1, 1, 1, 1],
     stars3: [1, 1, 1, 1, 1],
+    hostUrl: app.d.hostUrl
   },
   getContent: function (e) {
     var content = e.detail.value
@@ -57,19 +59,21 @@ Page({
     // 商品详情数据获取
       var that = this;
       wx.request({
-        url: app.d.ceshiUrl + '/Api/Product/index',
+        url: app.d.ceshiUrl + '/Api/Comment/goods_show',
         method: 'post',
         data: {
-          pro_id:pid,
+          pid:pid,
+          
         },
         header: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
+          // console.log(res.data);
           that.setData({
-            photo_x: res.data.pro.photo_x
+            photo_x: res.data.product.photo_x
           })
-          console.log(res)
+          // console.log(res)
         },
         error: function (e) {
           wx.showToast({

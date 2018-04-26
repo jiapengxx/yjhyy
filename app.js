@@ -53,9 +53,16 @@ App({
         code: data.data.code,
         place_desc: data.data.place_desc,
         introduce: data.data.introduce,
-        uid:data.data.uid,
         urli:i,
-        p_desc:data.data.p_desc
+        p_desc:data.data.p_desc,
+        uid:data.data.uid,
+        pid: data.data.pid,
+        num: data.data.num,
+        logistic_grade: data.data.logistic_grade,
+        store_grade: data.data.store_grade,
+        content: data.data.content,
+        is_name: data.data.is_name,
+        order_id: data.data.order_id
       },
       //这里是上传图片时一起上传的数据
       success: (resp) => {

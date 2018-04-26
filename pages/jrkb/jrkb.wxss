@@ -4,6 +4,7 @@
   height: 186rpx;
   margin-left: 24rpx;
   margin-right: 24rpx;
+  border-bottom:0.1rpx solid whitesmoke;
 }
 .title {
   position: relative;

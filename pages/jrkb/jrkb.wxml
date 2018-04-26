@@ -1,6 +1,6 @@
 <block wx:for="{{news}}" wx:for-index="idx" wx:for-item="item">   
-<!-- <view wx:if="{{item.type==1}}"> -->
-<view bindtap='newsDetail' style='height:186rpx;width:100%;border:0.1rpx solid whitesmoke;'>
+ <view wx:if="{{item.type==1}}"> 
+<view id='{{item.id}}' bindtap='newsDetail' style='height:186rpx;width:100%;'>
 <view class='container1' >
 <view class='title' >{{item.name}}</view>
 <view class='container2'>
@@ -8,20 +8,20 @@
 {{item.click}}
 <text >{{item.cname}}</text>
 </view>
-<image class='big_pic' src='{{item.photo}}' ></image>
+<image class='big_pic' src='{{host}}/Data/{{item.photo}}' ></image>
 </view>
 </view>
-<!-- </view>
-<view wx:else>    -->
-<view bindtap='newsDetail' style='height:300rpx;margin-left:24rpx;margin-right:24rpx;width:100%;border:0.1rpx solid whitesmoke;'>
+ </view>
+<view wx:else>    
+<view id='{{item.id}}'  bindtap='newsDetail' style='height:300rpx;margin-left:24rpx;margin-right:24rpx;width:702rpx;border-bottom:0.1rpx solid whitesmoke;'>
 <view class=''  style='position:relative;top:20rpx;  height: 42rpx;width:702rpx;font-size: 30rpx;font-weight: 700;color: #333;'>{{item.name}}</view>
 <view style='position:relative;top:50rpx;width:702rpx;height:180rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
-<image class='' src='{{item.photo}}' style='width:180rpx;height:180rpx;' ></image>
-<image class='' src='{{item.photo}}' style='width:180rpx;height:180rpx;'></image>
-<image class='' src='{{item.photo}}' style='width:180rpx;height:180rpx;'></image>
+<image class='' src='{{host}}/Data/{{item.photo[0]}}' style='width:180rpx;height:180rpx;' ></image>
+<image class='' src='{{host}}/Data/{{item.photo[1]}}' style='width:180rpx;height:180rpx;'></image>
+<image class='' src='{{host}}/Data/{{item.photo[2]}}' style='width:180rpx;height:180rpx;'></image>
 </view>
 </view>
-<!-- </view>  -->
+ </view>  
 </block>  
 
 

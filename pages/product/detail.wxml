@@ -1,24 +1,25 @@
 <!--内容开始-->
 <view class="cont">
   <!--<image class="tp_image" src="{{itemData.photo_d}}"></image>-->
-  <swiper style="height:375px" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <swiper style="height:420rpx" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <block wx:for="{{bannerItem}}">
       <swiper-item>
         <image src="{{item}}" class="slide-image" />
       </swiper-item>
     </block>
   </swiper>
+  <view style='width:750rpx;height:80rpx;'>
+    <image src='../../images/fenxiangD.png' style='width:750rpx;height:80rpx;'></image>
+    <image src='../../images/fenxiangS.png' style='position:relative;top:-122rpx;left:538rpx;width:148rpx;height:148rpx;'></image>
+  </view>
   <view class="title">{{itemData.name}}</view>
   <view class="gmxx">
     <view>
       <span class="jiage">¥：{{itemData.price_yh}}</span>
       <span class="c6 fl_r font_14" style='color:#ccc'>库存：{{itemData.num}}</span>
     </view>
-
     <view class="font_14 c6" style='width:500rpx;'>品牌：{{itemData.brand}}</view>
-
     <view class="font_14 c6" style='width:500rpx;'>支付：微信支付</view>
-    <button open-type='share' style='position:absolute;left:500rpx;top:910rpx;width:200rpx;height:70rpx;background-color:red;color:white;line-height:70rpx;font-size:26rpx;'>分享</button>
   </view>
 </view>
 
@@ -203,14 +204,14 @@
 <view class="footfixed tc">
   <view class="fl_l w50 font_12 hui03 df">
 
-<!--去首页-->
+    <!--去首页-->
     <view class="df_1 l_h15 pt5 bre">
       <navigator url='../index/index'>
         <image class="icon_kf" src="/images/shc.png"></image>
         <view class="dbtext">首页</view>
       </navigator>
     </view>
-<!--去客服-->
+    <!--去客服-->
     <view class="df_1 l_h15 pt5 bre">
       <contact-button type="default-light" session-from="productId_{{itemData.id}}" class="ke">
         <contact-button class="pos"></contact-button>
@@ -218,7 +219,7 @@
         <view class="dbtext" style="line;margin-top:5px">客服</view>
       </contact-button>
     </view>
-<!--去收藏,图片状态需判断-->
+    <!--去收藏,图片状态需判断-->
     <view class="df_1 l_h15 pt5">
       <view bindtap="addFavorites">
         <image class="icon_kf" src="../../images/{{collect==0?3:1}}.png"></image>

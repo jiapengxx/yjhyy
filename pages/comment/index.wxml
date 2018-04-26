@@ -24,7 +24,7 @@
 
 <view bindtap='radioChange' style='position:relative;top:20rpx;left:20rpx;width:170rpx;'>
 <!-- <image src='../../images/circle.png' style='position:relative;top:20rpx;left:20rpx;width:22rpx;height:22rpx;'></image> -->
-<radio checked="{{flag}}"/>
+<radio checked="{{flag==1}}"/>
  <text style='font-size:26rpx;color:#333333;'>匿名评价</text> 
 </view>
 

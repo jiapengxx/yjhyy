@@ -36,33 +36,18 @@
         <view style="font-size:26rpx;color:#ccc">库存：{{itemData.num}}</view>
       </view>
     </view>
-
-    <view>
-      <text class="cun">尺寸</text>
+    <!--<view>
+        <text class="cun">尺寸</text>
+   </view>-->
+<view class="commodity_attr_list">
+  <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrValueList">
+    <view class="attr_name">{{attrValueObj.attrKey}}</view>
+    <view class="attr_value_box">
+      <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
+      data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
     </view>
-    <view class="commodity_attr_list">
-      <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrValueList">
-        <view class="attr_name">{{attrValueObj.attrKey}}</view>
-        <view class="attr_value_box">
-          <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
-            data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
-        </view>
-      </view>
-    </view>
-
-    <view>
-      <text class="cun">颜色</text>
-    </view>
-    <view class="commodity_attr_list">
-      <view class="attr_box" wx:for="{{commodityAttr}}" wx:for-item="commodityAttrObj" wx:for-index="commodityAttrList">
-        <view class="attr_name">{{commodityAttrObj.attrKey}}</view>
-        <view class="attr_value_box">
-          <view class="attr_value {{attrIndex==firstIndex || commodityAttrObj.attrValueStatus[valueIndex]?(value==commodityAttrObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{commodityAttrObj.attrValueStatus[valueIndex]}}"
-            data-value="{{value}}" data-key="{{commodityAttrObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{commodityAttrObj.selectedValue}}" wx:for="{{commodityAttrObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
-        </view>
-      </view>
-    </view>
-
+  </view>
+</view>
     <view class="shu">
       <text class="cun">购买数量</text>
       <view class="dian">

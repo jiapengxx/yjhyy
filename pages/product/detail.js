@@ -89,6 +89,7 @@ Page({
     that.setData({
       pro_id: option.pro_id,
       uid: app.d.userId,
+      r_uid: option.r_uid
     });
     that.loadProductDetail();
     that.loadProductEvaluate();

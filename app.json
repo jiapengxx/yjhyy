@@ -41,7 +41,8 @@
     "pages/live/live_do",
     "pages/share/share",
     "pages/myAcount/myAcount",
-    "pages/jbtx/jbtx"
+    "pages/jbtx/jbtx",
+    "pages/fxgl/fxgl"
   ],
   "window": {
     "backgroundTextStyle": "light",

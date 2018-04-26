@@ -1,4 +1,5 @@
 // pages/myAcount/myAcount.js
+var app=getApp()
 Page({
 
   /**
@@ -12,7 +13,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/User/num ',
+      method: 'post',
+      data: {
+        uid: app.d.userId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+       that.setData({
+           num: res.data.num
+       })
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    })
   },
 
   /**
@@ -66,6 +88,26 @@ Page({
   jbtx:function(){
     wx.navigateTo({
       url: '../jbtx/jbtx',
+    })
+  },
+  toFxgl:function(){
+    wx.navigateTo({
+      url: '../fxgl/fxgl',
+    })
+  },
+  toMakecoin:function(){
+    wx.showModal({
+      title: '提示',
+      content: '您是否进入商城,购买商品即可获得银币',
+      success: function (res) {
+        if (res.confirm) {
+          wx.switchTab({
+            url: '../company_index/company_index',
+          })
+        } else if (res.cancel) {
+        }
+      }
+      
     })
   }
 })

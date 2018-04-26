@@ -1,11 +1,14 @@
 <view class='title'>{{info.digest}}</view>
 <view class='date-time'>{{info.addtime}}</view>
-<view class='content'>
-<!--新闻内容  -->
-  <view>{{info.content}}
+
+
+<block wx:for="{{info.content}}" wx:for-index="idx">
+
+  <view class='content'>>{{info.content[idx]}}
   </view>
-  <!--新闻图片  -->
-  <image src='{{host}}/Data/{{info.photo}}' class='pic'></image>
-  <view>{{}}
+  <view wx:if="{{info.photo.length>=(idx+1)}}">
+    <image src='{{host}}/Data/{{info.photo[idx]}}' class='pic'></image>
   </view>
-</view>
+
+
+</block>

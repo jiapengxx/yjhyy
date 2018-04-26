@@ -552,9 +552,6 @@ if(this.data.collect==0){
  * 用户点击右上角分享
  */
   onShareAppMessage: function (res) {
-    wx.showShareMenu({
-      withShareTicket: true
-    })
     if (res.from === 'button') {
       return {
         title: '' +this.data.itemData.name,

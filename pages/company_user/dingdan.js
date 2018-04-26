@@ -165,7 +165,8 @@ recOrder:function(e){
           case 3:
             that.setData({
               orderList3: list,
-            });
+            })
+            ;
             break;
           case 4:
             that.setData({

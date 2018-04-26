@@ -30,6 +30,7 @@ Page({
       clearInterval(interval)
     }
   },
+  //对手机号填充值进行检查
   tel: function (e) {
     var telphone = e.detail.value
     this.setData({
@@ -38,20 +39,22 @@ Page({
     if (e.detail.value.length === 0) {
       this.setData({
         tel: '',
+        flag:false
       })
-      wx.showToast({
-        title: '手机号不许为空',
-        icon: 'loading'
-      })
+      // wx.showToast({
+      //   title: '手机号不许为空',
+      //   icon: 'loading'
+      // })
     }
     else if (!(/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value))) {
       this.setData({
         tel: '',
+        flag: false
       })
-      wx.showToast({
-        title: '手机号格式不正确',
-        icon:'loading'
-      })
+      // wx.showToast({
+      //   title: '手机号格式不正确',
+      //   icon:'loading'
+      // })
     }else{
       this.setData({
         flag:true
@@ -63,51 +66,12 @@ Page({
   //当手机号信息无误时才可操作
   getCode: function () {
     var that = this
-    // if(){
-
-    // }
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/User/check_do',
-      method: 'post',
-      data: {
-        tel: that.data.telphone,
-        uid:app.d.userId
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        var check = res.data.check;
-        var time = res.data.time;
-        that.setData({
-          checks: check,
-          times: time
-        });
-        if (res.data.status == 0) {
-          wx.showToast({
-            title: res.data.err,
-            duration: 2000
-          });
-        }
-        if (res.data.status == 1) {
-          wx.showToast({
-            title: '验证码已发送',
-          })
-        }
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    })
-    if(this.data.flag){
+    if (this.data.flag) {
+      //空值发送验证码的状态
       this.setData({
         switch_one: true,
         switch_two: false,
       })
-      var that = this
       interval = setInterval(function () {
         currentTime--;
         that.setData({
@@ -128,6 +92,50 @@ Page({
       }
       this.setData({
         step: step_g
+      })
+    } else {
+        wx.showToast({
+          title: '请填写正确的手机号',
+          icon: '',
+          image: '',
+        })
+    }
+    if(this.data.flag){
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/User/check_do',
+        method: 'post',
+        data: {
+          tel: that.data.telphone,
+          uid: app.d.userId
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          var check = res.data.check;
+          var time = res.data.time;
+          that.setData({
+            checks: check,
+            times: time
+          });
+          if (res.data.status == 0) {
+            wx.showToast({
+              title: res.data.err,
+              duration: 2000
+            });
+          }
+          if (res.data.status == 1) {
+            wx.showToast({
+              title: '验证码已发送',
+            })
+          }
+        },
+        fail: function (e) {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        },
       })
     }
   },
@@ -179,16 +187,6 @@ Page({
             duration: 2000
           });
         }
-        if(res.data.status==1){
-          wx.showToast({
-          title: '注册成功',
-          })
-      setTimeout(function () {
-        wx.reLaunch({
-          url: '../company_index/company_index',
-        })
-        }, 3000)
-        }
       },
       fail: function (e) {
         wx.showToast({
@@ -214,10 +212,6 @@ Page({
   },
 register:function(){
   var that = this
-  //注册前对表单内容进行检验
-  // if(){
-
-  // }
   console.log('phone:' + that.data.telphone, 'check:' + that.data.check)
     wx.request({
       url: app.d.ceshiUrl + '/Api/User/register',
@@ -239,13 +233,14 @@ register:function(){
         //   checks: check,
         //   times:time
         // });
-        if(res.data.status==0){
+        if(res.data.status==0||that.data.flag==false){
           wx.showToast({
             title: res.data.err,
             duration: 2000
           });
         }
-        if(res.data.status==1){
+        //status=1时验证码输入正确
+        if(res.data.status==1&&that.data.flag){
           wx.showToast({
           title: '注册成功',
           })
@@ -263,16 +258,6 @@ register:function(){
         });
       },
     })
-//   if(true){
-//     wx.showToast({
-//       title: '注册成功',
-//     })
-//     setTimeout(function () {
-//       wx.reLaunch({
-//         url: '../company_index/company_index',
-//       })
-//     }, 3000)
-//  }
 },
 
 

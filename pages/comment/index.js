@@ -36,14 +36,15 @@ Page({
     })
     console.log(this.data.content)
   },
+  //选中为1,未选中为0
   radioChange: function (e) {
-    if (this.data.flag == false) {
+    if (this.data.flag == 0) {
       this.setData({
-        flag: true
+        flag: 1
       })
     } else {
       this.setData({
-        flag: false
+        flag: 0
       })
     }
   },

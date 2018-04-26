@@ -107,7 +107,6 @@ Page({
         content:that.data.Content,
         is_name:that.data.flag, 
         order_id: that.data.order_id,
-        
         //需要将商品信息，及评价填充信息一同提交
       },
     });

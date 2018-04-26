@@ -1,15 +1,15 @@
 // app.js
 App({
   d: {
-    // hostUrl: 'https://tanghuzhao.com.cn/index.php',
-    hostUrl: 'http://www.xshoph.com/index.php',
+    hostUrl: 'https://tanghuzhao.com.cn/index.php',
+    // hostUrl: 'http://www.xshoph.com/index.php',
     hostImg: 'https://tanghuzhao.com.cn',
     hostVideo: 'http://zhubaotong-file.oss-cn-beijing.aliyuncs.com',
     userId: 0,
     appId: "",
     appKey: "",
-    ceshiUrl: 'http://www.xshoph.com/index.php',
-    // ceshiUrl: 'https://tanghuzhao.com.cn/index.php',
+    // ceshiUrl: 'http://www.xshoph.com/index.php',
+    ceshiUrl: 'https://tanghuzhao.com.cn/index.php',
   },
   position: function () {
     var that = this

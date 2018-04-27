@@ -86,13 +86,14 @@ Page({
   
   },
   jbtx:function(){
+    console.log(this.data.num.gold)
     wx.navigateTo({
-      url: '../jbtx/jbtx',
+      url: '../jbtx/jbtx?gold='+this.data.num.gold,
     })
   },
   toFxgl:function(){
     wx.navigateTo({
-      url: '../fxgl/fxgl',
+      url: '../fxgl/fxgl?height='+550,
     })
   },
   toMakecoin:function(){

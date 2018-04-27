@@ -7,7 +7,7 @@
   </view>
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{height}}rpx;' bindchange="bindChange">
     <swiper-item>
-      <block wx:for="{{hot_good}}" wx:key="id" wx:for-item="item">
+      <block wx:for="{{hot_good}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
           <view id='{{item.store_id}}' style='position:relative;top:40rpx;height:150rpx;width:500rpx;display:flex;flex-direction:row;' >
           <view id='{{item.store_id}}'  bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
@@ -25,8 +25,8 @@
             
             <view style='position:relative;top:0rpx;left:110rpx;width:200rpx;'>
               <image bindtap='callPhone'  src='../../images/callPhone.png'  style='position:relative;top:-28rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
-              <image bindtap='getPosition'src='../../images/position.png' style='position:relative;top:-28rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
-              <view class='t3'>{{item.distance}}km</view>
+              <image id='{{item.store_id}}'  bindtap='getPosition'src='../../images/position.png' style='position:relative;top:-28rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
+              <view class='t3'>{{distance1[idx].distance}}km</view>
             </view>
           </view>
           <view>
@@ -64,7 +64,7 @@
       
     </swiper-item>
     <swiper-item>
-      <block wx:for="{{place_store1}}" wx:key="id" wx:for-item="item">
+      <block wx:for="{{place_store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
 
          <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
           <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
@@ -83,7 +83,7 @@
             <view style='position:relative;top:-10rpx;left:-60rpx;width:200rpx;'>
               <image bindtap='callPhone'  src='../../images/callPhone.png'  style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
               <image bindtap='position'src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
-              <view class='t3'>北京{{item.distance}}km</view>
+              <view class='t3'>{{distance2[idx].distance}}km</view>
             </view>
           </view>
 
@@ -122,7 +122,7 @@
       </block>
     </swiper-item>
     <swiper-item>
-     <block wx:for="{{num_store1}}" wx:key="id" wx:for-item="item">
+     <block wx:for="{{num_store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
 
          <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
           <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
@@ -141,7 +141,7 @@
            <view style='position:relative;top:-10rpx;left:-60rpx;width:200rpx;'>
               <image bindtap='callPhone'  src='../../images/callPhone.png'  style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
               <image bindtap='position'src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
-              <view class='t3'>北京{{item.distance}}km</view>
+              <view class='t3'>{{distance3[idx].distance}}km</view>
             </view>
           </view>
 
@@ -169,17 +169,13 @@
               <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
             </view>
           </view>
-
           </view>
-          
-          
-
         </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>
     </swiper-item>
     <swiper-item>
-     <block wx:for="{{comment_store1}}" wx:key="id" wx:for-item="item">
+     <block wx:for="{{comment_store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
 
         <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
           <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
@@ -198,7 +194,7 @@
            <view style='position:relative;top:-10rpx;left:-60rpx;width:200rpx;'>
               <image bindtap='callPhone'  src='../../images/callPhone.png'  style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
               <image bindtap='position'src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
-              <view class='t3'>北京{{item.distance}}km</view>
+              <view class='t3'>{{distance4[idx].distance}}km</view>
             </view>
           </view>
 
@@ -226,11 +222,7 @@
               <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
             </view>
           </view>
-
           </view>
-          
-          
-
         </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>

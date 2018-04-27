@@ -6,8 +6,8 @@
 </view>
 
 <view style='position:relative;top:-36rpx;left:180rpx;width:220rpx;height:rpx;'>
-<image src='../../images/touxiang.png' style='width:38rpx;height:38rpx;'></image>
-<text style='position:relative;top:0rpx;left:10rpx;color:#999;font-size:26rpx;'>{{}}玩牌谁也不服</text>
+<image src='{{userInfo.avatarUrl}}' style='width:60rpx;height:60rpx;border-radius:30rpx;'></image>
+<text style='position:relative;top:-20rpx;left:10rpx;color:#999;font-size:26rpx;'>{{userInfo.nickName}}</text>
 </view>
 </view>
 
@@ -15,14 +15,15 @@
 
 <view style='height:100rpx;background-color: #fff;'>
 <text style='position:relative;top:26rpx;left:24rpx;color:#999;font-size:26rpx;'>转出金额</text>
-<input placeholder='请输入转出金额' style='position:relative;top:-25rpx;left:160rpx;width:260rpx;height:rpx;'></input>
+<input bindinput='inputNum' placeholder='请输入转出金额' style='position:relative;top:-25rpx;left:160rpx;width:260rpx;height:rpx;'></input>
 </view>
 
-<view style='position:relative;left:24rpx;height:50rpx;background-color:whitesmoke;color:#666;font-size:24rpx;'>
-金币金额：{{}}1000
+<view style='position:relative;left:24rpx;height:50rpx;background-color:whitesmoke;color:#666;font-size:28rpx;'>
+金币金额：{{gold}}
+<text style='position:relative;left:30rpx;color:red;'>转出金额须大于100且小于金币金额</text>
 </view>
 <view style='height:100rpx;background-color: #fff;'>
 <text style='position:relative;top:20rpx;left:24rpx;color:#333;font-size:30rpx;'>折现:</text>
-<text style='position:relative;top:20rpx;left:124rpx;color:#333;font-size:30rpx;'>{{}}0</text>
+<text style='position:relative;top:20rpx;left:124rpx;color:#333;font-size:30rpx;'>{{outNum}}</text>
 </view>
 <button style='position:relative;top:50rpx;left:0rpx;height:80rpx;width:520rpx;border-radius:40rpx;color:#fff;font-size:36rpx;background-color:#ecb57b;opicity:50%;'>确认转出</button>

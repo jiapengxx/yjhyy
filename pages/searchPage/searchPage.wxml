@@ -33,9 +33,9 @@
 
 
 
- <block wx:for-items="{{goods}}" bindtap="toDetailsTap" wx:for-item="item" wx:key="id">
+ <block wx:for-items="{{goods}}" bindtap="toDetailsTap" wx:for-item="item" wx:key="id"wx:for-index="idx">
 
- <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
+        <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
           <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
           <view style='height:150rpx;width:150rpx;'>
           <image  src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
@@ -45,10 +45,14 @@
               <text class='t2'>{{item.introduce}}\n</text>
               <text class='t4'>{{item.type_name}}</text>
             </view>
-            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
-              <image src='{{item.p2}}' style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
-              <image src='{{item.p3}}' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
-              <view class='t3'>北京{{item.distance}}km</view>
+
+            <view style='position:relative;top:110rpx;left:-100rpx;width:80rpx;height:50rpx;'>
+             <text class='t5'>销量:{{item.num}}</text>
+            </view>
+           <view style='position:relative;top:-10rpx;left:-60rpx;width:200rpx;'>
+              <image bindtap='callPhone'  src='../../images/callPhone.png'  style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
+              <image bindtap='position'src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+              <view class='t3'>{{distance4[idx].distance}}km</view>
             </view>
           </view>
 
@@ -79,5 +83,5 @@
           </view>
         </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
-</block>
+        </block>
 <view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view>

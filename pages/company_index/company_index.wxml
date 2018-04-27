@@ -48,7 +48,8 @@
   <image style='position:relative;top:35rpx;left:30rpx;height:74rpx;width:69rpx;' src='https://tanghuzhao.com.cn/Public/images/jrkb.png'></image>
   <text style='position:relative;top:-75rpx;left:130rpx;height:120rpx;width:80%;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;'>李克强要求优先提速远程医疗:让优质医疗...-中华人民共和国人民政府</text>
 </view> -->
-<!-- 直播 --><!-- 优惠卷 -->
+<!-- 直播 -->
+<!-- 优惠卷 -->
 <!-- <view bindtap='toLive' style='position:relative;height:258rpx;width:100%;'>
   <image src='https://tanghuzhao.com.cn/Public/images/live.png' style='height:258rpx;width:100%;'></image>
 </view>
@@ -57,33 +58,42 @@
   <image src='https://tanghuzhao.com.cn/Public/images/card.png' style='height:172rpx;width:100%;'></image>
 </view> -->
 <view style='position:relative;width:750rpx;height:160rpx;'>
-<view style='position:relative;width:702rpx;top:14rpx;left:24rpx;height:60rpx;background-color:#fff;border-radius:30rpx;z-index:20;'>
-<text style='position:relative;left:20rpx;font-size:30rpx;color:#333;font-weight:900;'>今日快报</text>
-<text style='position:relative;left:44rpx;font-size:26rpx;color:#333;'>{{}}李克强要求优先提速远程医疗</text>
+  <view style='position:relative;width:702rpx;top:14rpx;left:24rpx;height:60rpx;background-color:#fff;border-radius:30rpx;z-index:20;'>
+    <text style='position:relative;left:20rpx;font-size:30rpx;color:#333;font-weight:900;'>今日快报</text>
+    <!-- <text style='position:relative;left:44rpx;font-size:26rpx;color:#333;'>{{}}李克强要求优先提速远程医疗</text> -->
+    <swiper style='position:relative;left:160rpx;top:-45rpx;height:60rpx;width:480rpx;'  vertical="true" autoplay="true" circular="true" interval="2000">
+      <block wx:for="{{list}}">
+        <swiper-item>
+          <view style='font-size:26rpx;color:#333;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing: 1rpx;'>{{item.name}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
 
-<text bindtap='toJrkb' style='position:relative;left:160rpx;font-size:28rpx;color:#333;'>更多</text>
-</view>
-<image src='{{hotGoods[3].img}}' style='position:relative;top:-60rpx;width:750rpx;height:160rpx;z-index:10;'></image>
+
+
+    <text bindtap='toJrkb' style='position:relative;left:630rpx;top:-115rpx;font-size:28rpx;color:#333;'>更多</text>
+  </view>
+  <image src='{{hotGoods[3].img}}' style='position:relative;top:-60rpx;width:750rpx;height:160rpx;z-index:10;'></image>
 </view>
 <view style='position:relative;height:15rpx;width:100%;'>
 </view>
 <!--引入三张产品图-->
 
 <view style='width:750rpx;height:300rpx;'>
-<image bindtap='toGoodsDetail' id='{{hotGoods[0].pro_id}}' src='{{hotGoods[0].img}}' style='width:750rpx;height:300rpx;'></image>
+  <image bindtap='toGoodsDetail' id='{{hotGoods[0].pro_id}}' src='{{hotGoods[0].img}}' style='width:750rpx;height:300rpx;'></image>
 </view>
 
- <view style='position:relative;height:15rpx;width:100%'>
-</view> 
+<view style='position:relative;height:15rpx;width:100%'>
+</view>
 <view style='width:750rpx;height:300rpx;'>
-<image bindtap='toGoodsDetail' id='{{hotGoods[1].pro_id}}' src='{{hotGoods[1].img}}' style='width:750rpx;height:300rpx;'></image>
+  <image bindtap='toGoodsDetail' id='{{hotGoods[1].pro_id}}' src='{{hotGoods[1].img}}' style='width:750rpx;height:300rpx;'></image>
 </view>
 
 <view style='position:relative;height:15rpx;width:100%;'>
 </view>
 
 <view style='width:750rpx;height:300rpx;'>
-<image bindtap='toGoodsDetail' id='{{hotGoods[2].pro_id}}' src='{{hotGoods[2].img}}' style='width:750rpx;height:300rpx;'></image>
+  <image bindtap='toGoodsDetail' id='{{hotGoods[2].pro_id}}' src='{{hotGoods[2].img}}' style='width:750rpx;height:300rpx;'></image>
 </view>
 
 <view style='position:relative;height:15rpx;width:100%;'>

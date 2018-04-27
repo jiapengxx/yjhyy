@@ -107,6 +107,7 @@ Page({
       }
     })
   },
+
   //点击加载更多
   getMore: function (e) {
     var that = this;
@@ -145,6 +146,7 @@ Page({
       }
     })
   },
+
 
   changeIndicatorDots: function (e) {
     this.setData({

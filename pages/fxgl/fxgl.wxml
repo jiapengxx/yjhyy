@@ -1,6 +1,7 @@
 <!--pages/fxgl/fxgl.wxml-->
-<view style='width:750rpx;height:2296rpx;'>
+<scroll-view class='scroll' scroll-y style="height:100vh" scroll-top='{{scrollTop}}'>
 <image src='{{host}}/Public/images/icons/fxgl.jpg' style='width:750rpx;height:2296rpx;'></image>
 <button open-type='share' style='position:fixed;top:1125rpx;left:125rpx;width:500rpx;height:74rpx;background-color:#f08a2e;color:#fff;z-index:10;'>立即分享好友</button>
-</view>
+</scroll-view>
+
 

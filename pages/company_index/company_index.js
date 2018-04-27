@@ -17,8 +17,7 @@ Page({
     store:[],
     store2:[],
     host:app.d.hostImg,
-    hotGoods:[]
-    
+    hotGoods:[],
   },
   showInput: function () {
 
@@ -85,6 +84,30 @@ Page({
         });
       },
     })
+
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/News/list',
+      method: 'post',
+      data: {
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        that.setData({
+          list:res.data.list
+        })
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
+
+
+
     this.setData({
       icon: base64.icon20,
     })

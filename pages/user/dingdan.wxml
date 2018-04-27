@@ -19,7 +19,11 @@
     </view>
 
     <view class="shop df" wx:for="{{orderList0}}">
-      <image class="sh_slt" src="{{item.photo_x}}"></image>
+      
+          <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+          <image class="sh_slt" src="{{item.photo_x}}"></image>
+          </navigator>
+
       <view class="df_1">
         <view class="sp_text">
           <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
@@ -48,7 +52,9 @@
       <text>没有可用订单/(ㄒoㄒ)/~~</text>
     </view>
     <view class="shop df" wx:for="{{orderList1}}">
-      <image class="sh_slt" src="{{item.photo_x}}"></image>
+      <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+          <image class="sh_slt" src="{{item.photo_x}}"></image>
+          </navigator>
       <view class="df_1">
         <view class="sp_text">
           <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
@@ -73,7 +79,9 @@
       <text>没有可用订单/(ㄒoㄒ)/~~</text>
     </view>
     <view class="shop df" wx:for="{{orderList2}}">
-      <image class="sh_slt" src="{{item.photo_x}}"></image>
+      <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+          <image class="sh_slt" src="{{item.photo_x}}"></image>
+          </navigator>
       <view class="df_1">
         <view class="sp_text">
           <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
@@ -99,7 +107,9 @@
       <text>没有可用订单/(ㄒoㄒ)/~~</text>
     </view>
     <view class="shop df" wx:for="{{orderList3}}">
-      <image class="sh_slt" src="{{item.photo_x}}"></image>
+      <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+          <image class="sh_slt" src="{{item.photo_x}}"></image>
+          </navigator>
       <view class="df_1">
         <view class="sp_text">
           <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
@@ -132,7 +142,9 @@
     </view>
 
     <view class="shop df" wx:for="{{orderList4}}">
-      <image class="sh_slt" src="{{item.photo_x}}"></image>
+      <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+          <image class="sh_slt" src="{{item.photo_x}}"></image>
+          </navigator>
       <view class="df_1">
         <view class="sp_text">
           <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">

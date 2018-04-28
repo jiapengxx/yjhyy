@@ -42,7 +42,8 @@
     "pages/share/share",
     "pages/myAcount/myAcount",
     "pages/jbtx/jbtx",
-    "pages/fxgl/fxgl"
+    "pages/fxgl/fxgl",
+    "pages/jrwm/jrwm"
   ],
   "window": {
     "backgroundTextStyle": "light",

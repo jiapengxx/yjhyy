@@ -42,7 +42,11 @@
     "pages/share/share",
     "pages/myAcount/myAcount",
     "pages/jbtx/jbtx",
-    "pages/fxgl/fxgl"
+    "pages/fxgl/fxgl",
+    "pages/zxjy/zxjy",
+    "pages/jkbg/jkbg",
+    "pages/jkbk/jkbk",
+    "pages/jkzx/jkzx"
   ],
   "window": {
     "backgroundTextStyle": "light",

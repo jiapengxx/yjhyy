@@ -470,6 +470,28 @@ if(this.data.collect==0){
         });
       }
     });
+
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/BCollet/pro_save',
+      method: 'post',
+      data: {
+        uid: app.d.userId,
+        pro_id: that.data.pro_id,
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res)
+      },
+      fail: function () {
+        // fail
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    });
   },
 
   addShopCart:function(e){ //添加到购物车

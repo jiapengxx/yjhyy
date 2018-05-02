@@ -1,15 +1,15 @@
 // app.js
 App({
   d: {
-    hostUrl: 'https://tanghuzhao.com.cn/index.php',
-    // hostUrl: 'http://www.xshoph.com/index.php',
+    // hostUrl: 'https://tanghuzhao.com.cn/index.php',
+    hostUrl: 'http://www.xshoph.com/index.php',
     hostImg: 'https://tanghuzhao.com.cn',
     hostVideo: 'http://zhubaotong-file.oss-cn-beijing.aliyuncs.com',
     userId: 0,
     appId: "",
     appKey: "",
-    // ceshiUrl: 'http://www.xshoph.com/index.php',
-    ceshiUrl: 'https://tanghuzhao.com.cn/index.php',
+    ceshiUrl: 'http://www.xshoph.com/index.php',
+    // ceshiUrl: 'https://tanghuzhao.com.cn/index.php',
   },
   position: function () {
     var that = this
@@ -18,12 +18,6 @@ App({
       success: function (res) {
         var latitude = res.latitude;
         var longitude = res.longitude;
-        // wx.openLocation({
-        //   latitude: 40.0164199815,
-        //   longitude: 116.4756077528,
-        //   address: '北京市朝阳区时代凌宇大厦容创路17号(容创路与创达二路交叉口)',
-        // })
-        // that.d.latitude = latitude;
         that.d.latitude = latitude;
         that.d.longitude = longitude;
       }

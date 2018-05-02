@@ -60,7 +60,7 @@
 <view class="person_box">
   <view class="phone_select" hidden="{{selectPerson}}">
     <block wx:for="{{types}}" wx:key="id" wx:for-item="item">
-      <view class="select_one" bindtap="mySelect" data-me="{{item.type_name}}">{{item.type_name}}</view>
+      <view class="select_one" bindtap="mySelect" data-me="{{item.name}}">{{item.name}}</view>
     </block>
   </view>
   </view>

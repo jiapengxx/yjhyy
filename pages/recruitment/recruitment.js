@@ -27,7 +27,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '/Api/BType/index',
+      url: app.d.ceshiUrl + '/Api/BIndex/sccat',
       method: 'post',
       data: {
       },

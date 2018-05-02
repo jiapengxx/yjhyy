@@ -105,6 +105,7 @@ console.log(that.data.uid)
       data: {
         pro_id: that.data.pro_id,
         r_uid: that.data.uid,
+        u_id:app.d.userId
         // u_id: 22
         // u_id: that.data.u_id
       },
@@ -463,28 +464,6 @@ if(this.data.collect==0){
         }
       },
       fail: function() {
-        // fail
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      }
-    });
-
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/BCollet/pro_save',
-      method: 'post',
-      data: {
-        uid: app.d.userId,
-        pro_id: that.data.pro_id,
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res)
-      },
-      fail: function () {
         // fail
         wx.showToast({
           title: '网络异常！',

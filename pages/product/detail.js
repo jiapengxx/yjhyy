@@ -30,7 +30,8 @@ Page({
     //准备数据
     //数据结构：以一组一组来进行设定
      commodityAttr:[],
-     attrValueList: []
+     attrValueList: [],
+     
   },
   // 弹窗
   setModalStatus: function (e) {
@@ -86,7 +87,7 @@ Page({
   onLoad: function (option) {
     //this.initNavHeight();
     var that = this;
-    that.setData({
+    this.setData({
       pro_id: option.pro_id,
       uid: app.d.userId,
       r_uid: option.r_uid
@@ -105,6 +106,7 @@ console.log(that.data.uid)
       data: {
         pro_id: that.data.pro_id,
         r_uid: that.data.uid,
+        u_id: app.d.userId,
         // u_id: 22
         // u_id: that.data.u_id
       },
@@ -124,6 +126,7 @@ console.log(that.data.uid)
             bannerItem:pro.img_arr,
             commodityAttr:res.data.commodityAttr,
             attrValueList:res.data.attrValueList,
+            collect:res.data.pro.collect
           });
         } else {
           wx.showToast({
@@ -471,27 +474,7 @@ if(this.data.collect==0){
       }
     });
 
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/BCollet/pro_save',
-      method: 'post',
-      data: {
-        uid: app.d.userId,
-        pro_id: that.data.pro_id,
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res)
-      },
-      fail: function () {
-        // fail
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      }
-    });
+
   },
 
   addShopCart:function(e){ //添加到购物车

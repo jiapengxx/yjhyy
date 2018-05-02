@@ -33,7 +33,7 @@
           <image id='{{idx}}'src='https://tanghuzhao.com.cn/Public/images/btn_cancel.png' bindtap='changePoint' class="{{idx==itemId?'point_on':'point'}}">
           </image>
 
-          <button bindtap='cancel' class="{{idx==itemId?'cancel_on':'cancel'}}">
+          <button id='{{item.store_id}}' bindtap='cancel' class="{{idx==itemId?'cancel_on':'cancel'}}">
           取消关注
           </button>
         </view>

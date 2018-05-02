@@ -35,8 +35,8 @@
 </view>
 
 <view class='mContainer'>
-  <block wx:for="{{tttype}}" wx:key="id">
-    <image id='{{item.t_id}}' bindtap='fiveBlocks' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src="{{item.src}}">{{item.type_name}}</image>
+  <block wx:for="{{tttype}}" wx:key="id" wx:for-index="idx">
+    <image id='{{idx}}' bindtap='fiveBlocks' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src="{{item.src}}">{{item.type_name}}</image>
   </block>
 </view>
 
@@ -57,23 +57,23 @@
 <view bindtap='toYhq' style='position:relative;height:172rpx;width:100%;'>
   <image src='https://tanghuzhao.com.cn/Public/images/card.png' style='height:172rpx;width:100%;'></image>
 </view> -->
-<view style='position:relative;width:750rpx;height:160rpx;'>
-  <view style='position:relative;width:702rpx;top:14rpx;left:24rpx;height:60rpx;background-color:#fff;border-radius:30rpx;z-index:20;'>
-    <text style='position:relative;left:20rpx;font-size:30rpx;color:#333;font-weight:900;'>今日快报</text>
-    <!-- <text style='position:relative;left:44rpx;font-size:26rpx;color:#333;'>{{}}李克强要求优先提速远程医疗</text> -->
-    <swiper style='position:relative;left:160rpx;top:-45rpx;height:60rpx;width:480rpx;'  vertical="true" autoplay="true" circular="true" interval="2000">
+<view style='position:relative;width:750rpx;height:160rpx;background-color:#ebebeb;'>
+  <view style='position:relative;width:702rpx;top:30rpx;left:24rpx;height:100rpx;background-color:#fff;border-radius:5rpx;'>
+    <text style='position:relative;top:-7rpx;left:20rpx;height:64rpx;width:64rpx;font-size:30rpx;color:#ff0000;font-weight:900;'>今日\n快报</text>
+
+    <swiper style='position:relative;left:100rpx;top:-112rpx;height:100rpx;width:460rpx;'  vertical="true" autoplay="true" circular="true" interval="2000">
       <block wx:for="{{list}}">
         <swiper-item>
-          <view style='font-size:26rpx;color:#333;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;letter-spacing: 1rpx;'>{{item.name}}</view>
+          <text id='{{item.id}}' bindtap='toNewsDetail'  style='font-size:32rpx;height:100rpx;color:#333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:2;letter-spacing: 1rpx;'>{{item.name}}</text>
         </swiper-item>
       </block>
     </swiper>
-
-
-
-    <text bindtap='toJrkb' style='position:relative;left:630rpx;top:-115rpx;font-size:28rpx;color:#333;'>更多</text>
+    <button bindtap='toJrkb'style='position:relative;height:50rpx;width:120rpx;left:270rpx;top:-184rpx;color:#ff0000;border:#ff0000 solid 1rpx;background-color:#fff;'>
+    <text style='position:relative;left:rpx;top:-22rpx;font-size:30rpx;'>更多</text>
+    </button>
   </view>
-  <image src='{{hotGoods[3].img}}' style='position:relative;top:-60rpx;width:750rpx;height:160rpx;z-index:10;'></image>
+
+
 </view>
 <view style='position:relative;height:15rpx;width:100%;'>
 </view>
@@ -99,20 +99,19 @@
 <view style='position:relative;height:15rpx;width:100%;'>
 </view>
 
-<scroll-view scroll-y style='position:relative;width:100%;height:925rpx;'>
+<scroll-view scroll-y style='position:relative;width:100%;'>
+<!--此处scroll-view 原值 height:925rpx;控制滚动条的高度 -->
   <view class="swiper-tab">
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">距离最近</view>
     <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">销量最高</view>
     <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">评价最高</view>
-    <!-- <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">全部</view> -->
   </view>
-
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{height}}rpx;' bindchange="bindChange">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{currentTab==0?height:(currentTab==1?height1:height2)}}rpx;' bindchange="bindChange">
     <swiper-item>
       <block wx:for="{{sseller}}" wx:key="id" wx:for-item="item">
         <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
-            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
+            <image src="{{host}}/{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
@@ -136,7 +135,7 @@
     </swiper-item>
 
     <swiper-item>
-      <block wx:for="{{store}}" wx:key="id" wx:for-item="item">
+      <block wx:for="{{store1}}" wx:key="id" wx:for-item="item">
         <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
             <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>

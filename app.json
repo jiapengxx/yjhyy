@@ -43,7 +43,11 @@
     "pages/myAcount/myAcount",
     "pages/jbtx/jbtx",
     "pages/fxgl/fxgl",
-    "pages/jrwm/jrwm"
+    "pages/jrwm/jrwm",
+    "pages/zxjy/zxjy",
+    "pages/jkbg/jkbg",
+    "pages/jkbk/jkbk",
+    "pages/jkzx/jkzx"
   ],
   "window": {
     "backgroundTextStyle": "light",

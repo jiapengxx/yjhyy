@@ -18,14 +18,28 @@ Page({
     cartId: 0
   },
   formSubmit: function (e) {
+    var  that=this
     var adds = e.detail.value;
+    //对手机号进行审核
+    if (!(/^1(3|4|5|7|8)\d{9}$/.test(adds.phone))) {
+      this.setData({
+        phoneRight: false,
+        phone:''
+      })
+      
+    } else {
+      this.setData({
+        phoneRight: true,
+        phone:adds.phone
+      })
+    }
     var cartId = this.data.cartId;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Address/add_adds',
       data: {
         user_id: app.d.userId,
         receiver: adds.name,
-        tel: adds.phone,
+        tel: that.data.phone,
         sheng: this.data.sheng,
         city: this.data.city,
         quyu: this.data.area,
@@ -39,7 +53,7 @@ Page({
       success: function (res) {
         // success
         var status = res.data.status;
-        if (status == 1) {
+        if (status == 1 && that.data.phoneRight) {
           wx.showToast({
             title: '保存成功！',
             duration: 2000
@@ -47,13 +61,23 @@ Page({
           setTimeout(function () {
             wx.redirectTo({
               url: 'user-address/user-address?cartId=' + cartId
-            })}
+            })
+          }
             , 1000)
-        } else {
-          wx.showToast({
-            title: res.data.err,
-            duration: 2000
-          });
+        }  
+        else {
+          if (status == 1&&!that.data.phoneRight) {
+            wx.showToast({
+              title: '请填写正确的手机号',
+              duration: 2000
+            });
+          }else{
+            wx.showToast({
+              title: res.data.err,
+              duration: 2000
+            });
+          }
+
         }
 
       },

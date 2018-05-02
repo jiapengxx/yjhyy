@@ -6,7 +6,7 @@ page{
 .banner{
   width: 100%;
   height: 300rpx;
-  
+
 }
 .swiper-container{
   width: 100%;

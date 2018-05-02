@@ -68,13 +68,14 @@ Page({
           banners: ad,
           tttype: ttype,
           sseller: seller,
-          store:store1,
+          store1:store1,
           store2:store2, 
           hotGoods:hotgood       
         });
-      console.log(app.d.latitude);
         that.setData({
           height: 176 * that.data.sseller.length,
+          height1: 176 * that.data.store1.length,
+          height2: 176 * that.data.store2.length,
         })
       },
       fail: function (e) {
@@ -139,6 +140,12 @@ Page({
       url: '../jrkb/jrkb',
     })
   },
+  toNewsDetail:function(e){
+    var news_id=e.target.id
+    wx.navigateTo({
+      url: '../newsDetail/newsDetail?news_id=' + news_id,
+    })
+  },
   /**     * 滑动切换tab     */
   bindChange: function (e) {
     var that = this;
@@ -171,12 +178,31 @@ Page({
   //   }
   // },
   fiveBlocks: function (e) {
-    var type_id = e.target.id
+    var id = e.target.id
+    if (id == 0) {
+      this.setData({
+        url: '../live/live'
+      })
+    } else if (id == 1) {
+      this.setData({
+        url: '../jkbk/jkbk'
+      })
+    } else if (id == 2) {
+      this.setData({
+        url: '../jkbg/jkbg'
+      })
+    } else if (id == 3) {
+      this.setData({
+        url: '../jkzx/jkzx'
+      })
+    } else {
+      this.setData({
+        url: '../fxgl/fxgl'
+      })
+    }
     wx.navigateTo({
-      url: '../company_category/company_category?type_id=' + type_id,
+      url: this.data.url,
     })
-    
-    console.log(type_id)
   },
   toBtoC: function (e) {
     var store_Id = e.currentTarget.id;

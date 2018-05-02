@@ -181,7 +181,7 @@ Page({
     var id = e.target.id
     if (id == 0) {
       this.setData({
-        url: '../zxjy/zxjy'
+        url: '../live/live'
       })
     } else if (id == 1) {
       this.setData({

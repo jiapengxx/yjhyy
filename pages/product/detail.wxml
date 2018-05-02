@@ -81,22 +81,20 @@
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==2?(All.length*440+238):(winHeight-31)}}rpx" bindchange="bindChange">
     <!-- 图文详情 -->
     <swiper-item>
+    <video id="myVideo" initial-time='1' style='height:360rpx;width:750rpx;' src="http://vliveachy.tc.qq.com/vhot2.qqvideo.tc.qq.com/AtMGWitfVjXH8FQnyHRmmvUuGld2LRjVPs2JWQw0JtgE/j0506mcuure.mp4?sdtfrom=v1010&guid=5f1e8f2142f3e32371907b58bcd48916&vkey=5C1F1B0DD610963A5E2A6C718F79650E91C81A07A50D5A5217C94D31B3D4CC75103AAA1560D65214C81DB62128A296680CD8F9B06367929ABBB77A2CEDA1B8CB6D97BDB984A6FA92EA7C4AED8A4A925DB99FA66166E541CAA5846A4DB1F0AA771984D14F25C6385E9E1C6E44FA332BE9D7CA3E9775D8C225&ocid=198514860&ocid=799544748"   ></video> 
     <!--原有详情模板  -->
-      <!-- <import src="../../wxParse/wxParse.wxml" />
+       <import src="../../wxParse/wxParse.wxml" />
+
       <view class="wxParse">
         <scroll-view style="height:2000rpx;" scroll-y='true'>
           <template is="wxParse" data="{{wxParseData:content.nodes}}" />
         </scroll-view>
-      </view> -->
+      </view> 
 
     <!--引入视频  -->
 
-  <video id="myVideo" initial-time='1' style='height:360rpx;width:750rpx;' src="http://vliveachy.tc.qq.com/vhot2.qqvideo.tc.qq.com/AtMGWitfVjXH8FQnyHRmmvUuGld2LRjVPs2JWQw0JtgE/j0506mcuure.mp4?sdtfrom=v1010&guid=5f1e8f2142f3e32371907b58bcd48916&vkey=5C1F1B0DD610963A5E2A6C718F79650E91C81A07A50D5A5217C94D31B3D4CC75103AAA1560D65214C81DB62128A296680CD8F9B06367929ABBB77A2CEDA1B8CB6D97BDB984A6FA92EA7C4AED8A4A925DB99FA66166E541CAA5846A4DB1F0AA771984D14F25C6385E9E1C6E44FA332BE9D7CA3E9775D8C225&ocid=198514860&ocid=799544748"   ></video>
+   
 <!--根据进入的位置判断图片大小  -->
-<view style='height:{{}}rpx;width:750rpx;'>
-<!--引入产品图片  -->
-<image src=''></image>
-</view>
     </swiper-item>
     <!-- 产品参数 -->
     <swiper-item>

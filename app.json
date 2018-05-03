@@ -48,7 +48,9 @@
     "pages/jkbg/jkbg",
     "pages/jkbk/jkbk",
     "pages/jkzx/jkzx",
-    "pages/gold/gold"
+    "pages/gold/gold",
+    "pages/wuliu/wuliu",
+    "pages/order/wuliu"
   ],
   "window": {
     "backgroundTextStyle": "light",

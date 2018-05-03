@@ -147,7 +147,7 @@ Page({
       method: 'post',
       data: {
         uid: app.d.userId,
-        store_id: that.data.store_id,
+        store_id: store_id,
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'

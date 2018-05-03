@@ -1,5 +1,5 @@
 page {
-  background: #efeff4;
+  background: #fff;
 }
 
 /* pages/address/address.wxss */
@@ -27,7 +27,7 @@ button {
   position: fixed;
   bottom: 40rpx;
   color: #fff;
-  background-color: #fc0;
+  background-color: #4BA3FE;
 }
 
 .picker {

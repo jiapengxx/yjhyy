@@ -109,13 +109,13 @@
 
     <image style='height:20rpx;width:100%;background-color:gainsboro'></image>
 
-    <view style='height:450rpx;'>
+    <view style='height:450rpx;border-bottom:0.1rpx solid gainsboro;'>
       <text style='position:relative;top:10rpx;left:30rpx;'>介绍</text>
       <textarea name='introduce' bindblur='introduce' placeholder='请输入介绍' style='position:relative;top:25rpx;left:30rpx;height:350rpx;width:690rpx;'>
       </textarea>
     </view>
-    <view style='height:250rpx;background-color:gainsboro'>
-      <button formType="submit"   style='position:relative;top:87.5rpx;width:580rpx;background:lightblue;'>提交</button>
+    <view style='height:250rpx;background-color:＃fff'>
+      <button formType="submit"   style='position:relative;top:87.5rpx;width:580rpx;background:＃4BA3FE;'>提交</button>
     </view>
   </form>
 </view>

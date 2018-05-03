@@ -47,7 +47,8 @@
     "pages/zxjy/zxjy",
     "pages/jkbg/jkbg",
     "pages/jkbk/jkbk",
-    "pages/jkzx/jkzx"
+    "pages/jkzx/jkzx",
+    "pages/gold/gold"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -67,7 +68,7 @@
         "pagePath": "pages/company_shop/company_shop",
         "iconPath": "images/shop-icon.png",
         "selectedIconPath": "images/shopSelected-icon.png",
-        "text": "药店"
+        "text": "商家"
       },
       {
         "pagePath": "pages/company_cart/company_cart",

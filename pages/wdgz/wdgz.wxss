@@ -52,7 +52,7 @@ page {
 
 .cancel_on {
   position: relative;
-  top: -234rpx;
+  top: -218rpx;
   line-height: 162rpx;
   left: 265rpx;
   height: 162rpx;

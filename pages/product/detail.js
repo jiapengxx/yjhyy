@@ -30,7 +30,8 @@ Page({
     //准备数据
     //数据结构：以一组一组来进行设定
      commodityAttr:[],
-     attrValueList: []
+     attrValueList: [],
+     
   },
   // 弹窗
   setModalStatus: function (e) {
@@ -86,7 +87,7 @@ Page({
   onLoad: function (option) {
     //this.initNavHeight();
     var that = this;
-    that.setData({
+    this.setData({
       pro_id: option.pro_id,
       uid: app.d.userId,
       r_uid: option.r_uid
@@ -104,8 +105,8 @@ console.log(that.data.uid)
       method:'post',
       data: {
         pro_id: that.data.pro_id,
-        r_uid: that.data.uid,
-        u_id:app.d.userId
+        r_uid: app.d.userId,
+        u_id: 22,
         // u_id: 22
         // u_id: that.data.u_id
       },
@@ -125,6 +126,7 @@ console.log(that.data.uid)
             bannerItem:pro.img_arr,
             commodityAttr:res.data.commodityAttr,
             attrValueList:res.data.attrValueList,
+            collect:res.data.pro.collect
           });
         } else {
           wx.showToast({

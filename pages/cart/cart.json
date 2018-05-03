@@ -1,3 +1,6 @@
 {
- "navigationBarTitleText": "购物车"
+ "backgroundTextStyle": "light",
+"navigationBarBackgroundColor": "#008842",
+"navigationBarTitleText": "购物车",
+"navigationBarTextStyle": "white"
 }

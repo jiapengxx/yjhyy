@@ -90,5 +90,40 @@ Page({
      })
    }
 
+  },
+  totixian:function(){
+    var that = this
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Wxmon/wxpay',
+      method: 'post',
+      data: { 
+        enc_bank_no: 213123,
+        enc_true_name: 213123,
+        amount: 123123
+         },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var status = res.data.status;
+        if (status == 1) {
+          wx.showToast({
+            title: res.data.err,
+            duration: 2000
+          });
+        } else {
+          wx.showToast({
+            title: res.data.err,
+            duration: 2000
+          });
+        }
+      },
+      error: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
   }
 })

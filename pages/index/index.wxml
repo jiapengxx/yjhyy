@@ -1,9 +1,8 @@
 <!-- index.wxml -->
-
 <import src="../../utils/tabBar.wxml"/>
-<template is="tabBar" data="{{tabBar}}"/> 
-
- <scroll-view scroll-y style=" position:fixed;top:0px;height:90.5%;"> 
+<template is="tabBar" data="{{tabBar}}"/>
+<button bindtap='gzsj' style='position:fixed;right:0rpx;bottom:150rpx;width:150rpx;height:50rpx;font-size:30rpx;z-index:10;line-height:50rpx;background-color:red;color:#fff'>关  注</button> 
+<scroll-view scroll-y style=" position:fixed;top:0px;height:90.5%;"> 
 <view class="page">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <navigator url="../product/detail?productId={{item.product_id}}"  wx:for="{{imgUrls}}">
@@ -41,7 +40,4 @@
     </view>
     <view class="clear mt10" bindtap="getMore">点击查看更多</view>
   </view>
-
-
- 
 </scroll-view > 

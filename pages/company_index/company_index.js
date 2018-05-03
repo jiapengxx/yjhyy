@@ -13,11 +13,11 @@ Page({
     inputVal: "",
     banners: [],
     tttype: [],
-    sseller: [],
-    store:[],
-    store2:[],
     host:app.d.hostImg,
     hotGoods:[],
+    distance1: [],
+    distance2: [],
+    distance3: [],
   },
   showInput: function () {
 
@@ -46,13 +46,10 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
-    console.log(app.d.latitude+"1111");
     wx.request({
       url: app.d.ceshiUrl + '/Api/BIndex/show',
       method: 'post',
       data: {
-        latitude: app.d.latitude,
-        longitude: app.d.longitude
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -67,7 +64,7 @@ Page({
         that.setData({  
           banners: ad,
           tttype: ttype,
-          sseller: seller,
+          sseller:seller,
           store1:store1,
           store2:store2, 
           hotGoods:hotgood       
@@ -76,6 +73,62 @@ Page({
           height: 176 * that.data.sseller.length,
           height1: 176 * that.data.store1.length,
           height2: 176 * that.data.store2.length,
+        })
+        //long1为商家经度 la1为商家纬度
+        wx.getLocation({
+          success: function (res) {
+            var long2 = res.longitude
+            var la2 = res.latitude
+            console.log(long2,la2)
+            //对附近商家进行处理
+            for (var i = 0; i < that.data.sseller.length; i++) {
+              var la1 = parseFloat(that.data.sseller[i].latitude)
+              var long1 = parseFloat(that.data.sseller[i].longitude)
+              var rad1 = la1 * Math.PI / 180.0;
+              var rad2 = la2 * Math.PI / 180.0;
+              var a = rad1 - rad2;
+              var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
+              var r = 6378.137;
+              var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+              that.setData({
+                distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
+              })
+            }
+            //对销量商家进行处理
+            for (var i = 0; i < that.data.store1.length; i++) {
+              var la1 = parseFloat(that.data.store1[i].latitude)
+              var long1 = parseFloat(that.data.store1[i].longitude)
+              var rad1 = la1 * Math.PI / 180.0;
+              var rad2 = la2 * Math.PI / 180.0;
+              var a = rad1 - rad2;
+              var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
+              var r = 6378.137;
+              var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+              that.setData({
+                distance2: that.data.distance2.concat({ distance: distance.toFixed(1) })
+              })
+            }
+            //对评价商家进行处理
+            for (var i = 0; i < that.data.store2.length; i++) {
+              var la1 = parseFloat(that.data.store2[i].latitude)
+              var long1 = parseFloat(that.data.store2[i].longitude)
+              var rad1 = la1 * Math.PI / 180.0;
+              var rad2 = la2 * Math.PI / 180.0;
+              var a = rad1 - rad2;
+              var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
+              var r = 6378.137;
+              var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+              that.setData({
+                distance3: that.data.distance3.concat({ distance: distance.toFixed(1) })
+              })
+            }
+          },
+          fail: function (e) {
+            wx.showToast({
+              title: '网络异常！',
+              duration: 2000
+            });
+          },
         })
       },
       fail: function (e) {
@@ -106,13 +159,9 @@ Page({
         });
       },
     })
-
-
-
     this.setData({
       icon: base64.icon20,
     })
-
     /**     * 获取系统信息     */
     wx.getSystemInfo({
       success: function (res) {
@@ -122,7 +171,6 @@ Page({
         });
       }
     })
-
   },
 
   toLive: function () {

@@ -174,6 +174,7 @@ recOrder:function(e){
             });
             break;  
         }
+        console.log(that.data.orderList2)
       },
       fail: function () {
         // fail

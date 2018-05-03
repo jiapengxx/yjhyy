@@ -1,4 +1,4 @@
-//index.js  
+
 //获取应用实例  
 var app = getApp();
 //引入这个插件，使html内容自动转换成wxml内容
@@ -570,3 +570,4 @@ if(this.data.collect==0){
     }
   }
 });
+

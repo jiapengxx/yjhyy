@@ -92,7 +92,7 @@
           <navigator class="font_12 red fl_r" url="tuihuo?orderId={{item.id}}">申请退款</navigator>
           <view class="font_12 red fl_r mr_5" bindtap="recOrder" data-order-id="{{item.id}}">确认收货</view>
           <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
-          <navigator url="../order/wuliu?orderId={{item.id}}" class="font_12 red fl_r mr_5">查看物流</navigator>
+          <navigator url="../order/wuliu?order_id={{item.order_sn}}&wuliu_id={{item.kuaidi_num}}" class="font_12 red fl_r mr_5">查看物流</navigator>
         </view>
       </view>
     </view>

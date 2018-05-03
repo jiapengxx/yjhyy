@@ -1,3 +1,4 @@
+
 {
   "pages": [
     "pages/company_index/company_index",
@@ -47,7 +48,9 @@
     "pages/zxjy/zxjy",
     "pages/jkbg/jkbg",
     "pages/jkbk/jkbk",
-    "pages/jkzx/jkzx"
+    "pages/jkzx/jkzx",
+    "pages/gold/gold",
+    "pages/order/wuliu"
   ],
   "window": {
     "backgroundTextStyle": "light",

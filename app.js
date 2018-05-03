@@ -18,12 +18,6 @@ App({
       success: function (res) {
         var latitude = res.latitude;
         var longitude = res.longitude;
-        // wx.openLocation({
-        //   latitude: 40.0164199815,
-        //   longitude: 116.4756077528,
-        //   address: '北京市朝阳区时代凌宇大厦容创路17号(容创路与创达二路交叉口)',
-        // })
-        // that.d.latitude = latitude;
         that.d.latitude = latitude;
         that.d.longitude = longitude;
       }
@@ -365,10 +359,4 @@ App({
     shareProfile: '百款精品商品，总有一款适合您'
   }
    //可以修改服务器路径获取到页面信息
-  
 });
-
-
-
-
-

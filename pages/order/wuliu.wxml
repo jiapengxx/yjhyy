@@ -1,0 +1,65 @@
+<view style='border-top:1rpx solid #ebebeb;'>
+<text style='margin-left:24rpx;font-size:26rpx;color:#333333;'>运单号：</text><text  style='font-size:28rpx;color:#333333;'>{{OrderCode}}\n</text>
+<text style='margin-left:24rpx;font-size:26rpx;color:#333333;'>承运人：{{ShipperCode}}\n</text>
+<text style='margin-left:24rpx;font-size:26rpx;color:#333333;'>承运人电话：</text>
+<text style='font-size:26rpx;color:#0a84fc;'>{{EBusinessID}}</text>
+</view>
+<view style='height:16rpx;background-color:#ebebeb'></view>
+<view style='margin-left:24rpx;width:702rpx;'>
+<block wx:for="{{list}}" wx:for-item="item" wx:for-index="idx">
+
+<block wx:if="{{idx==0}}">
+<view style='border-bottom:1rpx solid #ebebeb;margin-top:30rpx;margin-bottom:30rpx;'>
+<text style='font-size:26rpx;color:#333333;'>{{item.AcceptStation}}\n</text>
+<text style='font-size:22rpx;color:#666666;'>{{item.AcceptTime}}</text>
+</view>
+</block>
+
+<block wx:else>
+<view style='border-bottom:1rpx solid #ebebeb;margin-top:30rpx;margin-bottom:30rpx;'>
+<text style='font-size:26rpx;color:#999999;'>{{item.AcceptStation}}\n</text>
+<text style='font-size:22rpx;color:#999999;'>{{item.AcceptTime}}</text>
+</view>
+</block>
+
+</block>
+
+
+<!-- 
+<view style='border-bottom:1rpx solid #ebebeb;margin-top:30rpx;margin-bottom:30rpx;'>
+<text style='font-size:26rpx;color:#333333;'>由［泉州转运中心］发往［北京转运中心］\n</text>
+<text style='font-size:22rpx;color:#666666;'>2018-05-02 23:21:39</text>
+</view>
+
+<view style='border-bottom:1rpx solid #ebebeb;margin-top:30rpx;margin-bottom:30rpx;'>
+<text style='font-size:26rpx;color:#999999;'>由［泉州转运中心］已收入\n</text>
+<text style='font-size:22rpx;color:#999999;'>2018-05-02 23:21:39</text>
+</view>
+
+<view style='border-bottom:1rpx solid #ebebeb;margin-top:30rpx;margin-bottom:30rpx;'>
+<text style='font-size:26rpx;color:#999999;'>由［福建泉州市公司］发往［泉州转运中心］\n</text>
+<text style='font-size:22rpx;color:#999999;'>2018-05-02 23:21:39</text>
+</view>
+
+<view style='border-bottom:1rpx solid #ebebeb;margin-top:30rpx;margin-bottom:30rpx;'>
+<text style='font-size:26rpx;color:#999999;'>由［泉州转运中心］已打包\n</text>
+<text style='font-size:22rpx;color:#999999;'>2018-05-02 23:21:39</text>
+</view>
+
+<view style='border-bottom:1rpx solid #ebebeb;margin-top:30rpx;margin-bottom:30rpx;'>
+<text style='font-size:26rpx;color:#999999;'>已揽件［泉州转运中心］的收货员［张三］已收件已揽件［泉州转运中心］的收货员［张三］已收件\n</text>
+<text style='font-size:22rpx;color:#999999;'>2018-05-02 23:21:39</text>
+</view>
+
+<view style='border-bottom:1rpx solid #ebebeb;margin-top:30rpx;margin-bottom:30rpx;'>
+<text style='font-size:26rpx;color:#999999;'>已发货［卖家已发货］\n</text>
+<text style='font-size:22rpx;color:#999999;'>2018-05-02 23:21:39</text>
+</view>
+
+
+<view style='border-bottom:1rpx solid #ebebeb;'>
+<text style='font-size:26rpx;color:#999999;'>已下单［您的订单已开始处理］\n</text>
+<text style='font-size:22rpx;color:#999999;'>2018-05-02 23:21:39</text>
+</view>-->
+
+ </view>  

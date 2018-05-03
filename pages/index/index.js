@@ -146,8 +146,6 @@ Page({
       }
     })
   },
-
-
   changeIndicatorDots: function (e) {
     this.setData({
       indicatorDots: !this.data.indicatorDots
@@ -234,8 +232,33 @@ Page({
         url: '',
       })
     }
-   
-
+  },
+  gzsj:function(){
+    var that = this;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Shangchang/shop_collect',
+      method: 'post',
+      data: {
+        store_id: app.d.store_Id,
+        uid: app.d.userId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res)
+        wx.showToast({
+          title: res.data.succ,
+          duration: 2000
+        });
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
   },
   onShareAppMessage: function () {
     return {

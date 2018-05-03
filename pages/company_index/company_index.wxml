@@ -59,18 +59,22 @@
 </view> -->
 <view style='position:relative;width:750rpx;height:160rpx;background-color:#ebebeb;'>
   <view style='position:relative;width:702rpx;top:30rpx;left:24rpx;height:100rpx;background-color:#fff;border-radius:5rpx;'>
-    <text style='position:relative;top:-7rpx;left:20rpx;height:64rpx;width:64rpx;font-size:30rpx;color:#ff0000;font-weight:900;'>今日\n快报</text>
+    <text style='position:relative;top:4rpx;left:20rpx;height:64rpx;width:64rpx;font-size:30rpx;color:#ff0000;font-weight:900;'>今日\n快报</text>
 
-    <swiper style='position:relative;left:100rpx;top:-112rpx;height:100rpx;width:460rpx;'  vertical="true" autoplay="true" circular="true" interval="2000">
+    <swiper style='position:relative;left:100rpx;top:-88rpx;height:100rpx;width:460rpx;'  vertical="true" autoplay="true" circular="true" interval="2000">
       <block wx:for="{{list}}">
         <swiper-item>
-          <text id='{{item.id}}' bindtap='toNewsDetail'  style='font-size:32rpx;height:100rpx;color:#333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:2;letter-spacing: 1rpx;'>{{item.name}}</text>
+        <block wx:if="{{item.name.length<14}}">
+        <text id='{{item.id}}' bindtap='toNewsDetail'  style='position:relative;top:20rpx;font-size:34rpx;height:100rpx;color:#333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:2;letter-spacing: 1rpx;'>{{item.name}}</text>
+        </block>
+          
+<block wx:else>
+<text id='{{item.id}}' bindtap='toNewsDetail'  style='font-size:34rpx;height:100rpx;color:#333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:2;letter-spacing: 1rpx;'>{{item.name}}</text>
+</block>
         </swiper-item>
       </block>
     </swiper>
-    <button bindtap='toJrkb'style='position:relative;height:50rpx;width:120rpx;left:270rpx;top:-184rpx;color:#ff0000;border:#ff0000 solid 1rpx;background-color:#fff;'>
-    <text style='position:relative;left:rpx;top:-22rpx;font-size:30rpx;'>更多</text>
-    </button>
+    <button bindtap='toJrkb'style='position:relative;height:50rpx;width:130rpx;left:270rpx;top:-164rpx;color:#ff0000;border:#ff0000 solid 1rpx;background-color:#fff;font-size:30rpx;line-height:48rpx;'>更多</button>
   </view>
 
 
@@ -108,14 +112,14 @@
   </view>
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{currentTab==0?height:(currentTab==1?height1:height2)}}rpx;' bindchange="bindChange">
     <swiper-item>
-      <block wx:for="{{sseller}}" wx:key="id" wx:for-item="item">
+      <block wx:for="{{sseller}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
             <image src="{{host}}/{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
-            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
+            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance1[idx].distance}}km\n</text>
             <!-- {{item.distance}} -->
 
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
@@ -135,14 +139,14 @@
     </swiper-item>
 
     <swiper-item>
-      <block wx:for="{{store1}}" wx:key="id" wx:for-item="item">
+      <block wx:for="{{store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
             <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
-            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
+            <text style='position:absolute;left:370rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance2[idx].distance}}km\n</text>
             <!-- {{item.distance}} -->
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
               评价:
@@ -152,7 +156,7 @@
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
             </view>
-            <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
+            <text style='position:absolute;left:370rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
             <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>介绍:{{item.introduce}}</text>
           </view>
         </view>
@@ -162,16 +166,15 @@
 
     <swiper-item>
 
-      <block wx:for="{{store2}}" wx:key="id" wx:for-item="item">
+      <block wx:for="{{store2}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
             <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
-            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
+            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance3[idx].distance}}km\n</text>
             <!-- {{item.distance}} -->
-
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
               评价:
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<1?2:3}}.png'></image>

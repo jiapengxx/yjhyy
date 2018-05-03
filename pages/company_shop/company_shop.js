@@ -75,7 +75,7 @@ Page({
             var rad2 = la2 * Math.PI / 180.0;
             var a = rad1 - rad2;
             var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
-            var r = 6378137;
+            var r = 6378.137;
             var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
             that.setData({
               distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
@@ -91,7 +91,7 @@ Page({
             var rad2 = la2 * Math.PI / 180.0;
             var a = rad1 - rad2;
             var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
-            var r = 6378137;
+            var r = 6378.137;
             var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
             that.setData({
               distance2: that.data.distance2.concat({ distance: distance.toFixed(1) })
@@ -107,10 +107,10 @@ Page({
             var rad2 = la2 * Math.PI / 180.0;
             var a = rad1 - rad2;
             var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
-            var r = 6378137;
+            var r = 6378.137;
             var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
             that.setData({
-              distance3: that.data.distance3.concat({ distance: distance.toFixed(1) })
+              distance3: that.data.distance3.concat({ distance: distance.toFixed(1)})
             })
           }
        
@@ -123,7 +123,7 @@ Page({
             var rad2 = la2 * Math.PI / 180.0;
             var a = rad1 - rad2;
             var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
-            var r = 6378137;
+            var r = 6378.137;
             var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
             that.setData({
               distance4: that.data.distance4.concat({ distance: distance.toFixed(1) })

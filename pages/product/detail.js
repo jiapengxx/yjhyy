@@ -5,21 +5,21 @@ var app = getApp();
 var WxParse = require('../../wxParse/wxParse.js');
 Page({
   firstIndex: -1,
-  data:{
+  data: {
     host: app.d.hostImg,
-    flag:1,
-    All:[],
-    Medium:[],
-    Good:[],
-    Bad:[],
-    bannerApp:true,
+    flag: 1,
+    All: [],
+    Medium: [],
+    Good: [],
+    Bad: [],
+    bannerApp: true,
     winWidth: 0,
     winHeight: 0,
     currentTab: 0, //tab切换  
-    pro_id:0,
-    itemData:{},
-    bannerItem:[],
-    buynum:1,
+    pro_id: 0,
+    itemData: {},
+    bannerItem: [],
+    buynum: 1,
     // 产品图片轮播
     indicatorDots: true,
     autoplay: true,
@@ -29,8 +29,9 @@ Page({
     firstIndex: -1,
     //准备数据
     //数据结构：以一组一组来进行设定
-     commodityAttr:[],
-     attrValueList: []
+    commodityAttr: [],
+    attrValueList: [],
+
   },
   // 弹窗
   setModalStatus: function (e) {
@@ -66,82 +67,86 @@ Page({
     }.bind(this), 200)
   },
   // 加减
-  changeNum:function  (e) {
+  changeNum: function (e) {
     var that = this;
     if (e.target.dataset.alphaBeta == 0) {
-        if (this.data.buynum <= 1) {
-            buynum:1
-        }else{
-            this.setData({
-                buynum:this.data.buynum - 1
-            })
-        };
-    }else{
+      if (this.data.buynum <= 1) {
+        buynum: 1
+      } else {
         this.setData({
-            buynum:this.data.buynum + 1
+          buynum: this.data.buynum - 1
         })
+      };
+    } else {
+      this.setData({
+        buynum: this.data.buynum + 1
+      })
     };
   },
   // 传值
   onLoad: function (option) {
     //this.initNavHeight();
+    console.log(option)
     var that = this;
-    that.setData({
+    this.setData({
       pro_id: option.pro_id,
       uid: app.d.userId,
       r_uid: option.r_uid
     });
     that.loadProductDetail();
     that.loadProductEvaluate();
-console.log(that.data.pro_id) 
-console.log(that.data.uid)   
+    console.log(that.data.pro_id)
+    console.log(that.data.uid)
   },
-// 商品详情数据获取
-  loadProductDetail:function(){
+  // 商品详情数据获取
+  loadProductDetail: function () {
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/index',
-      method:'post',
+      method: 'post',
       data: {
         pro_id: that.data.pro_id,
         r_uid: that.data.uid,
+        u_id: app.d.userId,
         // u_id: 22
         // u_id: that.data.u_id
       },
       header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         var status = res.data.status;
-        if(status==1) {   
+        if (status == 1) {
           var pro = res.data.pro;
-          var content=pro.content;
+          var content = pro.content;
           //that.initProductData(data);
           WxParse.wxParse('content', 'html', content, that, 3);
           console.log(res.data.attrValueList);
           that.setData({
-            itemData:pro,
-            bannerItem:pro.img_arr,
-            commodityAttr:res.data.commodityAttr,
-            attrValueList:res.data.attrValueList,
+            itemData: pro,
+            bannerItem: pro.img_arr,
+            commodityAttr: res.data.commodityAttr,
+            attrValueList: res.data.attrValueList,
+            collect: res.data.pro.collect,
+            store_id: res.data.pro.store_id
           });
         } else {
           wx.showToast({
-            title:res.data.err,
-            duration:2000,
+            title: res.data.err,
+            duration: 2000,
           });
         }
       },
-      error:function(e){
+      error: function (e) {
         wx.showToast({
-          title:'网络异常！',
-          duration:2000,
+          title: '网络异常！',
+          duration: 2000,
         });
       },
     });
   },
 
-//商品评价数据获取
+  //商品评价数据获取
   loadProductEvaluate: function () {
     var that = this;
     wx.request({
@@ -158,18 +163,18 @@ console.log(that.data.uid)
         //点击获取出各功能页中  各种参数
         //点击判断 渲染的内容  wx：if
         var all = res.data.product_dp
-.all
+          .all
         var good = res.data.product_dp
-.good
+          .good
         var bad = res.data.product_dp
-.bad
+          .bad
         var medium = res.data.product_dp
-.medium
+          .medium
         that.setData({
-          All:all,
-          Good:good,
-          Medium:medium,
-          Bad:bad
+          All: all,
+          Good: good,
+          Medium: medium,
+          Bad: bad
         })
         console.log(that.data.All)
         console.log(that.data.Good)
@@ -184,31 +189,31 @@ console.log(that.data.uid)
       },
     });
   },
-getFlag:function(e){
-  var ID=e.target.id
-  if(ID==1){
-  this.setData({
-    flag:1
-  })
-  }
-  if (ID == 2) {
-    this.setData({
-      flag: 2
-    })
-  }
-  if (ID == 3) {
-    this.setData({
-      flag: 3
-    })
-  }
-  if (ID == 4) {
-    this.setData({
-      flag: 4
-    })
-  }
+  getFlag: function (e) {
+    var ID = e.target.id
+    if (ID == 1) {
+      this.setData({
+        flag: 1
+      })
+    }
+    if (ID == 2) {
+      this.setData({
+        flag: 2
+      })
+    }
+    if (ID == 3) {
+      this.setData({
+        flag: 3
+      })
+    }
+    if (ID == 4) {
+      this.setData({
+        flag: 4
+      })
+    }
 
-},
-// 属性选择
+  },
+  // 属性选择
   onShow: function () {
     this.setData({
       includeGroup: this.data.commodityAttr
@@ -409,80 +414,63 @@ getFlag:function(e){
     }
   },
 
-  initProductData: function(data){
+  initProductData: function (data) {
     data["LunBoProductImageUrl"] = [];
 
     var imgs = data.LunBoProductImage.split(';');
-    for(let url of imgs){
+    for (let url of imgs) {
       url && data["LunBoProductImageUrl"].push(app.d.hostImg + url);
     }
-
-    data.Price = data.Price/100;
-    data.VedioImagePath = app.d.hostVideo + '/' +data.VedioImagePath;
-    data.videoPath = app.d.hostVideo + '/' +data.videoPath;
+    data.Price = data.Price / 100;
+    data.VedioImagePath = app.d.hostVideo + '/' + data.VedioImagePath;
+    data.videoPath = app.d.hostVideo + '/' + data.videoPath;
   },
-
-//添加到收藏
-  addFavorites:function(e){
+  toBtoC: function (e) {
+    var store_Id = e.currentTarget.id;
+    wx.navigateTo({
+      url: '../index/index?store_Id=' + store_Id,
+    })
+    app.d.store_Id = store_Id;
+  },
+  //添加到收藏
+  addFavorites: function (e) {
     var that = this;
-if(this.data.collect==0){
-  this.setData({
-    collect:1
-  })
-}else{
-  this.setData({
-    collect: 0
-  })
-}
+    if (this.data.collect == 0) {
+      this.setData({
+        collect: 1
+      })
+    } else {
+      this.setData({
+        collect: 0
+      })
+    }
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/col',
-      method:'post',
-      data: {
-        uid: app.d.userId,
-        pid: that.data.pro_id,
-      },
-      header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res)
-        // //--init data        
-        var data = res.data;
-        if(data.status == 1){
-          wx.showToast({
-            title: '操作成功！',
-            duration: 2000
-          });
-          //变成已收藏，但是目前小程序可能不能改变图片，只能改样式
-          that.data.itemData.isCollect = true;
-        }else{
-          wx.showToast({
-            title: data.err,
-            duration: 2000
-          });
-        }
-      },
-      fail: function() {
-        // fail
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      }
-    });
-
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/BCollet/pro_save',
       method: 'post',
       data: {
         uid: app.d.userId,
-        pro_id: that.data.pro_id,
+        pid: that.data.pro_id,
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         console.log(res)
+        // //--init data        
+        var data = res.data;
+        if (data.status == 1) {
+          wx.showToast({
+            title: '操作成功！',
+            duration: 2000
+          });
+          //变成已收藏，但是目前小程序可能不能改变图片，只能改样式
+          that.data.itemData.isCollect = true;
+        } else {
+          wx.showToast({
+            title: data.err,
+            duration: 2000
+          });
+        }
       },
       fail: function () {
         // fail
@@ -494,44 +482,44 @@ if(this.data.collect==0){
     });
   },
 
-  addShopCart:function(e){ //添加到购物车
+  addShopCart: function (e) { //添加到购物车
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Shopping/add',
-      method:'post',
+      method: 'post',
       data: {
         uid: app.d.userId,
         pid: that.data.pro_id,
         num: that.data.buynum,
       },
       header: {
-        'Content-Type':  'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         // //--init data        
         var data = res.data;
-        if(data.status == 1){
+        if (data.status == 1) {
           var ptype = e.currentTarget.dataset.type;
-          if(ptype == 'buynow'){
+          if (ptype == 'buynow') {
             wx.redirectTo({
-              url: '../order/pay?cartId='+data.cart_id
+              url: '../order/pay?cartId=' + data.cart_id
             });
             return;
-          }else{
+          } else {
             wx.showToast({
-                title: '加入购物车成功',
-                icon: 'success',
-                duration: 2000
+              title: '加入购物车成功',
+              icon: 'success',
+              duration: 2000
             });
-          }     
-        }else{
+          }
+        } else {
           wx.showToast({
-                title: data.err,
-                duration: 2000
-            });
+            title: data.err,
+            duration: 2000
+          });
         }
       },
-      fail: function() {
+      fail: function () {
         // fail
         wx.showToast({
           title: '网络异常！',
@@ -544,7 +532,7 @@ if(this.data.collect==0){
     var that = this;
     that.setData({ currentTab: e.detail.current });
   },
-  initNavHeight:function(){////获取系统信息
+  initNavHeight: function () {////获取系统信息
     var that = this;
     wx.getSystemInfo({
       success: function (res) {
@@ -555,9 +543,9 @@ if(this.data.collect==0){
       }
     });
   },
-  bannerClosed:function(){
+  bannerClosed: function () {
     this.setData({
-      bannerApp:false,
+      bannerApp: false,
     })
   },
   swichNav: function (e) {//点击tab切换
@@ -576,7 +564,7 @@ if(this.data.collect==0){
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
       return {
-        title: '' +this.data.itemData.name,
+        title: '' + this.data.itemData.name,
         // path: '/product/detail?uid=' + app.d.userId,
         imageUrl: '' + this.data.itemData.photo_x,
         success: function (res) {

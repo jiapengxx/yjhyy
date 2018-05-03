@@ -1,5 +1,4 @@
 var app = getApp();
-var count = 0
 Page({
 
   /**
@@ -27,7 +26,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '/Api/BType/index',
+      url: app.d.ceshiUrl + '/Api/BIndex/sccat',
       method: 'post',
       data: {
       },
@@ -130,13 +129,14 @@ Page({
         title: '服务商代码不能为空！',
         icon: 'loading'
       })
+      this.setData({
+        num1: 0
+      })
     } else {
       this.setData({
-        count: ++count
+        num1:1
       })
-
     }
-    console.log(count)
   },
   name: function (e) {
     if (e.detail.value.length === 0) {
@@ -144,12 +144,14 @@ Page({
         title: '姓名不能为空！',
         icon: 'loading'
       })
+      this.setData({
+        num2: 0
+      })
     } else {
       this.setData({
-        count: ++count
+        num2: 1
       })
     }
-    console.log(count)
   },
   account: function (e) {
     if (e.detail.value.length === 0) {
@@ -157,12 +159,14 @@ Page({
         title: '登录账号不能为空！',
         icon: 'loading'
       })
+      this.setData({
+        num5: 0
+      })
     } else {
       this.setData({
-        count: ++count
+        num5: 1
       })
     }
-    console.log(count)
   },
   pwd: function (e) {
     if (e.detail.value.length === 0) {
@@ -170,12 +174,14 @@ Page({
         title: '登录密码不能为空！',
         icon: 'loading'
       })
+      this.setData({
+        num6: 0
+      })
     } else {
       this.setData({
-        count: ++count
+        num6: 1
       })
     }
-    console.log(count)
   },
   address: function (e) {
     if (e.detail.value.length === 0) {
@@ -183,19 +189,23 @@ Page({
         title: '详细地址不能为空！',
         icon: 'loading'
       })
+      this.setData({
+        num8: 0
+      })
     } else {
       this.setData({
-        count: ++count
+        num8: 1
       })
     }
-    console.log(count)
   },
-
   tel: function (e) {
     if (e.detail.value.length === 0) {
       wx.showToast({
         title: '手机号不能为空！',
         icon: 'loading'
+      })
+      this.setData({
+        num4: 0
       })
     }
     else if (!(/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value))) {
@@ -203,12 +213,14 @@ Page({
         title: '手机号格式不正确！',
         icon: 'loading'
       })
+      this.setData({
+        num4: 0
+      })
     } else {
       this.setData({
-        count: ++count
+        num4: 1
       })
     }
-    console.log(count)
   },
   ID: function (e) {
     if (e.detail.value.length === 0) {
@@ -216,18 +228,23 @@ Page({
         title: '身份证不能为空！',
         icon: 'loading'
       })
+      this.setData({
+        num3: 0
+      })
     } else if (!/^\d{17}(\d|X|x)$/.test(e.detail.value)) {
       wx.showToast({
         title: '身份证长度或格式错误！',
         icon: 'loading'
       })
+      this.setData({
+        num3: 0
+      })
     }
     else {
       this.setData({
-        count: ++count
+        num3: 1
       })
     }
-    console.log(count)
   },
   clickPerson: function () {
     var selectPerson = this.data.selectPerson;
@@ -251,9 +268,14 @@ Page({
       selectArea: false,
     })
     if (this.data.content.length != 0) {
-      count: ++count
+      this.setData({
+        num9: 1
+      })
+    }else{
+      this.setData({
+        num9: 0
+      })
     }
-    console.log(count)
   },
   chooseImage: function (event) {
     var id = event.target.id;
@@ -300,11 +322,14 @@ Page({
           console.log('id=3:' + that.data.srcs.length)
         }
         if (that.data.srcs.length == 4) {
+          that.setData({     
+              num10:1 
+          })
+        }else{
           that.setData({
-            count: ++count
+            num10: 0
           })
         }
-        console.log(count)
       }
     })
   },
@@ -320,15 +345,18 @@ Page({
         title: '介绍不能为空！',
         icon: 'loading'
       })
+      this.setData({
+        num11: 0
+      })
     } else {
       this.setData({
-        count: ++count
+        num11: 1
       })
     }
-    console.log(count)
   },
   formSubmit: function (e) {
-    if (count == 14) {
+    var counts = this.data.num1 + this.data.num2 + this.data.num3 + this.data.num4 + this.data.num5 + this.data.num6 + this.data.num7 + this.data.num8 + this.data.num9 + this.data.num10 + this.data.num11
+    if (counts == 11) {
       var that = this;
       console.log('form发生了submit事件，携带数据为：', e.detail.value)
       // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
@@ -386,9 +414,12 @@ Page({
     })
     if (this.data.region.length != 0) {
       this.setData({
-        count: ++count
+        num7: 1
+      })
+    }else{
+      this.setData({
+        num7: 0
       })
     }
-    console.log(count)
   },
 })

@@ -118,7 +118,7 @@
             <image src="{{host}}/{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
-            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
+            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>{{item.name}}</text>
             <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
             <!-- {{item.distance}} -->
 
@@ -145,7 +145,7 @@
             <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
-            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
+            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>{{item.name}}</text>
             <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
             <!-- {{item.distance}} -->
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
@@ -172,7 +172,7 @@
             <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
-            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>名称{{item.name}}</text>
+            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>{{item.name}}</text>
             <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{item.distance}}km\n</text>
             <!-- {{item.distance}} -->
 

@@ -26,4 +26,4 @@
 <text style='position:relative;top:20rpx;left:24rpx;color:#333;font-size:30rpx;'>折现:</text>
 <text style='position:relative;top:20rpx;left:124rpx;color:#333;font-size:30rpx;'>{{outNum}}</text>
 </view>
-<button style='position:relative;top:50rpx;left:0rpx;height:80rpx;width:520rpx;border-radius:40rpx;color:#fff;font-size:36rpx;background-color:#ecb57b;opicity:50%;'>确认转出</button>
+<button bindtap='totixian' style='position:relative;top:50rpx;left:0rpx;height:80rpx;width:520rpx;border-radius:40rpx;color:#fff;font-size:36rpx;background-color:#ecb57b;opicity:50%;'>确认转出</button>

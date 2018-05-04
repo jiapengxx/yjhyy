@@ -97,9 +97,9 @@ Page({
       url: app.d.ceshiUrl + '/Api/Wxmon/wxpay',
       method: 'post',
       data: { 
-        enc_bank_no: 213123,
-        enc_true_name: 213123,
-        amount: 123123
+        enc_bank_no: 213123,  //银行卡账号
+        enc_true_name: 213123,//银行卡名字
+        amount: 123123        //金额
          },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'

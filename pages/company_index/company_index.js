@@ -258,7 +258,6 @@ Page({
       url: '../index/index?store_Id=' + store_Id,
     })
     app.d.store_Id = store_Id;
-    // console.log(store_Id)
   },
   toGoodsDetail:function(e){
     var pro_id=e.target.id

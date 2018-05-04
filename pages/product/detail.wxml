@@ -205,12 +205,12 @@
   <view class="fl_l w50 font_12 hui03 df">
 
     <!--去首页-->
-    <view class="df_1 l_h15 pt5 bre">
-      <navigator url='../index/index'>
+    <view bindtap='toBtoC' class="df_1 l_h15 pt5 bre">
+      
         <image class="icon_kf" src="../../images/shouye.png"></image>
         <view class="dbtext">首页</view>
-      </navigator>
-    </view>d
+      
+    </view>
     <!--去客服-->
     <view class="df_1 l_h15 pt5 bre">
       <contact-button type="default-light" session-from="productId_{{itemData.id}}" class="ke">

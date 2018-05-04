@@ -210,7 +210,7 @@
         <image class="icon_kf" src="../../images/shouye.png"></image>
         <view class="dbtext">首页</view>
       </navigator>
-    </view>d
+    </view>
     <!--去客服-->
     <view class="df_1 l_h15 pt5 bre">
       <contact-button type="default-light" session-from="productId_{{itemData.id}}" class="ke">

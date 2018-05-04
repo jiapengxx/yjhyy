@@ -1,0 +1,14 @@
+<block wx:for="{{card}}" wx:for-item="item" wx:for-index="idx">
+<view style='position:relative;top:{{(idx+1)*40}}rpx;left:50rpx;width:650rpx;height:200rpx;'>
+<image style='width:650rpx;height:200rpx;z-index:-1;' src='../../images/{{item.pic1}}.png'></image>
+<image style='position:relative;top:-180rpx;left:30rpx;width:102rpx;height:102rpx;' src='../../images/{{item.pic2}}.png'></image>
+<text style='position:relative;top:-244rpx;left:60rpx;font-size:30rpx;color:#ffffff;'>{{item.name}}</text>
+<text style='position:relative;top:-200rpx;left:-60rpx;font-size:22rpx;color:#ffffff;'>{{item.types}}</text>
+<text style='position:relative;top:-150rpx;left:-130rpx;font-size:20rpx;color:#ffffff;'>{{NUM[idx]}}</text>
+</view>
+</block>
+
+<button bindtap='smrz' style='position:fixed;bottom:0rpx;width:100%;height:88rpx;'>
+<text style='font-size:30rpx;color:#ff0000;'>＋</text>
+<text style='font-size:30rpx;color:#333333;'>添加银行卡</text>
+</button>

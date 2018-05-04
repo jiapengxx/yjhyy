@@ -34,12 +34,16 @@ Page({
         that.setData({
           inform: inform
         })
-        console.log(inform)
+        function checkTime(num) {
+          if (num < 10)
+          { num = "0" + i }
+          return num
+        }
         for (var i = 0; i < inform.length; i++) {
           console.log(inform[i].addtime)
-          var now = new Date(parseInt(inform[i].addtime));
+          var now = new Date(parseInt(inform[i].addtime*1000));
           that.setData({
-            time: that.data.time.concat({ i: i, date: (now.getFullYear() + '.' + (now.getMonth() + 1) + '.' + now.getDate()), time: (now.getHours() + ':' + now.getMinutes()) })
+            time: that.data.time.concat({ i: i, date: (now.getFullYear() + '.' + (now.getMonth() + 1) + '.' + now.getDate()), time: (checkTime(now.getHours()) + ':' + checkTime(now.getMinutes())) })
           })
         }
         console.log(inform.length)

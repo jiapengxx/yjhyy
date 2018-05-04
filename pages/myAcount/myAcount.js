@@ -108,7 +108,11 @@ Page({
         } else if (res.cancel) {
         }
       }
-      
+    })
+  },
+  wdyhk:function(){
+    wx.navigateTo({
+      url: '../wdyhk/wdyhk',
     })
   }
 })

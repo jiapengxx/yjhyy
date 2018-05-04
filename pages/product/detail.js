@@ -85,13 +85,22 @@ Page({
   },
   // 传值
   onLoad: function (option) {
-    //this.initNavHeight();
     var that = this;
-    this.setData({
-      pro_id: option.pro_id,
-      uid: app.d.userId,
-      r_uid: option.r_uid
-    });
+    console.log(option);
+    if ((typeof option.DATA)!="undefined"){
+      var DAta = option.DATA.split(",")
+      this.setData({
+        bindUid: DAta[0],
+        pro_id: DAta[1],
+        store_id: DAta[2]
+      })
+    }else{
+      this.setData({
+        pro_id: option.pro_id,
+        uid: app.d.userId,
+        r_uid: option.r_uid
+      });
+    }
     that.loadProductDetail();
     that.loadProductEvaluate();
 console.log(that.data.pro_id) 
@@ -106,14 +115,13 @@ console.log(that.data.uid)
       data: {
         pro_id: that.data.pro_id,
         r_uid: app.d.userId,
-        u_id: 22,
-        // u_id: 22
-        // u_id: that.data.u_id
+        u_id: that.data.bindUid
       },
       header: {
         'Content-Type':  'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(res)
         var status = res.data.status;
         if(status==1) {   
           var pro = res.data.pro;
@@ -126,7 +134,8 @@ console.log(that.data.uid)
             bannerItem:pro.img_arr,
             commodityAttr:res.data.commodityAttr,
             attrValueList:res.data.attrValueList,
-            collect:res.data.pro.collect
+            collect:res.data.pro.collect,
+            store_id:res.data.pro.store_id
           });
         } else {
           wx.showToast({
@@ -555,10 +564,11 @@ if(this.data.collect==0){
  * 用户点击右上角分享
  */
   onShareAppMessage: function (res) {
+    var DATA=''+app.d.userId+','+this.data.pro_id+','+this.data.store_id
     if (res.from === 'button') {
       return {
         title: '' +this.data.itemData.name,
-        // path: '/product/detail?uid=' + app.d.userId,
+        path: '/pages/product/detail?DATA=' + DATA,
         imageUrl: '' + this.data.itemData.photo_x,
         success: function (res) {
           // 转发成功
@@ -568,6 +578,12 @@ if(this.data.collect==0){
         }
       }
     }
-  }
+  },
+  toBtoC: function () {
+    wx.navigateTo({
+      url: '../index/index?store_Id=' + this.data.store_id,
+    })
+    app.d.store_Id = this.data.store_id;
+  },
 });
 

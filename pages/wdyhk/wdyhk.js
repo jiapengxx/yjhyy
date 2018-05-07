@@ -73,7 +73,8 @@ this.setData({
   },
   smrz:function(){
     wx.navigateTo({
-      url: '../smrz/smrz',
+      // url: '../smrz/smrz',
+      url: '../tjyhk/tjyhk',
     })
   }
 })

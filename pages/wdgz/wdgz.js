@@ -19,39 +19,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    wx.request({
-      url: app.d.hostUrl + '/Api/BCollet/show',
-      method: 'post',
-      data: {
-        user_id: app.d.userId
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        var cl_product = res.data.cl_product
-        var cl_store = res.data.cl_store
-        that.setData({
-          shoucang_good: cl_product,
-          gz_store: cl_store
-        });
-        console.log(that.data.shoucang_good)
-        console.log(that.data.gz_store)
-        var count1 = that.data.shoucang_good.length
-        var count2 = that.data.gz_store.length
-        that.setData({
-          height1: 440 * parseInt((count1 + 1) / 2),
-          height2: 165 * count2,
-        })
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    })
+    this.loadCollect()
   },
 
   /**
@@ -154,6 +122,7 @@ Page({
       },
       success: function (res) {
         console.log(res)
+      that.loadCollect()
       },
       fail: function () {
         wx.showToast({
@@ -162,5 +131,40 @@ Page({
         });
       }
     });
+  },
+  loadCollect:function(){
+    var that = this
+    wx.request({
+      url: app.d.hostUrl + '/Api/BCollet/show',
+      method: 'post',
+      data: {
+        user_id: app.d.userId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var cl_product = res.data.cl_product
+        var cl_store = res.data.cl_store
+        that.setData({
+          shoucang_good: cl_product,
+          gz_store: cl_store
+        });
+        console.log(that.data.shoucang_good)
+        console.log(that.data.gz_store)
+        var count1 = that.data.shoucang_good.length
+        var count2 = that.data.gz_store.length
+        that.setData({
+          height1: 440 * parseInt((count1 + 1) / 2),
+          height2: 165 * count2,
+        })
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
   }
 })

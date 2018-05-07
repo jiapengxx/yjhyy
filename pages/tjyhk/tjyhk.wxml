@@ -1,12 +1,22 @@
 <view style='height:80rpx;background-color:#ebebeb;'>
 <text style='position:relative;left:30rpx;top:24rpx;font-size:26rpx;color:#666666;'>请绑定持卡人本人的银行卡</text>
 </view>
+ <form bindsubmit="formSubmit">
 <view style='margin-left:30rpx;width:690rpx;height:90rpx;border-bottom:1rpx solid #ebebeb;'>
 <text style='position:relative;left:0rpx;top:24rpx;font-size:30rpx;color:#333333;'>姓名</text>
-<input style='position:relative;top:-26rpx;left:150rpx;font-size:30rpx;color:#333333;' placeholder='请输入姓名' placeholder-style='font-size:22rpx;color:#999999;'></input>
+<input name='name' bindblur='name' style='position:relative;top:-26rpx;left:150rpx;font-size:30rpx;color:#333333;' placeholder='请输入姓名' placeholder-style='font-size:22rpx;color:#999999;'></input>
+</view>
+<view style='margin-left:30rpx;width:690rpx;height:90rpx;border-bottom:1rpx solid #ebebeb;'>
+<text style='position:relative;left:0rpx;top:24rpx;font-size:30rpx;color:#333333;'>身份证号</text>
+<input name='Id' bindblur='Id' style='position:relative;top:-26rpx;left:150rpx;font-size:30rpx;color:#333333;' placeholder='请输入身份证号' placeholder-style='font-size:22rpx;color:#999999;'></input>
 </view>
 <view style='margin-left:30rpx;width:690rpx;height:90rpx;border-bottom:1rpx solid #ebebeb;'>
 <text style='position:relative;left:0rpx;top:24rpx;font-size:30rpx;color:#333333;'>卡号</text>
-<input style='position:relative;top:-26rpx;left:150rpx;font-size:30rpx;color:#333333;' placeholder='请输入银行卡号' placeholder-style='font-size:22rpx;color:#999999;'></input>
+<input name='bankId' bindblur='bankId' style='position:relative;top:-26rpx;left:150rpx;font-size:30rpx;color:#333333;' placeholder='请输入银行卡号' placeholder-style='font-size:22rpx;color:#999999;'></input>
 </view>
-<button bindtap='sjhyz' style='position:relative;top:60rpx;background-color:#106aef;font-size:30rpx;width:700rpx;color:#ffffff'>下一步</button>
+<view style='margin-left:30rpx;width:690rpx;height:90rpx;border-bottom:1rpx solid #ebebeb;'>
+<text style='position:relative;left:0rpx;top:24rpx;font-size:30rpx;color:#333333;'>手机号</text>
+<input name='tel' bindblur='tel' style='position:relative;top:-26rpx;left:150rpx;font-size:30rpx;color:#333333;' placeholder='请输入预留手机号' placeholder-style='font-size:22rpx;color:#999999;'></input>
+</view>
+<button  formType="submit" style='position:relative;top:60rpx;background-color:#106aef;font-size:30rpx;width:700rpx;color:#ffffff'>下一步</button>
+  </form>

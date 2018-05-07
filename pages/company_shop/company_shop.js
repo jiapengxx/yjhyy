@@ -276,7 +276,7 @@ Page({
     })
   },
   toGoodsDetail: function (e) {
-    var pro_id = e.target.id;
+    var pro_id = e.currentTarget.id;
     wx.navigateTo({
       url: '../product/detail?pro_id=' + pro_id,
     })

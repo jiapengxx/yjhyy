@@ -36,7 +36,20 @@
 
 <view class='mContainer'>
   <block wx:for="{{tttype}}" wx:key="id" wx:for-index="idx">
-    <image id='{{idx}}' bindtap='fiveBlocks' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src="{{item.src}}">{{item.type_name}}</image>
+  <block wx:if="{{idx!=3}}">    
+  <image id='{{idx}}' bindtap='fiveBlocks' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src="{{item.src}}">{{item.type_name}}</image>
+  </block>
+  <block wx:else>
+      <contact-button style='position:relative;top:1rpx;left:1rpx;width:146rpx;height:196rpx;' type="default-light" >
+      <contact-button style='position:absolute;top:70rpx;left: 56rpx;opacity:0;width:120rpx;height:120rpx;' size='300'></contact-button>
+      <image id='{{idx}}'style='position:relative;top:-22rpx;margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src="{{item.src}}">
+      <text style='position:relative;top:20rpx;left:1rpx;'>{{item.type_name}}</text>
+      </image>
+      </contact-button>
+      
+  </block>
+
+
   </block>
 </view>
 
@@ -82,13 +95,24 @@
 <view style='position:relative;height:15rpx;width:100%;'>
 </view>
 <!--引入三张产品图-->
+<block wx:if="{{hotGoods.length!=0}}">
+<block wx:for="{{hotGoods}}" wx:for-item="item" wx:for-index="idx">
+<view style='width:750rpx;height:300rpx;'>
+  <image bindtap='toGoodsDetail' id='{{hotGoods[idx].pro_id}}' src='{{hotGoods[idx].img}}' style='width:750rpx;height:300rpx;'></image>
+</view>
+<view style='position:relative;height:15rpx;width:100%'>
+</view>
+</block>
+</block>
 
+
+<!-- 
 <view style='width:750rpx;height:300rpx;'>
   <image bindtap='toGoodsDetail' id='{{hotGoods[0].pro_id}}' src='{{hotGoods[0].img}}' style='width:750rpx;height:300rpx;'></image>
 </view>
-
 <view style='position:relative;height:15rpx;width:100%'>
 </view>
+
 <view style='width:750rpx;height:300rpx;'>
   <image bindtap='toGoodsDetail' id='{{hotGoods[1].pro_id}}' src='{{hotGoods[1].img}}' style='width:750rpx;height:300rpx;'></image>
 </view>
@@ -101,7 +125,7 @@
 </view>
 
 <view style='position:relative;height:15rpx;width:100%;'>
-</view>
+</view> -->
 
 <scroll-view scroll-y style='position:relative;width:100%;'>
 <!--此处scroll-view 原值 height:925rpx;控制滚动条的高度 -->

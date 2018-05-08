@@ -94,9 +94,10 @@ Page({
   toFxgl:function(){
     wx.navigateTo({
       url: '../fxgl/fxgl?height='+550,
+      //点击跳转到页面指定的位置
     })
   },
-  toMakecoin:function(){
+  toMakeCoin:function(){
     wx.showModal({
       title: '提示',
       content: '您是否进入商城,购买商品即可获得银币',
@@ -110,6 +111,21 @@ Page({
       }
     })
   },
+  toUseCoin: function () {
+    wx.showModal({
+      title: '提示',
+      content: '您是否进入商城,购买商品时可用银币支付',
+      success: function (res) {
+        if (res.confirm) {
+          wx.switchTab({
+            url: '../company_index/company_index',
+          })
+        } else if (res.cancel) {
+        }
+      }
+    })
+  },
+
   wdyhk:function(){
     wx.navigateTo({
       url: '../wdyhk/wdyhk',

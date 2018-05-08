@@ -10,16 +10,17 @@
       <view style='margin-left:33rpx;margin-right:33rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
         <block wx:for="{{shoucang_good}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
 
-          <navigator url="../product/detail?pro_id={{item.pro_id}}">
-           <view style='position:relative;top:{{40+(idx/2|Int)*40}}rpx;height:390rpx;width:320rpx;border:0.1rpx solid #eee;'>
-          <!--头像未添加  -->
-            <image src='{{item.logo_good}}' style='position:relative;top:0rpx;left:0rpx;height:66rpx;width:66rpx;z-index:5;'></image>
-            <image src="{{host}}/Data/{{item.photo_x}}"style='position:relative;top:-66rpx;left:26rpx;height:230rpx;width:270rpx;'></image>
-             <view style='position:relative;top:-65rpx;left:26rpx;height:84rpx;width:270rpx;font-size:28rpx;color:#333333'>{{item.name}}</view>
+
+          <view style='position:relative;top:{{40+(idx/2|Int)*40}}rpx;height:390rpx;width:320rpx;border:0.1rpx solid #eee;'>
+            <navigator url="../product/detail?pro_id={{item.pro_id}}">
+              <image src='{{item.logo_good}}' style='position:relative;top:0rpx;left:0rpx;height:66rpx;width:66rpx;z-index:5;'></image>
+              <image src="{{host}}/Data/{{item.photo_x}}" style='position:relative;top:-66rpx;left:26rpx;height:230rpx;width:270rpx;'></image>
+              <view style='position:relative;top:-65rpx;left:26rpx;height:84rpx;width:270rpx;font-size:28rpx;color:#333333'>{{item.name}}</view>
+            </navigator>
             <view style='position:relative;top:-70rpx;text-align:center;font-size:26rpx;color:#dd3434'>{{item.price_yh}}
             </view>
+            <text id='{{item.pro_id}}' bindtap='cancelSp' style='position:relative;top:-100rpx;left:280rpx;font-size:50rpx;color:#333333'>x</text>
           </view>
-          </navigator>  
         </block>
       </view>
     </swiper-item>
@@ -28,10 +29,10 @@
         <view style='height:162rpx;width:100%;border-bottom:0.1rpx solid #eee;'>
           <image src="{{host}}/Data/{{item.img}}" style='position:relative;top:20rpx;left:24rpx;height:122rpx;width:122rpx;border-radius:61rpx;'></image>
           <view style='position:relative;top:-80rpx;left:170rpx;height:40rpx;width:200rpx;font-size:26rpx;color:#333333;'>{{item.name}}</view>
-          <image id='{{idx}}'src='https://tanghuzhao.com.cn/Public/images/btn_cancel.png' bindtap='changePoint' class="{{idx==itemId?'point_on':'point'}}">
+          <image id='{{idx}}' src='https://tanghuzhao.com.cn/Public/images/btn_cancel.png' bindtap='changePoint' class="{{idx==itemId?'point_on':'point'}}">
           </image>
           <button id='{{item.store_id}}' bindtap='cancel' class="{{idx==itemId?'cancel_on':'cancel'}}">
-          取消关注
+            取消关注
           </button>
         </view>
       </block>

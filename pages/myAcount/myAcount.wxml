@@ -7,7 +7,7 @@
 <image src='../../images/wenhao.png' style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:24rpx;'></image>
 <text bindtap='toFxgl'>什么是金币</text>
 </view>
-<view style='position:relative;width:350rpx;top:10rpx;left:308rpx;font-size:60rpx;color:#fff;'>{{num.gold}}</view>
+<view style='position:relative;top:10rpx;font-size:60rpx;color:#fff;text-align:center;'>{{num.gold}}</view>
 <view style='position:relative;top:10rpx;height:1rpx;width:750rpx;background:#fff;opicity:50%;'></view>
 <view bindtap='jbtx' style='position:relative;width:150rpx;top:30rpx;left:160rpx;font-size:24rpx;color:#fff;'>
 <image src='../../images/tixian.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:23rpx;'></image>
@@ -16,6 +16,7 @@
 <view style='position:relative;width:150rpx;top:-3rpx;left:490rpx;font-size:24rpx;color:#fff;'>
 <image src='../../images/zhuanqu.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:24rpx;'></image>
 <text>赚取金币</text>
+<!--赚取金币  分享内容  -->
 </view>
 </view>
 
@@ -28,16 +29,16 @@
 <image src='../../images/wenhao.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:24rpx;'></image>
 <text bindtap='toFxgl'>什么是银币</text>
 </view>
-<view style='position:relative;width:350rpx;top:10rpx;left:308rpx;font-size:60rpx;color:#fff;'>{{num.denarius}}</view>
+<view style='position:relative;top:10rpx;font-size:60rpx;color:#fff;text-align:center;'>{{num.denarius}}</view>
 <view style='position:relative;top:10rpx;height:1rpx;width:750rpx;background:#fff;opicity:50%;'></view>
 
 <!--赚取银币弹框，确定去商城;消费银币，兑换商品。  -->
 <view style='position:relative;width:150rpx;top:30rpx;left:160rpx;font-size:24rpx;color:#fff;'>
 <image src='../../images/zhuanqu.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:23rpx;'></image>
-<text bindtap='toMakecoin'>赚取银币</text>
+<text bindtap='toMakeCoin'>赚取银币</text>
 </view>
 <view style='position:relative;width:150rpx;top:-3rpx;left:490rpx;font-size:24rpx;color:#fff;'>
 <image src='../../images/xiaofei.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:24rpx;'></image>
-<text>消费银币</text>
+<text bindtap='toUseCoin'>消费银币</text>
 </view>
 </view>

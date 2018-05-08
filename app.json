@@ -73,7 +73,7 @@
         "pagePath": "pages/company_shop/company_shop",
         "iconPath": "images/shop-icon.png",
         "selectedIconPath": "images/shopSelected-icon.png",
-        "text": "商家"
+        "text": "店铺"
       },
       {
         "pagePath": "pages/company_cart/company_cart",
@@ -85,7 +85,7 @@
         "pagePath": "pages/recruitment/recruitment",
         "iconPath": "images/recruitment-icon.png",
         "selectedIconPath": "images/recruitmentSelected-icon.png",
-        "text": "商家入驻"
+        "text": "入驻"
       },
       {
         "pagePath": "pages/company_user/company_user",

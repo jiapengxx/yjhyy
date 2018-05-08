@@ -44,7 +44,6 @@ App({
         quyu:data.data.quyu,
         sheng:data.data.sheng,
         code: data.data.code,
-        code: data.data.code,
         place_desc: data.data.place_desc,
         introduce: data.data.introduce,
         urli:i,

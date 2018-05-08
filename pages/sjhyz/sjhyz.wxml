@@ -2,11 +2,14 @@
 <view style='height:40rpx;background-color:#ebebeb;'></view>
 <view style='margin-left:30rpx;width:690rpx;height:90rpx;border-bottom:1rpx solid #ebebeb;'>
 
-<input style='position:relative;top:24rpx;left:26rpx;font-size:30rpx;color:#333333;width:300rpx;' placeholder='请输入手机号' placeholder-style='font-size:22rpx;color:#999999;'></input>
-<button style='position:relative;top:-26rpx;left:234rpx;width:160rpx;height:46rpx;font-size:30rpx;color:#fff;line-height:46rpx;background-color:#106aef;'>验证码</button>
+<input bindblur='tel' type='number' style='position:relative;top:24rpx;left:26rpx;font-size:30rpx;color:#333333;width:300rpx;' placeholder='请输入手机号' placeholder-style='font-size:22rpx;color:#999999;'></input>
+
+<button hidden='{{switch_one}}'bindtap='getCode' style='position:relative;top:-36rpx;left:220rpx;width:210rpx;height:60rpx;font-size:30rpx;color:#fff;line-height:60rpx;background-color:#106aef;'>获取验证码</button>
+
+<button hidden='{{switch_two}}' bindtap='reGetCode' style='position:relative;top:-36rpx;left:220rpx;width:240rpx;height:60rpx;font-size:30rpx;color:#fff;line-height:60rpx;background-color:#106aef;'>重新获取({{time}}s)</button>
 </view>
 <view style='margin-left:30rpx;width:690rpx;height:90rpx;border-bottom:1rpx solid #ebebeb;'>
 
-<input style='position:relative;top:24rpx;left:26rpx;font-size:30rpx;color:#333333;width:300rpx;' placeholder='请输入验证码' placeholder-style='font-size:22rpx;color:#999999;'></input>
+<input bindblur='checkInput' style='position:relative;top:24rpx;left:26rpx;font-size:30rpx;color:#333333;width:300rpx;' placeholder='请输入验证码' placeholder-style='font-size:22rpx;color:#999999;'></input>
 </view>
-<button style='position:relative;top:60rpx;background-color:#106aef;font-size:30rpx;width:700rpx;color:#ffffff'>下一步</button>
+<button bindtap='register' style='position:relative;top:60rpx;background-color:#106aef;font-size:30rpx;width:700rpx;color:#ffffff'>下一步</button>

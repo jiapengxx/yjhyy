@@ -32,10 +32,10 @@
     </view>
     <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
       <text style='position:relative;left:30rpx;top:25rpx;width:40%'>位置：</text>
-      <picker name='place'style='position:relative;top:-30rpx;left:160rpx;width:70%;height:50rpx;' mode="region" bindchange="bindRegionChange" value="{{region}}">
+      <picker name='place'style='position:relative;top:-20rpx;left:160rpx;width:70%;height:50rpx;' mode="region" bindchange="bindRegionChange" value="{{region}}">
         <view style='font-size:30rpx;text-align:center;'>
           {{region[0]}} {{region[1]}} {{region[2]}}
-          <image src='https://tanghuzhao.com.cn/Public/images/pullDown.png' style='position:absolute;top:25rpx;right:-35rpx;height:21rpx;width:36rpx;'></image>
+          <image src='https://tanghuzhao.com.cn/Public/images/pullDown.png' style='position:absolute;top:20rpx;right:-35rpx;height:21rpx;width:36rpx;'></image>
         </view>
       </picker>
     </view>

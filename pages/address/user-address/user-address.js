@@ -50,6 +50,8 @@ Page({
   onReady: function () {
     // 页面渲染完成
   },
+
+  //对来源进行判断
   setDefault: function(e) {
     var that = this;
     var addrId = e.currentTarget.dataset.id;
@@ -62,13 +64,12 @@ Page({
       method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       header: {// 设置请求的 header
         'Content-Type':  'application/x-www-form-urlencoded'
-      },
-      
+      }, 
       success: function (res) {
-        // success
+
         var status = res.data.status;
         var cartId = that.data.cartId;
-        if(status==1){
+        if(status==1&&cartId!=0){
           if (cartId) {
             wx.redirectTo({
               url: '../../order/pay?cartId=' + cartId,
@@ -82,7 +83,15 @@ Page({
           });
           
           that.DataonLoad();
-        }else{
+        } else if (status == 1){
+          wx.showToast({
+            title: '操作成功！',
+            duration: 2000
+          });
+
+          that.DataonLoad();
+        }
+        else{
           wx.showToast({
             title: res.data.err,
             duration: 2000

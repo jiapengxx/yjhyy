@@ -22,29 +22,53 @@ Page({
   getContent: function (e) {
     var content = e.detail.value
     this.setData({
-      content: content
+      Content: content
     })
-    console.log(this.data.content)
+    console.log(this.data.Content)
   },
   onLoad: function () {
     new ImageUploader(this, 'img1');
   },
   upload: function () {
-    console.log(this.data.Content)
     var that = this
-    console.log(this.data.img1.uploadedImagesPaths);
-    if (this.data.img1.uploadedImagesPaths == '' && typeof(this.data.Content==undefined)) {
+    if (this.data.img1.uploadedImagesPaths == '' && typeof (this.data.Content) == 'undefined') {
       wx.showToast({
         title: '内容不能为空！',
       })
     }
     else if (this.data.img1.uploadedImagesPaths == '') {
-          //将内容写入到数据库
+
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/BIndex/upload_content',
+        method: 'post',
+        data: {
+          p_desc:that.data.Content,
+          uid: app.d.userId,
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          wx.showToast({
+            title: '提交成功',
+            duration: 2000
+          });
+          setTimeout(function () {
+            wx.switchTab({
+              url: '../company_user/company_user',
+            })
+          }
+            , 3000)
+        },
+        fail: function (e) {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        },
+      }) 
     } else {
       var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
-      this.setData({
-        Content: this.data.content
-      })
       app.uploadimg({
         url: app.d.hostUrl + '/Api/BIndex/upload_do',
         //这里是你图片上传的接口

@@ -12,7 +12,12 @@ Page({
     flag: true,
     host: app.d.hostImg,
     shoucang_good: [],
-    gz_store: []
+    gz_store: [],
+    qxgz:false,
+    xk:false,
+    check:false,
+    bj_id:0,
+    array_gz:[]
   },
 
   /**
@@ -20,6 +25,7 @@ Page({
    */
   onLoad: function (options) {
     this.loadCollect()
+  
   },
 
   /**
@@ -106,11 +112,101 @@ Page({
         flag: true
       })
     }
-  }, 
+  },
+  bj:function(e){
+    this.creat_array()
+    var bj_id=e.target.id
+    console.log(bj_id)
+    if(bj_id==0){
+      this.setData({
+        qxgz: true,
+        xk: true,
+        bj_id:1
+      })
+    }else{
+      this.setData({
+        qxgz: false,
+        xk: false,
+        bj_id:0
+      })
+    }
+  },
+  creat_array:function(){
+    console.log(this.data.shoucang_good.length)
+    var that=this
+    for (var i = 0; i < this.data.shoucang_good.length;i++){
+      this.setData({
+        array_gz:this.data.array_gz.concat({type:'circle'})
+      })
+      console.log("aa")
+    }
+    console.log(this.data.array_gz)
+  },
+  bindCheckbox: function (e) {
+  // this.setData({
+  //   INdex: e.target.id,
+  //   checked:!this.data.check,
+  //   check:!this.data.checked
+  // })
+    var index=parseInt(e.target.dataset.index)
+//对数组数据进行处理
+  var type = this.data.array_gz[index].type;
+  var array_gz = this.data.array_gz;
+  if (type == 'circle') {
+    //未选中时
+    array_gz[index].type = 'success_circle';
+  } else {
+    array_gz[index].type = 'circle';
+  }
+  this.setData({
+    array_gz: this.data.array_gz
+  });
+  },
+  cancelGZ:function(){
+    var that=this
+    wx.showModal({
+      title: '提示',
+      content: '你确认移除吗',
+      success: function (res) {
+        res.confirm && wx.request({
+          url: app.d.ceshiUrl + '/Api/BCollet/pro_save',
+          method: 'post',
+          data: {
+            uid: app.d.userId,
+            pro_id: that.data.INdex,
+          },
+          header: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log(res)
+            var data = res.data;
+            if (data.status == 1) {
+              that.loadCollect();
+            } else {
+              wx.showToast({
+                title: '操作失败！',
+                duration: 2000
+              });
+            }
+          },
+        });
+      },
+      fail: function () {
+        // fail
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    });
+  },
+  bindSelectAll: function () {
+
+  },
   cancelSp:function(e){
     var that = this;
     var pro_id = e.target.id;
-    console.log(pro_id)
     wx.showModal({
       title: '提示',
       content: '你确认移除吗',
@@ -196,8 +292,8 @@ Page({
         var count1 = that.data.shoucang_good.length
         var count2 = that.data.gz_store.length
         that.setData({
-          height1: 440 * parseInt((count1 + 1) / 2),
-          height2: 165 * count2,
+          height1: 440 * parseInt((count1 + 1) / 2)+40,
+          height2: 165 * count2+40,
         })
       },
       fail: function (e) {

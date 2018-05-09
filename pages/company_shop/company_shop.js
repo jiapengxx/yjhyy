@@ -47,7 +47,10 @@ Page({
           comment_store1: comment_store
         });
         that.setData({
-          height: 582 * that.data.hot_good.length,
+          height1: 582 * that.data.hot_good.length,
+          height2: 582 * that.data.place_store1.length,
+          height3: 582 * that.data.num_store1.length,
+          height4: 582 * that.data.comment_store1.length,
         });
       },
       fail: function (e) {

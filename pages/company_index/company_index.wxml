@@ -71,10 +71,10 @@
   <view style='position:relative;width:702rpx;top:30rpx;left:24rpx;height:100rpx;background-color:#fff;border-radius:5rpx;'>
     <text style='position:relative;top:24rpx;left:20rpx;height:64rpx;width:64rpx;font-size:30rpx;color:#ff0000;font-weight:900;'>消息</text>
 
-    <swiper style='position:relative;left:100rpx;top:-44rpx;height:100rpx;width:460rpx;'  vertical="true" autoplay="true" circular="true" interval="2000">
+    <swiper style='position:relative;left:100rpx;top:-36rpx;height:100rpx;width:460rpx;'  vertical="true" autoplay="true" circular="true" interval="2000">
       <block wx:for="{{list}}">
         <swiper-item>
-        <block wx:if="{{item.name.length<14}}">
+        <block wx:if="{{item.name.length<13}}">
         <text id='{{item.id}}' bindtap='toNewsDetail'  style='position:relative;top:20rpx;font-size:34rpx;height:100rpx;color:#333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:2;letter-spacing: 1rpx;'>{{item.name}}</text>
         </block>
           
@@ -84,7 +84,7 @@
         </swiper-item>
       </block>
     </swiper>
-    <button bindtap='toJrkb'style='position:relative;height:50rpx;width:130rpx;left:270rpx;top:-120rpx;color:#ff0000;border:#ff0000 solid 1rpx;background-color:#fff;font-size:30rpx;line-height:48rpx;'>更多</button>
+    <button bindtap='toJrkb'style='position:relative;height:50rpx;width:130rpx;left:270rpx;top:-115rpx;color:#ff0000;border:#ff0000 solid 1rpx;background-color:#fff;font-size:30rpx;line-height:48rpx;'>更多</button>
   </view>
 
 

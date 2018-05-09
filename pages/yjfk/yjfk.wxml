@@ -2,7 +2,7 @@
 <view style='height:41rpx;width:100%;background-color:#f5f5f5;'>
 </view>
 <view style='height:200rpx;width:100%;'>
-<textarea bindblur='getContent' style='position:relative;height:140rpx;font-size:26rpx;width:702rpx;left:24rpx;top:30rpx;' placeholder='请描述详细问题和意见'></textarea>
+<textarea bindinput='getContent' style='position:relative;height:140rpx;font-size:26rpx;width:702rpx;left:24rpx;top:30rpx;' placeholder='请描述详细问题和意见'></textarea>
 </view>
 <view style='height:60rpx;width:100%;font-size:30rpx;color:#666666;background-color:#f5f5f5;text-align:center;'>
 图片（可选项，提供问题截图，最多四张）

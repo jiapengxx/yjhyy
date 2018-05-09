@@ -114,6 +114,7 @@ bindPlus: function(e) {
     });
 }, 
 
+
 bindCheckbox: function(e) {
   /*绑定点击事件，将checkbox样式改变为选中与非选中*/
   //拿到下标值，以在carts作遍历指示用

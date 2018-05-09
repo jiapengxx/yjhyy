@@ -91,6 +91,53 @@ Page({
       url: '../jbtx/jbtx?gold='+this.data.num.gold,
     })
   },
+  zqjb:function(){
+    var that = this;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/User/do_money',
+      method: 'post',
+      data: {
+        uid: app.d.userId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        if (res.data.amount>=199) {
+          wx.showModal({
+            title: '提示',
+            content: '分享即可得金币！是否前往分享？',
+            success: function (res) {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: '../fxgl/fxgl',
+                })
+              }
+            }
+
+          })
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '继续消费'+(199-res.data.amount)+'元，分享即可得金币！是否前往购物？',
+            success: function (res) {
+              if (res.confirm) {
+                wx.switchTab({
+                  url: '../company_index/company_index',
+                })
+              } 
+            }
+          })
+        }
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    })
+  },
   toFxgl:function(){
     wx.navigateTo({
       url: '../fxgl/fxgl?height='+550,

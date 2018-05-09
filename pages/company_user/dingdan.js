@@ -49,6 +49,7 @@ removeOrder:function(e){
           data: {
             id: orderId,
             type:'cancel',
+            uid:app.d.userId
           },
           header: {
             'Content-Type':  'application/x-www-form-urlencoded'

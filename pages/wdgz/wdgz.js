@@ -90,22 +90,63 @@ Page({
   changePoint: function (e) {
     var item_id = e.target.id
     //不用flag更快捷
-    this.setData({
-      itemId: item_id,
-      flag: false
-    })
-    // if (this.data.flag) {
-    //   this.setData({
-    //     itemId: item_id,
-    //     flag: false
-    //   })
-    // } 
-    // else {
-    //   this.setData({
-    //     itemId: 9999,
-    //     flag: true
-    //   })
-    // }
+    // this.setData({
+    //   itemId: item_id,
+    //   flag: false
+    // })
+    if (this.data.flag) {
+      this.setData({
+        itemId: item_id,
+        flag: false
+      })
+    } 
+    else {
+      this.setData({
+        itemId: 9999,
+        flag: true
+      })
+    }
+  }, 
+  cancelSp:function(e){
+    var that = this;
+    var pro_id = e.target.id;
+    console.log(pro_id)
+    wx.showModal({
+      title: '提示',
+      content: '你确认移除吗',
+      success: function (res) {
+        res.confirm && wx.request({
+          url: app.d.ceshiUrl + '/Api/BCollet/pro_save',
+          method: 'post',
+          data: {
+            uid: app.d.userId,
+            pro_id: pro_id,
+          },
+          header: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            console.log(res)
+            var data = res.data;
+            if (data.status == 1) {
+              that.loadCollect();
+            } else {
+              wx.showToast({
+                title: '操作失败！',
+                duration: 2000
+              });
+            }
+          },
+        });
+      },
+      fail: function () {
+        // fail
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    });
   },
   cancel:function(e){
     var that=this
@@ -138,7 +179,7 @@ Page({
       url: app.d.hostUrl + '/Api/BCollet/show',
       method: 'post',
       data: {
-        user_id: app.d.userId
+        user_id: app.d.userId,
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'

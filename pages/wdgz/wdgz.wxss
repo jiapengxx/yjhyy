@@ -35,16 +35,16 @@ page {
   position: relative;
   top: -130rpx;
   left: 600rpx;
-  height: 10rpx;
-  width: 56rpx;
+  height: 12rpx;
+  width: 70rpx;
 }
 
 .point_on {
   position: relative;
   top: -130rpx;
   left: 450rpx;
-  height: 10rpx;
-  width: 56rpx;
+  height: 12rpx;
+  width: 70rpx;
 }
 
 .cancel {
@@ -53,6 +53,7 @@ page {
 
 .cancel_on {
   position: relative;
+  color: #fff;
   top: -218rpx;
   line-height: 162rpx;
   left: 265rpx;

@@ -6,10 +6,12 @@
   <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">退款/售后</view>
 </view>
 <view class="c_t60"></view>
-<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">
+
+<swiper current="{{currentTab}}" class="swiper-box" duration="300"
+style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.length):(currentTab==1?(orderList1.length==0?winHeight*2:240*orderList1.length):(currentTab==2?(orderList2.length==0?winHeight*2:240*orderList2.length):(currentTab==3?(orderList3.length==0?winHeight*2:240*orderList3.length):(orderList4.length==0?winHeight*2:240*orderList4.length))))}}rpx" bindchange="bindChange">
 
   <!-- 待付款 -->
-  <swiper-item>
+  <swiper-item >
     <view class="search_no" wx:if="{{!orderList0.length}}">
       <view class="font_14">
         <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>

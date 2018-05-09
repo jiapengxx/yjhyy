@@ -360,7 +360,7 @@ Page({
       var that = this;
       console.log('form发生了submit事件，携带数据为：', e.detail.value)
       // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
-
+     
       app.uploadimg({
         url: app.d.hostUrl + '/Api/BIndex/seller_add',//这里是你图片上传的接口
         path: that.data.srcs,//这里是选取的图片的地址数组
@@ -375,7 +375,6 @@ Page({
           sheng: that.data.region[0],
           city: that.data.region[1],
           quyu: that.data.region[2],
-          code: e.detail.value.code,
           code: e.detail.value.code,
           place_desc: e.detail.value.place_desc,
           introduce: e.detail.value.introduce,

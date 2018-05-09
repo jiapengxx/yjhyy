@@ -37,36 +37,6 @@
               <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
               <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
             </view>
-
-
-
-            <!-- <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
-              <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-              <image id='{{item.goods[1].product_id}}' src='{{host}}/Data/{{item.goods[1].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-              <image id='{{item.goods[2].product_id}}' src='{{host}}/Data/{{item.goods[2].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-            </view>
-
-            <view style='position:relative;top:100rpx;height:112rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text id='{{item.goods[0].product_id}}' style='font-size:26rpx;color:#333333;'>{{item.goods[0].pro_name}}\n{{}}\n</text>
-                <text id='{{item.goods[1].product_id}}' style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[0].price}}\n</text>
-                <text id='{{item.goods[2].product_id}}' style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text style='font-size:26rpx;color:#333333;'>{{item.goods[1].pro_name}}\n{{}}\n</text>
-                <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[1].price}}\n</text>
-                <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text style='font-size:26rpx;color:#333333;'>{{item.goods[2].pro_name}}\n{{}}\n</text>
-                <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[2].price}}\n</text>
-                <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-            </view> -->
-
-
-
           </view>
         </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
@@ -90,9 +60,9 @@
             <view style='position:relative;top:110rpx;left:-100rpx;width:80rpx;height:50rpx;'>
               <text class='t5'>销量:{{item.num}}</text>
             </view>
-            <view style='position:relative;top:-10rpx;left:-60rpx;width:200rpx;'>
-              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
-              <image bindtap='position' src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+            <view style='position:relative;top:0rpx;left:-54rpx;width:200rpx;'>
+              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-28rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
+              <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-28rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance2[idx].distance}}km</view>
             </view>
           </view>
@@ -104,31 +74,6 @@
               <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
             </view>
 
-           <!-- <view>
-            <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
-              <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-              <image id='{{item.goods[1].product_id}}' src='{{host}}/Data/{{item.goods[1].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-              <image id='{{item.goods[2].product_id}}' src='{{host}}/Data/{{item.goods[2].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-            </view>
-
-            <view style='position:relative;top:100rpx;height:112rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text id='{{item.goods[0].product_id}}' style='font-size:26rpx;color:#333333;'>{{item.goods[0].pro_name}}\n{{}}\n</text>
-                <text id='{{item.goods[1].product_id}}' style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[0].price}}\n</text>
-                <text id='{{item.goods[2].product_id}}' style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text style='font-size:26rpx;color:#333333;'>{{item.goods[1].pro_name}}\n{{}}\n</text>
-                <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[1].price}}\n</text>
-                
-                <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text style='font-size:26rpx;color:#333333;'>{{item.goods[2].pro_name}}\n{{}}\n</text>
-                <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[2].price}}\n</text>
-                <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-            </view>-->
 
           </view> 
         </view>
@@ -154,9 +99,9 @@
             <view style='position:relative;top:110rpx;left:-100rpx;width:80rpx;height:50rpx;'>
               <text class='t5'>销量:{{item.num}}</text>
             </view>
-            <view style='position:relative;top:-10rpx;left:-60rpx;width:200rpx;'>
-              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
-              <image bindtap='position' src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+           <view style='position:relative;top:0rpx;left:-54rpx;width:200rpx;'>
+              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-28rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
+              <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-28rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance3[idx].distance}}km</view>
             </view>
           </view>
@@ -167,32 +112,6 @@
               <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
               <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
             </view>
-
-          <!-- <view>
-            <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
-              <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-              <image id='{{item.goods[1].product_id}}' src='{{host}}/Data/{{item.goods[1].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-              <image id='{{item.goods[2].product_id}}' src='{{host}}/Data/{{item.goods[2].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-            </view>
-
-            <view style='position:relative;top:100rpx;height:112rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text id='{{item.goods[0].product_id}}' style='font-size:26rpx;color:#333333;'>{{item.goods[0].pro_name}}\n{{}}\n</text>
-                <text id='{{item.goods[1].product_id}}' style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[0].price}}\n</text>
-                <text id='{{item.goods[2].product_id}}' style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text style='font-size:26rpx;color:#333333;'>{{item.goods[1].pro_name}}\n{{}}\n</text>
-                <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[1].price}}\n</text>
-                <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text style='font-size:26rpx;color:#333333;'>{{item.goods[2].pro_name}}\n{{}}\n</text>
-                <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[2].price}}\n</text>
-                <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-            </view>-->
-
           </view> 
         </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
@@ -215,9 +134,9 @@
             <view style='position:relative;top:110rpx;left:-100rpx;width:80rpx;height:50rpx;'>
               <text class='t5'>销量:{{item.num}}</text>
             </view>
-            <view style='position:relative;top:-10rpx;left:-60rpx;width:200rpx;'>
-              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
-              <image bindtap='position' src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+            <view style='position:relative;top:0rpx;left:-54rpx;width:200rpx;'>
+              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-28rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
+              <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-28rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance4[idx].distance}}km</view>
             </view>
           </view>
@@ -228,33 +147,6 @@
               <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
               <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
             </view>
-<!-- 
-          <view>
-            <view style='position:relative;top:80rpx;height:180rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;' bindtap='toGoodsDetail'>
-              <image id='{{item.goods[0].product_id}}' src='{{host}}/Data/{{item.goods[0].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-              <image id='{{item.goods[1].product_id}}' src='{{host}}/Data/{{item.goods[1].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-              <image id='{{item.goods[2].product_id}}' src='{{host}}/Data/{{item.goods[2].pro_photo_x}}' style='height:180rpx;width:212rpx;'></image>
-            </view>
-
-            <view style='position:relative;top:100rpx;height:112rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text id='{{item.goods[0].product_id}}' style='font-size:26rpx;color:#333333;'>{{item.goods[0].pro_name}}\n{{}}\n</text>
-                <text id='{{item.goods[1].product_id}}' style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[0].price}}\n</text>
-                <text id='{{item.goods[2].product_id}}' style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text style='font-size:26rpx;color:#333333;'>{{item.goods[1].pro_name}}\n{{}}\n</text>
-                <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[1].price}}\n</text>
-                <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-              <view style='height:112rpx;width:212rpx; text-align:center;line-height:25rpx;'>
-                <text style='font-size:26rpx;color:#333333;'>{{item.goods[2].pro_name}}\n{{}}\n</text>
-                <text style='font-size:24rpx;color:#e91d1d'>￥{{item.goods[2].price}}\n</text>
-                <text style='font-size:20rpx;color:#666666;text-decoration:line-through;'>{{}}</text>
-              </view>
-            </view>-->
-
-
           </view> 
         </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>

@@ -13,7 +13,7 @@
 <image src='../../images/tixian.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:23rpx;'></image>
 <text>金币转出</text>
 </view>
-<view style='position:relative;width:150rpx;top:-3rpx;left:490rpx;font-size:24rpx;color:#fff;'>
+<view bindtap='zqjb' style='position:relative;width:150rpx;top:-3rpx;left:490rpx;font-size:24rpx;color:#fff;'>
 <image src='../../images/zhuanqu.png'  style='position:relative;top:5rpx;left:-10rpx;width:24rpx;height:24rpx;'></image>
 <text>赚取金币</text>
 <!--赚取金币  分享内容  -->

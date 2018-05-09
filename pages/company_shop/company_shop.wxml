@@ -5,7 +5,7 @@
     <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">销量</view>
     <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">评价</view>
   </view>
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{height}}rpx;' bindchange="bindChange">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{currentTab==0?height1:(currentTab==1?height2:(currentTab==2?height3:height4))}}rpx;' bindchange="bindChange">
     <swiper-item>
       <block wx:for="{{hot_good}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view style='height:582rpx;width:702rpx;margin-left:24rpx;'>
@@ -22,7 +22,6 @@
               <text class='t5'>销量:{{item.num}}</text>
             </view>
 
-
             <view style='position:relative;top:0rpx;left:110rpx;width:200rpx;'>
               <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-28rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-28rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
@@ -30,19 +29,24 @@
             </view>
           </view>
 
-
-          <view wx:for="{{item.goods}}" wx:for-item="ite" wx:for-index="index" style='position:relative;top:80rpx;height:292rpx;width:702rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+<view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+<view wx:for="{{item.goods}}" wx:for-item="ite"  wx:for-index="index"  style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
             <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
               <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
               <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
               <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
             </view>
           </view>
+</view>
+          
+
+          
         </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>
-
     </swiper-item>
+
+
     <swiper-item>
       <block wx:for="{{place_store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
 

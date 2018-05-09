@@ -11,7 +11,7 @@
     display: flex; 
     /* 用flex布局更方便。 */
     position: relative;
-    top: -45rpx;
+    top: -40rpx;
     left: 118rpx;
     justify-content: space-between;
     background-color:#fff;

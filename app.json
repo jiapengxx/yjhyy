@@ -39,7 +39,6 @@
     "pages/jrkb/jrkb",
     "pages/newsDetail/newsDetail",
     "pages/live/live_do",
-    "pages/share/share",
     "pages/myAcount/myAcount",
     "pages/jbtx/jbtx",
     "pages/fxgl/fxgl",
@@ -48,12 +47,12 @@
     "pages/jkbg/jkbg",
     "pages/jkbk/jkbk",
     "pages/jkzx/jkzx",
-    "pages/gold/gold",
     "pages/order/wuliu",
     "pages/smrz/smrz",
     "pages/wdyhk/wdyhk",
     "pages/tjyhk/tjyhk",
-    "pages/sjhyz/sjhyz"
+    "pages/sjhyz/sjhyz",
+    "pages/glyh/glyh"
   ],
   "window": {
     "backgroundTextStyle": "light",

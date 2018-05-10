@@ -78,7 +78,7 @@ Page({
         wx.getLocation({
           success: function (res) {
             var long2 = res.longitude
-            var la2 = res.latitudetion
+            var la2 = res.latitude
             console.log(long2,la2)
             //对附近商家进行处理
             for (var i = 0; i < that.data.sseller.length; i++) {

@@ -1,4 +1,4 @@
-// pages/gold/gold.js
+// pages/glyh/glyh.js
 Page({
 
   /**

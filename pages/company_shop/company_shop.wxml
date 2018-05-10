@@ -8,6 +8,7 @@
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{currentTab==0?height1:(currentTab==1?height2:(currentTab==2?height3:height4))}}rpx;' bindchange="bindChange">
     <swiper-item>
       <block wx:for="{{hot_good}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
+
         <view style='height:582rpx;width:702rpx;margin-left:24rpx;'>
           <view id='{{item.store_id}}' style='position:relative;top:40rpx;height:150rpx;width:500rpx;display:flex;flex-direction:row;'>
             <view id='{{item.store_id}}' bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
@@ -29,6 +30,9 @@
             </view>
           </view>
 
+
+
+
 <view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
 <view wx:for="{{item.goods}}" wx:for-item="ite"  wx:for-index="index"  style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
             <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
@@ -38,10 +42,14 @@
             </view>
           </view>
 </view>
-          
-
-          
         </view>
+
+
+
+
+
+
+
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>
     </swiper-item>

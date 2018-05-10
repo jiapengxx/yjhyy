@@ -4,14 +4,14 @@
     <view class="weui-search-bar__form">
       <view class="weui-search-bar__box">
         <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-        <input bindblur='hideInput' type="text" class="weui-search-bar__input" placeholder="搜索症状、药品、品牌" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <input bindblur='hideInput' type="text" class="weui-search-bar__input" placeholder="搜索产品、品牌" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
         <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
           <icon type="clear" size="14"></icon>
         </view>
       </view>
       <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
         <icon class="weui-icon-search" type="search" size="14"></icon>
-        <view class="weui-search-bar__text">搜索症状、药品、品牌</view>
+        <view class="weui-search-bar__text">搜索产品、品牌</view>
       </label>
     </view>
     <view class="weui-cells searchbar-result" wx:if="{{inputVal.length>0}}">
@@ -75,7 +75,7 @@
       <block wx:for="{{list}}">
         <swiper-item>
         <block wx:if="{{item.name.length<13}}">
-        <text id='{{item.id}}' bindtap='toNewsDetail'  style='position:relative;top:20rpx;font-size:34rpx;height:100rpx;color:#333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:2;letter-spacing: 1rpx;'>{{item.name}}</text>
+        <text id='{{item.id}}' bindtap='toNewsDetail'  style='position:relative;top:20rpx;font-size:34rpx;height:98rpx;color:#333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:2;letter-spacing: 1rpx;'>{{item.name}}</text>
         </block>
           
 <block wx:else>

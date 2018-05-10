@@ -14,11 +14,15 @@
  </view>
 <view wx:else>    
 <view id='{{item.id}}'  bindtap='newsDetail' style='height:300rpx;margin-left:24rpx;margin-right:24rpx;width:702rpx;border-bottom:0.1rpx solid whitesmoke;'>
-<view class=''  style='position:relative;top:20rpx;  height: 42rpx;width:702rpx;font-size: 30rpx;font-weight: 700;color: #333;'>{{item.name}}</view>
-<view style='position:relative;top:50rpx;width:702rpx;height:180rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
-<image class='' src='{{host}}/Data/{{item.photo[0]}}' style='width:180rpx;height:180rpx;' ></image>
+<view style='position:relative;top:20rpx;height:80rpx;width:702rpx;font-size: 30rpx;font-weight: 700;color: #333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:2;letter-spacing: 1rpx;'>{{item.name}}</view>
+
+
+<view style='position:relative;top:34rpx;width:702rpx;height:180rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+ <image class='' src='{{host}}/Data/{{item.photo[0]}}' style='width:180rpx;height:180rpx;' ></image>
 <image class='' src='{{host}}/Data/{{item.photo[1]}}' style='width:180rpx;height:180rpx;'></image>
-<image class='' src='{{host}}/Data/{{item.photo[2]}}' style='width:180rpx;height:180rpx;'></image>
+<image class='' src='{{host}}/Data/{{item.photo[2]}}' style='width:180rpx;height:180rpx;'></image> 
+
+
 </view>
 </view>
  </view>  

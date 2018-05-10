@@ -1,0 +1,33 @@
+<block wx:if="{{1==1}}">
+<!--判断是否有内容  -->
+  <!-- <block  wx:for="{{}}" wx:for-index="idx" wx:for-item="item">
+  <block wx:if="{{1=＝1}}"> -->
+  <!--判断内容的样式  -->
+    <view style='position:relative;top:30rpx;width:702rpx;height:170rpx;margin-left:24rpx;background-color:#fff;'>
+    <image style='position:relative;top:20rpx;left:20rpx;width:102rpx;height:102rpx;border-radius:51rpx;' src='../../images/1.png'></image>
+    <view style='position:relative;width:300rpx;top:-96rpx;left:143rpx;font-size:28rpx;color:#999999;'>某某某</view>
+    <view style='position:relative;width:200rpx;top:-92rpx;left:143rpx;font-size:24rpx;color:#999999;'>未购买商品</view>
+    <view style='position:relative;width:200rpx;top:-84rpx;left:143rpx;font-size:24rpx;color:#999999;'>未返金币</view>
+    <view style='position:relative;width:168rpx;top:-90rpx;left:516rpx;font-size:20rpx;color:#999999;'>2018-04-12 10:35</view>
+    </view>
+    <!-- </block>
+  </block> -->
+
+    <view style='position:relative;top:60rpx;width:702rpx;height:170rpx;margin-left:24rpx;background-color:#fff;'>
+    <image style='position:relative;top:20rpx;left:20rpx;width:102rpx;height:102rpx;border-radius:51rpx;' src='../../images/1.png'></image>
+    <view style='position:relative;width:300rpx;top:-96rpx;left:143rpx;font-size:28rpx;color:#333;'>某某某</view>
+    <view style='position:relative;width:200rpx;top:-92rpx;left:143rpx;font-size:24rpx;color:#333;'>消费500元</view>
+    <view style='position:relative;width:200rpx;top:-84rpx;left:143rpx;font-size:24rpx;color:#ff0300;'>返金币500</view>
+    <view style='position:relative;width:168rpx;top:-90rpx;left:516rpx;font-size:20rpx;color:#333;'>2018-04-12 10:35</view>
+    </view>
+
+
+
+
+
+</block>
+
+
+<block wx:else>
+  <view style='text-align:center;'>您暂无关联</view>
+</block>

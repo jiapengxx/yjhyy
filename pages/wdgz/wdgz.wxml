@@ -8,7 +8,7 @@
       <text bindtap='bj' id='{{bj_id}}' style='position:absolute;top:16rpx;right:38rpx;font-size:24rpx;color:#333;'>{{bj_id==0?'编辑':'完成'}}</text>
       <view wx:if="{{qxgz}}" style='width:100%;height:100rpx;display:flex;flex-direction:row;justify-content:space-between;position:fixed;bottom:0rpx;border-top: 2rpx solid #eee;background: #f3f3f3;z-index:999;'>
         <view bindtap="bindSelectAll" style='position:relative;top:24rpx;left:24rpx;'>
-          <icon wx:if="{{selectedAllStatus}}" type="success_circle" size="24" />
+          <icon wx:if="{{step==1}}" type="success_circle" size="24" />
           <icon wx:else type="circle" size="24" />
           <text>全选</text>
         </view>

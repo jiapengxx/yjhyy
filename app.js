@@ -55,27 +55,31 @@ App({
         store_grade: data.data.store_grade,
         content: data.data.content,
         is_name: data.data.is_name,
-        order_id: data.data.order_id
+        order_id: data.data.order_id,
+        type_id:data.data.type_id
       },
       //这里是上传图片时一起上传的数据
       success: (resp) => {
         success++;//图片上传成功，图片上传成功的变量+1
         console.log(resp)
-        console.log(i);
-        // wx.showToast({
-        //   title: '提交成功',
-        //   icon: 'loading'
-        // })
-        wx.showModal({
-          title: '提交成功',
-          content: '即将跳转到用户中心',
-          showCancel:false,
-          success: function () {
-          wx.switchTab({
-            url: '../company_user/company_user',
+
+        setTimeout(function () {
+          wx.showModal({
+            title: '提交成功',
+            content: '即将跳转到用户中心',
+            showCancel: false,
+            success: function () {
+              wx.switchTab({
+                url: '../company_user/company_user',
+              })
+            }
           })
-          }
-        })
+
+        }
+          , 2000)
+
+
+
         //这里可能有BUG，失败也会执行这里,所以这里应该是后台返回过来的状态码为成功时，这里的success才+1
       },
       fail: (res) => {

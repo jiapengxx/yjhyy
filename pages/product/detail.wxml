@@ -55,7 +55,6 @@
       <text class="cun">购买数量</text>
       <view class="dian">
         <view class="stepper">
-
           <!-- 减号 -->
           <text class="{{minusStatuses[index]}}" data-alpha-beta="0" bindtap="changeNum">-</text>
           <!-- 数值 -->
@@ -70,7 +69,6 @@
     </view>
   </view>
 </view>
-
 <!--图文详情头部-->
 <view>
   <view class="swiper-tab">
@@ -83,10 +81,6 @@
 
     <!-- 图文详情 -->
     <swiper-item>
-
-        <video id="myVideo" initial-time='1' style='height:360rpx;width:750rpx;' src="http://vliveachy.tc.qq.com/vhot2.qqvideo.tc.qq.com/ANO1NRqc2mlj49BxJq57WbvxM4SXE590MyL4QBekmd1U/j0506mcuure.mp4?sdtfrom=v1010&guid=5f1e8f2142f3e32371907b58bcd48916&vkey=51A4725D29FF87C45FA864F2482D974E3B9BB25C752B19876D0407E438254DF6179C05A20AF0AC64FBCA62AD354909F34183926A1D174A38833F4CEE571C8C5886791248FFC242CFF448FD9214AAB5D9BEAC9D069BB853C2CF7C699065D631ED0FA4FDA3CF3D1ABB55A26753EE9B4B9C699B07459C412C60&ocid=198514860&ocid=464000428"></video> 
- 
-
     <!--原有详情模板  -->
        <import src="../../wxParse/wxParse.wxml" />
       <view class="wxParse">
@@ -94,10 +88,6 @@
           <template is="wxParse" data="{{wxParseData:content.nodes}}" />
         </scroll-view>
       </view> 
-
-    <!--引入视频  -->
-
-   
 <!--根据进入的位置判断图片大小  -->
     </swiper-item>
     <!-- 产品参数 -->

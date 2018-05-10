@@ -13,11 +13,13 @@ Page({
     host: app.d.hostImg,
     shoucang_good: [],
     gz_store: [],
-    qxgz:false,
-    xk:false,
-    check:false,
-    bj_id:0,
-    array_gz:[]
+    qxgz: false,
+    xk: false,
+    check: false,
+    bj_id: 0,
+    array_gz: [],
+    pro_Id:[],
+    step: 0
   },
 
   /**
@@ -25,7 +27,7 @@ Page({
    */
   onLoad: function (options) {
     this.loadCollect()
-  
+
   },
 
   /**
@@ -105,7 +107,7 @@ Page({
         itemId: item_id,
         flag: false
       })
-    } 
+    }
     else {
       this.setData({
         itemId: 9999,
@@ -113,57 +115,71 @@ Page({
       })
     }
   },
-  bj:function(e){
-    this.creat_array()
-    var bj_id=e.target.id
+  bj: function (e) {
+
+    var bj_id = e.target.id
     console.log(bj_id)
-    if(bj_id==0){
+    if (bj_id == 0) {
       this.setData({
         qxgz: true,
         xk: true,
-        bj_id:1
+        bj_id: 1
       })
-    }else{
+      this.creat_array()
+
+    } else {
       this.setData({
         qxgz: false,
         xk: false,
-        bj_id:0
+        bj_id: 0,
+        array_gz:[],
+        step:0
       })
+
     }
   },
-  creat_array:function(){
+  //创建数组
+  creat_array: function () {
     console.log(this.data.shoucang_good.length)
-    var that=this
-    for (var i = 0; i < this.data.shoucang_good.length;i++){
+    var that = this
+    for (var i = 0; i < this.data.shoucang_good.length; i++) {
       this.setData({
-        array_gz:this.data.array_gz.concat({type:'circle'})
+        array_gz: this.data.array_gz.concat({ type: 'circle', pro_id: '' + this.data.shoucang_good[i].pro_id })
       })
-      console.log("aa")
     }
     console.log(this.data.array_gz)
   },
   bindCheckbox: function (e) {
-  // this.setData({
-  //   INdex: e.target.id,
-  //   checked:!this.data.check,
-  //   check:!this.data.checked
-  // })
-    var index=parseInt(e.target.dataset.index)
-//对数组数据进行处理
-  var type = this.data.array_gz[index].type;
-  var array_gz = this.data.array_gz;
-  if (type == 'circle') {
-    //未选中时
-    array_gz[index].type = 'success_circle';
-  } else {
-    array_gz[index].type = 'circle';
-  }
-  this.setData({
-    array_gz: this.data.array_gz
-  });
+    // this.setData({
+    //   INdex: e.target.id,
+    //   checked:!this.data.check,
+    //   check:!this.data.checked
+    // })
+    var index = parseInt(e.target.dataset.index)
+    //对数组数据进行处理
+    var type = this.data.array_gz[index].type;
+    var array_gz = this.data.array_gz;
+    if (type == 'circle') {
+      //未选中时
+      array_gz[index].type = 'success_circle';
+    } else {
+      array_gz[index].type = 'circle';
+    }
+    this.setData({
+      array_gz: this.data.array_gz
+    });
   },
-  cancelGZ:function(){
-    var that=this
+
+
+  cancelGZ: function () {
+    var that = this
+    for (var i = 0; i < this.data.array_gz.length; i++) {
+      this.setData({
+        pro_Id: this.data.pro_Id.concat(this.data.shoucang_good[i].pro_id)
+      })
+    }
+    //商品ID数组
+    console.log(this.data.pro_Id)
     wx.showModal({
       title: '提示',
       content: '你确认移除吗',
@@ -173,7 +189,8 @@ Page({
           method: 'post',
           data: {
             uid: app.d.userId,
-            pro_id: that.data.INdex,
+            //传入商品数组
+            pro_id: that.data.pro_Id,
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -183,6 +200,12 @@ Page({
             var data = res.data;
             if (data.status == 1) {
               that.loadCollect();
+that.setData({
+  step:1,
+  bj_id:0,
+  qxgz: false,
+})
+
             } else {
               wx.showToast({
                 title: '操作失败！',
@@ -202,11 +225,28 @@ Page({
     });
   },
   bindSelectAll: function () {
-
+    var array_gz = this.data.array_gz;
+    if (this.data.step==0) {
+      //当第一次触发都将 circle转为success_circle
+      for (var i = 0; i < this.data.shoucang_good.length; i++) {
+        array_gz[i].type = 'success_circle';
+      }
+      this.setData({
+        array_gz: this.data.array_gz,
+        step:1
+      });
+    }else{
+    for (var i = 0; i < this.data.shoucang_good.length; i++) {
+        array_gz[i].type = 'circle';
+    }
+    this.setData({
+      array_gz: this.data.array_gz,
+      step: 0
+    });
+    }
   },
-  cancelSp:function(e){
+  cancelSp: function () {
     var that = this;
-    var pro_id = e.target.id;
     wx.showModal({
       title: '提示',
       content: '你确认移除吗',
@@ -216,7 +256,7 @@ Page({
           method: 'post',
           data: {
             uid: app.d.userId,
-            pro_id: pro_id,
+            pro_id: this.data.pro_Id,
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -244,9 +284,9 @@ Page({
       }
     });
   },
-  cancel:function(e){
-    var that=this
-    var store_id=e.target.id
+  cancel: function (e) {
+    var that = this
+    var store_id = e.target.id
     wx.request({
       url: app.d.ceshiUrl + '/Api/BCollet/store_save',
       method: 'post',
@@ -259,7 +299,7 @@ Page({
       },
       success: function (res) {
         console.log(res)
-      that.loadCollect()
+        that.loadCollect()
       },
       fail: function () {
         wx.showToast({
@@ -269,7 +309,7 @@ Page({
       }
     });
   },
-  loadCollect:function(){
+  loadCollect: function () {
     var that = this
     wx.request({
       url: app.d.hostUrl + '/Api/BCollet/show',
@@ -292,8 +332,8 @@ Page({
         var count1 = that.data.shoucang_good.length
         var count2 = that.data.gz_store.length
         that.setData({
-          height1: 440 * parseInt((count1 + 1) / 2)+40,
-          height2: 165 * count2+40,
+          height1: 440 * parseInt((count1 + 1) / 2) + 40,
+          height2: 165 * count2 + 40,
         })
       },
       fail: function (e) {

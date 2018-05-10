@@ -264,10 +264,11 @@ Page({
   mySelect: function (e) {
     this.setData({
       content: e.target.dataset.me,
+      type_id: e.target.dataset.type_id,
       selectPerson: true,
       selectArea: false,
     })
-    if (this.data.content.length != 0) {
+    if (this.data.content.length != 0) {    
       this.setData({
         num9: 1
       })
@@ -360,7 +361,6 @@ Page({
       var that = this;
       console.log('form发生了submit事件，携带数据为：', e.detail.value)
       // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
-     
       app.uploadimg({
         url: app.d.hostUrl + '/Api/BIndex/seller_add',//这里是你图片上传的接口
         path: that.data.srcs,//这里是选取的图片的地址数组
@@ -378,7 +378,7 @@ Page({
           code: e.detail.value.code,
           place_desc: e.detail.value.place_desc,
           introduce: e.detail.value.introduce,
-          type_id: e.detail.value.type_id,
+          type_id: that.data.type_id,
           uid: app.d.userId,
         }
       });

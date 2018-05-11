@@ -123,10 +123,13 @@ Page({
           var pro = res.data.pro;
           var content = pro.content;
           WxParse.wxParse('content', 'html', content, that, 3);
+          // console.log(res.data.commodityAttr+"111");
           that.setData({
             itemData: pro,
             bannerItem: pro.img_arr,
+            //规格
             commodityAttr: res.data.commodityAttr,
+            //属性值
             attrValueList: res.data.attrValueList,
             collect: res.data.pro.collect,
             store_id: res.data.pro.store_id

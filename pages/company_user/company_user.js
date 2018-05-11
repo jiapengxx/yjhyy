@@ -61,22 +61,130 @@ Page({
           })
         }
       })
-    } 
+    }
   },
-  getUserInfo: function (e) {
-    console.log(app.globalData.userInfo)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+  getUserInfo: function (cb) {
+    console.log(cb)
+    var that = this
+    if (app.globalData.userInfo) {
+      typeof cb == "function" && cb(this.globalData.userInfo)
+    } else {
+      //调用登录接口
+      wx.login({
+        success: function (res) {
+          console.log(res)
+          var code = res.code;
+          //get wx user simple info
+          wx.getUserInfo({
+            success: function (res) {
+              console.log(res)
+              
+              app.globalData.userInfo = res.userInfo
+              typeof cb == "function" && cb(that.globalData.userInfo);                     that.getUserSessionKey(code);
+            }
+          });
+        }
+      });
+    }
+  },
+  getUserSessionKey: function (code) {
+    //用户的订单状态
+    var that = this;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Login/getsessionkey',
+      method: 'post',
+      data: {
+        code: code
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        //--init data        
+        var data = res.data;
+        if (data.status == 0) {
+          wx.showToast({
+            title: data.err,
+            duration: 2000
+          });
+          return false;
+        }
+        app.globalData.userInfo['sessionId'] = data.session_key;
+        app.globalData.userInfo['openid'] = data.openid;
+        that.onLoginUser();
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！err:getsessionkeys',
+          duration: 2000
+        });
+      },
+    });
+  },
+  onLoginUser: function () {
+    var that = this;
+    var user = app.globalData.userInfo;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Login/authlogin',
+      method: 'post',
+      data: {
+        SessionId: user.sessionId,
+        gender: user.gender,
+        NickName: user.nickName,
+        HeadUrl: user.avatarUrl,
+        openid: user.openid
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        //--init data        
+        var data = res.data.arr;
+        var status = res.data.status;
+        if (status != 1) {
+          wx.showToast({
+            title: res.data.err,
+            duration: 3000
+          });
+          return false;
+        }
+        app.globalData.userInfo['id'] = data.ID;
+        app.globalData.userInfo['NickName'] = data.NickName;
+        app.globalData.userInfo['HeadUrl'] = data.HeadUrl;
+        var userId = data.ID;
+        if (!userId) {
+          wx.showToast({
+            title: '登录失败！',
+            duration: 3000
+          });
+          return false;
+        }
+        app.d.userId = userId;
 
+        that.setData({
+          hasUserInfo: true,
+          userInfo: app.globalData.userInfo
+        })
+
+        that.loadOrderStatus()
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！err:authlogin',
+          duration: 2000
+        });
+      },
+    });
   },
 
   onShow: function () {
-    this.loadOrderStatus();
+    if (this.data.hasUserInfo){
+      this.loadOrderStatus();
+    }
+
   },
   loadOrderStatus: function () {
+
     //获取用户订单数据
     var that = this;
     wx.request({
@@ -88,20 +196,20 @@ Page({
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
-        //--init data        
+      success: function (res) {      
         var status = res.data.status;
         if (status == 1) {
           var orderInfo = res.data.orderInfo;
           that.setData({
             orderInfo: orderInfo
           });
-        } else {
-          wx.showToast({
-            title: '非法操作.',
-            duration: 2000
-          });
-        }
+        } 
+        // else {
+        //   wx.showToast({
+        //     title: '非法操作.',
+        //     duration: 2000
+        //   });
+        // }
       },
       error: function (e) {
         wx.showToast({

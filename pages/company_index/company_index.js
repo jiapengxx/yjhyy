@@ -18,6 +18,7 @@ Page({
     distance1: [],
     distance2: [],
     distance3: [],
+    page: 2,
   },
   showInput: function () {
 
@@ -264,6 +265,56 @@ Page({
 wx.navigateTo({
   url: '../product/detail?pro_id=' + pro_id,
 })
+  },
+  //点击加载更多
+  getMore: function (e) {
+    var that = this;
+    if(this.data.currentTab==0){
+      this.setData({
+        types:'距离最近'
+      })
+    }else if(this.data.currentTab==1){
+      this.setData({
+        types: '销量最高'
+      })
+    }else{
+      this.setData({
+        types: '评价最高'
+      })
+    }
+    var page = that.data.page;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Index/getlist',
+      method: 'post',
+      data: {
+        page: page,
+        type:that.data.types
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var prolist = res.data.prolist;
+        if (prolist == '') {
+          wx.showToast({
+            title: '没有更多数据！',
+            duration: 2000
+          });
+          return false;
+        }
+        that.setData({
+          page: page + 1,
+          //page具有持续性  每个类型需有自己的page
+          productData: that.data.productData.concat(prolist)
+        });
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    })
   },
   call: function () {
     wx.makePhoneCall({

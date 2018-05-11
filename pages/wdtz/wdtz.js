@@ -10,9 +10,7 @@ Page({
     time: [],
     flags: false,
     a:[]
-
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -28,7 +26,6 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-
         var inform = res.data.inform
         var time = []
         that.setData({
@@ -110,8 +107,9 @@ Page({
 
   },
   bindRead: function (e) {
-    var item_id = e.target.id
+    var item_id = e.currentTarget.id
     console.log(e.target.id)
-    //对请求到的数组中flag值进行修改并提交数据
+    //阅读后的文字颜色变为＃999
+    
   }
 })

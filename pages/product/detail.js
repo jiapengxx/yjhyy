@@ -216,6 +216,8 @@ Page({
   },
   /* 获取数据 */
   distachAttrValue: function (commodityAttr) {
+    console.log("111");
+    console.log(commodityAttr);
     /**
       将后台返回的数据组合成类似
       {
@@ -279,16 +281,16 @@ Page({
   },
   /* 选择属性值事件 */
   selectAttrValue: function (e) {
-    /*
-    点选属性值，联动判断其他属性值是否可选
-    {
-      attrKey:'型号',
-      attrValueList:['1','2','3'],
-      selectedValue:'1',
-      attrValueStatus:[true,true,true]
-    }
-    console.log(e.currentTarget.dataset);
-    */
+    console.log(e);
+   //点选属性值，联动判断其他属性值是否可选
+    that.setData({
+      attrKey: '型号',
+      attrValueList: ['1', '2', '3'],
+      selectedValue: '1',
+      attrValueStatus: [true, true, true]
+    })
+    // console.log(111111111111111);
+    // console.log(e.currentTarget.dataset);
     var attrValueList = this.data.attrValueList;
     var index = e.currentTarget.dataset.index;//属性索引
     var key = e.currentTarget.dataset.key;
@@ -301,7 +303,6 @@ Page({
         // 选中
         this.selectValue(attrValueList, index, key, value);
       }
-
     }
   },
   /* 选中 */
@@ -330,7 +331,7 @@ Page({
       }
     }
     attrValueList[index].selectedValue = value;
-
+   
     // 判断属性是否可选
     // for (var i = 0; i < attrValueList.length; i++) {
     //   for (var j = 0; j < attrValueList[i].attrValues.length; j++) {
@@ -350,7 +351,8 @@ Page({
     //     }
     //   }
     // }
-    // console.log('结果', attrValueList);
+    console.log(11111);
+    console.log('结果', attrValueList);
     this.setData({
       attrValueList: attrValueList,
       includeGroup: includeGroup

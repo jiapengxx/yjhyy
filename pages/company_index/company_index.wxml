@@ -216,6 +216,8 @@
     <view>全部</view>
   </swiper-item> -->
   </swiper>
+
+      <view style='margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;margin-top:30rpx;'bindtap="getMore">点击查看更多</view>
 </scroll-view>
 
 <!-- <view style='position:relative;top:30rpx;height:100rpx;width:100%;background-color:#4BA3FE;text-align:center;'>

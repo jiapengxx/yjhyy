@@ -44,10 +44,6 @@
       <text style='position:relative;left:30rpx;top:30rpx;width:40%'>详细地址：</text>
       <input name='place_desc'bindblur='address'  style='position:relative;top:-30rpx;left:300rpx;width:80%' placeholder='请输入详细地址'></input>
     </view>
-
-
-
-
     <view style='height:100rpx;border-bottom:0.1rpx solid gainsboro;'>
       <text style='position:relative;left:30rpx;top:30rpx;width:40%'>产品分类：</text>
      <view class="phone_one" bindtap="clickPerson">
@@ -115,7 +111,7 @@
       </textarea>
     </view>
     <view style='height:250rpx;background-color:＃fff'>
-      <button formType="submit"   style='position:relative;top:87.5rpx;width:580rpx;background:＃4BA3FE;'>提交</button>
+      <button formType="submit" style='position:relative;top:87.5rpx;width:580rpx;background:＃4BA3FE;'>提交</button>
     </view>
   </form>
 </view>

@@ -162,14 +162,23 @@ Page({
       this.setData({
         num5: 0
       })
-    } else {
+    } else if (!(/^[a-zA-Z]{1}[\w\.]{5,14}$/.test(e.detail.value))) {
+      wx.showToast({
+        title: '账号首位须为字母，且不少于6位，不大于15位！',
+        icon: 'loading'
+      })
+      this.setData({
+        num5: 0
+      })
+    } 
+    else {
       this.setData({
         num5: 1
       })
     }
   },
   pwd: function (e) {
-    if (e.detail.value.length === 0) {
+    if (e.detail.value.length ==0) {
       wx.showToast({
         title: '登录密码不能为空！',
         icon: 'loading'
@@ -177,7 +186,16 @@ Page({
       this.setData({
         num6: 0
       })
-    } else {
+    } else if (e.detail.value.length<6) {
+      wx.showToast({
+        title: '登录密码不能少于6位！',
+        icon: 'loading'
+      })
+      this.setData({
+        num6: 0
+      })
+    }
+    else {
       this.setData({
         num6: 1
       })

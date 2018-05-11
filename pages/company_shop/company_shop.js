@@ -18,7 +18,11 @@ Page({
     distance1:[],
     distance2:[],
     distance3:[],
-    distance4:[]
+    distance4:[],
+    page1:2,
+    page2:2,
+    page3:2,
+    page4:2
   },
 
   /**
@@ -47,10 +51,10 @@ Page({
           comment_store1: comment_store
         });
         that.setData({
-          height1: 582 * that.data.hot_good.length,
-          height2: 582 * that.data.place_store1.length,
-          height3: 582 * that.data.num_store1.length,
-          height4: 582 * that.data.comment_store1.length,
+          height1: 582 * that.data.hot_good.length+110,
+          height2: 582 * that.data.place_store1.length + 110,
+          height3: 582 * that.data.num_store1.length + 110,
+          height4: 582 * that.data.comment_store1.length + 110,
         });
       },
       fail: function (e) {
@@ -284,5 +288,44 @@ Page({
       url: '../product/detail?pro_id=' + pro_id,
     })
     console.log(pro_id)
-  }
+  },
+  //点击加载更多
+  getMore1: function (e) {
+    //获取综合的更多
+    var that = this;
+    var page1 = that.data.page1;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/BIndex/seller_show',
+      method: 'post',
+      data: {
+        page: page1,
+        type: 'seller'
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res)
+        // var prolist = res.data.prolist;
+        // if (prolist == '') {
+        //   wx.showToast({
+        //     title: '没有更多数据！',
+        //     duration: 2000
+        //   });
+        //   return false;
+        // }
+        // that.setData({
+        //   page: page + 1,
+        //   //page具有持续性  每个类型需有自己的page
+        //   productData: that.data.productData.concat(prolist)
+        // });
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    })
+  },
 })

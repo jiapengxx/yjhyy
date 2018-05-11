@@ -27,7 +27,6 @@ page {
   height: 582rpx;
   display: block;
   width: 100%;
-  border-bottom: 0.1rpx solid gainsboro;
 }
 
 .swiper-box view {

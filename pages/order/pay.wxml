@@ -33,19 +33,7 @@
 			</view>
 			</navigator>
 		</view>
-<view class="xuan">
-	<view class="hui">是否使用金币：</view>
-<!--设置监听器，当点击radio时调用-->
-<radio-group bindchange="listenerRadioGroup" class="hui">
-<!--label通常与radio和checkbox结合使用-->
-  <label style="display: flex" wx:for="{{vou}}" class="xuan" bindtap="getvou" data-id="{{item.vid}}" data-price="{{item.amount}}">
-  <radio value="{{item.vid}}" />满{{item.full_money}}立减{{item.amount}}元
- </label>
- <label style="display: flex" class="xuan" bindtap="getvou" data-id="0" data-price="0">
-  <radio value="0"/>不使用优惠券
- </label>
-</radio-group>
-</view>
+
 <view class="xuan" wx:if="{{vou!=''}}" >
 	<view class="hui">可使用优惠券：</view>
 <!--设置监听器，当点击radio时调用-->

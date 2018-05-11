@@ -103,7 +103,6 @@ App({
           data.fail = fail;
           that.uploadimg(data);
         }
-
       }
     });
   },

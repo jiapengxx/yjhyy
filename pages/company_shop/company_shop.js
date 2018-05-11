@@ -51,10 +51,10 @@ Page({
           comment_store1: comment_store
         });
         that.setData({
-          height1: 582 * that.data.hot_good.length+110,
-          height2: 582 * that.data.place_store1.length + 110,
-          height3: 582 * that.data.num_store1.length + 110,
-          height4: 582 * that.data.comment_store1.length + 110,
+          height1: 582 * that.data.hot_good.length+140,
+          height2: 582 * that.data.place_store1.length + 140,
+          height3: 582 * that.data.num_store1.length + 140,
+          height4: 582 * that.data.comment_store1.length + 140,
         });
       },
       fail: function (e) {

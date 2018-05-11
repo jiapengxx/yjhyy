@@ -117,6 +117,7 @@ App({
      
   },
   getUserInfo: function (cb) {
+    console.log(cb)
     var that = this
     if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
@@ -124,14 +125,14 @@ App({
       //调用登录接口
       wx.login({
         success: function (res) {
+          console.log(res)
           var code = res.code;
           //get wx user simple info
           wx.getUserInfo({
             success: function (res) {
               that.globalData.userInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo);
-              //get user sessionKey
-              //get sessionKey
+
               that.getUserSessionKey(code);
             }
           });

@@ -3,6 +3,7 @@ var base64 = require("../../images/base64");
 var WxSearch = require('../../wxSearch/wxSearch.js')
 Page({
   data: {
+
     /**      * 页面配置      */
     winWidth: 0, winHeight: 0,
     // tab切换   

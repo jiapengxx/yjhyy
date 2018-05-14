@@ -106,6 +106,30 @@ Page({
   // 商品详情数据获取
   loadProductDetail: function () {
     var that = this;
+    console.log(1112222);
+    wx.login({
+      success: function (res) {
+        console.log(res.code+"11122222")
+        var code = res.code;
+        //get wx user simple info
+        wx.getUserInfo({
+          success: function (res) {
+            that.globalData.userInfo = res.userInfo
+            typeof cb == "function" && cb(that.globalData.userInfo);
+            //登录首次接口
+            console.log(1112222);
+            that.getUserSessionKey(code);
+          },
+          fail: function (e) {
+            console.log('失败');
+            wx.showToast({
+              title: '网络异常！err:getsessionkeys',
+              duration: 2000
+            });
+          },
+        });
+      }
+    });
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/index',
       method: 'post',
@@ -149,7 +173,40 @@ Page({
       },
     });
   },
-
+  getUserSessionKey: function (code) {
+    //用户的订单状态
+    var that = this;
+    wx.request({
+      url: that.d.ceshiUrl + '/Api/Login/getsessionkey',
+      method: 'post',
+      data: {
+        code: code
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        //--init data        
+        var data = res.data;
+        if (data.status == 0) {
+          wx.showToast({
+            title: data.err,
+            duration: 2000
+          });
+          return false;
+        }
+        that.globalData.userInfo['sessionId'] = data.session_key;
+        that.globalData.userInfo['openid'] = data.openid;
+        that.onLoginUser();
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！err:getsessionkeys',
+          duration: 2000
+        });
+      },
+    });
+  },
   //商品评价数据获取
   loadProductEvaluate: function () {
     var that = this;

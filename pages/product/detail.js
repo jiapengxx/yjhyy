@@ -29,135 +29,232 @@ Page({
     // commodityAttr: [],
     // attrValueList: [],
     //数据结构：以一组一组的数据来进行设定 
-    commodityAttr: [
+    commodityAttr1: [
       {
-        price: 35.0,
+        price: 560,
         "attrValueList": [
           {
-            "attrKey": "规格：",
-            "attrValue": "+免费配料",
-
+            "attrKey": "类型:",
+            "attrValue": "245ml",
           },
           {
-            "attrKey": "甜度：",
-            "attrValue": "七分甜",
-
+            "attrKey": "规格:",
+            "attrValue": "瓶",
           },
-          {
-            "attrKey": "加料：",
-            "attrValue": "珍珠",
-
-          },
-          {
-            "attrKey": "冰块：",
-            "attrValue": "少冰",
-
-          }
         ]
       },
       {
-
-        price: 35.1,
-
+        price: 5600,
         "attrValueList": [
           {
-            "attrKey": "规格：",
-            "attrValue": "+燕麦",
-
+            "attrKey": "类型:",
+            "attrValue": "245ml",
           },
           {
-            "attrKey": "甜度：",
-            "attrValue": "五分甜",
-
+            "attrKey": "规格:",
+            "attrValue": "箱(10瓶)",
           },
-          {
-            "attrKey": "加料：",
-            "attrValue": "椰果",
-
-          },
-          {
-            "attrKey": "冰块：",
-            "attrValue": "去冰",
-          }
         ]
       },
       {
-        price: 35.2,
+        price: 660,
         "attrValueList": [
           {
-            "attrKey": "规格：",
-            "attrValue": "+布丁",
-
+            "attrKey": "类型:",
+            "attrValue": "330ml",
           },
           {
-            "attrKey": "甜度：",
-            "attrValue": "无糖",
+            "attrKey": "规格:",
+            "attrValue": "瓶",
 
           },
-          {
-            "attrKey": "加料：",
-            "attrValue": "仙草",
-
-          },
-          {
-            "attrKey": "冰块：",
-            "attrValue": "常温",
-
-          }
         ]
       },
       {
-
-        price: 35.2,
-
+        price: 6600,
         "attrValueList": [
           {
-            "attrKey": "规格：",
-            "attrValue": "再加一份奶霜",
-
+            "attrKey": "类型:",
+            "attrValue": "330ml",
           },
           {
-            "attrKey": "甜度：",
-            "attrValue": "无糖",
+            "attrKey": "规格:",
+            "attrValue": "箱(10瓶)",
 
           },
+        ]
+      }
+    ],
+    commodityAttr2: [
+      {
+        price: 66,
+        "attrValueList": [
           {
-            "attrKey": "加料：",
-            "attrValue": "仙草",
-
+            "attrKey": "类型:",
+            "attrValue": "245ml",
           },
           {
-            "attrKey": "冰块：",
-            "attrValue": "热饮",
-
-          }
+            "attrKey": "规格:",
+            "attrValue": "瓶",
+          },
         ]
       },
       {
-
-        price: 35.2,
-
+        price: 1320,
         "attrValueList": [
           {
-            "attrKey": "规格：",
-            "attrValue": "+免费配料",
-
+            "attrKey": "类型:",
+            "attrValue": "245ml",
           },
           {
-            "attrKey": "甜度：",
-            "attrValue": "五分甜",
-
+            "attrKey": "规格:",
+            "attrValue": "箱(20瓶)",
+          },
+        ]
+      },
+      {
+        price: 136,
+        "attrValueList": [
+          {
+            "attrKey": "类型:",
+            "attrValue": "500ml",
           },
           {
-            "attrKey": "加料：",
-            "attrValue": "椰果",
+            "attrKey": "规格:",
+            "attrValue": "瓶",
 
           },
+        ]
+      }
+      ,
+      {
+        price: 1632,
+        "attrValueList": [
           {
-            "attrKey": "冰块：",
-            "attrValue": "常温",
+            "attrKey": "类型:",
+            "attrValue": "500ml",
+          },
+          {
+            "attrKey": "规格:",
+            "attrValue": "箱(12瓶)",
 
-          }
+          },
+        ]
+      }
+      ,
+      {
+        price: 208,
+        "attrValueList": [
+          {
+            "attrKey": "类型:",
+            "attrValue": "1L",
+          },
+          {
+            "attrKey": "规格:",
+            "attrValue": "瓶",
+
+          },
+        ]
+      },
+      {
+        price: 1664,
+        "attrValueList": [
+          {
+            "attrKey": "类型:",
+            "attrValue": "1L",
+          },
+          {
+            "attrKey": "规格:",
+            "attrValue": "箱(8瓶)",
+
+          },
+        ]
+      }
+    ],
+    commodityAttr3: [
+      {
+        price: 138,
+        "attrValueList": [
+          {
+            "attrKey": "类型:",
+            "attrValue": "245ml",
+          },
+          {
+            "attrKey": "规格:",
+            "attrValue": "瓶",
+          },
+        ]
+      },
+      {
+        price: 2760,
+        "attrValueList": [
+          {
+            "attrKey": "类型:",
+            "attrValue": "245ml",
+          },
+          {
+            "attrKey": "规格:",
+            "attrValue": "箱(20瓶)",
+          },
+        ]
+      },
+      {
+        price: 218,
+        "attrValueList": [
+          {
+            "attrKey": "类型:",
+            "attrValue": "500ml",
+          },
+          {
+            "attrKey": "规格:",
+            "attrValue": "瓶",
+
+          },
+        ]
+      }
+      ,
+      {
+        price: 2616,
+        "attrValueList": [
+          {
+            "attrKey": "类型:",
+            "attrValue": "500ml",
+          },
+          {
+            "attrKey": "规格:",
+            "attrValue": "箱(12瓶)",
+
+          },
+        ]
+      }
+      ,
+      {
+        price: 378,
+        "attrValueList": [
+          {
+            "attrKey": "类型:",
+            "attrValue": "1L",
+          },
+          {
+            "attrKey": "规格:",
+            "attrValue": "瓶",
+
+          },
+        ]
+      }
+      ,
+      {
+        price: 3024,
+        "attrValueList": [
+          {
+            "attrKey": "类型:",
+            "attrValue": "1L",
+          },
+          {
+            "attrKey": "规格:",
+            "attrValue": "箱(8瓶)",
+
+          },
         ]
       }
     ],
@@ -216,53 +313,82 @@ Page({
   },
   // 传值
   onLoad: function (option) {
+    console.log(option)
     var that = this;
-    if ((typeof option.DATA) != "undefined") {
-      var DAta = option.DATA.split(",")
-      this.setData({
-        bindUid: DAta[0],
-        pro_id: DAta[1],
-        store_id: DAta[2]
+    //先对登录做判断
+    if (app.globalData.userInfo == null) {
+      wx.showModal({
+        title: '请先登录',
+        content: '登录获取更多信息',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../company_user/company_user',
+            })
+          }
+        }
       })
-      console.log(this.data.bindUid)
     } else {
-      this.setData({
-        pro_id: option.pro_id,
-        uid: app.d.userId,
-        r_uid: option.r_uid
-      });
+      if ((typeof option.DATA) != "undefined") {
+        var DAta = option.DATA.split(",")
+        this.setData({
+          bindUid: DAta[0],
+          pro_id: DAta[1],
+          store_id: DAta[2]
+        })
+        console.log(this.data.bindUid)
+      } else {
+        this.setData({
+          pro_id: option.pro_id,
+          uid: app.d.userId,
+          // r_uid: option.r_uid
+        });
+      }
+      if (that.data.pro_id == 441) {
+        that.setData({
+          commodityAttr: that.data.commodityAttr1
+        })
+      } else if (that.data.pro_id == 442) {
+        that.setData({
+          commodityAttr: that.data.commodityAttr3
+        })
+      } else if (that.data.pro_id == 443) {
+        that.setData({
+          commodityAttr: that.data.commodityAttr2
+        })
+      }
+      console.log(that.data.pro_id + "qqq")
+      that.loadProductDetail();
+      that.loadProductEvaluate();
     }
-
-    that.loadProductDetail();
-    that.loadProductEvaluate();
   },
   // 商品详情数据获取
   loadProductDetail: function () {
     var that = this;
-    console.log(1112222);
-    wx.login({
-      success: function (res) {
-        console.log(res.code+"11122222")
-        var code = res.code;
-        //get wx user simple info
-        wx.getUserInfo({
-          success: function (res) {
-            that.globalData.userInfo = res.userInfo
-            typeof cb == "function" && cb(that.globalData.userInfo);
-            //登录首次接口
-            console.log(1112222);
-            that.getUserSessionKey(code);
-          },
-          fail: function (e) {
-            console.log('失败');
-            wx.showToast({
-              title: '网络异常！err:getsessionkeys',
-              duration: 2000
-            });
-          },
-        });
-      }
-    });
+    // console.log(1112222);
+    // wx.login({
+    //   success: function (res) {
+    //     console.log(res.code+"11122222")
+    //     var code = res.code;
+    //     wx.getUserInfo({
+    //       success: function (res) {
+    //         that.globalData.userInfo = res.userInfo
+    //         typeof cb == "function" && cb(that.globalData.userInfo);
+
+    //         console.log(1112222);
+    //         that.getUserSessionKey(code);
+    //       },
+    //       fail: function (e) {
+    //         console.log('失败');
+    //         wx.showToast({
+    //           title: '网络异常！err:getsessionkeys',
+    //           duration: 2000
+    //         });
+    //       },
+    //     });
+    //   }
+    // });
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/index',
       method: 'post',
@@ -304,40 +430,38 @@ Page({
       },
     });
   },
-  getUserSessionKey: function (code) {
-    //用户的订单状态
-    var that = this;
-    wx.request({
-      url: that.d.ceshiUrl + '/Api/Login/getsessionkey',
-      method: 'post',
-      data: {
-        code: code
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        //--init data        
-        var data = res.data;
-        if (data.status == 0) {
-          wx.showToast({
-            title: data.err,
-            duration: 2000
-          });
-          return false;
-        }
-        that.globalData.userInfo['sessionId'] = data.session_key;
-        that.globalData.userInfo['openid'] = data.openid;
-        that.onLoginUser();
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！err:getsessionkeys',
-          duration: 2000
-        });
-      },
-    });
-  },
+  // getUserSessionKey: function (code) {
+  //   var that = this;
+  //   wx.request({
+  //     url: that.d.ceshiUrl + '/Api/Login/getsessionkey',
+  //     method: 'post',
+  //     data: {
+  //       code: code
+  //     },
+  //     header: {
+  //       'Content-Type': 'application/x-www-form-urlencoded'
+  //     },
+  //     success: function (res) {      
+  //       var data = res.data;
+  //       if (data.status == 0) {
+  //         wx.showToast({
+  //           title: data.err,
+  //           duration: 2000
+  //         });
+  //         return false;
+  //       }
+  //       that.globalData.userInfo['sessionId'] = data.session_key;
+  //       that.globalData.userInfo['openid'] = data.openid;
+  //       that.onLoginUser();
+  //     },
+  //     fail: function (e) {
+  //       wx.showToast({
+  //         title: '网络异常！err:getsessionkeys',
+  //         duration: 2000
+  //       });
+  //     },
+  //   });
+  // },
   //商品评价数据获取
   loadProductEvaluate: function () {
     var that = this;
@@ -351,12 +475,22 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        that.setData({
-          All: res.data.product_dp.all,
-          Good: res.data.product_dp.good,
-          Medium: res.data.product_dp.medium,
-          Bad: res.data.product_dp.bad
-        })
+        if (res.data.product_dp.length != 0) {
+          that.setData({
+            All: res.data.product_dp.all,
+            Good: res.data.product_dp.good,
+            Medium: res.data.product_dp.medium,
+            Bad: res.data.product_dp.bad
+          })
+        } else {
+          that.setData({
+            All: [],
+            Good: [],
+            Medium: [],
+            Bad: []
+          })
+        }
+
       },
       error: function (e) {
         wx.showToast({
@@ -675,7 +809,7 @@ Page({
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          console.log(res)  
+          console.log(res)
           var data = res.data;
           if (data.status == 1) {
             var ptype = e.currentTarget.dataset.type;

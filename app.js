@@ -16,12 +16,12 @@ App({
     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
-        var latitude = res.latitude;
-        var longitude = res.longitude;
-        that.d.latitude = latitude;
-        that.d.longitude = longitude;
+        that.globalData.latitude = res.latitude,
+        that.globalData.longitude = res.longitude
       }
     })
+
+
   },
   uploadimg: function (data) {
       var that = this,
@@ -107,13 +107,17 @@ App({
     });
   },
   onLaunch: function () {
+    var that=this
     this.position();
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs);
     //login
-    this.getUserInfo();
+    setTimeout(function(){
+      that.getUserInfo();
+    },2000)
+
      
   },
   getUserInfo: function (cb) {
@@ -127,12 +131,12 @@ App({
         success: function (res) {
           console.log(res)
           var code = res.code;
-          //get wx user simple info
           wx.getUserInfo({
             success: function (res) {
               that.globalData.userInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo);
-              //登录首次接口
+
+              
               // wx.request({
               //   url: that.d.ceshiUrl + '/Api/User/login_one',
               //   method: 'post',
@@ -289,6 +293,9 @@ App({
   },
   globalData: {
     userInfo: null,
+    latitude:0,
+    longitude:0,
+
     tabBar: {
       "color": "#858585",
       "selectedColor": "#008842",

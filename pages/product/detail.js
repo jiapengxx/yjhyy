@@ -590,72 +590,64 @@ Page({
   },
 
   addShopCart: function (e) { //添加到购物车
-    // var value = [];
-    // for (var i = 0; i < this.data.attrValueList.length; i++) {
-    //   if (!this.data.attrValueList[i].selectedValue) {
-    //     break;
-    //   }
-    //   value.push(this.data.attrValueList[i].selectedValue);
-    // }
-    // if (i < this.data.attrValueList.length) {
-    //   wx.showToast({
-    //     title: '请选择完整！',
-    //     icon: 'loading',
-    //     duration: 1000
-    //   })
-    // } else {
-    //   var valueStr = "";
-    //   for (var i = 0; i < value.length; i++) {
-    //     console.log(value[i]);
-    //     valueStr += value[i] + ",";
-    //   }
-    // }
-
-
     var that = this;
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/Shopping/add',
-      method: 'post',
-      data: {
-        uid: app.d.userId,
-        pid: that.data.pro_id,
-        num: that.data.buynum,
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        // //--init data        
-        var data = res.data;
-        if (data.status == 1) {
-          var ptype = e.currentTarget.dataset.type;
-          if (ptype == 'buynow') {
-            wx.redirectTo({
-              url: '../order/pay?cartId=' + data.cart_id
-            });
-            return;
+    var value = [];
+    for (var i = 0; i < this.data.attrValueList.length; i++) {
+      if (!this.data.attrValueList[i].selectedValue) {
+        break;
+      }
+      value.push(this.data.attrValueList[i].selectedValue);
+    }
+    if (i < this.data.attrValueList.length) {
+      wx.showToast({
+        title: '请选择完整！',
+        icon: 'loading',
+        duration: 1000
+      })
+    } else {
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Shopping/add',
+        method: 'post',
+        data: {
+          uid: app.d.userId,
+          pid: that.data.pro_id,
+          num: that.data.buynum,
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res)  
+          var data = res.data;
+          if (data.status == 1) {
+            var ptype = e.currentTarget.dataset.type;
+            if (ptype == 'buynow') {
+              wx.redirectTo({
+                url: '../order/pay?cartId=' + data.cart_id
+              });
+              return;
+            } else {
+              wx.showToast({
+                title: '加入购物车成功',
+                icon: 'success',
+                duration: 2000
+              });
+            }
           } else {
             wx.showToast({
-              title: '加入购物车成功',
-              icon: 'success',
+              title: data.err,
               duration: 2000
             });
           }
-        } else {
+        },
+        fail: function () {
           wx.showToast({
-            title: data.err,
+            title: '网络异常！',
             duration: 2000
           });
         }
-      },
-      fail: function () {
-        // fail
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      }
-    });
+      });
+    }
   },
   bindChange: function (e) {//滑动切换tab 
     var that = this;

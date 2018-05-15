@@ -30,7 +30,7 @@ Page({
         for (var i = 0; i < that.data.user.length; i++) {
           var dateTime = new Date(parseInt(that.data.user[i].addtime) * 1000)
           that.setData({ 
-        time: dateTime.getFullYear() + '.' + (dateTime.getMonth() + 1) + '.' + dateTime.getDate() + '  ' + dateTime.getHours() + '.' + dateTime.getMinutes(),
+        time: dateTime.getFullYear() + '.' + (dateTime.getMonth() + 1) + '.' + dateTime.getDate() + '  ' + dateTime.getHours() + ':' + dateTime.getMinutes(),
           })
       that.setData({
         times: that.data.times.concat({

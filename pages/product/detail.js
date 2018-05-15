@@ -107,6 +107,31 @@ Page({
         ]
       },
       {
+        price: 35.2,
+        "attrValueList": [
+          {
+            "attrKey": "规格：",
+            "attrValue": "+布丁",
+
+          },
+          {
+            "attrKey": "甜度：",
+            "attrValue": "五分甜",
+
+          },
+          {
+            "attrKey": "加料：",
+            "attrValue": "仙草",
+
+          },
+          {
+            "attrKey": "冰块：",
+            "attrValue": "常温",
+
+          }
+        ]
+      },
+      {
 
         price: 35.2,
 

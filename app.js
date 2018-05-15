@@ -117,7 +117,7 @@ App({
      
   },
   getUserInfo: function (cb) {
-    console.log(cb)
+    console.log(cb+"111222")
     var that = this
     if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
@@ -132,7 +132,22 @@ App({
             success: function (res) {
               that.globalData.userInfo = res.userInfo
               typeof cb == "function" && cb(that.globalData.userInfo);
-
+              //登录首次接口
+              // wx.request({
+              //   url: that.d.ceshiUrl + '/Api/User/login_one',
+              //   method: 'post',
+              //   data:{
+              //     uid: that.globalData.userInfo['id'],
+              //   },
+              //   header: {
+              //     'Content-Type': 'application/x-www-form-urlencoded'
+              //   },
+              //   success: function (res) {
+              //   if(res.status==1){
+              //     console("1123");
+              //   }   
+              //   },
+              // });
               that.getUserSessionKey(code);
             }
           });

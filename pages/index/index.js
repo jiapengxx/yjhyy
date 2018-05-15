@@ -18,7 +18,8 @@ Page({
     kbs: [],
     lastcat: [],
     course: [],
-    store_Id:''
+    store_Id:'',
+    gz:false
   },
   //跳转商品列表页   
   listdetail: function (e) {
@@ -169,7 +170,6 @@ Page({
   onLoad: function (options) {
     app.editTabBar2();
     var that = this;
-    console.log(that.data.tabBar.list)
     wx.request({
       url: app.d.ceshiUrl + '/Api/Index/index',
       method: 'post',
@@ -194,12 +194,41 @@ Page({
           brand: brand,
           course: course,
         });
-        wx.setNavigationBarTitle({ title:store.name,})
-        console.log(store);
-        console.log(that.data.productData);
-        console.log(that.data.imgUrls)
-        console.log(app.d.store_Id)
+        if (store!='null'){
+          wx.setNavigationBarTitle({ title: store.name, })
+        }
+        
         //endInitData
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
+    this.loadCollect()
+  },
+  loadCollect: function () {
+    var that = this
+    wx.request({
+      url: app.d.hostUrl + '/Api/BCollet/show',
+      method: 'post',
+      data: {
+        user_id: app.d.userId,
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        for (var i = 0; i < res.data.cl_store.length;i++){
+          if (app.d.store_Id == res.data.cl_store[i].store_id) {
+            that.setData({
+              gz: true
+            })
+            break
+          }
+        }
       },
       fail: function (e) {
         wx.showToast({
@@ -259,6 +288,8 @@ Page({
         });
       },
     })
+
+    this.loadCollect() 
   },
   onShareAppMessage: function () {
     return {

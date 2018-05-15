@@ -77,12 +77,59 @@ Page({
           height2: 176 * that.data.store2.length,
         })
         //long1为商家经度 la1为商家纬度
-        wx.getLocation({
+        // if (app.globalData.latitude!= 0 && app.globalData.longitude!= 0){
+        //   console.log("2222222")
+        //   var long2 = app.globalData.longitude
+        //   var la2 = app.globalData.latitude
+        //   console.log(long2, la2)
+        //   //对附近商家进行处理
+        //   for (var i = 0; i < that.data.sseller.length; i++) {
+        //     var la1 = parseFloat(that.data.sseller[i].latitude)
+        //     var long1 = parseFloat(that.data.sseller[i].longitude)
+        //     var rad1 = la1 * Math.PI / 180.0;
+        //     var rad2 = la2 * Math.PI / 180.0;
+        //     var a = rad1 - rad2;
+        //     var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
+        //     var r = 6378.137;
+        //     var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+        //     that.setData({
+        //       distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
+        //     })
+        //   }
+        //   //对销量商家进行处理
+        //   for (var i = 0; i < that.data.store1.length; i++) {
+        //     var la1 = parseFloat(that.data.store1[i].latitude)
+        //     var long1 = parseFloat(that.data.store1[i].longitude)
+        //     var rad1 = la1 * Math.PI / 180.0;
+        //     var rad2 = la2 * Math.PI / 180.0;
+        //     var a = rad1 - rad2;
+        //     var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
+        //     var r = 6378.137;
+        //     var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+        //     that.setData({
+        //       distance2: that.data.distance2.concat({ distance: distance.toFixed(1) })
+        //     })
+        //   }
+        //   //对评价商家进行处理
+        //   for (var i = 0; i < that.data.store2.length; i++) {
+        //     var la1 = parseFloat(that.data.store2[i].latitude)
+        //     var long1 = parseFloat(that.data.store2[i].longitude)
+        //     var rad1 = la1 * Math.PI / 180.0;
+        //     var rad2 = la2 * Math.PI / 180.0;
+        //     var a = rad1 - rad2;
+        //     var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
+        //     var r = 6378.137;
+        //     var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+        //     that.setData({
+        //       distance3: that.data.distance3.concat({ distance: distance.toFixed(1) })
+        //     })
+        //   }
+        // }
+       wx.getLocation({
+          type: 'gcj02',
           success: function (res) {
             var long2 = res.longitude
             var la2 = res.latitude
-            console.log(long2,la2)
-            //对附近商家进行处理
             for (var i = 0; i < that.data.sseller.length; i++) {
               var la1 = parseFloat(that.data.sseller[i].latitude)
               var long1 = parseFloat(that.data.sseller[i].longitude)
@@ -96,7 +143,7 @@ Page({
                 distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
               })
             }
-            //对销量商家进行处理
+
             for (var i = 0; i < that.data.store1.length; i++) {
               var la1 = parseFloat(that.data.store1[i].latitude)
               var long1 = parseFloat(that.data.store1[i].longitude)
@@ -110,7 +157,7 @@ Page({
                 distance2: that.data.distance2.concat({ distance: distance.toFixed(1) })
               })
             }
-            //对评价商家进行处理
+
             for (var i = 0; i < that.data.store2.length; i++) {
               var la1 = parseFloat(that.data.store2[i].latitude)
               var long1 = parseFloat(that.data.store2[i].longitude)

@@ -224,6 +224,13 @@ that.setData({
       }
     });
   },
+  toBtoC: function (e) {
+    var store_Id = e.currentTarget.id;
+    wx.navigateTo({
+      url: '../index/index?store_Id=' + store_Id,
+    })
+    app.d.store_Id = store_Id;
+  },
   bindSelectAll: function () {
     var array_gz = this.data.array_gz;
     if (this.data.step==0) {

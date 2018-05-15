@@ -64,10 +64,23 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
+    // var DATA = '' + app.d.userId 
+    // if (res.from === 'button') {
+    //   return {
+    //     title: '云康医护' ,
+    //     path: '/pages/company_index/company_index?DATA=' + DATA,
+    //     imageUrl: '',
+    //     success: function (res) {
+    //     },
+    //     fail: function (res) {
+    //     }
+    //   }
+    // }
+
     if (res.from === 'button') {
       return {
         title: '',
-        path: '' ,
+        path: '',
         imageUrl: '',
         success: function (res) {
           // 转发成功
@@ -77,5 +90,6 @@ Page({
         }
       }
     }
+
   }
 })

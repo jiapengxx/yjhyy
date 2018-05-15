@@ -70,6 +70,7 @@ Page({
 
     //long1为商家经度 la1为商家纬度
     wx.getLocation({
+      type: 'gcj02',
       success: function (res) {
         var long2 = res.longitude
         var la2 = res.latitude

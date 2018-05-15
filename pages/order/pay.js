@@ -4,7 +4,6 @@ Page({
   data: {
     itemData: {},
     userId: 0,
-    paytype: 'weixin',//0线下1微信
     remark: '',
     cartId: 0,
     addrId: 0,//收货地址//测试--
@@ -163,7 +162,6 @@ Page({
     this.setData({
       paytype: 'weixin',
     });
-
     this.createProductOrder();
   },
 
@@ -177,10 +175,17 @@ Page({
       duration: 3000
     });
     // return false;
-    this.createProductOrder();
+
+    //未开通 关闭
+    // this.createProductOrder();
   },
   //健康币支付
   createProductOrderByJJ: function (e) {
+    if (this.data.flag == 0 && this.data.flag1 == 0){
+      wx.showToast({
+        title: '请先选择健康币',
+      })
+    }else{
     if (this.data.flag == 1) {
       this.setData({
         paytype: 'gold',
@@ -193,6 +198,7 @@ Page({
     }
 
     this.createProductOrder();
+    }
   },
 
   //确认订单

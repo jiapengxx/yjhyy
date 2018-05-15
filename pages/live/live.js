@@ -13,7 +13,7 @@ Page({
     ],
     switch1: [
       { id: 1, pic1: "https://tanghuzhao.com.cn/Public/images/live-pic1.png", content1: "安强院长", pic2: "https://tanghuzhao.com.cn/Public/images/live-pic2.png", content2:"北京明德医院院长兼泌尿外科主任" },
-      { id: 2, pic1: "../../images/live-pic1.png", content1: "安强院长", pic2: "https://tanghuzhao.com.cn/Public/images/live-pic2.png", content2: "北京明德医院院长兼泌尿外科主任" }
+      { id: 2, pic1: "https://tanghuzhao.com.cn/Public/images/live-pic1.png", content1: "安强院长", pic2: "https://tanghuzhao.com.cn/Public/images/live-pic2.png", content2: "北京明德医院院长兼泌尿外科主任" }
     ],
     switch2: [
       {
@@ -61,13 +61,11 @@ Page({
     })
   },
   tapBanner: function (e) {
-    if (e.currentTarget.dataset.id != 0) {
-      wx.navigateTo({
-        url: "../" + (e.currentTarget.dataset.id == 1001 ? '' : '')
-        // 预留商品详情
-        // url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id   
-      })
-    }
+    // if (e.currentTarget.dataset.id != 0) {
+    //   wx.navigateTo({
+    //     url: "../" + (e.currentTarget.dataset.id == 1001 ? '' : '')
+    //   })
+    // }
   },
   live_do: function () {
     wx.navigateTo({

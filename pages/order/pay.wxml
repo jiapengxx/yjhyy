@@ -22,7 +22,7 @@
           </view>
           <view class="l_h20 mt5">地址：{{address.address_xq}}</view>
         </view>
-        <image class="x_right mt15" src="/images/x_right.png"></image>
+        <!-- <image class="x_right mt15" src="/images/x_right.png"></image> -->
         <!-- 本地缺少图片  -->
 
       </view>

@@ -1,3 +1,5 @@
+
+<scroll-view scroll-y style='position:relative;width:100%;height:{{winHeight*2}}rpx;'>
 <view class="swiper-tab">
   <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" data-otype="pay" bindtap="swichNav">待付款</view>
   <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" data-otype="deliver" bindtap="swichNav">待发货</view>
@@ -8,7 +10,7 @@
 <view class="c_t60"></view>
 
 <swiper current="{{currentTab}}" class="swiper-box" duration="300"
-style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.length):(currentTab==1?(orderList1.length==0?winHeight*2:240*orderList1.length):(currentTab==2?(orderList2.length==0?winHeight*2:240*orderList2.length):(currentTab==3?(orderList3.length==0?winHeight*2:240*orderList3.length):(orderList4.length==0?winHeight*2:240*orderList4.length))))}}rpx" bindchange="bindChange">
+style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:260*orderList0.length):(currentTab==1?(orderList1.length==0?winHeight*2:260*orderList1.length):(currentTab==2?(orderList2.length==0?winHeight*2:260*orderList2.length):(currentTab==3?(orderList3.length==0?winHeight*2:260*orderList3.length):(orderList4.length==0?winHeight*2:260*orderList4.length))))}}rpx" bindchange="bindChange">
 
   <!-- 待付款 -->
   <swiper-item >
@@ -162,3 +164,4 @@ style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.l
     </view>
   </swiper-item>
 </swiper>
+</scroll-view>

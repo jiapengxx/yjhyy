@@ -315,6 +315,10 @@ that.setData({
         });
       }
     });
+    this.setData({
+      itemId: 9999,
+      flag: true
+    })
   },
   loadCollect: function () {
     var that = this

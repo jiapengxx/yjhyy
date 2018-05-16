@@ -251,7 +251,7 @@ Page({
               duration: 2000,
             });
             setTimeout(function () {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '../user/dingdan?currentTab=1&otype=deliver',
               });
             }, 2500);

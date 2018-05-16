@@ -36,7 +36,7 @@
     <swiper-item>
       <block wx:for="{{gz_store}}" wx:for-index="idx" wx:for-item="item">
         <view style='height:162rpx;width:100%;border-bottom:0.1rpx solid #eee;'>
-          <view id='{{item.store_id}}' bindtap='toBtoC'>
+          <view id='{{item.store_id}}' bindtap='toBtoC' style='width:420rpx;'>
             <image src="{{host}}/{{item.img}}" style='position:relative;top:20rpx;left:24rpx;height:122rpx;width:122rpx;border-radius:61rpx;'></image>
             <view style='position:relative;top:-80rpx;left:170rpx;height:40rpx;width:200rpx;font-size:26rpx;color:#333333;'>{{item.name}}</view>
           </view>

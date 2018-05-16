@@ -54,7 +54,6 @@ Page({
         })
       }
     } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
@@ -68,11 +67,11 @@ Page({
     }
   },
   getUserInfo: function (cb) {
-    console.log(cb)
     var that = this
-    if (app.globalData.userInfo) {
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
+    // if (app.globalData.userInfo) {
+    //   typeof cb == "function" && cb(this.globalData.userInfo)
+
+    // } else {
       //调用登录接口
       wx.login({
         success: function (res) {
@@ -82,17 +81,15 @@ Page({
           wx.getUserInfo({
             success: function (res) {
               console.log(res)
-              
               app.globalData.userInfo = res.userInfo
-              typeof cb == "function" && cb(that.globalData.userInfo);                     that.getUserSessionKey(code);
-              that.setData({
-                page:false
-              })
+              // typeof cb == "function" && cb(that.globalData.userInfo);
+              that.getUserSessionKey(code);
             }
           });
         }
       });
-    }
+    // }
+
   },
   getUserSessionKey: function (code) {
     //用户的订单状态
@@ -170,9 +167,12 @@ Page({
 
         that.setData({
           hasUserInfo: true,
-          userInfo: app.globalData.userInfo
+          userInfo: app.globalData.userInfo,
+          page: false
         })
-
+        console.log(!that.data.hasUserInfo)
+        console.log(that.data.canIUse)
+        console.log(!that.data.hasUserInfo && that.data.canIUse)
         that.loadOrderStatus()
       },
       fail: function (e) {

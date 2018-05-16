@@ -38,7 +38,7 @@
 .shop{
     background: #fff;
     padding: 4%;
-    margin-bottom: 10px;
+
 }
 .shop checkbox{ 
     margin-top: 27px;

@@ -263,6 +263,40 @@ Page({
   },
   // 弹窗
   setModalStatus: function (e) {
+    if (this.data.pro_id == 441) {
+      this.setData({
+        commodityAttr: this.data.commodityAttr1
+      })
+    } else if (this.data.pro_id == 442) {
+      this.setData({
+        commodityAttr: this.data.commodityAttr3
+      })
+    } else if (this.data.pro_id == 443) {
+      this.setData({
+        commodityAttr: this.data.commodityAttr2
+      })
+    }
+
+    this.setData({
+      includeGroup: this.data.commodityAttr
+    });
+    this.distachAttrValue(this.data.commodityAttr);
+    // 只有一个属性组合的时候默认选中 
+    // console.log(this.data.attrValueList); 
+    if (this.data.commodityAttr.length == 1) {
+      for (var i = 0; i < this.data.commodityAttr[0].attrValueList.length; i++) {
+        this.data.attrValueList[i].selectedValue = this.data.commodityAttr[0].attrValueList[i].attrValue;
+      }
+      this.setData({
+        attrValueList: this.data.attrValueList
+      });
+    }
+
+
+
+
+
+
     var animation = wx.createAnimation({
       duration: 200,
       timingFunction: "linear",
@@ -313,9 +347,11 @@ Page({
   },
   // 传值
   onLoad: function (option) {
+      //需要修改判断   
     console.log(option)
     var that = this;
     //先对登录做判断
+    console.log(app.globalData.userInfo)
     if (app.globalData.userInfo == null) {
       wx.showModal({
         title: '请先登录',
@@ -345,20 +381,7 @@ Page({
           // r_uid: option.r_uid
         });
       }
-      if (that.data.pro_id == 441) {
-        that.setData({
-          commodityAttr: that.data.commodityAttr1
-        })
-      } else if (that.data.pro_id == 442) {
-        that.setData({
-          commodityAttr: that.data.commodityAttr3
-        })
-      } else if (that.data.pro_id == 443) {
-        that.setData({
-          commodityAttr: that.data.commodityAttr2
-        })
-      }
-      console.log(that.data.pro_id + "qqq")
+
       that.loadProductDetail();
       that.loadProductEvaluate();
     }
@@ -410,7 +433,7 @@ Page({
           that.setData({
             itemData: pro,
             bannerItem: pro.img_arr,
-            // commodityAttr: res.data.commodityAttr,
+            commodityAttr: res.data.commodityAttr,
             // attrValueList: res.data.attrValueList,
             collect: res.data.pro.collect,
             store_id: res.data.pro.store_id
@@ -526,20 +549,7 @@ Page({
   },
   // 属性选择
   onShow: function () {
-    this.setData({
-      includeGroup: this.data.commodityAttr
-    });
-    this.distachAttrValue(this.data.commodityAttr);
-    // 只有一个属性组合的时候默认选中 
-    // console.log(this.data.attrValueList); 
-    if (this.data.commodityAttr.length == 1) {
-      for (var i = 0; i < this.data.commodityAttr[0].attrValueList.length; i++) {
-        this.data.attrValueList[i].selectedValue = this.data.commodityAttr[0].attrValueList[i].attrValue;
-      }
-      this.setData({
-        attrValueList: this.data.attrValueList
-      });
-    }
+
   },
   /* 获取数据 */
   distachAttrValue: function (commodityAttr) {

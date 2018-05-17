@@ -263,6 +263,7 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(res)
         //--init data
         var cart = res.data.cart;
         that.setData({

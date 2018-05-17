@@ -794,8 +794,8 @@ Page({
   },
 
   addShopCart: function (e) { //添加到购物车
-    var g_id = '' + this.data.includeGroup[0].attrValueList[0].id + ',' + this.data.includeGroup[0].attrValueList[1].id + ',' + this.data.includeGroup[0].attrValueList[2].id
-    console.log(g_id)
+    var buff = '' + this.data.includeGroup[0].attrValueList[0].id + ',' + this.data.includeGroup[0].attrValueList[1].id + ',' + this.data.includeGroup[0].attrValueList[2].id
+    console.log(buff)
     var that = this;
     var value = [];
     for (var i = 0; i < this.data.attrValueList.length; i++) {
@@ -818,7 +818,7 @@ Page({
           uid: app.d.userId,
           pid: that.data.pro_id,
           num: that.data.buynum,
-          g_id:g_id
+          buff:buff
         },
         header: {
           'Content-Type': 'application/x-www-form-urlencoded'

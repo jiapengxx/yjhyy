@@ -19,8 +19,9 @@ Page({
     flag1: 0
   },
   onLoad: function (options) {
-    console.log(options.DATAs)
+    console.log(options)
     var uid = app.d.userId;
+    if ((typeof options.DATA) != "undefined") {
     var DAta = options.DATAs.split(",")
     this.setData({
       p1: DAta[0],
@@ -29,25 +30,33 @@ Page({
       cartId: DAta[3],
       userId: uid
     })
-    var g_id = '' + this.data.p1 + ',' + this.data.p2 + ',' + this.data.p3
+
+    var buff = '' + this.data.p1 + ',' + this.data.p2 + ',' + this.data.p3
     console.log(this.data.cartId)
-    console.log(g_id)
+    console.log(buff)
     this.setData({
-      g_id:g_id
+      buff:buff
     })
+    }else{
+      this.setData({
+        cartId: options.cartId,
+        userId: uid
+      })
+
+    }
     this.loadProductDetail();
     this.loadCoin();
   },
   loadProductDetail: function () {
     var that = this;
-    console.log(this.data.g_id)
+    console.log(this.data.buff)
     wx.request({
       url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
       method: 'post',
       data: {
         cart_id: that.data.cartId,
         uid: that.data.userId,
-        g_id: that.data.g_id
+        buff: that.data.buff
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -228,6 +237,7 @@ Page({
       data: {
         uid: that.data.userId,
         cart_id: that.data.cartId,
+        buff: that.data.buff,
         type: that.data.paytype,
         aid: that.data.addrId,//地址的id
         remark: that.data.remark,//用户备注

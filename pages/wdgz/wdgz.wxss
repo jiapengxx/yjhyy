@@ -54,10 +54,14 @@ page {
 .cancel_on {
   position: relative;
   color: #fff;
-  top: -218rpx;
-  line-height: 162rpx;
-  left: 265rpx;
-  height: 162rpx;
+  top: -208rpx;
+  line-height: 150rpx;
+  left: 535rpx;
+  height: 150rpx;
   width: 216rpx;
   background-color: #fe0100;
+  font-size:14px;
+  text-align:center;
+  border-radius:10rpx;
+
 }

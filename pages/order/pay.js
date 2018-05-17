@@ -19,22 +19,35 @@ Page({
     flag1: 0
   },
   onLoad: function (options) {
+    console.log(options.DATAs)
     var uid = app.d.userId;
+    var DAta = options.DATAs.split(",")
     this.setData({
-      cartId: options.cartId,
+      p1: DAta[0],
+      p2: DAta[1],
+      p3: DAta[2],
+      cartId: DAta[3],
       userId: uid
-    });
+    })
+    var g_id = '' + this.data.p1 + ',' + this.data.p2 + ',' + this.data.p3
+    console.log(this.data.cartId)
+    console.log(g_id)
+    this.setData({
+      g_id:g_id
+    })
     this.loadProductDetail();
     this.loadCoin();
   },
   loadProductDetail: function () {
     var that = this;
+    console.log(this.data.g_id)
     wx.request({
       url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
       method: 'post',
       data: {
         cart_id: that.data.cartId,
         uid: that.data.userId,
+        g_id: that.data.g_id
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -181,23 +194,23 @@ Page({
   },
   //健康币支付
   createProductOrderByJJ: function (e) {
-    if (this.data.flag == 0 && this.data.flag1 == 0){
+    if (this.data.flag == 0 && this.data.flag1 == 0) {
       wx.showToast({
         title: '请先选择健康币',
       })
-    }else{
-    if (this.data.flag == 1) {
-      this.setData({
-        paytype: 'gold',
-      });
-    }
-    if (this.data.flag1 == 1) {
-      this.setData({
-        paytype: 'ygold',
-      });
-    }
+    } else {
+      if (this.data.flag == 1) {
+        this.setData({
+          paytype: 'gold',
+        });
+      }
+      if (this.data.flag1 == 1) {
+        this.setData({
+          paytype: 'ygold',
+        });
+      }
 
-    this.createProductOrder();
+      this.createProductOrder();
     }
   },
 
@@ -274,6 +287,7 @@ Page({
 
   //调起微信支付
   wxpay: function (order) {
+    var that=this
     console.log(order)
     wx.request({
       url: app.d.ceshiUrl + '/Api/Wxpay/wxpay',
@@ -309,9 +323,20 @@ Page({
             },
             fail: function (res) {
               console.log(res)
-              wx.showToast({
-                title: res,
-                duration: 3000
+              wx.showModal({
+                title:'支付失败',
+                content: '是否前往支付?',
+                success: function (res) {
+                  if (res.confirm) {
+                  wx.navigateTo({
+                    url: '../company_user/dingdan',
+                  })
+                  }else{
+                    wx.redirectTo({
+                      url: '../product/detail?pro_id='+that.data.productData[0].pid,
+                    })
+                  }
+                }
               })
             }
           })

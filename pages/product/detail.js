@@ -263,26 +263,25 @@ Page({
   },
   // 弹窗
   setModalStatus: function (e) {
-    if (this.data.pro_id == 441) {
-      this.setData({
-        commodityAttr: this.data.commodityAttr1
-      })
-    } else if (this.data.pro_id == 442) {
-      this.setData({
-        commodityAttr: this.data.commodityAttr3
-      })
-    } else if (this.data.pro_id == 443) {
-      this.setData({
-        commodityAttr: this.data.commodityAttr2
-      })
-    }
+    // if (this.data.pro_id == 441) {
+    //   this.setData({
+    //     commodityAttr: this.data.commodityAttr1
+    //   })
+    // } else if (this.data.pro_id == 442) {
+    //   this.setData({
+    //     commodityAttr: this.data.commodityAttr3
+    //   })
+    // } else if (this.data.pro_id == 443) {
+    //   this.setData({
+    //     commodityAttr: this.data.commodityAttr2
+    //   })
+    // }
 
     this.setData({
-      includeGroup: this.data.commodityAttr
+      includeGroup: this.data.commodityAttr,
+      totalPrice: this.data.itemData.price_yh*this.data.buynum
     });
     this.distachAttrValue(this.data.commodityAttr);
-    // 只有一个属性组合的时候默认选中 
-    // console.log(this.data.attrValueList); 
     if (this.data.commodityAttr.length == 1) {
       for (var i = 0; i < this.data.commodityAttr[0].attrValueList.length; i++) {
         this.data.attrValueList[i].selectedValue = this.data.commodityAttr[0].attrValueList[i].attrValue;
@@ -291,12 +290,6 @@ Page({
         attrValueList: this.data.attrValueList
       });
     }
-
-
-
-
-
-
     var animation = wx.createAnimation({
       duration: 200,
       timingFunction: "linear",
@@ -322,7 +315,8 @@ Page({
       if (e.currentTarget.dataset.status == 0) {
         this.setData(
           {
-            showModalStatus: false
+            showModalStatus: false,
+            attrValueList:[]
           }
         );
       }
@@ -344,6 +338,7 @@ Page({
         buynum: this.data.buynum + 1
       })
     };
+    this.count()
   },
   // 传值
   onLoad: function (option) {
@@ -629,6 +624,8 @@ Page({
     var attrValueList = this.data.attrValueList;
     var index = e.currentTarget.dataset.index;//属性索引 
     var key = e.currentTarget.dataset.key;
+    var price = e.currentTarget.dataset.price;
+    var id = e.currentTarget.dataset.id;
     var value = e.currentTarget.dataset.value;
     if (e.currentTarget.dataset.status || index == this.data.firstIndex) {
       if (e.currentTarget.dataset.selectedvalue == e.currentTarget.dataset.value) {
@@ -711,6 +708,8 @@ Page({
         firstIndex: -1
       });
     }
+    this.count()
+
   },
   /* 取消选中 */
   disSelectValue: function (attrValueList, index, key, value) {
@@ -733,7 +732,10 @@ Page({
         this.selectValue(attrValueList, i, attrValueList[i].attrKey, attrValueList[i].selectedValue, true);
       }
     }
+
+      this.count()
   },
+
   initProductData: function (data) {
     data["LunBoProductImageUrl"] = [];
     var imgs = data.LunBoProductImage.split(';');
@@ -792,6 +794,8 @@ Page({
   },
 
   addShopCart: function (e) { //添加到购物车
+    var g_id = '' + this.data.includeGroup[0].attrValueList[0].id + ',' + this.data.includeGroup[0].attrValueList[1].id + ',' + this.data.includeGroup[0].attrValueList[2].id
+    console.log(g_id)
     var that = this;
     var value = [];
     for (var i = 0; i < this.data.attrValueList.length; i++) {
@@ -814,18 +818,20 @@ Page({
           uid: app.d.userId,
           pid: that.data.pro_id,
           num: that.data.buynum,
+          g_id:g_id
         },
         header: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          console.log(res)
+          
           var data = res.data;
           if (data.status == 1) {
+            var DATAs = '' + that.data.includeGroup[0].attrValueList[0].id + ',' + that.data.includeGroup[0].attrValueList[1].id + ',' + that.data.includeGroup[0].attrValueList[2].id + ',' + data.cart_id
             var ptype = e.currentTarget.dataset.type;
             if (ptype == 'buynow') {
               wx.redirectTo({
-                url: '../order/pay?cartId=' + data.cart_id
+                url: '../order/pay?DATAs=' + DATAs
               });
               return;
             } else {
@@ -906,5 +912,17 @@ Page({
     })
     app.d.store_Id = this.data.store_id;
   },
+  count:function(){
+
+    if (this.data.includeGroup.length == this.data.commodityAttr.length) {
+      this.setData({
+        totalPrice: this.data.itemData.price_yh * this.data.buynum
+      })
+    }else{
+      this.setData({
+        totalPrice: (parseFloat(this.data.itemData.price_yh) + parseFloat(this.data.includeGroup[0].price)) * this.data.buynum
+      })
+    }
+  }
 });
 

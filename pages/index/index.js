@@ -197,8 +197,7 @@ Page({
         if (store!='null'){
           wx.setNavigationBarTitle({ title: store.name, })
         }
-        
-        //endInitData
+
       },
       fail: function (e) {
         wx.showToast({
@@ -221,6 +220,7 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(res.data.cl_store)
         for (var i = 0; i < res.data.cl_store.length;i++){
           if (app.d.store_Id == res.data.cl_store[i].store_id) {
             that.setData({
@@ -280,6 +280,7 @@ Page({
           title: res.data.succ,
           duration: 2000
         });
+        that.loadCollect() 
       },
       fail: function (e) {
         wx.showToast({
@@ -288,8 +289,6 @@ Page({
         });
       },
     })
-
-    this.loadCollect() 
   },
   onShareAppMessage: function () {
     return {

@@ -19,8 +19,8 @@
         <block wx:for="{{shoucang_good}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
           <view style='position:relative;top:{{(idx==0||idx==1)?80+(idx/2|Int)*40:40+(idx/2|Int)*40}}rpx;height:390rpx;width:320rpx;border:0.1rpx solid #eee;'>
             <block wx:if="{{xk}}">
-              <icon id='{{item.pro_id}}' wx:if="{{array_gz[idx].type=='success_circle'}}" type="success_circle" style='position:relative;top:-8rpx;left:0rpx;z-index:5;' size="20" bindtap="bindCheckbox" data-index="{{idx}}" />
-              <icon id='{{item.pro_id}}' wx:else type="circle" style='position:relative;top:-8rpx;left:0rpx;z-index:5;' size="20" bindtap="bindCheckbox" data-index="{{idx}}" />
+              <icon id='{{item.pro_id}}' wx:if="{{array_gz[idx].type=='success_circle'}}" type="success_circle" style='position:relative;top:-6rpx;left:0rpx;z-index:5;' size="20" bindtap="bindCheckbox" data-index="{{idx}}" />
+              <icon id='{{item.pro_id}}' wx:else type="circle" style='position:relative;top:-6rpx;left:0rpx;z-index:5;' size="20" bindtap="bindCheckbox" data-index="{{idx}}" />
             </block>
 
             <navigator url="../product/detail?pro_id={{item.pro_id}}">
@@ -36,16 +36,18 @@
     <swiper-item>
       <block wx:for="{{gz_store}}" wx:for-index="idx" wx:for-item="item">
         <view style='height:162rpx;width:100%;border-bottom:0.1rpx solid #eee;'>
-          <view id='{{item.store_id}}' bindtap='toBtoC' style='width:420rpx;'>
-            <image src="{{host}}/{{item.img}}" style='position:relative;top:20rpx;left:24rpx;height:122rpx;width:122rpx;border-radius:61rpx;'></image>
-            <view style='position:relative;top:-80rpx;left:170rpx;height:40rpx;width:200rpx;font-size:26rpx;color:#333333;'>{{item.name}}</view>
-          </view>
+          <view>
+            <image src="{{host}}/{{item.img}}" id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:20rpx;left:24rpx;height:122rpx;width:122rpx;border-radius:61rpx;' ></image>
+            <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:-80rpx;left:170rpx;height:40rpx;width:200rpx;font-size:26rpx;color:#333333;'>{{item.name}}</view>
+          
 
           <image id='{{idx}}' src='https://tanghuzhao.com.cn/Public/images/btn_cancel.png' bindtap='changePoint' class="{{idx==itemId?'point_on':'point'}}">
           </image>
-          <button id='{{item.store_id}}' bindtap='cancel' class="{{idx==itemId?'cancel_on':'cancel'}}">
+          <!-- <button id='{{item.store_id}}' bindtap='cancel' class="{{idx==itemId?'cancel_on':'cancel'}}">
             取消关注
-          </button>
+          </button> -->
+          <view id='{{item.store_id}}' bindtap='cancel' class="{{idx==itemId?'cancel_on':'cancel'}}">取消关注</view>
+          </view>
         </view>
       </block>
     </swiper-item>

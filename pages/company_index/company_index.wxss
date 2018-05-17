@@ -8,6 +8,7 @@ page{
   height: 300rpx;
 
 }
+::-webkit-scrollbar {display:none}
 .swiper-container{
   width: 100%;
   position: relative;  

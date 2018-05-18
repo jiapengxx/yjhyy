@@ -21,18 +21,17 @@ Page({
   onLoad: function (options) {
     console.log(options)
     var uid = app.d.userId;
-    if ((typeof options.DATA) != "undefined") {
+    if ((typeof options.DATAs) != "undefined") {
     var DAta = options.DATAs.split(",")
     this.setData({
       p1: DAta[0],
       p2: DAta[1],
       p3: DAta[2],
       cartId: DAta[3],
-      userId: uid
+      userId: uid,
     })
-
     var buff = '' + this.data.p1 + ',' + this.data.p2 + ',' + this.data.p3
-    console.log(this.data.cartId)
+    console.log(this.data.cartId+"asdasdads")
     console.log(buff)
     this.setData({
       buff:buff
@@ -49,7 +48,7 @@ Page({
   },
   loadProductDetail: function () {
     var that = this;
-    console.log(this.data.buff)
+    console.log(this.data.cartId+"aaaaaaaaaaa")
     wx.request({
       url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
       method: 'post',

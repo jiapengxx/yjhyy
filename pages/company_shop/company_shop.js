@@ -19,10 +19,11 @@ Page({
     distance2:[],
     distance3:[],
     distance4:[],
-    page1:2,
-    page2:2,
-    page3:2,
-    page4:2
+    page1: 2,
+    page2: 2,
+    page3: 2,
+    page4: 2,
+
   },
 
   /**
@@ -64,16 +65,16 @@ Page({
         });
       },
     })
-    // this.setData({
-    //   height: 582 * this.data.hot_good.length
-    // })
-
     //long1为商家经度 la1为商家纬度
     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
         var long2 = res.longitude
         var la2 = res.latitude
+        that.setData({
+          long2: long2,
+          la2: la2
+        })
         //对综合商家进行处理
         
           for (var i = 0; i < that.data.hot_good.length; i++) {
@@ -121,9 +122,7 @@ Page({
               distance3: that.data.distance3.concat({ distance: distance.toFixed(1)})
             })
           }
-       
         //对评价商家进行处理
-        
           for (var i = 0; i < that.data.comment_store1.length; i++) {
             var la1 = parseFloat(that.data.comment_store1[i].latitude)
             var long1 = parseFloat(that.data.comment_store1[i].longitude)
@@ -291,35 +290,144 @@ Page({
     console.log(pro_id)
   },
   //点击加载更多
-  getMore1: function (e) {
-    //获取综合的更多
+  getMore: function (e) {
     var that = this;
-    var page1 = that.data.page1;
+    if (this.data.currentTab == 0) {
+      this.setData({
+        types: 'all',
+        page1: this.data.page1
+      })
+
+    } 
+    else if (this.data.currentTab == 1) {
+      this.setData({
+        types: 'place',
+        page2: this.data.page2
+      })
+
+    } else if (this.data.currentTab == 2) {
+      this.setData({
+        types: 'num',
+        page3: this.data.page3
+      })
+    } else {
+      this.setData({
+        types: 'comment',
+        page4: this.data.page4
+      })
+    }
+
     wx.request({
-      url: app.d.ceshiUrl + '/Api/BIndex/seller_show',
+      url: app.d.ceshiUrl + '/Api/BIndex/seller_show1',
       method: 'post',
       data: {
-        page: page1,
-        type: 'seller'
+        page: (that.data.currentTab == 0 ? that.data.page1 : (that.data.currentTab == 1 ? that.data.page2 : (that.data.currentTab == 2 ? that.data.page3 : that.data.page4))),
+        type: that.data.types
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         console.log(res)
-        // var prolist = res.data.prolist;
-        // if (prolist == '') {
-        //   wx.showToast({
-        //     title: '没有更多数据！',
-        //     duration: 2000
-        //   });
-        //   return false;
-        // }
-        // that.setData({
-        //   page: page + 1,
-        //   //page具有持续性  每个类型需有自己的page
-        //   productData: that.data.productData.concat(prolist)
-        // });
+        var seller = res.data.seller;
+        var place_store = res.data.place_store;
+        var num_store = res.data.num_store;
+        var comment_store = res.data.comment_store;
+        if (seller == '' || place_store == '' || num_store == '' || comment_store == '') {
+          wx.showToast({
+            title: '没有更多数据！',
+            duration: 2000
+          });
+          return false;
+        } else if (that.data.currentTab == 0) {
+          that.setData({
+            page1: that.data.page1 + 1,
+            hot_good: that.data.hot_good.concat(seller)
+          });
+          for (var i = 0; i < seller.length; i++) {
+            var la1 = parseFloat(seller[i].latitude)
+            var long1 = parseFloat(seller[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            console.log(distance)
+            that.setData({
+              distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
+            })
+          }
+          that.setData({
+            height1: 582 * that.data.hot_good.length + 140
+          })
+        }else if (that.data.currentTab == 1) {
+          that.setData({
+            page2: that.data.page2 + 1,
+            place_store1: that.data.place_store1.concat(place_store)
+          });
+          for (var i = 0; i < place_store.length; i++) {
+            var la1 = parseFloat(place_store[i].latitude)
+            var long1 = parseFloat(place_store[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            console.log(distance)
+            that.setData({
+              distance2: that.data.distance2.concat({ distance: distance.toFixed(1) })
+            })
+          }
+          that.setData({
+            height2: 582 * that.data.place_store1.length + 140
+          })
+        } else if (that.data.currentTab == 2) {
+          that.setData({
+            page3: that.data.page3 + 1,
+            num_store1: that.data.num_store1.concat(num_store)
+          });
+          that.setData({
+            
+            height3: 582 * that.data.num_store1.length + 140,
+           
+          })
+          for (var i = 0; i < num_store.length; i++) {
+            var la1 = parseFloat(num_store[i].latitude)
+            var long1 = parseFloat(num_store[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            that.setData({
+              distance3: that.data.distance3.concat({ distance: distance.toFixed(1) })
+            })
+          }
+        } else if (that.data.currentTab == 3) {
+          that.setData({
+            page4: that.data.page4 + 1,
+            comment_store1: that.data.comment_store1.concat(comment_store)
+          });
+          that.setData({
+            height4: 582 * that.data.comment_store1.length + 140,
+          })
+          for (var i = 0; i < comment_store.length; i++) {
+            var la1 = parseFloat(comment_store[i].latitude)
+            var long1 = parseFloat(comment_store[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            that.setData({
+              distance4: that.data.distance3.concat({ distance: distance.toFixed(1) })
+            })
+          }
+        }
       },
       fail: function (e) {
         wx.showToast({

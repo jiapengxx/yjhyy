@@ -226,7 +226,6 @@ Page({
             'Content-Type': 'application/x-www-form-urlencoded'
           },
           success: function (res) {
-            //--init data
             var data = res.data;
             if (data.status == 1) {
               //that.data.productData.length =0;
@@ -268,8 +267,10 @@ Page({
         var cart = res.data.cart;
         that.setData({
           carts: cart,
+          selectedAllStatus:false,
+          total:0
+          //交互－ －
         });
-        //endInitData
       },
     });
   },

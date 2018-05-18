@@ -33,22 +33,22 @@
 
 
 
-<view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
-<view wx:for="{{item.goods}}" wx:for-item="ite"  wx:for-index="index"  style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
-            <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
-              <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
-              <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
-              <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
+          <view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+            <view wx:for="{{item.goods}}" wx:for-item="ite" wx:for-index="index" style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
+              <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
+                <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
+                <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
+                <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
+              </view>
             </view>
           </view>
-        </view>
         </view>
 
 
 
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>
-      <view style='margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;margin-top:30rpx;'bindtap="getMore1">点击查看更多</view>
+
     </swiper-item>
 
 
@@ -76,19 +76,19 @@
             </view>
           </view>
 
-<view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
-<view wx:for="{{item.goods}}" wx:for-item="ite"  wx:for-index="index"  style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
-            <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
-              <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
-              <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
-              <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
+          <view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+            <view wx:for="{{item.goods}}" wx:for-item="ite" wx:for-index="index" style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
+              <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
+                <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
+                <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
+                <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
+              </view>
             </view>
           </view>
         </view>
-        </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>
-            <view style='margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;margin-top:30rpx;'bindtap="getMore1">点击查看更多</view>
+
     </swiper-item>
 
 
@@ -109,26 +109,26 @@
             <view style='position:relative;top:110rpx;left:-100rpx;width:80rpx;height:50rpx;'>
               <text class='t5'>销量:{{item.num}}</text>
             </view>
-           <view style='position:relative;top:0rpx;left:-54rpx;width:200rpx;'>
+            <view style='position:relative;top:0rpx;left:-54rpx;width:200rpx;'>
               <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-28rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-28rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance3[idx].distance}}km</view>
             </view>
           </view>
 
-<view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
-<view wx:for="{{item.goods}}" wx:for-item="ite"  wx:for-index="index"  style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
-            <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
-              <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
-              <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
-              <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
+          <view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+            <view wx:for="{{item.goods}}" wx:for-item="ite" wx:for-index="index" style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
+              <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
+                <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
+                <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
+                <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
+              </view>
             </view>
           </view>
         </view>
-        </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>
-            <view style='margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;margin-top:30rpx;'bindtap="getMore1">点击查看更多</view>
+
     </swiper-item>
     <swiper-item>
       <block wx:for="{{comment_store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
@@ -154,19 +154,19 @@
             </view>
           </view>
 
-<view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
-<view wx:for="{{item.goods}}" wx:for-item="ite"  wx:for-index="index"  style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
-            <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
-              <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
-              <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
-              <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
+          <view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+            <view wx:for="{{item.goods}}" wx:for-item="ite" wx:for-index="index" style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
+              <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
+                <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
+                <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
+                <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
+              </view>
             </view>
           </view>
         </view>
-        </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>
-            <view style='margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;margin-top:30rpx;'bindtap="getMore1">点击查看更多</view>
     </swiper-item>
   </swiper>
+  <view style='position:relative;top:-50rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
 </view>

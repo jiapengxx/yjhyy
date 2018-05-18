@@ -1,4 +1,5 @@
 <view class="page">
+
   <view class="shop df" wx:for="{{productData}}">
         <image class="sh_slt" src="{{item.ImgUrl}}"></image>
         <view class="df_1">            
@@ -35,6 +36,7 @@
 
    <view id='{{item.pid}}' class="carts-text" bindtap='toDetail'>
        <text class="carts-title">{{item.pro_name}}</text>
+       <text style='position:relative;top:-16rpx;width:224rpx;font-size:24rpx;margin:10rpx;color:#666;'>{{item.guige[0]+'-'+item.guige[1]+'-'+item.guige[2]}}</text>
     <view class="carts-subtitle">
         <text class="carts-price">¥ {{item.price}}</text>
     </view>

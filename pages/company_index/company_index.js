@@ -19,7 +19,9 @@ Page({
     distance1: [],
     distance2: [],
     distance3: [],
-    page: 2,
+    page1: 2,
+    page2: 2,
+    page3: 2,
   },
   showInput: function () {
 
@@ -130,6 +132,10 @@ Page({
           success: function (res) {
             var long2 = res.longitude
             var la2 = res.latitude
+            that.setData({
+              long2: long2,
+              la2: la2
+            })
             for (var i = 0; i < that.data.sseller.length; i++) {
               var la1 = parseFloat(that.data.sseller[i].latitude)
               var long1 = parseFloat(that.data.sseller[i].longitude)
@@ -320,42 +326,112 @@ wx.navigateTo({
     var that = this;
     if(this.data.currentTab==0){
       this.setData({
-        types:'距离最近'
+        types:'place',
+        page1:this.data.page1
       })
+
     }else if(this.data.currentTab==1){
       this.setData({
-        types: '销量最高'
+        types: 'num',
+        page2: this.data.page2
       })
+
     }else{
       this.setData({
-        types: '评价最高'
+        types: 'grade',
+        page3: this.data.page3
       })
+
+
     }
-    var page = that.data.page;
+
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Index/getlist',
+      url: app.d.ceshiUrl + '/Api/BIndex/show_getmore',
       method: 'post',
       data: {
-        page: page,
+        page: (that.data.currentTab == 0 ? that.data.page1 : (that.data.currentTab == 1 ? that.data.page2 : that.data.page3)),
         type:that.data.types
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        var prolist = res.data.prolist;
-        if (prolist == '') {
+        console.log(res)
+        var place_store = res.data.place_store;
+        var num_store = res.data.num_store;
+        var grade_store = res.data.grade_store;
+        if (place_store == '' || num_store == '' || grade_store=='') {
           wx.showToast({
             title: '没有更多数据！',
             duration: 2000
           });
           return false;
+        } else if (that.data.currentTab==0){
+          that.setData({
+            page1: that.data.page1 + 1,
+            sseller: that.data.sseller.concat(place_store)
+          });
+          for (var i = 0; i < place_store.length; i++) {
+            var la1 = parseFloat(place_store[i].latitude)
+            var long1 = parseFloat(place_store[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            console.log(distance)
+            that.setData({
+              distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
+            })
+          }
+          that.setData({
+            height: 176 * that.data.sseller.length,
+          })
+        } else if (that.data.currentTab == 1) {
+          that.setData({
+            page2: that.data.page2 + 1,
+            store1: that.data.store1.concat(num_store)
+          });
+          that.setData({
+            height1: 176 * that.data.store1.length,
+          })
+          for (var i = 0; i < num_store.length; i++) {
+            var la1 = parseFloat(num_store[i].latitude)
+            var long1 = parseFloat(num_store[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            that.setData({
+              distance2: that.data.distance2.concat({ distance: distance.toFixed(1) })
+            })
+          }
+        } else if (that.data.currentTab == 2) {
+          that.setData({
+            page3: that.data.page3 + 1,
+            store2: that.data.store2.concat(grade_store)
+          });
+          that.setData({
+            height2: 176 * that.data.store2.length,
+          })
+          for (var i = 0; i < grade_store.length; i++) {
+            var la1 = parseFloat(grade_store[i].latitude)
+            var long1 = parseFloat(grade_store[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            that.setData({
+              distance3: that.data.distance3.concat({ distance: distance.toFixed(1) })
+            })
+          }
         }
-        that.setData({
-          page: page + 1,
-          //page具有持续性  每个类型需有自己的page
-          productData: that.data.productData.concat(prolist)
-        });
+
       },
       fail: function (e) {
         wx.showToast({

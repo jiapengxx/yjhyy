@@ -54,12 +54,12 @@ page{
 .c6{  color: #666;}
 .c9{  color: #999;}
 .white{  color: #fff;}
-.font_16{  font-size: 16px;}
-.font_14{  font-size: 13px;}
-.font_12{  font-size: 12px;}
-.font_10{  font-size: 10px;}
+.font_16{  font-size: 32rpx;}
+.font_14{  font-size: 26rpx;}
+.font_12{  font-size: 24rpx;}
+.font_10{  font-size: 20rpx;}
 .l_h20{
-  line-height: 20px;
+  line-height: 40rpx;
 }
 
 /*定位*/
@@ -80,23 +80,23 @@ page{
 .tr{text-align: right;}
 
 /*间距*/
-.mt1{margin-top: 1px;}
-.mt5{margin-top: 5px;}
-.mt8{margin-top: 8px;}
+.mt1{margin-top: 2rpx;}
+.mt5{margin-top: 10rpx;}
+.mt8{margin-top: 16rpx;}
 /*.mt10{margin-top: 10px;}*/
-.mt15{margin-top: 15px;}
-.mt20{margin-top: 20px;}
-.mt25{margin-top: 25px;}
-.mt30{margin-top: 30px;}
-.mt35{margin-top: 35px;}
-.mt40{margin-top: 40px;}
-.mt60{margin-top: 60px;}
+.mt15{margin-top: 30rpx;}
+.mt20{margin-top: 40rpx;}
+.mt25{margin-top: 50rpx;}
+.mt30{margin-top: 60rpx;}
+.mt35{margin-top: 70rpx;}
+.mt40{margin-top: 80rpx;}
+.mt60{margin-top: 120rpx;}
 .p_all{ padding: 3%;}
 
 /*边框*/
-.bte{border-top:solid 1px #eee;}
-.bbe{border-bottom: solid 1px #eee;}
-.bre{ border-right: 1px solid #eee}
+.bte{border-top:solid 2rpx #eee;}
+.bbe{border-bottom: solid 2rpx #eee;}
+.bre{ border-right: 2rpx solid #eee}
 
 /*浮动*/
 .fl_l{ float: left;}
@@ -113,24 +113,24 @@ page{
 .w90{ width: 90%;}
 .w100{ width: 100%;}
 /*边框*/
-.bte{ border-top: 1px solid #eee;}
-.bbe{ border-bottom: solid 1px #eee;}
-.bre{ border-right: 1px solid #eee;}
-.ble{ border-left: 1px solid #eee;}
+.bte{ border-top: 2rpx solid #eee;}
+.bbe{ border-bottom: solid 2rpx #eee;}
+.bre{ border-right: 2rpx solid #eee;}
+.ble{ border-left: 2rpx solid #eee;}
 
 .footfixed { display: block; position: fixed; bottom: 0; left: 0;
-  background: #fff; z-index: 100; width:100%; font-size: 14px;
-  border-top: 1px solid #eee; line-height: 50px;
+  background: #fff; z-index: 100; width:100%; font-size: 10rpx;
+  border-top: 2rpx solid #eee; line-height: 100rpx;
 }
 .cl_h{
   clear: both;
-  height: 1px;
-  margin-top: 60px;
+  height: 2rpx;
+  margin-top: 120rpx;
 }
 .shop{ position: relative;}
 .video{
-  width: 45px;
-  height: 45px;
+  width: 90rpx;
+  height: 90rpx;
   display: inline-block;
   position: absolute;
   right: 0;
@@ -138,27 +138,27 @@ page{
   z-index: 2;
 }
 .video image{
-  width: 45px;
-  height: 45px;
-  background-size:45px; 
+  width: 90rpx;
+  height: 90rpx;
+  background-size:90rpx; 
 }
 .search_no{
     width: 100%; 
     display: block;
     color: #666;
     text-align: center;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 .scimg{
-    width: 100px;
-    height: 100px;
+    width: 200rpx;
+    height: 200rpx;
     display: inline-block;
-    background-size:100px; 
+    background-size:200rpx; 
 }
 .x_right{
-    width: 16px;
-    height: 18px;
-    margin-left: 10px;  
+    width: 32rpx;
+    height: 36rpx;
+    margin-left: 20rpx;  
 }
 button[type="warn"] {
 color:#FFFFFF;

@@ -20,9 +20,11 @@ Page({
   },
   onLoad: function (options) {
     console.log(options)
+    console.log((typeof options.DATAs) != "undefined")
     var uid = app.d.userId;
     if ((typeof options.DATAs) != "undefined") {
     var DAta = options.DATAs.split(",")
+    console.log((typeof options.DATA) != "undefined")
     this.setData({
       p1: DAta[0],
       p2: DAta[1],
@@ -48,7 +50,6 @@ Page({
   },
   loadProductDetail: function () {
     var that = this;
-    console.log(this.data.cartId+"aaaaaaaaaaa")
     wx.request({
       url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
       method: 'post',
@@ -126,6 +127,9 @@ Page({
   useCoin: function (e) {
     var that = this
     var code = e.currentTarget.id
+    this.setData({
+      code:code
+    })
     console.log(code)
     if (code == 'gold') {
       if (this.data.flag == 0) {
@@ -227,6 +231,7 @@ Page({
     this.setData({
       btnDisabled: false,
     })
+    console.log("ctype:"+this.data.code)
     console.log(this.data.paytype)
     //创建订单
     var that = this;

@@ -384,6 +384,7 @@ Page({
   // 商品详情数据获取
   loadProductDetail: function () {
     var that = this;
+    this.data.pro_id
     // console.log(1112222);
     // wx.login({
     //   success: function (res) {
@@ -545,6 +546,8 @@ Page({
   // 属性选择
   onShow: function () {
 
+    this.loadProductDetail();
+    this.loadProductEvaluate();
   },
   /* 获取数据 */
   distachAttrValue: function (commodityAttr) {

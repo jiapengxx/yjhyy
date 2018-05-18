@@ -89,7 +89,7 @@
 				<button class="xx_pay_submit" type="default" id="xxPay" formType="submit" >线下支付</button>
 			</navigator> -->
       <button hidden='{{FLAg}}' class="wx_pay_submit" type="primary" id="wxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByWX">微信支付</button>
-      <button class="jj_pay_submit" type="primary" id="jjPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByJJ">使用健康币支付</button>
+      <button hidden='{{!FLAg}}' class="jj_pay_submit" type="primary" id="jjPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByJJ">使用健康币支付</button>
       <button hidden='{{FLAg}}' class="xx_pay_submit" type="primary" id="xxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByXX">线下支付</button>
 
     </view>

@@ -167,6 +167,9 @@ Page({
       })
     }
     var zprice = this.data.vprice;
+    console.log(zprice)
+    console.log(this.data.discount)
+    console.log(zprice > this.data.discount)
     if (zprice > this.data.discount) {
       var cprice = parseFloat(zprice) - parseFloat(this.data.discount);
       console.log(cprice)

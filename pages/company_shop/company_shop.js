@@ -31,42 +31,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/BIndex/seller_show',
-      method: 'post',
-      data: {
-        current: 1,
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        var seller = res.data.seller;
-        var place_store = res.data.place_store;
-        var num_store = res.data.num_store;
-        var comment_store = res.data.comment_store
-        that.setData({
-          hot_good: seller,
-          place_store1: place_store,
-          num_store1: num_store,
-          comment_store1: comment_store
-        });
-        that.setData({
-          height1: 582 * that.data.hot_good.length+140,
-          height2: 582 * that.data.place_store1.length + 140,
-          height3: 582 * that.data.num_store1.length + 140,
-          height4: 582 * that.data.comment_store1.length + 140,
-        });
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    })
-    //long1为商家经度 la1为商家纬度
-    wx.getLocation({
+        wx.getLocation({
       type: 'gcj02',
       success: function (res) {
         var long2 = res.longitude
@@ -75,72 +40,9 @@ Page({
           long2: long2,
           la2: la2
         })
-        //对综合商家进行处理
-        
-          for (var i = 0; i < that.data.hot_good.length; i++) {
-            var la1 = parseFloat(that.data.hot_good[i].latitude)
-            var long1 = parseFloat(that.data.hot_good[i].longitude)
-            var rad1 = la1 * Math.PI / 180.0;
-            var rad2 = la2 * Math.PI / 180.0;
-            var a = rad1 - rad2;
-            var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
-            var r = 6378.137;
-            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
-            that.setData({
-              distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
-            })
-          }
-        
-        //对附近商家进行处理
-        
-          for (var i = 0; i < that.data.place_store1.length; i++) {
-            var la1 = parseFloat(that.data.place_store1[i].latitude)
-            var long1 = parseFloat(that.data.place_store1[i].longitude)
-            var rad1 = la1 * Math.PI / 180.0;
-            var rad2 = la2 * Math.PI / 180.0;
-            var a = rad1 - rad2;
-            var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
-            var r = 6378.137;
-            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
-            that.setData({
-              distance2: that.data.distance2.concat({ distance: distance.toFixed(1) })
-            })
-          }
-        
-        //对销量商家进行处理
-
-          for (var i = 0; i < that.data.num_store1.length; i++) {
-            var la1 = parseFloat(that.data.num_store1[i].latitude)
-            var long1 = parseFloat(that.data.num_store1[i].longitude)
-            var rad1 = la1 * Math.PI / 180.0;
-            var rad2 = la2 * Math.PI / 180.0;
-            var a = rad1 - rad2;
-            var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
-            var r = 6378.137;
-            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
-            that.setData({
-              distance3: that.data.distance3.concat({ distance: distance.toFixed(1)})
-            })
-          }
-        //对评价商家进行处理
-          for (var i = 0; i < that.data.comment_store1.length; i++) {
-            var la1 = parseFloat(that.data.comment_store1[i].latitude)
-            var long1 = parseFloat(that.data.comment_store1[i].longitude)
-            var rad1 = la1 * Math.PI / 180.0;
-            var rad2 = la2 * Math.PI / 180.0;
-            var a = rad1 - rad2;
-            var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
-            var r = 6378.137;
-            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
-            that.setData({
-              distance4: that.data.distance4.concat({ distance: distance.toFixed(1) })
-            })
-          }
-        
+        that.getShopList('all', 1)
       }
-    })
-
-
+        }) 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -194,20 +96,178 @@ Page({
   /**     * 滑动切换tab     */
   bindChange: function (e) {
     var that = this;
-    that.setData({
+    this.setData({
       currentTab: e.detail.current
     });
+    if (this.data.currentTab == 0) {
+      this.getShopList('all', 1)
+    } else if (this.data.currentTab == 1) {
+      this.getShopList('place', 1)
+    } else if (this.data.currentTab == 2) {
+      this.getShopList('num', 1)
+    } else if (this.data.currentTab == 3) {
+      this.getShopList('comment', 1)
+    }
+
   },
   /**    * 点击tab切换    */
+  //点击切换触发两次
   swichNav: function (e) {
     var that = this;
-    if (this.data.currentTab === e.target.dataset.current) { return false; }
-    else {
-      that.setData({
+      this.setData({
         currentTab: e.target.dataset.current
       })
+    if (this.data.currentTab == 0) {
+      this.getShopList('all', 1)
+    } else if (this.data.currentTab == 1) {
+      this.getShopList('place', 1)
+    } else if (this.data.currentTab == 2) {
+      this.getShopList('num', 1)
+    } else if (this.data.currentTab == 3) {
+      this.getShopList('comment', 1)
     }
   },
+  getShopList: function (types, page) {
+    var that = this
+    var page = page;
+    var types = types;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/BIndex/seller_show1',
+      method: 'post',
+      data: {
+        page: page,
+        type: types
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        //综合
+        if (that.data.currentTab == 0) {
+          var hot_good = res.data.seller;
+          var distance1=[]
+          that.setData({
+            hot_good: hot_good,
+            distance1: distance1
+          });
+          that.setData({
+            height1: 582 * that.data.hot_good.length + 140,
+
+          })
+          for (var i = 0; i < that.data.hot_good.length; i++) {
+            var la1 = parseFloat(that.data.hot_good[i].latitude)
+            var long1 = parseFloat(that.data.hot_good[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            that.setData({
+              distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
+            })
+          }
+          that.setData({
+            page1: 2
+          })
+        }
+        //距离最近
+        if (that.data.currentTab == 1) {
+          var place_store1 = res.data.place_store;
+          var distance2= []
+          that.setData({
+            place_store1: place_store1,
+            distance2: distance2
+          });
+          that.setData({
+      height2: 582 * that.data.place_store1.length + 140,
+          
+          })
+          for (var i = 0; i < that.data.place_store1.length; i++) {
+            var la1 = parseFloat(that.data.place_store1[i].latitude)
+            var long1 = parseFloat(that.data.place_store1[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            that.setData({
+              distance2: that.data.distance2.concat({ distance: distance.toFixed(1) })
+            })
+          }
+          that.setData({
+            page2: 2
+          })
+          //销量最高
+        } else if (that.data.currentTab == 2) {
+          var num_store1 = res.data.num_store;
+          var distance3=[]
+          that.setData({
+            num_store1: num_store1,
+            distance3: distance3
+          });
+          that.setData({
+        height3: 582 * that.data.num_store1.length + 140,
+
+          })
+          for (var i = 0; i < that.data.num_store1.length; i++) {
+            var la1 = parseFloat(that.data.num_store1[i].latitude)
+            var long1 = parseFloat(that.data.num_store1[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            that.setData({
+              distance3: that.data.distance3.concat({ distance: distance.toFixed(1) })
+            })
+          }
+          that.setData({
+            page3: 2
+          })
+          //评价最高
+        } else if (that.data.currentTab == 3) {
+          var comment_store1 = res.data.comment_store;
+          var distance4 = []
+          that.setData({
+            comment_store1: comment_store1,
+            distance4: distance4
+          });
+          that.setData({
+    height4: 582 * that.data.comment_store1.length + 140,
+          })
+          for (var i = 0; i < that.data.comment_store1.length; i++) {
+            var la1 = parseFloat(that.data.comment_store1[i].latitude)
+            var long1 = parseFloat(that.data.comment_store1[i].longitude)
+            var rad1 = la1 * Math.PI / 180.0;
+            var rad2 = that.data.la2 * Math.PI / 180.0;
+            var a = rad1 - rad2;
+            var b = long1 * Math.PI / 180.0 - that.data.long2 * Math.PI / 180.0;
+            var r = 6378.137;
+            var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+            that.setData({
+              distance4: that.data.distance4.concat({ distance: distance.toFixed(1) })
+            })
+          }
+         that.setData({
+           page4:2
+         })
+        }
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
+  },
+countDistance:function(){
+//传入 目标经纬度  数组长度  目标数组
+//
+},
   toBtoC: function (e) {
     var store_Id = e.currentTarget.id;
     wx.navigateTo({

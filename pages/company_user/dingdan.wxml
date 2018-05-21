@@ -10,7 +10,7 @@
 <view class="c_t60"></view>
 
 <swiper current="{{currentTab}}" class="swiper-box" duration="300"
-style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.length):(currentTab==1?(orderList1.length==0?winHeight*2:240*orderList1.length):(currentTab==2?(orderList2.length==0?winHeight*2:240*orderList2.length):(currentTab==3?(orderList3.length==0?winHeight*2:240*orderList3.length):(orderList4.length==0?winHeight*2:240*orderList4.length))))}}rpx" bindchange="bindChange">
+style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.length+70):(currentTab==1?(orderList1.length==0?winHeight*2:240*orderList1.length+70):(currentTab==2?(orderList2.length==0?winHeight*2:240*orderList2.length+70):(currentTab==3?(orderList3.length==0?winHeight*2:240*orderList3.length+70):(orderList4.length==0?winHeight*2:240*orderList4.length+70))))}}rpx" bindchange="bindChange">
 
   <!-- 待付款 -->
   <swiper-item >
@@ -44,6 +44,7 @@ style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.l
         </view>
       </view>
     </view>
+     <view wx:if="{{orderList0.length}}" style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
   </swiper-item>
 
   <!-- 待发货 -->
@@ -71,6 +72,7 @@ style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.l
         </view>
       </view>
     </view>
+     <view wx:if="{{orderList1.length}}"  style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
   </swiper-item>
 
   <!-- 待收货 -->
@@ -100,6 +102,7 @@ style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.l
         </view>
       </view>
     </view>
+     <view wx:if="{{orderList2.length}}"  style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
   </swiper-item>
 
   <!-- 已完成-->
@@ -134,6 +137,7 @@ style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.l
         </view>
       </view>
     </view>
+     <view wx:if="{{orderList3.length}}"  style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
   </swiper-item>
 
   <!-- 退款/售后 -->
@@ -162,7 +166,8 @@ style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.l
         </view>
       </view>
     </view>
+     <view wx:if="{{orderList4.length}}"  style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
   </swiper-item>
+  
 </swiper>
- <view style='position:relative;top:-40rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
 </view>

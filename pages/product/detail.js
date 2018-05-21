@@ -24,259 +24,10 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    // 属性选择
-
-    // commodityAttr: [],
-    // attrValueList: [],
-    //数据结构：以一组一组的数据来进行设定 
-    commodityAttr1: [
-      {
-        price: 560,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "245ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "瓶",
-          },
-        ]
-      },
-      {
-        price: 5600,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "245ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "箱(10瓶)",
-          },
-        ]
-      },
-      {
-        price: 660,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "330ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "瓶",
-
-          },
-        ]
-      },
-      {
-        price: 6600,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "330ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "箱(10瓶)",
-
-          },
-        ]
-      }
-    ],
-    commodityAttr2: [
-      {
-        price: 66,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "245ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "瓶",
-          },
-        ]
-      },
-      {
-        price: 1320,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "245ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "箱(20瓶)",
-          },
-        ]
-      },
-      {
-        price: 136,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "500ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "瓶",
-
-          },
-        ]
-      }
-      ,
-      {
-        price: 1632,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "500ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "箱(12瓶)",
-
-          },
-        ]
-      }
-      ,
-      {
-        price: 208,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "1L",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "瓶",
-
-          },
-        ]
-      },
-      {
-        price: 1664,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "1L",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "箱(8瓶)",
-
-          },
-        ]
-      }
-    ],
-    commodityAttr3: [
-      {
-        price: 138,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "245ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "瓶",
-          },
-        ]
-      },
-      {
-        price: 2760,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "245ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "箱(20瓶)",
-          },
-        ]
-      },
-      {
-        price: 218,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "500ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "瓶",
-
-          },
-        ]
-      }
-      ,
-      {
-        price: 2616,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "500ml",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "箱(12瓶)",
-
-          },
-        ]
-      }
-      ,
-      {
-        price: 378,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "1L",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "瓶",
-
-          },
-        ]
-      }
-      ,
-      {
-        price: 3024,
-        "attrValueList": [
-          {
-            "attrKey": "类型:",
-            "attrValue": "1L",
-          },
-          {
-            "attrKey": "规格:",
-            "attrValue": "箱(8瓶)",
-
-          },
-        ]
-      }
-    ],
     attrValueList: []
-
   },
   // 立即购买弹窗
   setModalStatus: function (e) {
-    // if (this.data.pro_id == 441) {
-    //   this.setData({
-    //     commodityAttr: this.data.commodityAttr1
-    //   })
-    // } else if (this.data.pro_id == 442) {
-    //   this.setData({
-    //     commodityAttr: this.data.commodityAttr3
-    //   })
-    // } else if (this.data.pro_id == 443) {
-    //   this.setData({
-    //     commodityAttr: this.data.commodityAttr2
-    //   })
-    // }
-
     var animation = wx.createAnimation({
       duration: 200,
       timingFunction: "linear",
@@ -417,7 +168,7 @@ Page({
           pro_id: DAta[1],
           store_id: DAta[2]
         })
-        console.log(this.data.bindUid)
+
       } else {
         this.setData({
           pro_id: option.pro_id,
@@ -432,38 +183,16 @@ Page({
   },
   // 商品详情数据获取
   loadProductDetail: function () {
+    console.log("aaa")
     var that = this;
-    this.data.pro_id
-    // console.log(1112222);
-    // wx.login({
-    //   success: function (res) {
-    //     console.log(res.code+"11122222")
-    //     var code = res.code;
-    //     wx.getUserInfo({
-    //       success: function (res) {
-    //         that.globalData.userInfo = res.userInfo
-    //         typeof cb == "function" && cb(that.globalData.userInfo);
-
-    //         console.log(1112222);
-    //         that.getUserSessionKey(code);
-    //       },
-    //       fail: function (e) {
-    //         console.log('失败');
-    //         wx.showToast({
-    //           title: '网络异常！err:getsessionkeys',
-    //           duration: 2000
-    //         });
-    //       },
-    //     });
-    //   }
-    // });
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/index',
       method: 'post',
       data: {
         pro_id: that.data.pro_id,
         r_uid: app.d.userId,
-        u_id: that.data.bindUid
+        u_id: that.data.bindUid,
+        openid: app.globalData.userInfo.openid
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -484,8 +213,9 @@ Page({
             store_id: res.data.pro.store_id
           });
         } else {
+          console.log(status)
           wx.showToast({
-            title: res.data.err,
+            title:res.data.err,
             duration: 2000,
           });
         }
@@ -498,38 +228,6 @@ Page({
       },
     });
   },
-  // getUserSessionKey: function (code) {
-  //   var that = this;
-  //   wx.request({
-  //     url: that.d.ceshiUrl + '/Api/Login/getsessionkey',
-  //     method: 'post',
-  //     data: {
-  //       code: code
-  //     },
-  //     header: {
-  //       'Content-Type': 'application/x-www-form-urlencoded'
-  //     },
-  //     success: function (res) {      
-  //       var data = res.data;
-  //       if (data.status == 0) {
-  //         wx.showToast({
-  //           title: data.err,
-  //           duration: 2000
-  //         });
-  //         return false;
-  //       }
-  //       that.globalData.userInfo['sessionId'] = data.session_key;
-  //       that.globalData.userInfo['openid'] = data.openid;
-  //       that.onLoginUser();
-  //     },
-  //     fail: function (e) {
-  //       wx.showToast({
-  //         title: '网络异常！err:getsessionkeys',
-  //         duration: 2000
-  //       });
-  //     },
-  //   });
-  // },
   //商品评价数据获取
   loadProductEvaluate: function () {
     var that = this;

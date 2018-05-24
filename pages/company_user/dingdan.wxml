@@ -1,173 +1,335 @@
-
 <view style='position:relative;width:100%;'>
-<view class="swiper-tab">
-  <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" data-otype="pay" bindtap="swichNav">待付款</view>
-  <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" data-otype="deliver" bindtap="swichNav">待发货</view>
-  <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" data-otype="receive" bindtap="swichNav">待收货</view>
-  <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" data-otype="finish" bindtap="swichNav">已完成</view>
-  <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">退款/售后</view>
+  <view class="swiper-tab">
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" data-otype="pay" bindtap="swichNav">待付款</view>
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" data-otype="deliver" bindtap="swichNav">待发货</view>
+    <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" data-otype="receive" bindtap="swichNav">待收货</view>
+    <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" data-otype="finish" bindtap="swichNav">已完成</view>
+    <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">退款/售后</view>
+  </view>
+  <view class="c_t60"></view>
+
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.length+70):(currentTab==1?(orderList1.length==0?winHeight*2:240*orderList1.length+70):(currentTab==2?(orderList2.length==0?winHeight*2:240*orderList2.length+70):(currentTab==3?(orderList3.length==0?winHeight*2:240*orderList3.length+70):(orderList4.length==0?winHeight*2:240*orderList4.length+70))))}}rpx"bindchange="bindChange">
+
+    <!-- 待付款 -->
+
+    <swiper-item>
+      <view class="search_no" wx:if="{{orderList0.length}}">
+        <view class="font_14">
+          <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
+        </view>
+        <text>没有可用订单/(ㄒoㄒ)/~~</text>
+      </view>
+  <!-- <block wx:for="{{orderList0}}" wx:for-index="idx"> -->
+<view style='position:relative;top:{{idx*20}}rpx;height:400rpx;' >
+<!--顶部  -->
+<view style='height:90rpx;border:1rpx solid green;'>
+  <image src='../../images/shop.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;border:1rpx solid green;'>全球购专营店</view>
+<view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;border:1rpx solid green;'>等待付款</view>
 </view>
-<view class="c_t60"></view>
+<!--商品数据  -->
+<!-- <block wx:for=""> -->
+<view style='height:140rpx;border:1rpx solid green;'>
+  <image src='' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-102rpx;left:154rpx;font-size:26rpx;color:#333;border:1rpx solid green;width:300rpx;'>牡丹籽油</view>
+<view style='position:relative;top:-85rpx;left:154rpx;font-size:22rpx;color:#666;border:1rpx solid green;width:400rpx;'>规格分类：</view>
+<view style='position:relative;top:-104rpx;left:695rpx;font-size:24rpx;color:#666;width:50rpx;'>x1</view>
+</view>
+<!-- </block> -->
+<!--结算  -->
+<view style='height:74rpx;border:1rpx solid green;background-color:#fff;'>
+<view style='position:relative;top:15rpx;left:420rpx;font-size:24rpx;color:#333;width:150rpx;'>共1{{}}件商品</view>
+<view style='position:relative;top:-20rpx;left:570rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥{{}}<text style='font-size:28rpx;color:#333;'>123</text></view>
+</view>
+<!--功能  -->
+<view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
+<navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../order/detail?orderId={{item.id}}">订单详情</navigator>
+<view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'  bindtap="removeOrder" data-order-id="{{item.id}}">取消订单</view>
+<view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' bindtap="payOrderByWechat" data-orderId="{{item.id}}" data-ordersn="{{item.order_sn}}" wx:if="{{item.type=='weixin'}}">微信支付</view>
+</view>
+</view>
+<!-- </block> -->
 
-<swiper current="{{currentTab}}" class="swiper-box" duration="300"
-style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:240*orderList0.length+70):(currentTab==1?(orderList1.length==0?winHeight*2:240*orderList1.length+70):(currentTab==2?(orderList2.length==0?winHeight*2:240*orderList2.length+70):(currentTab==3?(orderList3.length==0?winHeight*2:240*orderList3.length+70):(orderList4.length==0?winHeight*2:240*orderList4.length+70))))}}rpx" bindchange="bindChange">
 
-  <!-- 待付款 -->
-  <swiper-item >
-    <view class="search_no" wx:if="{{!orderList0.length}}">
-      <view class="font_14">
-        <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
-      </view>
-      <text>没有可用订单/(ㄒoㄒ)/~~</text>
-    </view>
 
-    <view class="shop df" wx:for="{{orderList0}}">
-      
-          <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+      <!-- <view class="shop df" wx:for="{{orderList0}}">
+        <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
           <image class="sh_slt" src="{{item.photo_x}}"></image>
-          </navigator>
-
-      <view class="df_1">
-        <view class="sp_text">
-          <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
-            <view class="sp_tit ovh1">{{item.name}}</view>
-             <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
-          <view class="sp_jg">¥：{{item.price}}</view>
-          </navigator>
-         
-          <view class="font_12 red fl_r" bindtap="payOrderByWechat" data-orderId="{{item.id}}" data-ordersn="{{item.order_sn}}" wx:if="{{item.type=='weixin'}}">微信支付</view>
-          <!--<navigator class="font_12 red fl_r" url="../order/downline?orderId={{item.id}}" wx:if="{{item.PayType=='cash'}}">线下支付</navigator>-->
-
-          <view class="font_12 red fl_r mr_5" bindtap="removeOrder" data-order-id="{{item.id}}">取消订单</view>
-          <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
-
-        </view>
-      </view>
-    </view>
-     <view wx:if="{{orderList0.length}}" style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
-  </swiper-item>
-
-  <!-- 待发货 -->
-  <swiper-item>
-    <view class="search_no" wx:if="{{!orderList1.length}}">
-      <view class="font_14">
-        <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
-      </view>
-      <text>没有可用订单/(ㄒoㄒ)/~~</text>
-    </view>
-    <view class="shop df" wx:for="{{orderList1}}">
-      <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
-          <image class="sh_slt" src="{{item.photo_x}}"></image>
-          </navigator>
-      <view class="df_1">
-        <view class="sp_text">
-          <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
-            <view class="sp_tit ovh1">{{item.name}}</view>
-            <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
-          <view class="sp_jg">¥：{{item.price}}</view>
-          </navigator>
-          
-          <navigator class="font_12 red fl_r" url="tuihuo?orderId={{item.id}}">申请退款</navigator>
-          <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
-        </view>
-      </view>
-    </view>
-     <view wx:if="{{orderList1.length}}"  style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
-  </swiper-item>
-
-  <!-- 待收货 -->
-  <swiper-item>
-    <view class="search_no" wx:if="{{!orderList2.length}}">
-      <view class="font_14">
-        <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
-      </view>
-      <text>没有可用订单/(ㄒoㄒ)/~~</text>
-    </view>
-    <view class="shop df" wx:for="{{orderList2}}">
-      <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
-          <image class="sh_slt" src="{{item.photo_x}}"></image>
-          </navigator>
-      <view class="df_1">
-        <view class="sp_text">
-          <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
-            <view class="sp_tit ovh1">{{item.name}}</view>
-             <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
-          <view class="sp_jg">¥：{{item.price}}</view>
-          </navigator>
-         
-          <navigator class="font_12 red fl_r" url="tuihuo?orderId={{item.id}}">申请退款</navigator>
-          <view class="font_12 red fl_r mr_5" bindtap="recOrder" data-order-id="{{item.id}}">确认收货</view>
-          <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
-          <navigator url="../order/wuliu?order_id={{item.order_sn}}&wuliu_id={{item.kuaidi_num}}" class="font_12 red fl_r mr_5">查看物流</navigator>
-        </view>
-      </view>
-    </view>
-     <view wx:if="{{orderList2.length}}"  style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
-  </swiper-item>
-
-  <!-- 已完成-->
-  <swiper-item>
-    <view class="search_no" wx:if="{{!orderList3.length}}">
-      <view class="font_14">
-        <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
-      </view>
-      <text>没有可用订单/(ㄒoㄒ)/~~</text>
-    </view>
-    <view class="shop df" wx:for="{{orderList3}}">
-      <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
-          <image class="sh_slt" src="{{item.photo_x}}"></image>
-          </navigator>
-      <view class="df_1">
-        <view class="sp_text">
-          <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
-            <view class="sp_tit ovh1">{{item.name}}</view>
-            <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
-          <view class="sp_jg">¥：{{item.price}}</view>
-          </navigator>
-          
-          <block wx:if="{{orderList3.mstatus==finish}}">
-            <view class="font_12 red fl_r mr_5">已评价</view>
-          </block>
-          <block wx:else>
-            <navigator url="../comment/index?orderId={{item.id}}&pid={{item.pid}}" class="font_12 red fl_r mr_5">未评价 </navigator>
-          </block>
-
-          <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
-
-        </view>
-      </view>
-    </view>
-     <view wx:if="{{orderList3.length}}"  style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
-  </swiper-item>
-
-  <!-- 退款/售后 -->
-  <swiper-item>
-    <view class="search_no" wx:if="{{!orderList4.length}}">
-      <view class="font_14">
-        <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
-      </view>
-      <text>没有可用订单/(ㄒoㄒ)/~~</text>
-    </view>
-
-    <view class="shop df" wx:for="{{orderList4}}">
-      <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
-          <image class="sh_slt" src="{{item.photo_x}}"></image>
-          </navigator>
-      <view class="df_1">
-        <view class="sp_text">
-          <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
-            <view class="sp_tit ovh1">{{item.name}}</view>
+        </navigator>
+        <view class="df_1">
+          <view class="sp_text">
+            <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+              <view class="sp_tit ovh1">{{item.name}}</view>
               <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
-          <view class="sp_jg">¥：{{item.price}}</view>
-          </navigator>
-        
-          <view class="font_12 red fl_r">{{item.desc}}</view>
-          <!--<navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>-->
+              <view class="sp_jg">¥：{{item.price}}</view>
+            </navigator>
+
+            <view class="font_12 red fl_r" bindtap="payOrderByWechat" data-orderId="{{item.id}}" data-ordersn="{{item.order_sn}}" wx:if="{{item.type=='weixin'}}">微信支付</view>
+            <navigator class="font_12 red fl_r" url="../order/downline?orderId={{item.id}}" wx:if="{{item.PayType=='cash'}}">线下支付</navigator>
+
+            <view class="font_12 red fl_r mr_5" bindtap="removeOrder" data-order-id="{{item.id}}">取消订单</view>
+            <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
+
+          </view>
         </view>
+      </view> -->
+
+      <view wx:if="{{orderList0.length}}" style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
+    </swiper-item>
+
+    <!-- 待发货 -->
+    <swiper-item>
+      <view class="search_no" wx:if="{{orderList1.length}}">
+        <view class="font_14">
+          <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
+        </view>
+        <text>没有可用订单/(ㄒoㄒ)/~~</text>
       </view>
-    </view>
-     <view wx:if="{{orderList4.length}}"  style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
-  </swiper-item>
-  
-</swiper>
+
+  <!-- <block wx:for="{{orderList0}}" wx:for-index="idx"> -->
+<view style='position:relative;top:{{idx*20}}rpx;height:400rpx;' >
+<!--顶部  -->
+<view style='height:90rpx;border:1rpx solid green;'>
+  <image src='../../images/shop.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;border:1rpx solid green;'>全球购专营店</view>
+<view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;border:1rpx solid green;'>等待发货</view>
+</view>
+<!--商品数据  -->
+<!-- <block wx:for=""> -->
+<view style='height:140rpx;border:1rpx solid green;'>
+  <image src='' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-102rpx;left:154rpx;font-size:26rpx;color:#333;border:1rpx solid green;width:300rpx;'>牡丹籽油</view>
+<view style='position:relative;top:-85rpx;left:154rpx;font-size:22rpx;color:#666;border:1rpx solid green;width:400rpx;'>规格分类：</view>
+<view style='position:relative;top:-104rpx;left:695rpx;font-size:24rpx;color:#666;width:50rpx;'>x1</view>
+</view>
+<!-- </block> -->
+<!--结算  -->
+<view style='height:74rpx;border:1rpx solid green;background-color:#fff;'>
+<view style='position:relative;top:15rpx;left:420rpx;font-size:24rpx;color:#333;width:150rpx;'>共1{{}}件商品</view>
+<view style='position:relative;top:-20rpx;left:570rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥{{}}<text style='font-size:28rpx;color:#333;'>123</text></view>
+</view>
+<!--功能  -->
+<view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
+<navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../order/detail?orderId={{item.id}}">订单详情</navigator>
+<view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'url="tuihuo?orderId={{item.id}}">申请退款</view>
+<view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>我要催单</view>
+</view>
+</view>
+<!-- </block> -->
+
+
+
+      <!-- <view class="shop df" wx:for="{{orderList1}}">
+        <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+          <image class="sh_slt" src="{{item.photo_x}}"></image>
+        </navigator>
+        <view class="df_1">
+          <view class="sp_text">
+            <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+              <view class="sp_tit ovh1">{{item.name}}</view>
+              <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
+              <view class="sp_jg">¥：{{item.price}}</view>
+            </navigator>
+
+            <navigator class="font_12 red fl_r" url="tuihuo?orderId={{item.id}}">申请退款</navigator>
+            <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
+          </view>
+        </view>
+      </view> -->
+      <view wx:if="{{orderList1.length}}" style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
+    </swiper-item>
+
+    <!-- 待收货 -->
+    <swiper-item>
+      <view class="search_no" wx:if="{{orderList2.length}}">
+        <view class="font_14">
+          <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
+        </view>
+        <text>没有可用订单/(ㄒoㄒ)/~~</text>
+      </view>
+
+
+  <!-- <block wx:for="{{orderList0}}" wx:for-index="idx"> -->
+<view style='position:relative;top:{{idx*20}}rpx;height:400rpx;' >
+<!--顶部  -->
+<view style='height:150rpx;border:1rpx solid green;'>
+  <image src='../../images/shop.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;border:1rpx solid green;'>全球购专营店</view>
+<view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;border:1rpx solid green;'>等待收货</view>
+
+  <image src='../../images/shop.png' style='height:30rpx;width:30rpx;position:relative;top:-30rpx;left:24rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-78rpx;left:80rpx;font-size:26rpx;color:#333;width:600rpx;border:1rpx solid green;'>全球购专营店</view>
+
+</view>
+<!--商品数据  -->
+<!-- <block wx:for=""> -->
+<view style='height:140rpx;border:1rpx solid green;'>
+  <image src='' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-102rpx;left:154rpx;font-size:26rpx;color:#333;border:1rpx solid green;width:300rpx;'>牡丹籽油</view>
+<view style='position:relative;top:-85rpx;left:154rpx;font-size:22rpx;color:#666;border:1rpx solid green;width:400rpx;'>规格分类：</view>
+<view style='position:relative;top:-104rpx;left:695rpx;font-size:24rpx;color:#666;width:50rpx;'>x1</view>
+</view>
+<!-- </block> -->
+<!--结算  -->
+<view style='height:74rpx;border:1rpx solid green;background-color:#fff;'>
+<view style='position:relative;top:15rpx;left:420rpx;font-size:24rpx;color:#333;width:150rpx;'>共1{{}}件商品</view>
+<view style='position:relative;top:-20rpx;left:570rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥{{}}<text style='font-size:28rpx;color:#333;'>123</text></view>
+</view>
+<!--功能  -->
+<view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
+<navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../order/detail?orderId={{item.id}}">订单详情</navigator>
+<navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'url="../order/wuliu?order_id={{item.order_sn}}&wuliu_id={{item.kuaidi_num}}">查看物流</navigator>
+<view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' bindtap="recOrder" data-order-id="{{item.id}}">确认收货</view>
+</view>
+</view>
+<!-- </block> -->
+
+
+      <!-- <view class="shop df" wx:for="{{orderList2}}">
+        <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+          <image class="sh_slt" src="{{item.photo_x}}"></image>
+        </navigator>
+        <view class="df_1">
+          <view class="sp_text">
+            <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+              <view class="sp_tit ovh1">{{item.name}}</view>
+              <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
+              <view class="sp_jg">¥：{{item.price}}</view>
+            </navigator>
+
+            <navigator class="font_12 red fl_r" url="tuihuo?orderId={{item.id}}">申请退款</navigator>
+            <view class="font_12 red fl_r mr_5" bindtap="recOrder" data-order-id="{{item.id}}">确认收货</view>
+            <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
+            <navigator url="../order/wuliu?order_id={{item.order_sn}}&wuliu_id={{item.kuaidi_num}}" class="font_12 red fl_r mr_5">查看物流</navigator>
+          </view>
+        </view>
+      </view> -->
+      <view wx:if="{{orderList2.length}}" style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
+    </swiper-item>
+
+    <!-- 已完成-->
+    <swiper-item>
+      <view class="search_no" wx:if="{{orderList3.length}}">
+        <view class="font_14">
+          <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
+        </view>
+        <text>没有可用订单/(ㄒoㄒ)/~~</text>
+      </view>
+
+  <!-- <block wx:for="{{orderList0}}" wx:for-index="idx"> -->
+<view style='position:relative;top:{{idx*20}}rpx;height:400rpx;' >
+<!--顶部  -->
+<view style='height:90rpx;border:1rpx solid green;'>
+  <image src='../../images/shop.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;border:1rpx solid green;'>全球购专营店</view>
+<view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;border:1rpx solid green;'>已完成</view>
+</view>
+<!--商品数据  -->
+<!-- <block wx:for=""> -->
+<view style='height:140rpx;border:1rpx solid green;'>
+  <image src='' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-102rpx;left:154rpx;font-size:26rpx;color:#333;border:1rpx solid green;width:300rpx;'>牡丹籽油</view>
+<view style='position:relative;top:-85rpx;left:154rpx;font-size:22rpx;color:#666;border:1rpx solid green;width:400rpx;'>规格分类：</view>
+<view style='position:relative;top:-104rpx;left:695rpx;font-size:24rpx;color:#666;width:50rpx;'>x1</view>
+</view>
+<!-- </block> -->
+<!--结算  -->
+<view style='height:74rpx;border:1rpx solid green;background-color:#fff;'>
+<view style='position:relative;top:15rpx;left:420rpx;font-size:24rpx;color:#333;width:150rpx;'>共1{{}}件商品</view>
+<view style='position:relative;top:-20rpx;left:570rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥{{}}<text style='font-size:28rpx;color:#333;'>123</text></view>
+</view>
+<!--功能  -->
+<view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
+<navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../order/detail?orderId={{item.id}}">订单详情</navigator>
+
+            <block wx:if="{{orderList3.mstatus==finish}}">
+              <view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>已评价</view>
+            </block>
+            <block wx:else>
+              <navigator url="../comment/index?orderId={{item.id}}&pid={{item.pid}}" style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</navigator>
+            </block>
+
+</view>
+</view>
+<!-- </block> -->
+
+      <!-- <view class="shop df" wx:for="{{orderList3}}">
+        <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+          <image class="sh_slt" src="{{item.photo_x}}"></image>
+        </navigator>
+        <view class="df_1">
+          <view class="sp_text">
+            <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+              <view class="sp_tit ovh1">{{item.name}}</view>
+              <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
+              <view class="sp_jg">¥：{{item.price}}</view>
+            </navigator>
+
+            <block wx:if="{{orderList3.mstatus==finish}}">
+              <view class="font_12 red fl_r mr_5">已评价</view>
+            </block>
+            <block wx:else>
+              <navigator url="../comment/index?orderId={{item.id}}&pid={{item.pid}}" class="font_12 red fl_r mr_5">未评价 </navigator>
+            </block>
+
+            <navigator url="../order/detail?orderId={{item.id}}" class="font_12 red fl_r mr_5">订单详情</navigator>
+          </view>
+        </view>
+      </view> -->
+      <view wx:if="{{orderList3.length}}" style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
+    </swiper-item>
+
+    <!-- 退款/售后 -->
+    <swiper-item>
+      <view class="search_no" wx:if="{{orderList4.length}}">
+        <view class="font_14">
+          <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
+        </view>
+        <text>没有可用订单/(ㄒoㄒ)/~~</text>
+      </view>
+
+ <!-- <block wx:for="{{orderList0}}" wx:for-index="idx"> -->
+<view style='position:relative;top:{{idx*20}}rpx;height:400rpx;' >
+<!--顶部  -->
+<view style='height:70rpx;border:1rpx solid green;'>
+
+<view style='position:relative;top:20rpx;left:24rpx;font-size:26rpx;color:#333;width:300rpx;border:1rpx solid green;'>订单编号:<text>{{}}1234555</text></view>
+<view style='position:relative;top:-20rpx;left:400rpx;font-size:24rpx;color:#333;width:300rpx;border:1rpx solid green;'>下单时间:<text>{{}}aaa</text></view>
+</view>
+<!--商品数据  -->
+<!-- <block wx:for=""> -->
+<view style='height:140rpx;border:1rpx solid green;'>
+  <image src='' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;border:1rpx solid green;'></image>
+<view style='position:relative;top:-106rpx;left:154rpx;font-size:26rpx;color:#333;border:1rpx solid green;width:300rpx;'>牡丹籽油</view>
+<view style='position:relative;top:-104rpx;left:154rpx;font-size:22rpx;color:#666;border:1rpx solid green;width:400rpx;'>规格分类:<text>{{}}</text></view>
+<view style='position:relative;top:-100rpx;left:154rpx;font-size:24rpx;color:#666;width:100rpx;'>数量:<text>{{}}1</text></view>
+</view>
+<!-- </block> -->
+<!--功能  -->
+<view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
+<view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../order/detail?orderId={{item.id}}">申请售后</view>
+
+</view>
+</view>
+<!-- </block> -->
+
+      <!-- <view class="shop df" wx:for="{{orderList4}}">
+        <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+          <image class="sh_slt" src="{{item.photo_x}}"></image>
+        </navigator>
+        <view class="df_1">
+          <view class="sp_text">
+            <navigator url="../product/detail?pro_id={{item.pid}}" hover-class="changestyle">
+              <view class="sp_tit ovh1">{{item.name}}</view>
+              <view class="sp_neb">单价：¥ {{item.price_yh}} 数量：×{{item.product_num}} 产品：×{{item.pro_count}}</view>
+              <view class="sp_jg">¥：{{item.price}}</view>
+            </navigator>
+            <view class="font_12 red fl_r">{{item.desc}}</view>
+          </view>
+        </view>
+      </view> -->
+      <view wx:if="{{orderList4.length}}" style='position:relative;top:10rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
+    </swiper-item>
+
+  </swiper>
 </view>

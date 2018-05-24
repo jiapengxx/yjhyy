@@ -143,10 +143,14 @@ Page({
   // 传值
   onLoad: function (option) {
       //需要修改判断   
-    console.log(option)
+    console.log(option+"11111")
     var that = this;
     //先对登录做判断
-    console.log(app.globalData.userInfo)
+    console.log(app.globalData.userInfo + "2222")
+    console.log(option.DATA + "33331");
+    if (typeof option.DATA!='undefined'){
+      var DAta = option.DATA.split(",");
+    }
     if (app.globalData.userInfo == null) {
       wx.showModal({
         title: '请先登录',
@@ -154,15 +158,14 @@ Page({
         showCancel: false,
         success: function (res) {
           if (res.confirm) {
-            wx.switchTab({
-              url: '../company_user/company_user',
+            wx.reLaunch({
+              url: '../company_user/company_user?u_id=' + DAta[0],
             })
           }
         }
       })
     } else {
       if ((typeof option.DATA) != "undefined") {
-        var DAta = option.DATA.split(",")
         this.setData({
           bindUid: DAta[0],
           pro_id: DAta[1],
@@ -214,10 +217,10 @@ Page({
           });
         } else {
           console.log(status)
-          wx.showToast({
-            title:res.data.err,
-            duration: 2000,
-          });
+          // wx.showToast({
+          //   title:res.data.err,
+          //   duration: 2000,
+          // });
         }
       },
       error: function (e) {

@@ -7,7 +7,7 @@ Page({
     Content: '',
     flag:0,
     // num1:0,
-    // num2:0,
+    // num2:0, 
     // num3:0,
     img1: ImageUploader.mergeData({
       sourceType: ['camera', 'album'], //上传图片的来源，相机/相册
@@ -74,7 +74,7 @@ Page({
           that.setData({
             photo_x: res.data.product.photo_x
           })
-          // console.log(res)
+          console.log(res.data.product.photo_x)
         },
         error: function (e) {
           wx.showToast({

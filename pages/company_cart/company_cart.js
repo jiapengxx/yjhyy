@@ -200,7 +200,6 @@ Page({
   },
 
   onLoad: function (options) {
-
     this.loadProductData();
     this.sum();
   },

@@ -1,4 +1,7 @@
 /* pages/user/dingdan.wxss */
+page{
+background-color: #fafafa;
+}
 .swiper-tab{  
     width: 100%;  
     border-bottom: 1px solid #eee;  
@@ -38,7 +41,7 @@
 .shop{
     background: #fff;
     padding: 4%;
-    margin-bottom: 10px;
+
 }
 .shop checkbox{ 
     margin-top: 27px;

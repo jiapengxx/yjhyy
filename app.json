@@ -52,7 +52,11 @@
     "pages/wdyhk/wdyhk",
     "pages/tjyhk/tjyhk",
     "pages/sjhyz/sjhyz",
-    "pages/glyh/glyh"
+    "pages/glyh/glyh",
+    "pages/dfkDetail/dfkDetail",
+    "pages/dfhDetail/dfhDetail",
+    "pages/dshDetail/dshDetail",
+    "pages/ywcDetail/ywcDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

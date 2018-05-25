@@ -1,7 +1,5 @@
+
 /* pages/user/user.wxss */
-::-webkit-scrollbar{
-display: none;
-}
 .me{
   height: 100%;
 }

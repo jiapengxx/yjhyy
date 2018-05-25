@@ -19,8 +19,8 @@
 </view>
 
 <view style='position:relative;left:24rpx;height:50rpx;background-color:whitesmoke;color:#666;font-size:28rpx;'>
-金币金额：{{gold}}
-<text style='position:relative;left:30rpx;color:red;'>转出金额须大于100且小于金币金额</text>
+金币：{{gold}}
+<text style='position:relative;left:30rpx;color:red;'>转出金额须大于100且小于金币数</text>
 </view>
 <view style='height:100rpx;background-color: #fff;'>
 <text style='position:relative;top:20rpx;left:24rpx;color:#333;font-size:30rpx;'>折现:</text>

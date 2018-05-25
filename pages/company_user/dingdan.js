@@ -5,7 +5,7 @@ var app = getApp();
 var common = require("../../utils/common.js");
 Page({
   data: {
-    winWidth: 0,
+    winWidth: 0, 
     winHeight: 0,
     // tab切换  
     currentTab: 0,
@@ -22,6 +22,12 @@ Page({
     page2: 2,
     page3: 2,
     page4: 2,
+    host: app.d.hostImg,
+    count1:0,
+    count2:0,
+    count3:0,
+    count4:0,
+    count5:0,
   },
   onLoad: function (options) {
     this.initSystemInfo();
@@ -134,7 +140,6 @@ Page({
       }
     });
   },
-
   loadOrderList: function () {
     var that = this;
     wx.request({
@@ -155,32 +160,85 @@ Page({
         switch (that.data.currentTab) {
           case 0:
             that.setData({
+              count1:0,
               orderList0: list,
             });
+            for (var i = 0; i < that.data.orderList0.length;i++){
+              that.setData({
+                count1: that.data.count1 + that.data.orderList0[i].prolist.length
+              })
+            }
+            that.setData({
+              num1: that.data.count1-that.data.orderList0.length
+              })
+            console.log(that.data.count1)
+            console.log(that.data.num1)
             break;
           case 1:
             that.setData({
+              count2: 0,
               orderList1: list,
             });
+            for (var i = 0; i < that.data.orderList1.length; i++) {
+              that.setData({
+                count2: that.data.count2 + that.data.orderList1[i].prolist.length
+              })
+            }
+            that.setData({
+              num2: that.data.count2 - that.data.orderList1.length
+            })
+            console.log(that.data.count2)
+            console.log(that.data.num2)
             break;
           case 2:
             that.setData({
+              count3: 0,
               orderList2: list,
             });
+            for (var i = 0; i < that.data.orderList2.length; i++) {
+              that.setData({
+                count3: that.data.count3+ that.data.orderList2[i].prolist.length
+              })
+            }
+            that.setData({
+              num3: that.data.count3 - that.data.orderList2.length
+            })
+            console.log(that.data.count3)
+            console.log(that.data.num3)
             break;
           case 3:
             that.setData({
+              count4: 0,
               orderList3: list,
+            });
+            for (var i = 0; i < that.data.orderList3.length; i++) {
+              that.setData({
+                count4: that.data.count4 + that.data.orderList3[i].prolist.length
+              })
+            }
+            that.setData({
+              num4: that.data.count4 - that.data.orderList3.length
             })
-              ;
+            console.log(that.data.count4)
+            console.log(that.data.num4)
             break;
           case 4:
             that.setData({
+              count5: 0,
               orderList4: list,
             });
+            for (var i = 0; i < that.data.orderList4.length; i++) {
+              that.setData({
+                count5: that.data.count5 
+              })
+            }
+            that.setData({
+              num5: that.data.count5 
+            })
+            console.log(that.data.count5)
+            console.log(that.data.num5)
             break;
         }
-        console.log(that.data.orderList2)
       },
       fail: function () {
         // fail
@@ -211,7 +269,17 @@ Page({
         if (status == 1) {
           that.setData({
             orderList4: that.data.orderList4.concat(data),
+            count5: 0,
           });
+          // for (var i = 0; i < that.data.orderList4.length; i++) {
+          //   that.setData({
+          //     count5: that.data.count5 
+          //   })
+          // }
+          // that.setData({
+          //   num5: that.data.count5 - that.data.orderList4.length
+          // })
+          console.log(that.data.orderList4.length)
         } else {
           wx.showToast({
             title: res.data.err,
@@ -252,11 +320,18 @@ Page({
       return false;
     } else {
       var current = e.target.dataset.current;
-      that.setData({
-        currentTab: parseInt(current),
-        isStatus: e.target.dataset.otype,
-      });
-
+      console.log(typeof (e.target.dataset.otype) == 'undefined')
+      if (typeof (e.target.dataset.otype) == 'undefined'){
+        that.setData({
+          currentTab: parseInt(current),
+          isStatus:'',
+        });
+      }else{
+        that.setData({
+          currentTab: parseInt(current),
+          isStatus:e.target.dataset.otype,
+        });
+      }
       //没有数据就进行加载
       switch (that.data.currentTab) {
         case 0:
@@ -354,6 +429,23 @@ Page({
       }
     })
   },
+  toComment:function(e){
+    var that=this
+    //去评价传出 订单ID 产品ID集合
+    var orderId = e.currentTarget.dataset.orderId
+    var ID = e.currentTarget.dataset.ID
+    this.setData({
+  IDs:[]
+})
+    for (var i = 0; i < this.data.orderList4[ID].prolist.length;i++){
+      this.setData({
+        IDs: this.data.IDs.concat(this.data.orderList4[ID].prolist[i].pid)
+      })
+    }
+    wx.navigateTo({
+      url: '../comment/index?orderId={{item.id}}&pid={{item.prolist[idx].pid}}',
+    })
+  },
   //点击加载更多
   getMore: function (e) {
     var that = this;
@@ -417,28 +509,73 @@ Page({
         } else if (that.data.currentTab == 0) {
           that.setData({
             page0: that.data.page0 + 1,
-            orderList0: that.data.orderList0.concat(ord0)
+            orderList0: that.data.orderList0.concat(ord0), 
+            count1: 0,
           });
+          for (var i = 0; i < that.data.orderList0.length; i++) {
+            that.setData({
+              count1: that.data.count1 + that.data.orderList0[i].prolist.length
+            })
+          }
+          that.setData({
+            num1: that.data.count1 - that.data.orderList0.length
+          })
         }else if (that.data.currentTab == 1) {
           that.setData({
             page1: that.data.page1 + 1,
-            orderList1: that.data.orderList1.concat(ord1)
+            orderList1: that.data.orderList1.concat(ord1),
+            count2:0
           });
+          for (var i = 0; i < that.data.orderList1.length; i++) {
+            that.setData({
+              count2: that.data.count2 + that.data.orderList1[i].prolist.length
+            })
+          }
+          that.setData({
+            num2: that.data.count2 - that.data.orderList1.length
+          })
         } else if (that.data.currentTab == 2) {
           that.setData({
             page2: that.data.page2 + 1,
-            orderList2: that.data.orderList2.concat(ord2)
+            orderList2: that.data.orderList2.concat(ord2),
+            count3:0
           });
+          for (var i = 0; i < that.data.orderList2.length; i++) {
+            that.setData({
+              count3: that.data.count3 + that.data.orderList2[i].prolist.length
+            })
+          }
+          that.setData({
+            num3: that.data.count3 - that.data.orderList2.length
+          })
         } else if (that.data.currentTab == 3) {
           that.setData({
             page3: that.data.page3 + 1,
-            orderList3: that.data.orderList1.concat(ord3)
+            orderList3: that.data.orderList3.concat(ord3),
+            count4:0
           });
+          for (var i = 0; i < that.data.orderList3.length; i++) {
+            that.setData({
+              count4: that.data.count4 + that.data.orderList3[i].prolist.length
+            })
+          }
+          that.setData({
+            num4: that.data.count4 - that.data.orderList3.length
+          })
         } else if (that.data.currentTab == 4) {
           that.setData({
             page4: that.data.page4 + 1,
-            orderList4: that.data.orderList4.concat(ord4)
+            orderList4: that.data.orderList4.concat(ord4),
+            count5:0
           });
+          for (var i = 0; i < that.data.orderList4.length; i++) {
+            that.setData({
+              count5: that.data.count5
+            })
+          }
+          that.setData({
+            num5: that.data.count5
+          })
         }
       },
       fail: function (e) {

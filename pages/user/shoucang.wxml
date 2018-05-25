@@ -17,8 +17,8 @@
             </view>
         </view>
     </view>
-    <!-- <view class="shop df">        
-        <image class="sh_slt" src="/images/sp_slt02.png"></image>
+     <view class="shop df">        
+        <image class="sh_slt" src="https://tanghuzhao.com.cn/Public/images/sp_slt02.png"></image>
         <view class="df_1">            
             <view class="sp_text">
                 <view class="sp_tit ovh1">冰种阳绿蛋面戒指蛋</view>
@@ -29,7 +29,7 @@
         </view>
     </view>
     <view class="shop df">
-        <image class="sh_slt" src="/images/sp_slt03.png"></image>
+        <image class="sh_slt" src="https://tanghuzhao.com.cn/Public/images/sp_slt03.png"></image>
         <view class="df_1">            
             <view class="sp_text">
                 <view class="sp_tit ovh1">冰种阳绿蛋面戒指蛋</view>
@@ -40,7 +40,7 @@
         </view>
     </view>
     <view class="shop df">
-        <image class="sh_slt" src="/images/sp_slt04.png"></image>
+        <image class="sh_slt" src="https://tanghuzhao.com.cn/Public/images/sp_slt04.png"></image>
         <view class="df_1">            
             <view class="sp_text">
                 <view class="sp_tit ovh1">冰种阳绿蛋面戒指蛋</view>
@@ -51,7 +51,7 @@
         </view>
     </view>
     <view class="shop df">
-        <image class="sh_slt" src="/images/sp_slt04.png"></image>
+        <image class="sh_slt" src="https://tanghuzhao.com.cn/Public/images/sp_slt04.png"></image>
         <view class="df_1">            
             <view class="sp_text">
                 <view class="sp_tit ovh1">冰种阳绿蛋面戒指蛋</view>
@@ -60,7 +60,7 @@
                 <view class="dle"> 取消收藏</view>
             </view>
         </view>
-    </view> -->
+    </view> 
 
 </view>
 

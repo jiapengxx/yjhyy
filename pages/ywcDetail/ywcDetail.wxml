@@ -1,0 +1,48 @@
+<view style='height:30rpx;background-color:#fafafa;'></view>
+<!-- <block wx:for=""> -->
+<view style='position:relative;left:24rpx;height:262rpx;width:702rpx;position:relative;background-color:#fff;border-bottom:1rpx solid #e0e0e0;'>
+  <image src='../../images/shop.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:0rpx;'></image>
+<view style='position:relative;top:-15rpx;left:56rpx;font-size:26rpx;color:#333;width:300rpx;'>全球购专营店</view>
+  <image src='' style='position:relative;top:15rpx;left:0rpx;width:120rpx;height:120rpx;'></image>
+<view style='position:relative;top:-140rpx;left:146rpx;font-size:26rpx;color:#333;width:300rpx;'>牡丹籽油</view>
+<view style='position:relative;top:-138rpx;left:146rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：<text></text></view>
+<view style='position:relative;top:-136rpx;left:146rpx;font-size:22rpx;color:#666;width:400rpx;'>数量：1</view>
+<view style='position:relative;top:-134rpx;left:146rpx;font-size:22rpx;color:#333;width:400rpx;'>¥{{}}555</view>
+</view>
+<!-- </block> -->
+<view style='position:relative;height:90rpx;text-align:center;'>
+<image src='' style='position:relative;top:20rpx;left:-20rpx;height:30rpx;width:30rpx;'></image>
+<text style='position:relative;top:20rpx;font-size:26rpx;color:#333;'>联系卖家</text>
+</view>
+<view style='height:30rpx;background-color:#fafafa;'></view>
+<view style='position:relative;height:132rpx;border-bottom:1rpx solid #e0e0e0;margin-left:24rpx;margin-right:24rpx;'>
+<view style='position:relative;top:24rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>订单编号：<text style='color:#666;'>{{}}1231312313</text></view>
+<view style='position:relative;top:44rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>下单时间：<text style='color:#666;'>{{}}2018-03-03  21:23:56</text></view>
+</view>
+<view style='position:relative;height:132rpx;border-bottom:1rpx solid #e0e0e0;margin-left:24rpx;margin-right:26rpx;background-color:#fff;'>
+<view style='position:relative;top:24rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>支付方式：<text style='color:#666;'>{{}}在线支付</text></view>
+<view style='position:relative;top:44rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>支付时间：<text style='color:#666;'>{{}}2018-03-03  21:23:56</text></view>
+</view>
+<view style='position:relative;height:84rpx;margin-left:24rpx;margin-right:24rpx;background-color:#fff;'>
+<view style='position:relative;top:24rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>配送方式：<text style='color:#666;'>{{}}普通快递</text></view>
+</view>
+<view style='height:30rpx;background-color:#fafafa;'></view>
+<view style='position:relative;height:170rpx;margin-left:24rpx;margin-right:24rpx;background-color:#fff;'>
+  <image src='../../images/shop.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:0rpx;'></image>
+<view style='position:relative;top:-20rpx;left:60rpx;font-size:26rpx;color:#333;width:500rpx;'>杜 <text style='position:relative;left:70rpx;'>15538967334</text></view>
+<view style='position:relative;top:-6rpx;left:60rpx;font-size:22rpx;color:#666;width:640rpx;height:80rpx;'>地址：<text style=''>北京市朝阳区四环到五环之间</text></view>
+</view>
+<view style='height:30rpx;background-color:#fafafa;'></view>
+<view style='position:relative;height:132rpx;border-bottom:1rpx solid #e0e0e0;margin-left:24rpx;margin-right:24rpx;'>
+<view style='position:relative;top:24rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>商品总额：¥{{}}555</view>
+<view style='position:relative;top:44rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>运费：＋¥{{}}</view>
+</view>
+
+<view style='position:relative;height:84rpx;margin-left:24rpx;margin-right:24rpx;'>
+<view style='position:relative;top:24rpx;left:460rpx;font-size:26rpx;color:#333;width:240rpx;'>实付款：<text style='font-size:36rpx;color:#ff0000;'>¥{{}}555</text></view>
+</view>
+<!-- <view style='position:relative;height:98rpx;'></view>
+<view style='position:fixed;bottom:0rpx;height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;width:750rpx;background-color:#fff;'>
+<view style='height:54rpx;width:150rpx;font-size:26rpx;color:#333;border:1rpx solid #e0e0e0;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>申请售后</view>
+<view style='height:54rpx;width:150rpx;font-size:26rpx;color:#333;border:1rpx solid #e0e0e0;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>评论晒单</view>
+</view> -->

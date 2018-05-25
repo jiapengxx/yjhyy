@@ -73,9 +73,9 @@ swiper-item image {
   overflow: hidden;
 }
 
-.swiper-box view {
+/* .swiper-box view {
   text-align: center;
-}
+} */
 
 .page__bd {
     padding-bottom: 20rpx;

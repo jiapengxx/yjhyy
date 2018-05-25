@@ -60,23 +60,24 @@ page {
   position: relative;
   width: 100rpx;
   left: -40rpx;
-  top: -70rpx;
+  top: -60rpx;
   color: #666;
   font-size: 20rpx;
 }
 
 .t4 {
   position: relative;
-  bottom: 0rpx;
+  bottom: -8rpx;
   width: 290rpx;
   height: 30rpx;
-  background-color: pink;
+  background-color: ＃fde8e8;
   font-size: 20rpx;
   color: #e91d1d;
+  border-radius: 8rpx;
 }
 .t5 {
-  background-color: pink;
-  font-size: 30rpx;
-  color: #e91d1d;
+
+  font-size: 20rpx;
+  color: #666;
   word-break:keep-all;  
 }

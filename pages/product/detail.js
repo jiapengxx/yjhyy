@@ -26,6 +26,7 @@ Page({
     duration: 1000,
     attrValueList: []
   },
+
   // 立即购买弹窗
   setModalStatus: function (e) {
     var animation = wx.createAnimation({
@@ -41,35 +42,61 @@ Page({
     if (e.currentTarget.dataset.status == 1) {
       this.setData(
         {
-          showModalStatus: true
+          showModalStatus: true,
+          buynum: 1
         }
       );
     }
-    setTimeout(function () {
-      animation.translateY(0).step()
+
+    //当规格数据存在时执行  true
+    if (this.data.HAVE) {
+      setTimeout(function () {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation
+        })
+        if (e.currentTarget.dataset.status == 0) {
+          this.setData(
+            {
+              showModalStatus: false,
+              attrValueList: [],
+              buynum: 1
+            }
+          );
+        }
+      }.bind(this), 200)
       this.setData({
-        animationData: animation
-      })
-      if (e.currentTarget.dataset.status == 0) {
-        this.setData(
-          {
-            showModalStatus: false,
-            attrValueList:[]
-          }
-        );
+        includeGroup: this.data.commodityAttr,
+        totalPrice: this.data.itemData.price_yh * this.data.buynum
+      });
+      this.distachAttrValue(this.data.commodityAttr);
+      if (this.data.commodityAttr.length == 1) {
+        for (var i = 0; i < this.data.commodityAttr[0].attrValueList.length; i++) {
+          this.data.attrValueList[i].selectedValue = this.data.commodityAttr[0].attrValueList[i].attrValue;
+        }
+        this.setData({
+          attrValueList: this.data.attrValueList
+        });
       }
-    }.bind(this), 200)
-    this.setData({
-      includeGroup: this.data.commodityAttr,
-      totalPrice: this.data.itemData.price_yh * this.data.buynum
-    });
-    this.distachAttrValue(this.data.commodityAttr);
-    if (this.data.commodityAttr.length == 1) {
-      for (var i = 0; i < this.data.commodityAttr[0].attrValueList.length; i++) {
-        this.data.attrValueList[i].selectedValue = this.data.commodityAttr[0].attrValueList[i].attrValue;
-      }
+    }
+    else {
+      //当规格数据不存在时
+      setTimeout(function () {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation
+        })
+        if (e.currentTarget.dataset.status == 0) {
+          this.setData(
+            {
+              showModalStatus: false,
+              buynum: 1
+            }
+          );
+        }
+      }.bind(this), 200)
       this.setData({
-        attrValueList: this.data.attrValueList
+        totalPrice: this.data.itemData.price_yh * this.data.buynum
       });
     }
   },
@@ -89,35 +116,57 @@ Page({
     if (e.currentTarget.dataset.status == 1) {
       this.setData(
         {
-          showModalStatu: true
+          showModalStatu: true,
+          buynum: 1
         }
       );
     }
-    setTimeout(function () {
-      animation.translateY(0).step()
+    if (this.data.HAVE) {
+      setTimeout(function () {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation
+        })
+        if (e.currentTarget.dataset.status == 0) {
+          this.setData(
+            {
+              showModalStatu: false,
+              attrValueList: [],
+              buynum: 1
+            }
+          );
+        }
+      }.bind(this), 200)
       this.setData({
-        animationData: animation
-      })
-      if (e.currentTarget.dataset.status == 0) {
-        this.setData(
-          {
-            showModalStatu: false,
-            attrValueList: []
-          }
-        );
+        includeGroup: this.data.commodityAttr,
+        totalPrice: this.data.itemData.price_yh * this.data.buynum
+      });
+      this.distachAttrValue(this.data.commodityAttr);
+      if (this.data.commodityAttr.length == 1) {
+        for (var i = 0; i < this.data.commodityAttr[0].attrValueList.length; i++) {
+          this.data.attrValueList[i].selectedValue = this.data.commodityAttr[0].attrValueList[i].attrValue;
+        }
+        this.setData({
+          attrValueList: this.data.attrValueList
+        });
       }
-    }.bind(this), 200)
-    this.setData({
-      includeGroup: this.data.commodityAttr,
-      totalPrice: this.data.itemData.price_yh * this.data.buynum
-    });
-    this.distachAttrValue(this.data.commodityAttr);
-    if (this.data.commodityAttr.length == 1) {
-      for (var i = 0; i < this.data.commodityAttr[0].attrValueList.length; i++) {
-        this.data.attrValueList[i].selectedValue = this.data.commodityAttr[0].attrValueList[i].attrValue;
-      }
+    } else {
+      setTimeout(function () {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation
+        })
+        if (e.currentTarget.dataset.status == 0) {
+          this.setData(
+            {
+              showModalStatu: false,
+              buynum:1
+            }
+          );
+        }
+      }.bind(this), 200)
       this.setData({
-        attrValueList: this.data.attrValueList
+        totalPrice: this.data.itemData.price_yh * this.data.buynum
       });
     }
   },
@@ -142,8 +191,6 @@ Page({
   },
   // 传值
   onLoad: function (option) {
-      //需要修改判断   
-    console.log(option+"11111")
     var that = this;
     //先对登录做判断
     console.log(app.globalData.userInfo + "2222")
@@ -210,17 +257,25 @@ Page({
           that.setData({
             itemData: pro,
             bannerItem: pro.img_arr,
-            commodityAttr: res.data.commodityAttr,
-            // attrValueList: res.data.attrValueList,
             collect: res.data.pro.collect,
             store_id: res.data.pro.store_id
-          });
+          })
+          if (res.data.commodityAttr != null) {
+            that.setData({
+              commodityAttr: res.data.commodityAttr,
+              HAVE: true
+            })
+          } else {
+            that.setData({
+              HAVE: false
+            })
+          }
         } else {
           console.log(status)
-          // wx.showToast({
-          //   title:res.data.err,
-          //   duration: 2000,
-          // });
+          wx.showToast({
+            title: res.data.err,
+            duration: 2000,
+          });
         }
       },
       error: function (e) {
@@ -486,7 +541,7 @@ Page({
       }
     }
 
-      this.count()
+    this.count()
   },
 
   initProductData: function (data) {
@@ -546,23 +601,78 @@ Page({
     });
   },
   addShopCart: function (e) { //添加到购物车
-    var buff = '' + this.data.includeGroup[0].attrValueList[0].id + ',' + this.data.includeGroup[0].attrValueList[1].id + ',' + this.data.includeGroup[0].attrValueList[2].id
-    console.log(buff)
     var that = this;
-    var value = [];
-    for (var i = 0; i < this.data.attrValueList.length; i++) {
-      if (!this.data.attrValueList[i].selectedValue) {
-        break;
+    //当存在规格数据时
+    if (this.data.HAVE) {
+      var buff = '' + this.data.includeGroup[0].attrValueList[0].id + ',' + this.data.includeGroup[0].attrValueList[1].id + ',' + this.data.includeGroup[0].attrValueList[2].id
+      console.log(buff)
+      var value = [];
+      for (var i = 0; i < this.data.attrValueList.length; i++) {
+        if (!this.data.attrValueList[i].selectedValue) {
+          break;
+        }
+        value.push(this.data.attrValueList[i].selectedValue);
       }
-      value.push(this.data.attrValueList[i].selectedValue);
-    }
-    if (i < this.data.attrValueList.length) {
-      wx.showToast({
-        title: '请选择完整！',
-        icon: 'loading',
-        duration: 1000
-      })
+      if (i < this.data.attrValueList.length) {
+        wx.showToast({
+          title: '请选择完整！',
+          icon: 'loading',
+          duration: 1000
+        })
+      } else {
+        wx.request({
+          url: app.d.ceshiUrl + '/Api/Shopping/add',
+          method: 'post',
+          data: {
+            uid: app.d.userId,
+            pid: that.data.pro_id,
+            num: that.data.buynum,
+            buff: buff
+          },
+          header: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          success: function (res) {
+            var data = res.data;
+            if (data.status == 1) {
+              var DATAs = '' + that.data.includeGroup[0].attrValueList[0].id + ',' + that.data.includeGroup[0].attrValueList[1].id + ',' + that.data.includeGroup[0].attrValueList[2].id + ',' + data.cart_id
+              var ptype = e.currentTarget.dataset.type;
+              if (ptype == 'buynow') {
+                wx.redirectTo({
+                  url: '../order/pay?DATAs=' + DATAs
+                });
+                return;
+              } else {
+                wx.showToast({
+                  title: '加入购物车成功',
+                  icon: 'success',
+                  duration: 1000
+                });
+                setTimeout(function () {
+                  that.setData({
+                    showModalStatu: false,
+                    attrValueList: [],
+                    buynum: 1
+                  })
+                }, 1000)
+              }
+            } else {
+              wx.showToast({
+                title: data.err,
+                duration: 2000
+              });
+            }
+          },
+          fail: function () {
+            wx.showToast({
+              title: '网络异常！',
+              duration: 2000
+            });
+          }
+        });
+      }
     } else {
+      //当不存在规格数据时
       wx.request({
         url: app.d.ceshiUrl + '/Api/Shopping/add',
         method: 'post',
@@ -570,20 +680,16 @@ Page({
           uid: app.d.userId,
           pid: that.data.pro_id,
           num: that.data.buynum,
-          buff:buff
         },
         header: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          
-          var data = res.data;
-          if (data.status == 1) {
-            var DATAs = '' + that.data.includeGroup[0].attrValueList[0].id + ',' + that.data.includeGroup[0].attrValueList[1].id + ',' + that.data.includeGroup[0].attrValueList[2].id + ',' + data.cart_id
+          if (res.data.status == 1) { 
             var ptype = e.currentTarget.dataset.type;
             if (ptype == 'buynow') {
               wx.redirectTo({
-                url: '../order/pay?DATAs=' + DATAs
+                url: '../order/pay?cartId='+res.data.cart_id
               });
               return;
             } else {
@@ -592,13 +698,12 @@ Page({
                 icon: 'success',
                 duration: 1000
               });
-              setTimeout(function(){
+              setTimeout(function () {
                 that.setData({
                   showModalStatu: false,
-                  attrValueList: [],
-                  buynum:1
+                  buynum: 1
                 })
-              },1000)
+              }, 1000)
             }
           } else {
             wx.showToast({
@@ -671,17 +776,25 @@ Page({
     })
     app.d.store_Id = this.data.store_id;
   },
-  count:function(){
-
-    if (this.data.includeGroup.length == this.data.commodityAttr.length) {
+  count: function () {
+    if (!this.data.HAVE) {
       this.setData({
         totalPrice: this.data.itemData.price_yh * this.data.buynum
       })
-    }else{
+    } else {
       this.setData({
         totalPrice: (parseFloat(this.data.itemData.price_yh) + parseFloat(this.data.includeGroup[0].price)) * this.data.buynum
       })
     }
+    // if (this.data.includeGroup.length == this.data.commodityAttr.length) {
+    //   this.setData({
+    //     totalPrice: this.data.itemData.price_yh * this.data.buynum
+    //   })
+    // } else {
+    //   this.setData({
+    //     totalPrice: (parseFloat(this.data.itemData.price_yh) + parseFloat(this.data.includeGroup[0].price)) * this.data.buynum
+    //   })
+    // }
   }
 });
 

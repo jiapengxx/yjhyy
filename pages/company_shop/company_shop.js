@@ -484,7 +484,7 @@ countDistance:function(){
             var r = 6378.137;
             var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
             that.setData({
-              distance4: that.data.distance3.concat({ distance: distance.toFixed(1) })
+              distance4: that.data.distance4.concat({ distance: distance.toFixed(1) })
             })
           }
         }

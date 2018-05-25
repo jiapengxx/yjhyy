@@ -9,7 +9,7 @@ Page({
     addrId: 0,//收货地址//测试--
     btnDisabled: false,
     productData: [],
-    address: {},
+    address: {}, 
     total: 0,
     vprice: 0,
     vid: 0,
@@ -33,15 +33,15 @@ Page({
       userId: uid,
     })
     var buff = '' + this.data.p1 + ',' + this.data.p2 + ',' + this.data.p3
-    console.log(this.data.cartId+"asdasdads")
-    console.log(buff)
     this.setData({
-      buff:buff
+      buff:buff,
+      HAVE:true
     })
     }else{
       this.setData({
         cartId: options.cartId,
-        userId: uid
+        userId: uid,
+        HAVE:false
       })
 
     }
@@ -50,37 +50,67 @@ Page({
   },
   loadProductDetail: function () {
     var that = this;
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
-      method: 'post',
-      data: {
-        cart_id: that.data.cartId,
-        uid: that.data.userId,
-        buff: that.data.buff
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        //that.initProductData(res.data);
-        var adds = res.data.adds;
-        if (adds) {
-          var addrId = adds.id;
+    if(this.data.HAVE){
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
+        method: 'post',
+        data: {
+          cart_id: that.data.cartId,
+          uid: that.data.userId,
+          buff: that.data.buff
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          var adds = res.data.adds;
+          if (adds) {
+            var addrId = adds.id;
+            that.setData({
+              address: adds,
+              addrId: addrId
+            });
+          }
           that.setData({
-            address: adds,
-            addrId: addrId
-          });
+            addemt: res.data.addemt,
+            productData: res.data.pro,
+            total: res.data.price,
+            vprice: res.data.price,
+            vou: res.data.vou,
+          })
         }
-        that.setData({
-          addemt: res.data.addemt,
-          productData: res.data.pro,
-          total: res.data.price,
-          vprice: res.data.price,
-          vou: res.data.vou,
-        });
-        //endInitData
-      },
-    });
+      })
+    }else{
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
+        method: 'post',
+        data: {
+          cart_id: that.data.cartId,
+          uid: that.data.userId,
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res.data)
+          var adds = res.data.adds;
+          if (adds) {
+            var addrId = adds.id;
+            that.setData({
+              address: adds,
+              addrId: addrId
+            });
+          }
+          that.setData({
+            addemt: res.data.addemt,
+            productData: res.data.pro,
+            total: res.data.price,
+            vprice: res.data.price,
+            vou: res.data.vou,
+          })
+        }
+      })
+    }
   },
   loadCoin: function () {
     var that = this;

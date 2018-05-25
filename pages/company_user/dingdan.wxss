@@ -1,4 +1,7 @@
 /* pages/user/dingdan.wxss */
+page{
+background-color: #fafafa;
+}
 .swiper-tab{  
     width: 100%;  
     border-bottom: 1px solid #eee;  

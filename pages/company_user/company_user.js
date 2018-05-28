@@ -36,7 +36,11 @@ Page({
     loadingText: '加载中...',
     loadingHidden: false,
   },
-  onLoad: function () {
+  onLoad: function (option) {
+    var u_id = option.u_id;
+    this.setData({
+      u_id : option.u_id,
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -94,6 +98,7 @@ Page({
   getUserSessionKey: function (code) {
     //用户的订单状态
     var that = this;
+    console.log(that.data.u_id + 'aaaaaaaaaaaaaaaaaaaaa');
     wx.request({
       url: app.d.ceshiUrl + '/Api/Login/getsessionkey',
       method: 'post',
@@ -106,6 +111,7 @@ Page({
       success: function (res) {
         //--init data        
         var data = res.data;
+       
         if (data.status == 0) {
           wx.showToast({
             title: data.err,
@@ -115,11 +121,49 @@ Page({
         }
         app.globalData.userInfo['sessionId'] = data.session_key;
         app.globalData.userInfo['openid'] = data.openid;
+        console.log(that.data.u_id+'aaaaaaaaaaaaaaaaaaaaa');
+        console.log(data.openid + 'aaaaaaaaaaaaaaaaaaaaa');
+        if (that.data.u_id){
+          console.log(that.data.u_id + 'aaaaaaaaaaaaaaaaaaaaa');
+          that.oneLogin(data.openid);
+        }else{
+          that.oneLogin(data.openid);
+        }
+
         that.onLoginUser();
       },
       fail: function (e) {
         wx.showToast({
           title: '网络异常！err:getsessionkeys',
+          duration: 2000
+        });
+      },
+    });
+  },
+  oneLogin: function (openid) {
+    console.log(openid+"aaaaaaaaaaaaaaaaa");
+    var openid= openid;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Login/oneLogin',
+      method: 'post',
+      data: {
+       openid:openid,
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(openid + "aaaaaaaaaaaaaaaaa");
+        //--init data        
+        if(res.data.status==0){
+          wx.showToast({
+            title: res.data.err,
+          });
+        }
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！err:authlogin',
           duration: 2000
         });
       },

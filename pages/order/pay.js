@@ -30,9 +30,8 @@ Page({
       p2: DAta[1],
       p3: DAta[2],
       cartId: DAta[3],
-      userId: uid
+      userId: uid,
     })
-
     var buff = '' + this.data.p1 + ',' + this.data.p2 + ',' + this.data.p3
     this.setData({
       buff:buff,

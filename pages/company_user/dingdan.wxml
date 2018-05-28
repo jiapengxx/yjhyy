@@ -96,7 +96,7 @@
 <!--顶部  -->
 <view style='height:90rpx;'>
   <image src='../../images/dianpu.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;'></image>
-<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;'>全球购专营店</view>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>等待发货</view>
 </view>
 <!--商品数据  -->
@@ -239,7 +239,7 @@
 <!--顶部  -->
 <view style='height:90rpx;'>
   <image src='../../images/dianpu.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;'></image>
-<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;'>全球购专营店</view>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>已完成</view>
 </view>
 <!--商品数据  -->

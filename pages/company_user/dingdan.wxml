@@ -8,7 +8,7 @@
   </view>
   <view class="c_t60"></view>
 <!-- +(orderList0.prolist.length-1)*140 -->
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:(430*orderList0.length+num1*180)+70):(currentTab==1?(orderList1.length==0?winHeight*2:430*orderList1.length+num2*150+70):(currentTab==2?(orderList2.length==0?winHeight*2:500*orderList2.length+num3*180+70):(currentTab==3?(orderList3.length==0?winHeight*2:360*orderList3.length+num4*180+90):(orderList4.length==0?winHeight*2:330*orderList4.length+70))))}}rpx"bindchange="bindChange">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:(430*orderList0.length+num1*180)+80):(currentTab==1?(orderList1.length==0?winHeight*2:430*orderList1.length+num2*150+70):(currentTab==2?(orderList2.length==0?winHeight*2:500*orderList2.length+num3*180+70):(currentTab==3?(orderList3.length==0?winHeight*2:360*orderList3.length+num4*180+90):(orderList4.length==0?winHeight*2:330*orderList4.length+70))))}}rpx"bindchange="bindChange">
 
     <!-- 待付款 -->
 <swiper-item >
@@ -40,7 +40,7 @@
  </block> 
 <!--结算  -->
 <view style='height:74rpx;background-color:#fff;'>
-<view style='position:relative;top:15rpx;left:360rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.pro_count}}件商品</view>
+<view style='position:relative;top:15rpx;left:360rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
 <view style='position:relative;top:-20rpx;left:500rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
 </view>
 <!--功能  -->
@@ -122,7 +122,7 @@
 <!-- </block> -->
 <!--结算  -->
 <view style='height:74rpx;background-color:#fff;'>
-<view style='position:relative;top:15rpx;left:360rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.pro_count}}件商品</view>
+<view style='position:relative;top:15rpx;left:360rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
 <view style='position:relative;top:-20rpx;left:500rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
 </view>
 <!--功能  -->
@@ -171,16 +171,16 @@
 <!--顶部  -->
 <view style='height:150rpx;'>
   <image src='../../images/dianpu.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;'></image>
-<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;'>全球购专营店</view>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>等待收货</view>
 
   <image src='../../images/wuliu.png' style='height:30rpx;width:30rpx;position:relative;top:-30rpx;left:24rpx;'></image>
-<view style='position:relative;top:-78rpx;left:80rpx;font-size:26rpx;color:#333;width:600rpx;'>全球购专营店</view>
+<view style='position:relative;top:-78rpx;left:80rpx;font-size:26rpx;color:#333;width:640rpx;'>{{item.post.AcceptStation}}</view>
 
 </view>
 <!--商品数据  -->
 <block wx:for="{{item.prolist}}" wx:for-index="idx" wx:for-item="itm" > 
-<view style='height:140rpx;'>
+<view style='height:140rpx;position:relative;top:10rpx;'>
   <image src='{{host}}/Data/{{itm.photo_x}}' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
 <view style='position:relative;top:-118rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{itm.name}}</view>
 <view style='position:relative;top:-107rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
@@ -190,7 +190,7 @@
  </block> 
 <!--结算  -->
 <view style='height:74rpx;background-color:#fff;'>
-<view style='position:relative;top:15rpx;left:360rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.pro_count}}件商品</view>
+<view style='position:relative;top:15rpx;left:360rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
 <view style='position:relative;top:-20rpx;left:500rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
 </view>
 <!--功能  -->
@@ -261,7 +261,7 @@
               <view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>已评价</view>
             </block>
             <block wx:else>
-              <view bindtap='toComment' data-orderId='{{item.id}}' data-ID='idx' style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</view>
+              <view bindtap='toComment'data-orderId="{{item.id}}"  data-ID="{{idx}}" style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</view>
             </block>
 
 </view>

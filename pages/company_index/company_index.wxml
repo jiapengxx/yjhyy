@@ -152,7 +152,7 @@
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
             </view>
             <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
-            <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.introduce}}</text>
+            <text style='position:absolute;left:0rpx;top:100rpx;width:350rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.introduce}}</text>
           </view>
         </view>
       </block>
@@ -177,7 +177,7 @@
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
             </view>
             <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
-            <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.introduce}}</text>
+            <text style='position:absolute;left:0rpx;top:100rpx;width:350rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.introduce}}</text>
           </view>
         </view>
       </block>
@@ -204,7 +204,7 @@
             </view>
 
             <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
-            <text style='position:absolute;left:0rpx;top:100rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.introduce}}</text>
+            <text style='position:absolute;left:0rpx;top:100rpx;width:350rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.introduce}}</text>
           </view>
         </view>
       </block>

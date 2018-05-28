@@ -117,8 +117,6 @@ App({
     setTimeout(function(){
       that.getUserInfo();
     },2000)
-
-     
   },
   getUserInfo: function (cb) {
     console.log(cb+"111222")

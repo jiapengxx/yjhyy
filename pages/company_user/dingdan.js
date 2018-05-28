@@ -430,20 +430,25 @@ Page({
     })
   },
   toComment:function(e){
+    console.log(e)
     var that=this
     //去评价传出 订单ID 产品ID集合
-    var orderId = e.currentTarget.dataset.orderId
-    var ID = e.currentTarget.dataset.ID
+    var orderID = e.currentTarget.dataset.orderid
+    console.log(orderID)
+    var ID = e.currentTarget.dataset.id
     this.setData({
-  IDs:[]
+  IDs:''+orderID+','
 })
-    for (var i = 0; i < this.data.orderList4[ID].prolist.length;i++){
+console.log(ID)
+    console.log(this.data.orderList3[ID])
+    for (var i = 0; i < this.data.orderList3[ID].prolist.length;i++){
       this.setData({
-        IDs: this.data.IDs.concat(this.data.orderList4[ID].prolist[i].pid)
+        IDs:this.data.IDs+this.data.orderList3[ID].prolist[i].pid+','
       })
     }
+    console.log(this.data.IDs)
     wx.navigateTo({
-      url: '../comment/index?orderId={{item.id}}&pid={{item.prolist[idx].pid}}',
+      url: '../comment/index?IDs=' + this.data.IDs,
     })
   },
   //点击加载更多

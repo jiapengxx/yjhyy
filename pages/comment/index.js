@@ -49,40 +49,55 @@ Page({
     }
   },
   onLoad: function (options) {
+    var that = this;
     new ImageUploader(this, 'img1');
-    var order_id = options.orderId
-    var pid = options.pid
-    console.log(order_id, pid)
+    if ((typeof options.IDs) != "undefined") {
+      var IDs = options.IDs.split(",")
+      console.log(IDs)
+      this.setData({
+        orderId: IDs[0],
+        pids:[],
+        photo_x:[]
+      })
+    }
+  for(var i=0;i<IDs.length-2;i++){
     this.setData({
-      order_id: order_id,
-      pid: pid
+      pids:this.data.pids.concat(IDs[i+1])
     })
+  }
+console.log(this.data.pids)
+  //   var order_id = this.data.orderId
+  //   var pid = options.pid
+  //   console.log(order_id, pid)
+  //   this.setData({
+  //     order_id: order_id,
+  //     pid: pid
+  //   })
     // 商品详情数据获取
-      var that = this;
-      wx.request({
-        url: app.d.ceshiUrl + '/Api/Comment/goods_show',
-        method: 'post',
-        data: {
-          pid:pid,
-          
-        },
-        header: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        success: function (res) {
-          // console.log(res.data);
-          that.setData({
-            photo_x: res.data.product.photo_x
-          })
-          console.log(res.data.product.photo_x)
-        },
-        error: function (e) {
-          wx.showToast({
-            title: '网络异常！',
-            duration: 2000,
-          });
-        },
+
+for(var i=0;i<this.data.pids.length;i++){
+  wx.request({
+    url: app.d.ceshiUrl + '/Api/Comment/goods_show',
+    method: 'post',
+    data: {
+      pid: that.data.pids[i],
+    },
+    header: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+      that.setData({
+        photo_x:that.data.photo_x.concat(res.data.product.photo_x)
+      })
+    },
+    error: function (e) {
+      wx.showToast({
+        title: '网络异常！',
+        duration: 2000,
       });
+    },
+  });
+}
   },
   upload: function () {
     var that = this

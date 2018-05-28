@@ -261,7 +261,7 @@
               <view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>已评价</view>
             </block>
             <block wx:else>
-              <view bindtap='toComment' data-orderId='{{item.id}}' data-ID='idx' style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</view>
+              <view bindtap='toComment'data-orderId="{{item.id}}"  data-ID="{{idx}}" style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</view>
             </block>
 
 </view>

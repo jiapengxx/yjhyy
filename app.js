@@ -379,12 +379,7 @@ App({
       ],
       "position": "bottom"
     },
-    subDomain: "tz", // 如果你的域名是： https://api.it120.cc/abcd 那么这里只要填写 abcd
-    version: "1.8.1",
-    shareProfile: '百款精品商品，总有一款适合您'
-  }
-   //可以修改服务器路径获取到页面信息
-  
+  } 
 });
 
 

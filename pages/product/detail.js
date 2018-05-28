@@ -604,6 +604,7 @@ Page({
     var that = this;
     //当存在规格数据时
     if (this.data.HAVE) {
+      console.log("eqweqweqw")
       var buff = '' + this.data.includeGroup[0].attrValueList[0].id + ',' + this.data.includeGroup[0].attrValueList[1].id + ',' + this.data.includeGroup[0].attrValueList[2].id
       console.log(buff)
       var value = [];

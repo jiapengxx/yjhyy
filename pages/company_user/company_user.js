@@ -37,6 +37,7 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
+    
     var u_id = option.u_id;
     this.setData({
       u_id : option.u_id,

@@ -73,7 +73,7 @@ Page({
                 title: '操作成功！',
                 duration: 2000
               });
-              that.loadOrderList();
+              that.w();
             } else {
               wx.showToast({
                 title: res.data.err,

@@ -20,7 +20,7 @@
 <view style='position:relative;top:-120rpx;left:146rpx;font-size:22rpx;color:#333;width:400rpx;'>¥{{item.price}}</view>
 </view>
 </block> 
-<view style='position:relative;height:90rpx;text-align:center;border-top:1rpx solid #e0e0e0;margin-left:24rpx;margin-right:24rpx;'>
+<view bindtap='call' style='position:relative;height:90rpx;text-align:center;border-top:1rpx solid #e0e0e0;margin-left:24rpx;margin-right:24rpx;'>
 <image src='../../images/lianxi.png' style='position:relative;top:20rpx;left:-20rpx;height:30rpx;width:30rpx;'></image>
 <text style='position:relative;top:20rpx;font-size:26rpx;color:#333;'>联系卖家</text>
 </view>

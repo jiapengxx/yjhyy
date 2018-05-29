@@ -73,7 +73,7 @@
     <textarea class="min_60" auto-height name="remark" placeholder="备注" bindinput="remarkInput" value="{{remark}}" />
   </view>
 
-  <view class="zhifu mt10 tc">应共支付：
+  <view class="zhifu mt10 tc">应支付：
     <span class="font_20 red">¥ {{total}}</span>
   </view>
   <!-- <navigator url="##" hover-class="none" class="zhifu mt10">支付宝<image class="x_right" src="/images/x_right.png"></image></navigator> -->

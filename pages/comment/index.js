@@ -74,7 +74,6 @@ console.log(this.data.pids)
   //     pid: pid
   //   })
     // 商品详情数据获取
-
 for(var i=0;i<this.data.pids.length;i++){
   wx.request({
     url: app.d.ceshiUrl + '/Api/Comment/goods_show',
@@ -101,7 +100,54 @@ for(var i=0;i<this.data.pids.length;i++){
   },
   upload: function () {
     var that = this
-    // console.log(this.data.img1.uploadedImagesPaths)
+    // if (this.data.img1.uploadedImagesPaths == '' && typeof (this.data.Content) == 'undefined') {
+    //   wx.showToast({
+    //     title: '内容不能为空！',
+    //   })
+    // }
+    // else if (this.data.img1.uploadedImagesPaths == '') {
+    //   wx.request({
+    //     url: app.d.ceshiUrl + '/Api/BIndex/upload_content',
+    //     method: 'post',
+    //     data: {
+    //       p_desc: that.data.Content,
+    //       uid: app.d.userId,
+    //     },
+    //     header: {
+    //       'Content-Type': 'application/x-www-form-urlencoded'
+    //     },
+    //     success: function (res) {
+    //       wx.showToast({
+    //         title: '提交成功',
+    //         duration: 2000
+    //       });
+    //       setTimeout(function () {
+    //         wx.switchTab({
+    //           url: '../company_user/company_user',
+    //         })
+    //       }
+    //         , 3000)
+    //     },
+    //     fail: function (e) {
+    //       wx.showToast({
+    //         title: '网络异常！',
+    //         duration: 2000
+    //       });
+    //     },
+    //   })
+    // } else {
+    //   var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
+    //   app.uploadimg({
+    //     url: app.d.hostUrl + '/Api/BIndex/upload_do',
+    //     path: uploadedImagesPaths,
+    //     data: {
+    //       code: Math.random(10000, 99999),
+    //       uid: app.d.userId,
+    //       p_desc: that.data.Content
+    //     },
+    //   });
+    // }
+
     var uploadedImagesPaths =       this.data.img1.uploadedImagesPaths;
     var Content = this.data.content
     this.setData({
@@ -109,9 +155,7 @@ for(var i=0;i<this.data.pids.length;i++){
     })
     app.uploadimg({
       url: app.d.hostUrl + '/Api/Comment/add',
-      //这里是你图片上传的接口
       path: uploadedImagesPaths,
-      //这里是选取的图片的地址数组
       data: {
         code: Math.random(10000, 99999),
         uid: app.d.userId,
@@ -122,10 +166,8 @@ for(var i=0;i<this.data.pids.length;i++){
         content:that.data.Content,
         is_name:that.data.flag, 
         order_id: that.data.order_id,
-        //需要将商品信息，及评价填充信息一同提交
       },
     });
-    console.log(that.data.num2, that.data.flag, that.data.num1, that.data.pid, that.data.order_id, that.data.Content, that.data.num3)
   },
   stars: function (e) {
     var num = e.target.id
@@ -155,8 +197,6 @@ for(var i=0;i<this.data.pids.length;i++){
       })
     }
   },
-
-
   stars1: function (e) {
     var num1 = e.target.id
     if (num1 == 1) {
@@ -190,8 +230,6 @@ for(var i=0;i<this.data.pids.length;i++){
       }
     )
   },
-
-
   stars2: function (e) {
     var num2 = e.target.id
     if (num2 == 1) {
@@ -225,9 +263,6 @@ for(var i=0;i<this.data.pids.length;i++){
       }
     )
   },
-
-
-
   stars3: function (e) {
     var num3 = e.target.id
     if (num3 == 1) {

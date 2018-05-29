@@ -18,7 +18,7 @@ Page({
     check: false,
     bj_id: 0,
     array_gz: [],
-    pro_Id:[],
+    pro_Id: [],
     step: 0
   },
 
@@ -174,9 +174,11 @@ Page({
   cancelGZ: function () {
     var that = this
     for (var i = 0; i < this.data.array_gz.length; i++) {
-      this.setData({
-        pro_Id: this.data.pro_Id.concat(this.data.shoucang_good[i].pro_id)
-      })
+      if (this.data.array_gz[i].type =='success_circle'){
+        this.setData({
+          pro_Id: this.data.pro_Id.concat(this.data.shoucang_good[i].pro_id)
+        })
+      }
     }
     //商品ID数组
     console.log(this.data.pro_Id)
@@ -223,6 +225,9 @@ that.setData({
         });
       }
     });
+this.setData({
+  pro_Id:[]
+})
   },
   toBtoC: function (e) {
     var store_Id = e.currentTarget.id;
@@ -254,6 +259,7 @@ that.setData({
   },
   cancelSp: function () {
     var that = this;
+
     wx.showModal({
       title: '提示',
       content: '你确认移除吗',

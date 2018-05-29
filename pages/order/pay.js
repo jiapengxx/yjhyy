@@ -25,14 +25,13 @@ Page({
     if ((typeof options.DATAs) != "undefined") {
     var DAta = options.DATAs.split(",")
     console.log((typeof options.DATA) != "undefined")
+
     this.setData({
-      p1: DAta[0],
-      p2: DAta[1],
-      p3: DAta[2],
-      cartId: DAta[3],
+      cartId: DAta[DAta.length-1],
       userId: uid,
     })
-    var buff = '' + this.data.p1 + ',' + this.data.p2 + ',' + this.data.p3
+var buff=DAta.splice(DAta.length-1,1)
+console.log(buff)
     this.setData({
       buff:buff,
       HAVE:true
@@ -363,7 +362,7 @@ Page({
                 duration: 2000,
               });
               setTimeout(function () {
-                wx.navigateTo({
+                wx.redirectTo({
                   url: '../user/dingdan?currentTab=1&otype=deliver',
                 });
               }, 2500);

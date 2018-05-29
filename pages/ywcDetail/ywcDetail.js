@@ -46,4 +46,12 @@ Page({
       }
     });
   },
-})
+  call:function(){
+    wx.makePhoneCall({
+      phoneNumber: '' + this.data.orderData.tel_id,
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
+  }
+})                     

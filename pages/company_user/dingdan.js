@@ -436,16 +436,21 @@ Page({
     var orderID = e.currentTarget.dataset.orderid
     console.log(orderID)
     var ID = e.currentTarget.dataset.id
+    var ids = e.currentTarget.dataset.ids
     this.setData({
-  IDs:''+orderID+','
+  IDs:''+orderID+',' 
 })
 console.log(ID)
     console.log(this.data.orderList3[ID])
-    for (var i = 0; i < this.data.orderList3[ID].prolist.length;i++){
+    // for (var i = 0; i < this.data.orderList3[ID].prolist.length;i++){
+    //   this.setData({
+    //     IDs:this.data.IDs+this.data.orderList3[ID].prolist[i].pid+','
+    //   })
+    // }
       this.setData({
-        IDs:this.data.IDs+this.data.orderList3[ID].prolist[i].pid+','
+        IDs:this.data.IDs+this.data.orderList3[ID].prolist[ids].pid+','
       })
-    }
+
     console.log(this.data.IDs)
     wx.navigateTo({
       url: '../comment/index?IDs=' + this.data.IDs,
@@ -608,4 +613,13 @@ console.log(ID)
   //     };
   //     common.sentHttpRequestToServer(uri, dataMap, method, successCallback);
   //   }
+
+  toDetail:function(e){
+    console.log(e)
+    var pro_id = e.currentTarget.dataset.pro_id
+    //去商品详情页,传入
+    wx.navigateTo({
+      url: '../product/detail?pro_id=' + pro_id,
+    })
+  }
 })

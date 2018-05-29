@@ -24,7 +24,8 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    attrValueList: []
+    attrValueList: [],
+    buff:''
   },
 
   // 立即购买弹窗
@@ -195,41 +196,85 @@ Page({
     //先对登录做判断
     console.log(app.globalData.userInfo + "2222")
     console.log(option.DATA + "33331");
-    if (typeof option.DATA!='undefined'){
-      var DAta = option.DATA.split(",");
-    }
-    if (app.globalData.userInfo == null) {
-      wx.showModal({
-        title: '请先登录',
-        content: '登录获取更多信息',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            wx.reLaunch({
-              url: '../company_user/company_user?u_id=' + DAta[0],
-            })
+    if (app.globalData.userInfo == null){
+      if (typeof option.DATA != 'undefined'){
+        var DAta = option.DATA.split(",");
+        wx.showModal({
+          title: '请先登录',
+          content: '登录获取更多信息',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              wx.reLaunch({
+                url: '../company_user/company_user?u_id=' + DAta[0],
+              })
+            }
           }
-        }
-      })
-    } else {
+        })
+   }else{
+        wx.showModal({
+          title: '请先登录',
+          content: '登录获取更多信息',
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              wx.switchTab({
+                url: '../company_user/company_user',
+              })
+            }
+          }
+        })
+   }
+}else{
       if ((typeof option.DATA) != "undefined") {
         this.setData({
           bindUid: DAta[0],
           pro_id: DAta[1],
           store_id: DAta[2]
         })
-
       } else {
         this.setData({
           pro_id: option.pro_id,
           uid: app.d.userId,
-          // r_uid: option.r_uid
         });
       }
-
       that.loadProductDetail();
       that.loadProductEvaluate();
-    }
+}
+
+
+    // if (typeof option.DATA!='undefined'){
+    //   var DAta = option.DATA.split(",");
+    // }
+    // if (app.globalData.userInfo == null) {
+    //   wx.showModal({
+    //     title: '请先登录',
+    //     content: '登录获取更多信息',
+    //     showCancel: false,
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         wx.reLaunch({
+    //           url: '../company_user/company_user?u_id=' + DAta[0],
+    //         })
+    //       }
+    //     }
+    //   })
+    // } else {
+    //   if ((typeof option.DATA) != "undefined") {
+    //     this.setData({
+    //       bindUid: DAta[0],
+    //       pro_id: DAta[1],
+    //       store_id: DAta[2]
+    //     })
+    //   } else {
+    //     this.setData({
+    //       pro_id: option.pro_id,
+    //       uid: app.d.userId,
+    //     });
+    //   }
+    //   that.loadProductDetail();
+    //   that.loadProductEvaluate();
+    // }
   },
   // 商品详情数据获取
   loadProductDetail: function () {
@@ -603,10 +648,28 @@ Page({
   addShopCart: function (e) { //添加到购物车
     var that = this;
     //当存在规格数据时
+
     if (this.data.HAVE) {
-      console.log("eqweqweqw")
-      var buff = '' + this.data.includeGroup[0].attrValueList[0].id + ',' + this.data.includeGroup[0].attrValueList[1].id + ',' + this.data.includeGroup[0].attrValueList[2].id
-      console.log(buff)
+      this.setData({
+        buff:''
+      })
+      for (var i = 0; i < this.data.includeGroup[0].attrValueList.length;i++){
+        if (i!=this.data.includeGroup[0].attrValueList.length-1){
+          this.setData({
+            buff: this.data.buff + this.data.includeGroup[0].attrValueList[i].id + ','
+          })
+        }else{
+          console.log(this.data.includeGroup[0].attrValueList[i].id)
+          this.setData({
+            buff: this.data.buff + this.data.includeGroup[0].attrValueList[i].id
+          })
+        }
+
+
+        // var buff = '' + this.data.includeGroup[0].attrValueList[0].id + ',' + this.data.includeGroup[0].attrValueList[1].id + ',' + this.data.includeGroup[0].attrValueList[2].id
+      }
+
+
       var value = [];
       for (var i = 0; i < this.data.attrValueList.length; i++) {
         if (!this.data.attrValueList[i].selectedValue) {
@@ -628,7 +691,7 @@ Page({
             uid: app.d.userId,
             pid: that.data.pro_id,
             num: that.data.buynum,
-            buff: buff
+            buff: that.data.buff
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -636,7 +699,7 @@ Page({
           success: function (res) {
             var data = res.data;
             if (data.status == 1) {
-              var DATAs = '' + that.data.includeGroup[0].attrValueList[0].id + ',' + that.data.includeGroup[0].attrValueList[1].id + ',' + that.data.includeGroup[0].attrValueList[2].id + ',' + data.cart_id
+              var DATAs = that.data.buff + ',' + data.cart_id
               var ptype = e.currentTarget.dataset.type;
               if (ptype == 'buynow') {
                 wx.redirectTo({

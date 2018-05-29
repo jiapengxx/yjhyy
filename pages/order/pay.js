@@ -30,7 +30,8 @@ Page({
       cartId: DAta[DAta.length-1],
       userId: uid,
     })
-var buff=DAta.splice(DAta.length-1,1)
+DAta.splice(DAta.length-1,1)
+var buff=DAta
 console.log(buff)
     this.setData({
       buff:buff,

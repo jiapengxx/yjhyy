@@ -127,7 +127,7 @@ Page({
     if (e.detail.value.length === 0) {
       wx.showToast({
         title: '服务商代码不能为空！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num1: 0
@@ -142,7 +142,7 @@ Page({
     if (e.detail.value.length === 0) {
       wx.showToast({
         title: '姓名不能为空！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num2: 0
@@ -157,7 +157,7 @@ Page({
     if (e.detail.value.length === 0) {
       wx.showToast({
         title: '登录账号不能为空！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num5: 0
@@ -165,7 +165,7 @@ Page({
     } else if (!(/^[a-zA-Z]{1}[\w\.]{5,14}$/.test(e.detail.value))) {
       wx.showToast({
         title: '账号首位须为字母，且不少于6位，不大于15位！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num5: 0
@@ -181,7 +181,7 @@ Page({
     if (e.detail.value.length ==0) {
       wx.showToast({
         title: '登录密码不能为空！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num6: 0
@@ -189,7 +189,7 @@ Page({
     } else if (e.detail.value.length<6) {
       wx.showToast({
         title: '登录密码不能少于6位！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num6: 0
@@ -205,7 +205,7 @@ Page({
     if (e.detail.value.length === 0) {
       wx.showToast({
         title: '详细地址不能为空！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num8: 0
@@ -220,7 +220,7 @@ Page({
     if (e.detail.value.length === 0) {
       wx.showToast({
         title: '手机号不能为空！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num4: 0
@@ -229,7 +229,7 @@ Page({
     else if (!(/^1(3|4|5|7|8)\d{9}$/.test(e.detail.value))) {
       wx.showToast({
         title: '手机号格式不正确！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num4: 0
@@ -244,7 +244,7 @@ Page({
     if (e.detail.value.length === 0) {
       wx.showToast({
         title: '身份证不能为空！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num3: 0
@@ -252,7 +252,7 @@ Page({
     } else if (!/^\d{17}(\d|X|x)$/.test(e.detail.value)) {
       wx.showToast({
         title: '身份证长度或格式错误！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num3: 0
@@ -362,7 +362,7 @@ Page({
     if (e.detail.value.length === 0) {
       wx.showToast({
         title: '介绍不能为空！',
-        icon: 'loading'
+        icon: 'none'
       })
       this.setData({
         num11: 0
@@ -411,7 +411,7 @@ Page({
     } else {
       wx.showToast({
         title: '请将信息填充完整！',
-        icon: 'loading'
+        icon: 'none'
       })
     }
     // wx.setStorage({

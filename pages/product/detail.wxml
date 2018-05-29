@@ -253,10 +253,10 @@
       </contact-button>
     </view>
     <!--去收藏,图片状态需判断-->
-    <view class="df_1 l_h15 pt5">
-      <view bindtap="addFavorites">
+    <view class="df_1 l_h15 pt5" bindtap="addFavorites">
+      <view >
         <image class="icon_kf" src="../../images/{{collect==1?3:4}}.png"></image>
-        <view bindtap="addFavorites" class="dbtext">{{collect==1?'已收藏':'未收藏'}}</view>
+        <view class="dbtext">{{collect==1?'已收藏':'未收藏'}}</view>
       </view>
     </view>
 

@@ -626,13 +626,13 @@ Page({
         var data = res.data;
         if (data.status == 1) {
           wx.showToast({
-            title: '操作成功！',
+            title: res.data.err,
             duration: 2000
           });
           that.data.itemData.isCollect = true;
         } else {
           wx.showToast({
-            title: data.err,
+            title: res.data.err,
             duration: 2000
           });
         }

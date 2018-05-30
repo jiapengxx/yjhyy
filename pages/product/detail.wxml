@@ -11,9 +11,9 @@
   <view style='width:750rpx;height:80rpx;'>
     <image src='../../images/fenxiangD.png' style='width:750rpx;height:80rpx;'></image>
     <button open-type='share' style='position:relative;top:-122rpx;left:236rpx;height:148rpx;width:148rpx;border-radius:74rpx;background-color:#e03407;color:#fff000;font-size:40rpx;font-weight:600;z-index:10;'>
-<text style='position:relative;top:-3rpx;'>立即</text>
-<text style='position:relative;top:-51rpx;'>分享</text>
-</button>
+      <text style='position:relative;top:-3rpx;'>立即</text>
+      <text style='position:relative;top:-51rpx;'>分享</text>
+    </button>
   </view>
   <view class="title">{{itemData.name}}</view>
   <view class="gmxx">
@@ -36,19 +36,19 @@
       <image class="drawer_image" src="{{itemData.photo_x}}"></image>
       <view class="mingcheng">
         <view>{{itemData.name}}</view>
-<view style="font-size:29rpx;color:red">¥ {{totalPrice}}</view>
+        <view style="font-size:29rpx;color:red">¥ {{totalPrice}}</view>
         <view style="font-size:26rpx;color:#ccc">库存：{{itemData.num}}</view>
       </view>
     </view>
-<view class="commodity_attr_list">
-  <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex">
-    <view class="attr_name">{{attrValueObj.attrKey}}</view>
-    <view class="attr_value_box">
-      <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}" 
-      data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
+    <view class="commodity_attr_list">
+      <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex">
+        <view class="attr_name">{{attrValueObj.attrKey}}</view>
+        <view class="attr_value_box">
+          <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
+            data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
+        </view>
+      </view>
     </view>
-  </view>
-</view>
     <view class="shu">
       <text class="cun">购买数量</text>
       <view class="dian">
@@ -79,19 +79,19 @@
       <image class="drawer_image" src="{{itemData.photo_x}}"></image>
       <view class="mingcheng">
         <view>{{itemData.name}}</view>
-<view style="font-size:29rpx;color:red">¥ {{totalPrice}}</view>
+        <view style="font-size:29rpx;color:red">¥ {{totalPrice}}</view>
         <view style="font-size:26rpx;color:#ccc">库存：{{itemData.num}}</view>
       </view>
     </view>
-<view class="commodity_attr_list">
-  <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex">
-    <view class="attr_name">{{attrValueObj.attrKey}}</view>
-    <view class="attr_value_box">
-      <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}" 
-      data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
+    <view class="commodity_attr_list">
+      <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex">
+        <view class="attr_name">{{attrValueObj.attrKey}}</view>
+        <view class="attr_value_box">
+          <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
+            data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
+        </view>
+      </view>
     </view>
-  </view>
-</view>
     <view class="shu">
       <text class="cun">购买数量</text>
       <view class="dian">
@@ -105,7 +105,7 @@
         </view>
       </view>
     </view>
-    <view class="footc" bindtap="addShopCart" data-type="add"  data-status="1">
+    <view class="footc" bindtap="addShopCart" data-type="add" data-status="1">
       加入购物车
     </view>
   </view>
@@ -123,15 +123,15 @@
 
     <!-- 图文详情 -->
     <swiper-item>
-    <!--原有详情模板  -->
-       <import src="../../wxParse/wxParse.wxml" />
+      <!--原有详情模板  -->
+      <import src="../../wxParse/wxParse.wxml" />
       <view class="wxParse">
         <scroll-view style="height:2000rpx;" scroll-y='true'>
           <template is="wxParse" data="{{wxParseData:content.nodes}}" />
           <view style='height:100rpx;width:100%;'></view>
         </scroll-view>
-      </view> 
-<!--根据进入的位置判断图片大小  -->
+      </view>
+      <!--根据进入的位置判断图片大小  -->
 
     </swiper-item>
     <!-- 产品参数 -->
@@ -160,22 +160,22 @@
       <view style='height:100rpx;border-top:4rpx solid whitesmoke;'>
         <view style='margin-left:24rpx;margin-right:24rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
 
-          <view id='1' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;border-radius:10rpx;border:0.1rpx solid #ff9090;background-color:#fff;font-size:24rpx;color:red;'>
+          <view id='1' bindtap='getFlag' class="{{flag==1?'xz':'wxz'}}">
             <text style='position:relative;top:4rpx;left:40rpx;'>全部</text>
             <text style='position:relative;top:4rpx;left:50rpx;'>{{All.length}}</text>
           </view>
 
-          <view id='2' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
+          <view id='2' bindtap='getFlag' class="{{flag==2?'xz':'wxz'}}">
             <text style='position:relative;top:4rpx;left:40rpx;'>好评</text>
             <text style='position:relative;top:4rpx;left:50rpx;'>{{Good.length}}</text>
           </view>
 
-          <view id='3' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
+          <view id='3' bindtap='getFlag' class="{{flag==3?'xz':'wxz'}}">
             <text style='position:relative;top:4rpx;left:40rpx;'>中评</text>
             <text style='position:relative;top:4rpx;left:50rpx;'>{{Medium.length}}</text>
           </view>
 
-          <view id='4' bindtap='getFlag' style='position:relative;top:30rpx;width:150rpx;height:40rpx;font-size:24rpx;color:#333;border-radius:10rpx;background-color:#fddddd;border:0.1rpx solid #ff0000;'>
+          <view id='4' bindtap='getFlag' class="{{flag==4?'xz':'wxz'}}" >
             <text style='position:relative;top:4rpx;left:40rpx;'>差评</text>
             <text style='position:relative;top:4rpx;left:50rpx;'>{{Bad.length}}</text>
           </view>
@@ -189,7 +189,7 @@
 
         <view wx:if="{{typeof(flag==1?All:(flag==2?Good:(flag==3?Medium:Bad)))==undefined}}" style='border-bottom:0.1rpx solid whitesmoke;'>
           <!--提交评论时携带 标志 是否有图片  -->
-          <view style='height:440rpx;margin-left:24rpx;margin-right:24rpx;'>
+          <view style='margin-left:24rpx;margin-right:24rpx;'>
             <image src='{{item.photo}}' style='position:relative;top:30rpx;width:58rpx;height:58rpx;border-radius:50%;'></image>
             <text style='position:relative;top:-15rpx;left:20rpx;font-size:24rpx;color:#333;'>{{item.uname}}</text>
             <view style='position:relative;left:80rpx;width:126rpx;height:14rpx;display:flex;flex-wrap:wrap;justify-content:space-between;'>
@@ -205,9 +205,11 @@
             <!--评论文字  -->
             <textarea style='position:relative;top:-30rpx;left:80rpx;width:600rpx;height:40rpx;font-size:30rpx;color:#333;'>{{item.concent}}</textarea>
             <!--图集  -->
-            <view style='position:relative;width:510rpx;height:244rpx;top:-10rpx;left:80rpx;font-size:24rpx;color:#333;display:flex;flex-wrap:wrap;justify-content:space-between;'>
-              <image src='{{host}}/Data/{{item.img[0]}}' style='width:230rpx;height:244rpx;'></image>
-              <image src='{{host}}/Data/{{item.img[1]}}' style='width:230rpx;height:244rpx;'></image>
+            <view wx:if="{{item.img.length!=0}}" style='position:relative;width:600rpx;height:130rpx;top:-10rpx;left:40rpx;font-size:24rpx;color:#333;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+              <image src='{{host}}/Data/{{item.img[0]}}' style='width:114rpx;height:122rpx;'></image>
+              <image wx:if="{{item.img.length==2}}"  src='{{host}}/Data/{{item.img[1]}}' style='width:114rpx;height:122rpx;'></image>
+              <image wx:if="{{item.img.length==3}}"  src='{{host}}/Data/{{item.img[2]}}' style='width:114rpx;height:122rpx;'></image>
+              <image wx:if="{{item.img.length==4}}"  src='{{host}}/Data/{{item.img[3]}}' style='width:114rpx;height:122rpx;'></image>
             </view>
           </view>
         </view>
@@ -240,9 +242,9 @@
 
     <!--去首页-->
     <view bindtap='toBtoC' class="df_1 l_h15 pt5 bre">
-      
-        <image class="icon_kf" src="../../images/shouye.png"></image>
-        <view class="dbtext">首页</view>
+
+      <image class="icon_kf" src="../../images/shouye.png"></image>
+      <view class="dbtext">首页</view>
     </view>
     <!--去客服-->
     <view class="df_1 l_h15 pt5 bre">
@@ -254,7 +256,7 @@
     </view>
     <!--去收藏,图片状态需判断-->
     <view class="df_1 l_h15 pt5" bindtap="addFavorites">
-      <view >
+      <view>
         <image class="icon_kf" src="../../images/{{collect==1?3:4}}.png"></image>
         <view class="dbtext">{{collect==1?'已收藏':'未收藏'}}</view>
       </view>

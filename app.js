@@ -20,8 +20,6 @@ App({
         that.globalData.longitude = res.longitude
       }
     })
-
-
   },
   uploadimg: function (data) {
       var that = this,

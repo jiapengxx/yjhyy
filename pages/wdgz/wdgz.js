@@ -173,6 +173,9 @@ Page({
 
   cancelGZ: function () {
     var that = this
+    this.setData({
+      pro_Id:[]
+    })
     for (var i = 0; i < this.data.array_gz.length; i++) {
       if (this.data.array_gz[i].type =='success_circle'){
         this.setData({
@@ -225,9 +228,6 @@ that.setData({
         });
       }
     });
-this.setData({
-  pro_Id:[]
-})
   },
   toBtoC: function (e) {
     var store_Id = e.currentTarget.id;

@@ -238,6 +238,7 @@ Page({
           uid: app.d.userId,
         });
       }
+      console.log("aaaaaaaaaaasdew")
       that.loadProductDetail();
       that.loadProductEvaluate();
 }

@@ -3,7 +3,7 @@ var app = getApp()
 Page({
   data: {
     userInfo: {},
-    page:true,
+    page: true,
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     orderInfo: {},
@@ -37,15 +37,18 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
-      var u_id = option.u_id; 
-    this.setData({
-      u_id : option.u_id,
-    })
+    if (!option) {
+      console.log("aaaa")
+      var u_id = option.u_id;
+      this.setData({
+        u_id: option.u_id,
+      })
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true,
-        page:false
+        page: false
       })
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -76,22 +79,22 @@ Page({
     //   typeof cb == "function" && cb(this.globalData.userInfo)
 
     // } else {
-      //调用登录接口
-      wx.login({
-        success: function (res) {
-          console.log(res)
-          var code = res.code;
-          //get wx user simple info
-          wx.getUserInfo({
-            success: function (res) {
-              console.log(res)
-              app.globalData.userInfo = res.userInfo
-              // typeof cb == "function" && cb(that.globalData.userInfo);
-              that.getUserSessionKey(code);
-            }
-          });
-        }
-      });
+    //调用登录接口
+    wx.login({
+      success: function (res) {
+        console.log(res)
+        var code = res.code;
+        //get wx user simple info
+        wx.getUserInfo({
+          success: function (res) {
+            console.log(res)
+            app.globalData.userInfo = res.userInfo
+            // typeof cb == "function" && cb(that.globalData.userInfo);
+            that.getUserSessionKey(code);
+          }
+        });
+      }
+    });
     // }
 
   },
@@ -111,7 +114,7 @@ Page({
       success: function (res) {
         //--init data        
         var data = res.data;
-       
+
         if (data.status == 0) {
           wx.showToast({
             title: data.err,
@@ -121,12 +124,12 @@ Page({
         }
         app.globalData.userInfo['sessionId'] = data.session_key;
         app.globalData.userInfo['openid'] = data.openid;
-        console.log(that.data.u_id+'aaaaaaaaaaaaaaaaaaaaa');
+        console.log(that.data.u_id + 'aaaaaaaaaaaaaaaaaaaaa');
         console.log(data.openid + 'aaaaaaaaaaaaaaaaaaaaa');
-        if (that.data.u_id){
+        if (that.data.u_id) {
           console.log(that.data.u_id + 'aaaaaaaaaaaaaaaaaaaaa');
           that.oneLogin(data.openid);
-        }else{
+        } else {
           that.oneLogin(data.openid);
         }
 
@@ -141,13 +144,13 @@ Page({
     });
   },
   oneLogin: function (openid) {
-    console.log(openid+"aaaaaaaaaaaaaaaaa");
-    var openid= openid;
+    console.log(openid + "aaaaaaaaaaaaaaaaa");
+    var openid = openid;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Login/oneLogin',
       method: 'post',
       data: {
-       openid:openid,
+        openid: openid,
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -155,7 +158,7 @@ Page({
       success: function (res) {
         console.log(openid + "aaaaaaaaaaaaaaaaa");
         //--init data        
-        if(res.data.status==0){
+        if (res.data.status == 0) {
           wx.showToast({
             title: res.data.err,
           });
@@ -229,7 +232,7 @@ Page({
   },
 
   onShow: function () {
-    if (this.data.hasUserInfo){
+    if (this.data.hasUserInfo) {
       this.loadOrderStatus();
     }
 
@@ -247,14 +250,14 @@ Page({
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {      
+      success: function (res) {
         var status = res.data.status;
         if (status == 1) {
           var orderInfo = res.data.orderInfo;
           that.setData({
             orderInfo: orderInfo
           });
-        } 
+        }
         // else {
         //   wx.showToast({
         //     title: '非法操作.',

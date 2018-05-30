@@ -205,7 +205,7 @@
             <!--评论文字  -->
             <textarea style='position:relative;top:-30rpx;left:80rpx;width:600rpx;height:40rpx;font-size:30rpx;color:#333;'>{{item.concent}}</textarea>
             <!--图集  -->
-            <view wx:if="{{item.img.length!=0}}" style='position:relative;width:600rpx;height:130rpx;top:-10rpx;left:40rpx;font-size:24rpx;color:#333;display:flex;flex-wrap:wrap;justify-content:space-between;'>
+            <view wx:if="{{item.img!=''}}" style='position:relative;width:600rpx;height:130rpx;top:-10rpx;left:40rpx;font-size:24rpx;color:#333;display:flex;flex-wrap:wrap;justify-content:space-between;'>
               <image src='{{host}}/Data/{{item.img[0]}}' style='width:114rpx;height:122rpx;'></image>
               <image wx:if="{{item.img.length==2}}"  src='{{host}}/Data/{{item.img[1]}}' style='width:114rpx;height:122rpx;'></image>
               <image wx:if="{{item.img.length==3}}"  src='{{host}}/Data/{{item.img[2]}}' style='width:114rpx;height:122rpx;'></image>

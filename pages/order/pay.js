@@ -375,8 +375,8 @@ console.log(buff)
                 content: '是否前往支付?',
                 success: function (res) {
                   if (res.confirm) {
-                  wx.navigateTo({
-                    url: '../company_user/dingdan',
+                    wx.redirectTo({
+                    url: '../company_user/dingdan?currentTab=0&otype=pay',
                   })
                   }else{
                     wx.redirectTo({

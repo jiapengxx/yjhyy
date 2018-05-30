@@ -150,6 +150,8 @@ for(var i=0;i<this.data.pids.length;i++){
 
     var uploadedImagesPaths =       this.data.img1.uploadedImagesPaths;
     var Content = this.data.content
+    console.log(that.data.pid+"aaaaaaaaaaaaaaaaaaaa");
+    console.log(that.data.order_id);
     this.setData({
       Content: Content
     })

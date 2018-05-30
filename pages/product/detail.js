@@ -372,7 +372,8 @@ Page({
     });
   },
   getFlag: function (e) {
-    var ID = e.target.id
+    console.log(e)
+    var ID = e.currentTarget.id
     if (ID == 1) {
       this.setData({
         flag: 1

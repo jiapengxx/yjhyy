@@ -4,11 +4,10 @@ const ImageUploader = require('../common/image_uploader/image_uploader.js');
 Page({
   data: {
     content: '',
-    Content: '',
     flag:0,
-    // num1:0,
-    // num2:0, 
-    // num3:0,
+    num1:0,
+    num2:0, 
+    num3:0,
     img1: ImageUploader.mergeData({
       sourceType: ['camera', 'album'], //上传图片的来源，相机/相册
       sizeType: ['compressed'],//上传前是否压缩，默认压缩
@@ -65,6 +64,7 @@ Page({
   //     pids:this.data.pids.concat(IDs[i+1])
   //   })
   // }
+    console.log(options.orderId + ',' + options.pid)
     var order_id = options.orderId
     var pid = options.pid
     console.log(order_id, pid)
@@ -97,6 +97,7 @@ Page({
   },
   upload: function () {
     var that = this
+<<<<<<< HEAD
     // if (this.data.img1.uploadedImagesPaths == '' && typeof (this.data.Content) == 'undefined') {
     //   wx.showToast({
     //     title: '内容不能为空！',
@@ -152,6 +153,58 @@ Page({
     this.setData({
       Content: Content
     })
+=======
+    if (this.data.num1 * this.data.num2 * this.data.num3 == 0 ||this.data.content == '') {
+      if (this.data.content == '') {
+        wx.showToast({
+          title: '请填写评价内容',
+        })
+      }
+      else if (this.data.num1 * this.data.num2 * this.data.num3 == 0) {
+        wx.showToast({
+          title: '请填写评分',
+        })
+      }
+    }
+    else if (this.data.img1.uploadedImagesPaths.length == 0) {
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Comment/add1',
+        method: 'post',
+        data: {
+          uid: app.d.userId,
+          pid: that.data.pid,
+          num: that.data.num1,
+          logistic_grade: that.data.num2,
+          store_grade: that.data.num3,
+          content: that.data.content,
+          is_name: that.data.flag,
+          order_id: that.data.order_id,
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          wx.showToast({
+            title: '提交成功',
+            duration: 2000
+          });
+          setTimeout(function () {
+            wx.switchTab({
+              url: '../company_user/company_user',
+            })
+          }
+            , 3000)
+        },
+        fail: function (e) {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        },
+      })
+    } else {
+    var uploadedImagesPaths =this.data.img1.uploadedImagesPaths;
+>>>>>>> 77051efc94385004d4a71f86ac38127cd374c317
     app.uploadimg({
       url: app.d.hostUrl + '/Api/Comment/add',
       path: uploadedImagesPaths,
@@ -162,11 +215,12 @@ Page({
         num:that.data.num1,
         logistic_grade: that.data.num2,
         store_grade: that.data.num3,
-        content:that.data.Content,
+        content:that.data.content,
         is_name:that.data.flag, 
         order_id: that.data.order_id,
       },
     });
+    }
   },
   stars: function (e) {
     var num = e.target.id
@@ -180,7 +234,7 @@ Page({
         stars: [3, 3, 1, 1, 1]
       })
     }
-    else if (num == 3) {
+    else if (num == 3) { 
       this.setData({
         stars: [3, 3, 3, 1, 1]
       })

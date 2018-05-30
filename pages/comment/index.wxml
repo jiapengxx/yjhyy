@@ -1,9 +1,8 @@
 <import src="../common/image_uploader/image_uploader.wxml" />
 <view style='border-top:0.1rpx solid whitesmoke;'>
 
-<block wx:for="{{photo_x}}" wx:for-index="idx">
 <view style='width:100%;height:186rpx;'>
-<image src='{{hostUrl}}/Data/{{photo_x[idx]}}' style='position:relative;top:30rpx;left:24rpx;width:148rpx;height:126rpx;'></image>
+<image src='{{hostUrl}}/Data/{{photo_x}}' style='position:relative;top:30rpx;left:24rpx;width:148rpx;height:126rpx;'></image>
 <text style='position:relative;top:-40rpx;left:40rpx;font-size:28rpx;font-weight:700;color:#333333;'>商品评分</text>
 <!--点击评价按钮传入当前产品的参数,渲染内容-->
 <view class='stars1'>
@@ -15,7 +14,7 @@
 </view>
 </view>
 <view style='width:702rpx;height:200rpx;background-color:whitesmoke;margin-left:24rpx;'>
-<textarea bindblur='getContent' class='textarea' placeholder='宝贝满足你的期待？说说它的优点和美中不足的地方' placeholder-style='font-size:26rpx;'></textarea>
+<textarea bindinput='getContent' class='textarea' placeholder='宝贝满足你的期待？说说它的优点和美中不足的地方' placeholder-style='font-size:26rpx;'></textarea>
 </view>
 
 
@@ -32,7 +31,7 @@
 </view>
 </view>
 <view style='width:100%;height:20rpx;background-color:whitesmoke;'></view>
-</block>
+
 
 <view>
 <view style='position:relative;top:30rpx;left:24rpx;width:702rpx;height:64rpx;border-bottom:0.1rpx solid whitesmoke;'>

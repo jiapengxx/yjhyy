@@ -73,7 +73,7 @@ Page({
                 title: '操作成功！',
                 duration: 2000
               });
-              that.w();
+              that.loadOrderList();
             } else {
               wx.showToast({
                 title: res.data.err,
@@ -429,33 +429,30 @@ Page({
       }
     })
   },
-  toComment:function(e){
-    console.log(e)
-    var that=this
-    //去评价传出 订单ID 产品ID集合
-    var orderID = e.currentTarget.dataset.orderid
-    console.log(orderID)
-    var ID = e.currentTarget.dataset.id
-    var ids = e.currentTarget.dataset.ids
-    this.setData({
-  IDs:''+orderID+',' 
-})
-console.log(ID)
-    console.log(this.data.orderList3[ID])
-    // for (var i = 0; i < this.data.orderList3[ID].prolist.length;i++){
-    //   this.setData({
-    //     IDs:this.data.IDs+this.data.orderList3[ID].prolist[i].pid+','
-    //   })
-    // }
-      this.setData({
-        IDs:this.data.IDs+this.data.orderList3[ID].prolist[ids].pid+','
-      })
+//评价多个商品
+//   toComment:function(e){
+//     console.log(e)
+//     var that=this
+//     var orderID = e.currentTarget.dataset.orderid
+//     console.log(orderID)
+//     var ID = e.currentTarget.dataset.id
+//     var ids = e.currentTarget.dataset.ids
+//     this.setData({
+//   IDs:''+orderID+',' 
+// })
+//     for (var i = 0; i < this.data.orderList3[ID].prolist.length;i++){
+//       this.setData({
+//         IDs:this.data.IDs+this.data.orderList3[ID].prolist[i].pid+','
+//       })
+//     }
 
-    console.log(this.data.IDs)
-    wx.navigateTo({
-      url: '../comment/index?IDs=' + this.data.IDs,
-    })
-  },
+//       this.setData({
+//         IDs:this.data.IDs+this.data.orderList3[ID].prolist[ids].pid+','
+//       })
+//     wx.navigateTo({
+//       url: '../comment/index?IDs=' + this.data.IDs,
+//     })
+//   },
   //点击加载更多
   getMore: function (e) {
     var that = this;

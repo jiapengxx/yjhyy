@@ -8,7 +8,7 @@
   </view>
   <view class="c_t60"></view>
 <!-- +(orderList0.prolist.length-1)*140 -->
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:(430*orderList0.length+num1*180)+80):(currentTab==1?(orderList1.length==0?winHeight*2:430*orderList1.length+num2*150+70):(currentTab==2?(orderList2.length==0?winHeight*2:500*orderList2.length+num3*180+70):(currentTab==3?(orderList3.length==0?winHeight*2:410*orderList3.length+num4*180+90):(orderList4.length==0?winHeight*2:330*orderList4.length+70))))}}rpx"bindchange="bindChange">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:(430*orderList0.length+num1*180)+80):(currentTab==1?(orderList1.length==0?winHeight*2:430*orderList1.length+num2*150+80):(currentTab==2?(orderList2.length==0?winHeight*2:500*orderList2.length+num3*180+80):(currentTab==3?(orderList3.length==0?winHeight*2:410*orderList3.length+num4*180+90):(orderList4.length==0?winHeight*2:330*orderList4.length+80))))}}rpx"bindchange="bindChange">
 
     <!-- 待付款 -->
 <swiper-item >
@@ -256,7 +256,7 @@
               <view style='position:relative;top:-80rpx;left:580rpx;height:50rpx;width:140rpx;font-size:24rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>已评价</view>
             </block>
             <block wx:else>
-              <view bindtap='toComment'data-orderId="{{item.id}}"  data-ID="{{idx}}" data-ids="{{index}}"  style='position:relative;top:-80rpx;left:580rpx;height:50rpx;width:140rpx;font-size:24rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</view>
+              <navigator url="../comment/index?orderId={{item.id}}&pid={{item.pid}}" style='position:relative;top:-80rpx;left:580rpx;height:50rpx;width:140rpx;font-size:24rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</navigator>
             </block>
  </block> 
 <!--功能  -->

@@ -649,7 +649,6 @@ Page({
   addShopCart: function (e) { //添加到购物车
     var that = this;
     //当存在规格数据时
-
     if (this.data.HAVE) {
       this.setData({
         buff:''
@@ -692,7 +691,8 @@ Page({
             uid: app.d.userId,
             pid: that.data.pro_id,
             num: that.data.buynum,
-            buff: that.data.buff
+            buff: that.data.buff,
+            tid: that.data.includeGroup[0].attrValueList[1].tid
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'

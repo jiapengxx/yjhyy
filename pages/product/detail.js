@@ -25,7 +25,8 @@ Page({
     interval: 5000,
     duration: 1000,
     attrValueList: [],
-    buff:''
+    buff:'',
+    tids:[]
   },
 
   // 立即购买弹窗
@@ -684,6 +685,18 @@ Page({
           duration: 1000
         })
       } else {
+        that.setData({
+          tids:[]
+        })
+        for (var i = 0; i < that.data.includeGroup[0].attrValueList.length;i++){
+          console.log("www"+i)
+          if (that.data.includeGroup[0].attrValueList[i].tid){
+            that.setData({
+              tids: that.data.tids.concat(that.data.includeGroup[0].attrValueList[i].tid)
+            })
+            console.log("qqq"+that.data.tids)
+          }
+        }
         wx.request({
           url: app.d.ceshiUrl + '/Api/Shopping/add',
           method: 'post',
@@ -692,7 +705,7 @@ Page({
             pid: that.data.pro_id,
             num: that.data.buynum,
             buff: that.data.buff,
-            tid: that.data.includeGroup[0].attrValueList[1].tid
+            tid: that.data.tids
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'

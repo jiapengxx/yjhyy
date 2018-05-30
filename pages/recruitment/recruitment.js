@@ -24,56 +24,79 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/BIndex/sccat',
-      method: 'post',
-      data: {
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        var ad = res.data.ad;
-        that.setData({
-          types: ad
-        });
+    var that=this
+    if (app.d.userId){
+      this.getStatus()
+      this.getTypes()
+    }else{
+      wx.showToast({
+        title: '加载数据中',
+        icon:'loading'
+      })
+      this.setData({
+        switch2: true,
+        switch1: true 
+      })
+      setTimeout(function(){
+        that.getStatus()
+        that.getTypes()
+      },2000)
+    }
 
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    });
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/BIndex/recruitment_index',
-      method: 'post',
-      data: {
-        user_id: app.d.userId
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res.data.status);
-        if (res.data.status == 2) {
-          that.setData({
-            switch2: false,
-            switch1: true
-          })
-        }
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    });
   },
+getStatus:function(){
+  var that=this
+  wx.request({
+    url: app.d.ceshiUrl + '/Api/BIndex/recruitment_index',
+    method: 'post',
+    data: {
+      user_id: app.d.userId
+    },
+    header: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+      console.log(res.data.status);
+      if (res.data.status == 2) {
+        that.setData({
+          switch2: false,
+          switch1: true
+        })
+      }
+    },
+    fail: function (e) {
+      wx.showToast({
+        title: '网络异常！',
+        duration: 2000
+      });
+    },
+  });
+},
+getTypes:function(){
+  var that = this
+  wx.request({
+    url: app.d.ceshiUrl + '/Api/BIndex/sccat',
+    method: 'post',
+    data: {
+    },
+    header: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+      var ad = res.data.ad;
+      that.setData({
+        types: ad
+      });
 
+    },
+    fail: function (e) {
+      wx.showToast({
+        title: '网络异常！',
+        duration: 2000
+      });
+    },
+  });
+},
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

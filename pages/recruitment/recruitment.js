@@ -410,7 +410,7 @@ Page({
       })
     } else {
       wx.showToast({
-        title: '请将信息填充完整！',
+        title: '请正确填写所有信息',
         icon: 'none'
       })
     }

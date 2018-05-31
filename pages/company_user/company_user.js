@@ -37,10 +37,12 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
-      var u_id = option.u_id; 
-    this.setData({
-      u_id : option.u_id,
-    })
+    if (option.u_id){
+      var u_id = option.u_id;
+      this.setData({
+        u_id: option.u_id,
+      })
+    }
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -229,7 +231,7 @@ Page({
   },
 
   onShow: function () {
-    if (this.data.hasUserInfo){
+    if (app.globalData.userInfo){
       this.loadOrderStatus();
     }
 

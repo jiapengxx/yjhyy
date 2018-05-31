@@ -348,10 +348,11 @@ Page({
       success: function (res) {
         if (res.data.product_dp.length != 0) {
           that.setData({
-            All: res.data.product_dp.all,
-            Good: res.data.product_dp.good,
-            Medium: res.data.product_dp.medium,
-            Bad: res.data.product_dp.bad
+            
+            All:(typeof (res.data.product_dp.all) != 'undefined' ? res.data.product_dp.all : []),
+            Good:(typeof(res.data.product_dp.good)!= 'undefined' ? res.data.product_dp.good:[]),
+            Medium: (typeof (res.data.product_dp.medium) != 'undefined' ? res.data.product_dp.medium : []),
+            Bad: (typeof (res.data.product_dp.bad) != 'undefined' ? res.data.product_dp.bad : [])
           })
         } else {
           that.setData({

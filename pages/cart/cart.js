@@ -267,7 +267,7 @@ removeShopCard:function(e){
         //--init data
         var cart = res.data.cart;
         that.setData({
-          carts: cart,
+          carts: (res.data.status == 0 ? '' : cart),
           selectedAllStatus: false,
           total: 0
         });

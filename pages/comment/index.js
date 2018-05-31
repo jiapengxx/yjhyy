@@ -97,7 +97,7 @@ Page({
   },
   upload: function () {
     var that = this
-<<<<<<< HEAD
+
     // if (this.data.img1.uploadedImagesPaths == '' && typeof (this.data.Content) == 'undefined') {
     //   wx.showToast({
     //     title: '内容不能为空！',
@@ -146,14 +146,7 @@ Page({
     //   });
     // }
 
-    var uploadedImagesPaths =       this.data.img1.uploadedImagesPaths;
-    var Content = this.data.content
-    console.log(that.data.pid+"aaaaaaaaaaaaaaaaaaaa");
-    console.log(that.data.order_id);
-    this.setData({
-      Content: Content
-    })
-=======
+
     if (this.data.num1 * this.data.num2 * this.data.num3 == 0 ||this.data.content == '') {
       if (this.data.content == '') {
         wx.showToast({
@@ -204,7 +197,6 @@ Page({
       })
     } else {
     var uploadedImagesPaths =this.data.img1.uploadedImagesPaths;
->>>>>>> 77051efc94385004d4a71f86ac38127cd374c317
     app.uploadimg({
       url: app.d.hostUrl + '/Api/Comment/add',
       path: uploadedImagesPaths,

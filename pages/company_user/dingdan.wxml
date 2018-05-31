@@ -251,17 +251,18 @@
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>¥{{itm.price}}</view>
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{itm.num}}</view>
-</view>
-<navigator style='position:relative;top:-60rpx;left:460rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'url="tuihuo?orderId={{item.id}}">申请售后</navigator>
- <block wx:if="{{orderList3.mstatus==1}}">
-              <view style='position:relative;top:-104rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>已评价</view>
+<navigator style='position:relative;top:-160rpx;left:460rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'url="tuihuo?orderId={{item.id}}">申请售后</navigator>
+ <block wx:if="{{itm.mstatus==1}}">
+              <view style='position:relative;top:-206rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>已评价</view>
             </block>
             <block wx:else>
-              <navigator url="../comment/index?orderId={{item.id}}&pid={{itm.pid}}" style='position:relative;top:-104rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>未评价</navigator>
+              <navigator url="../comment/index?orderId={{item.id}}&pid={{itm.pid}}" style='position:relative;top:-206rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>未评价</navigator>
             </block>
+</view>
+
  </block> 
 <!--功能  -->
-<view style='position:relative;top:-50rpx;height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
+<view style='position:relative;top:10rpx;height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
 <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../ywcDetail/ywcDetail?orderId={{item.id}}">订单详情</navigator>
 <!-- <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'url="tuihuo?orderId={{item.id}}">申请售后</navigator> -->
             <!-- <block wx:if="{{orderList3.mstatus==1}}">
@@ -298,7 +299,7 @@
           </view>
         </view>
       </view> -->
-      <view wx:if="{{orderList3.length}}" style='position:relative;top:{{(orderList3.length-1)*20}}rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
+      <view wx:if="{{orderList3.length}}" style='position:relative;top:{{(orderList3.length)*20}}rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
     </swiper-item>
 
     <!-- 退款/售后 -->
@@ -350,7 +351,7 @@
           </view>
         </view>
       </view> -->
-      <view wx:if="{{orderList4.length}}" style='position:relative;top:{{(orderList4.length-1)*20+30}}rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="getMore">点击查看更多</view>
+      <view wx:if="{{orderList4.length}}" style='position:relative;top:{{(orderList4.length-1)*20+30}}rpx;margin:0 auto;text-align:center;height:70rpx;width:450rpx;line-height:70rpx;border-radius:10rpx;border:1px solid #999;font-size:30rpx;' bindtap="refund_getMore">点击查看更多</view>
     </swiper-item>
 
   </swiper>

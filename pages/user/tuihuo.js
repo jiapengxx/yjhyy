@@ -15,6 +15,7 @@ Page({
   submitReturnData:function(){
     //console.log(this.data);
     //数据验证
+
     if(!this.data.remark){
       wx.showToast({
         title: '请填写退款原因',
@@ -52,9 +53,11 @@ Page({
             title: '您的申请已提交审核！',
             duration: 2000
           });
-          // wx.navigateTo({
-          //   url: '/pages/user/dingdan?currentTab=4',
-          // });
+          setTimeout(function(){
+            wx.redirectTo({
+              url: '../company_user/dingdan?currentTab=4',
+            });
+          },2000)
         }else{
           wx.showToast({
             title: res.data.err,

@@ -62,6 +62,11 @@ getStatus:function(){
           switch2: false,
           switch1: true
         })
+      } else if (res.data.status == 0){
+        that.setData({
+          switch2: true,
+          switch1: false
+        })
       }
     },
     fail: function (e) {
@@ -397,46 +402,60 @@ getTypes:function(){
     }
   },
   formSubmit: function (e) {
-    var counts = this.data.num1 + this.data.num2 + this.data.num3 + this.data.num4 + this.data.num5 + this.data.num6 + this.data.num7 + this.data.num8 + this.data.num9 + this.data.num10 + this.data.num11
-    if (counts == 11) {
-      var that = this;
-      console.log('form发生了submit事件，携带数据为：', e.detail.value)
-      // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
-      app.uploadimg({
-        url: app.d.hostUrl + '/Api/BIndex/seller_add',//这里是你图片上传的接口
-        path: that.data.srcs,//这里是选取的图片的地址数组
-        data: {
-          code_one: Math.random(10000, 99999),
-          code: e.detail.value.code,
-          self_name: e.detail.value.self_name,
-          card_id: e.detail.value.card_id,
-          tel_id: e.detail.value.tel_id,
-          user: e.detail.value.user,
-          pwd: e.detail.value.pwd,
-          sheng: that.data.region[0],
-          city: that.data.region[1],
-          quyu: that.data.region[2],
-          code: e.detail.value.code,
-          place_desc: e.detail.value.place_desc,
-          introduce: e.detail.value.introduce,
-          type_id: that.data.type_id,
-          uid: app.d.userId,
-        }
-      });
-      wx.showToast({
-        title: '提交成功',
-        success: function () {
-          wx.reLaunch({
-            url: '../company_index/company_index',
-          })
+    if (app.globalData.userInfo == null){
+      wx.showModal({
+        title: '请先登录',
+        content: '登录获取更多信息',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '../company_user/company_user',
+            })
+          }
         }
       })
-    } else {
-      wx.showToast({
-        title: '请正确填写所有信息',
-        icon: 'none'
-      })
-    }
+    }else{
+      var counts = this.data.num1 + this.data.num2 + this.data.num3 + this.data.num4 + this.data.num5 + this.data.num6 + this.data.num7 + this.data.num8 + this.data.num9 + this.data.num10 + this.data.num11
+      if (counts == 11) {
+        var that = this;
+        console.log('form发生了submit事件，携带数据为：', e.detail.value)
+        // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
+        app.uploadimg({
+          url: app.d.hostUrl + '/Api/BIndex/seller_add',//这里是你图片上传的接口
+          path: that.data.srcs,//这里是选取的图片的地址数组
+          data: {
+            code_one: Math.random(10000, 99999),
+            code: e.detail.value.code,
+            self_name: e.detail.value.self_name,
+            card_id: e.detail.value.card_id,
+            tel_id: e.detail.value.tel_id,
+            user: e.detail.value.user,
+            pwd: e.detail.value.pwd,
+            sheng: that.data.region[0],
+            city: that.data.region[1],
+            quyu: that.data.region[2],
+            code: e.detail.value.code,
+            place_desc: e.detail.value.place_desc,
+            introduce: e.detail.value.introduce,
+            type_id: that.data.type_id,
+            uid: app.d.userId,
+          }
+        });
+        wx.showToast({
+          title: '提交成功',
+          success: function () {
+            wx.reLaunch({
+              url: '../company_index/company_index',
+            })
+          }
+        })
+      } else {
+        wx.showToast({
+          title: '请正确填写所有信息',
+          icon: 'none'
+        })
+      }
     // wx.setStorage({
     //   key: 'switch',
     //   data: 'true',
@@ -445,6 +464,7 @@ getTypes:function(){
     //   switch1: true,
     //   switch2: false
     // })
+    }
   },
 
   bindRegionChange: function (e) {

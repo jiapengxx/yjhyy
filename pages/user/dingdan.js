@@ -11,7 +11,7 @@ Page({
     currentTab: 0,
     isStatus: 'pay',//10待付款，20待发货，30待收货 40、50已完成
     page: 0,
-    refundpage: 0,
+    refundpage: 1,
     orderList0: [],
     orderList1: [],
     orderList2: [],
@@ -297,7 +297,55 @@ Page({
     });
   },
 
-
+  refund_getMore:function(){
+    var that = this;
+    this.setData({
+      status: '60',
+      page4: this.data.page4
+    })
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Order/order_refund',
+      method: 'post',
+      data: {
+        uid: app.d.userId,
+        page: that.data.page4,
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res)
+        var ord4 = res.data.ord;
+        if (ord4 == '') {
+          wx.showToast({
+            title: '没有更多数据！',
+            duration: 2000
+          });
+          return false;
+        } else{
+          that.setData({
+            page4: that.data.page4 + 1,
+            orderList4: that.data.orderList4.concat(ord4),
+            count5: 0
+          });
+          for (var i = 0; i < that.data.orderList4.length; i++) {
+            that.setData({
+              count5: that.data.count5
+            })
+          }
+          that.setData({
+            num5: that.data.count5
+          })
+        }
+      },
+      fail: function () {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    });
+  },
   initSystemInfo: function () {
     var that = this;
 
@@ -407,8 +455,9 @@ Page({
               }, 3000);
             },
             fail: function (res) {
+              console.log(res)
               wx.showToast({
-                title: res,
+                title:'支付取消',
                 duration: 3000
               })
             }
@@ -429,6 +478,30 @@ Page({
       }
     })
   },
+//评价多个商品
+//   toComment:function(e){
+//     console.log(e)
+//     var that=this
+//     var orderID = e.currentTarget.dataset.orderid
+//     console.log(orderID)
+//     var ID = e.currentTarget.dataset.id
+//     var ids = e.currentTarget.dataset.ids
+//     this.setData({
+//   IDs:''+orderID+',' 
+// })
+//     for (var i = 0; i < this.data.orderList3[ID].prolist.length;i++){
+//       this.setData({
+//         IDs:this.data.IDs+this.data.orderList3[ID].prolist[i].pid+','
+//       })
+//     }
+
+//       this.setData({
+//         IDs:this.data.IDs+this.data.orderList3[ID].prolist[ids].pid+','
+//       })
+//     wx.navigateTo({
+//       url: '../comment/index?IDs=' + this.data.IDs,
+//     })
+//   },
   //点击加载更多
   getMore: function (e) {
     var that = this;
@@ -437,40 +510,34 @@ Page({
         status: '10',
         page0: this.data.page0
       })
-
     }
-    else if (this.data.currentTab == 0) {
+    else if (this.data.currentTab == 1) {
       this.setData({
         status: '20',
         page1: this.data.page1
       })
 
     }
-    else if (this.data.currentTab == 1) {
+    else if (this.data.currentTab == 2) {
       this.setData({
         status: '30',
         page2: this.data.page2
       })
 
-    } else if (this.data.currentTab == 2) {
+    } else if (this.data.currentTab == 3) {
       this.setData({
         status: '50',
         page3: this.data.page3
       })
-    } else {
-      this.setData({
-        status: '60',
-        page4: this.data.page4
-      })
     }
     wx.request({
-      url: app.d.ceshiUrl + '/Api/Order/get_more',
+      url: app.d.ceshiUrl + '/Api/Order/index',
       method: 'post',
       data: {
         page:
-        (that.data.currentTab == 0 ? that.data.page0 : (that.data.currentTab == 1 ? that.data.page1 : (that.data.currentTab == 2 ? that.data.page2 : (that.data.currentTab == 3 ? that.data.page3 : that.data.page4)))),
+        (that.data.currentTab == 0 ? that.data.page0 : (that.data.currentTab == 1 ? that.data.page1 : (that.data.currentTab == 2 ? that.data.page2 : that.data.page3))),
         status:
-        (that.data.currentTab == 0 ? 10 : (that.data.currentTab == 1 ? 20 : (that.data.currentTab == 2 ? 30 : (that.data.currentTab == 3 ? 50 : 60)))),
+        (that.data.currentTab == 0 ? 10 : (that.data.currentTab == 1 ? 20 : (that.data.currentTab == 2?30:50))),
         uid: app.d.userId,
       },
       header: {
@@ -586,4 +653,13 @@ Page({
   //     };
   //     common.sentHttpRequestToServer(uri, dataMap, method, successCallback);
   //   }
+
+  toDetail:function(e){
+    console.log(e)
+    var pro_id = e.currentTarget.dataset.pro_id
+    //去商品详情页,传入
+    wx.navigateTo({
+      url: '../product/detail?pro_id=' + pro_id,
+    })
+  }
 })

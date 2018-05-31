@@ -97,63 +97,6 @@ Page({
   },
   upload: function () {
     var that = this
-<<<<<<< HEAD
-    // if (this.data.img1.uploadedImagesPaths == '' && typeof (this.data.Content) == 'undefined') {
-    //   wx.showToast({
-    //     title: '内容不能为空！',
-    //   })
-    // }
-    // else if (this.data.img1.uploadedImagesPaths == '') {
-    //   wx.request({
-    //     url: app.d.ceshiUrl + '/Api/BIndex/upload_content',
-    //     method: 'post',
-    //     data: {
-    //       p_desc: that.data.Content,
-    //       uid: app.d.userId,
-    //     },
-    //     header: {
-    //       'Content-Type': 'application/x-www-form-urlencoded'
-    //     },
-    //     success: function (res) {
-    //       wx.showToast({
-    //         title: '提交成功',
-    //         duration: 2000
-    //       });
-    //       setTimeout(function () {
-    //         wx.switchTab({
-    //           url: '../company_user/company_user',
-    //         })
-    //       }
-    //         , 3000)
-    //     },
-    //     fail: function (e) {
-    //       wx.showToast({
-    //         title: '网络异常！',
-    //         duration: 2000
-    //       });
-    //     },
-    //   })
-    // } else {
-    //   var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
-    //   app.uploadimg({
-    //     url: app.d.hostUrl + '/Api/BIndex/upload_do',
-    //     path: uploadedImagesPaths,
-    //     data: {
-    //       code: Math.random(10000, 99999),
-    //       uid: app.d.userId,
-    //       p_desc: that.data.Content
-    //     },
-    //   });
-    // }
-
-    var uploadedImagesPaths =       this.data.img1.uploadedImagesPaths;
-    var Content = this.data.content
-    console.log(that.data.pid+"aaaaaaaaaaaaaaaaaaaa");
-    console.log(that.data.order_id);
-    this.setData({
-      Content: Content
-    })
-=======
     if (this.data.num1 * this.data.num2 * this.data.num3 == 0 ||this.data.content == '') {
       if (this.data.content == '') {
         wx.showToast({
@@ -204,7 +147,6 @@ Page({
       })
     } else {
     var uploadedImagesPaths =this.data.img1.uploadedImagesPaths;
->>>>>>> 77051efc94385004d4a71f86ac38127cd374c317
     app.uploadimg({
       url: app.d.hostUrl + '/Api/Comment/add',
       path: uploadedImagesPaths,

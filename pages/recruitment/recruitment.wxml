@@ -118,4 +118,7 @@
  <view hidden='{{switch2}}' style='text-align:center;'>
 正在审核，请等待
 </view> 
+ <view hidden='{{!(switch2&&switch1)}}' style='text-align:center;'>
+审核已通过
+</view> 
 

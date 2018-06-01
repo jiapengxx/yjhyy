@@ -268,11 +268,11 @@
 <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../ywcDetail/ywcDetail?orderId={{item.id}}">订单详情</navigator>
 <block wx:if="{{item.prolist.length==1}}">
 <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'url="tuihuo?orderId={{item.id}}">申请售后</navigator> 
-            <block wx:if="{{orderList3.mstatus==1}}">
+            <block wx:if="{{item.prolist[0].mstatus==1}}">
               <view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>已评价</view>
             </block>
             <block wx:else>
-              <view bindtap='toComment'data-orderId="{{item.id}}"  data-ID="{{idx}}" style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</view>
+              <navigator url="../comment/index?orderId={{item.id}}&pid={{item.prolist[0].pid}}" style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</navigator>
             </block> 
             </block> 
 

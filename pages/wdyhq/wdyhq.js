@@ -99,8 +99,8 @@ Page({
         console.log(that.data.times)
         for (var i = 0; i < count1; i++) {
           //未使用时间处理
-          var start_date = new Date(parseInt(that.data.wsy[i].start_time)*1000)
-          var end_date = new Date(parseInt(that.data.wsy[i].end_time)*1000)
+          var start_date = new Date(that.data.wsy[i].start_time*1000)
+          var end_date = new Date(that.data.wsy[i].end_time*1000)
           that.setData({
             start: start_date.getFullYear() + '.' + (start_date.getMonth() + 1) + '.' + start_date.getDate(),
             end: end_date.getFullYear() + '.' + (end_date.getMonth() + 1) + '.' + end_date.getDate(),
@@ -120,8 +120,8 @@ Page({
         }
         for (var i = 0; i < count2; i++) {
           //已使用时间处理
-          var start_date1 = new Date(parseInt(that.data.ysy[i].start_time) * 1000)
-          var end_date1 = new Date(parseInt(that.data.ysy[i].end_time) * 1000)
+          var start_date1 = new Date(that.data.ysy[i].start_time) * 1000
+          var end_date1 = new Date(that.data.ysy[i].end_time * 1000)
           that.setData({
             start1: start_date1.getFullYear() + '.' + (start_date1.getMonth() + 1) + '.' + start_date1.getDate(),
             end1: end_date1.getFullYear() + '.' + (end_date1.getMonth() + 1) + '.' + end_date1.getDate(),
@@ -141,8 +141,8 @@ Page({
         }
         for (var i = 0; i < count3; i++) {
           //已失效时间处理
-          var start_date2 = new Date(parseInt(that.data.ysx[i].start_time) * 1000)
-          var end_date2 = new Date(parseInt(that.data.ysx[i].end_time) * 1000)
+          var start_date2 = new Date(that.data.ysx[i].start_time * 1000)
+          var end_date2 = new Date(that.data.ysx[i].end_time* 1000)
           that.setData({
             start2: start_date2.getFullYear() + '.' + (start_date2.getMonth() + 1) + '.' + start_date2.getDate(),
             end2: end_date2.getFullYear() + '.' + (end_date2.getMonth() + 1) + '.' + end_date2.getDate(),

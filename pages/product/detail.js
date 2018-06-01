@@ -26,7 +26,7 @@ Page({
     duration: 1000,
     attrValueList: [],
     buff:'',
-    tids:[]
+    tids:[],
   },
 
   // 立即购买弹窗
@@ -348,12 +348,80 @@ Page({
       success: function (res) {
         if (res.data.product_dp.length != 0) {
           that.setData({
-            
             All:(typeof (res.data.product_dp.all) != 'undefined' ? res.data.product_dp.all : []),
             Good:(typeof(res.data.product_dp.good)!= 'undefined' ? res.data.product_dp.good:[]),
             Medium: (typeof (res.data.product_dp.medium) != 'undefined' ? res.data.product_dp.medium : []),
             Bad: (typeof (res.data.product_dp.bad) != 'undefined' ? res.data.product_dp.bad : [])
           })
+          function checkTime(num) {
+            if (num < 10)
+            { num = "0" + num }
+            return num
+          }
+          if(that.data.All.length!=0){
+            that.setData({
+              all:[]
+            })
+            for (var i = 0; i < that.data.All.length; i++) {
+              var dateTime = new Date(that.data.All[i].addtime*1000)
+              that.setData({
+                time: dateTime.getFullYear() + '.' + (dateTime.getMonth() + 1) + '.' + dateTime.getDate() + '  ' + checkTime(dateTime.getHours()) + ':' + checkTime(dateTime.getMinutes()),
+              })
+              that.setData({
+                all: that.data.all.concat({
+                  time: that.data.time
+                })
+              })
+            }
+          }
+          if (that.data.Good.length != 0) {
+            that.setData({
+              good: []
+            })
+            for (var i = 0; i < that.data.Good.length; i++) {
+              var dateTime = new Date(that.data.Good[i].addtime * 1000)
+              that.setData({
+                time: dateTime.getFullYear() + '.' + (dateTime.getMonth() + 1) + '.' + dateTime.getDate() + '  ' + checkTime(dateTime.getHours()) + ':' + checkTime(dateTime.getMinutes()),
+              })
+              that.setData({
+                good: that.data.good.concat({
+                  time: that.data.time
+                })
+              })
+            }
+          }
+          if (that.data.Medium.length != 0) {
+            that.setData({
+              medium: []
+            })
+            for (var i = 0; i < that.data.Medium.length; i++) {
+              var dateTime = new Date(that.data.Medium[i].addtime * 1000)
+              that.setData({
+                time: dateTime.getFullYear() + '.' + (dateTime.getMonth() + 1) + '.' + dateTime.getDate() + '  ' + checkTime(dateTime.getHours()) + ':' + checkTime(dateTime.getMinutes()),
+              })
+              that.setData({
+                medium: that.data.medium.concat({
+                  time: that.data.time
+                })
+              })
+            }
+          }
+          if (that.data.Bad.length != 0) {
+            that.setData({
+              bad: []
+            })
+            for (var i = 0; i < that.data.Bad.length; i++) {
+              var dateTime = new Date(that.data.Bad[i].addtime * 1000)
+              that.setData({
+                time: dateTime.getFullYear() + '.' + (dateTime.getMonth() + 1) + '.' + dateTime.getDate() + '  ' + checkTime(dateTime.getHours()) + ':' + checkTime(dateTime.getMinutes()),
+              })
+              that.setData({
+                bad: that.data.bad.concat({
+                  time: that.data.time
+                })
+              })
+            }
+          }
         } else {
           that.setData({
             All: [],

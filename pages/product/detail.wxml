@@ -201,7 +201,7 @@
               <image style='height:14rpx;width:14rpx;' src='../../images/{{item.num<5?(item.num<4.5?1:2):3}}.png'></image>
             </view>
             <!--日期  -->
-            <text style='position:relative;top:-60rpx;left:560rpx;font-size:24rpx;color:#999;'>{{}}2018-03-07</text>
+            <text style='position:relative;top:-60rpx;left:530rpx;font-size:24rpx;color:#999;'>{{flag==1?all[idx].time:(flag==2?good[idx].time:(flag==3?medium[idx].time:bad[idx].time))}}</text>
             <!--评论文字  -->
             <textarea style='position:relative;top:-30rpx;left:80rpx;width:600rpx;height:40rpx;font-size:30rpx;color:#333;'>{{item.concent}}</textarea>
             <!--图集  -->

@@ -17,7 +17,7 @@
 
       <view style='margin-left:33rpx;margin-right:33rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
         <block wx:for="{{shoucang_good}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
-          <view style='position:relative;top:{{(idx==0||idx==1)?80+(idx/2|Int)*40:40+(idx/2|Int)*40}}rpx;height:390rpx;width:320rpx;border:0.1rpx solid #eee;'>
+          <view style='position:relative;top:{{(idx==0||idx==1)?(80+(idx/2|Int)*40):(80+(idx/2|Int)*40)}}rpx;height:390rpx;width:320rpx;border:0.1rpx solid #eee;'>
             <block wx:if="{{xk}}">
               <icon id='{{item.pro_id}}' wx:if="{{array_gz[idx].type=='success_circle'}}" type="success_circle" style='position:relative;top:-6rpx;left:0rpx;z-index:5;' size="20" bindtap="bindCheckbox" data-index="{{idx}}" />
               <icon id='{{item.pro_id}}' wx:else type="circle" style='position:relative;top:-6rpx;left:0rpx;z-index:5;' size="20" bindtap="bindCheckbox" data-index="{{idx}}" />

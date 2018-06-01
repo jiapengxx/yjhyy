@@ -1,4 +1,7 @@
 <!--pages/user/user.wxml-->
+<import src="../../utils/tabBar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<scroll-view scroll-y style=" position:fixed;top:0px;height:90.5%;">
    <view class="userinfo">
      <button wx:if="{{!hasUserInfo && canIUse}}" style='position:relative;top:120rpx;width:260rpx;height:76rpx;font-size:36rpx;#fff;border:2rpx solid #fff;bprder-radius:8rpx;line-height:80rpx;' open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
   <block wx:else>
@@ -125,3 +128,4 @@
 
 </view>
 <view hidden='{{!page}}' style='height:500rpx;text-align:center;line-height:500rpx;color:#999'>更多内容请登录</view>
+</scroll-view>

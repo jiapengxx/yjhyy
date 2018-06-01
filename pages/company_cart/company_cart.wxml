@@ -40,7 +40,7 @@
      </view>
      
 <!--右边-->
-     <view class="title" style='position:relative;left:-80rpx;'>
+     <view class="title" style='position:absolute;right:30rpx;'>
         <text bindtap="removeShopCard" data-cartid="{{item.id}}" class="modal-close">x</text>
          <view class="stepper">
        <!-- 减号 -->

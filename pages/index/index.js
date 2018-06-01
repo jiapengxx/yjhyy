@@ -263,6 +263,20 @@ Page({
     }
   },
   gzsj:function(){
+    if (app.globalData.userInfo == null) {
+      wx.showModal({
+        title: '请先登录',
+        content: '登录获取更多信息',
+        showCancel: false,
+        success: function (res) {
+          if (res.confirm) {
+            wx.redirectTo({
+              url: '../user/user',
+            })
+          }
+        }
+      })
+    } else {
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Shangchang/shop_collect',
@@ -289,6 +303,7 @@ Page({
         });
       },
     })
+    }
   },
   onShareAppMessage: function () {
     return {

@@ -18,6 +18,7 @@ Page({
     content: '',
     selectArea: false,
     types: [],
+    first:false
   },
 
   /**
@@ -40,6 +41,9 @@ Page({
       setTimeout(function(){
         that.getStatus()
         that.getTypes()
+        that.setData({
+            first: true
+          })
       },2000)
     }
 
@@ -66,6 +70,11 @@ getStatus:function(){
         that.setData({
           switch2: true,
           switch1: false
+        })
+      }else{
+        that.setData({
+          switch2: true,
+          switch1: true
         })
       }
     },
@@ -114,7 +123,21 @@ getTypes:function(){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(this.data.first){
+      if (app.d.userId) {
+        this.getStatus()
+        this.getTypes()
+      } else {
+        wx.showToast({
+          title: '加载数据中',
+          icon: 'loading'
+        })
+        setTimeout(function () {
+          that.getStatus()
+          that.getTypes()
+        }, 2000)
+      }
+    }
   },
 
   /**

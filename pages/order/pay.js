@@ -203,7 +203,7 @@ console.log(buff)
     console.log(this.data.discount)
     console.log(zprice > this.data.discount)
     if (zprice > this.data.discount) {
-      var cprice = zprice - this.data.discount;
+      var cprice = (zprice - this.data.discount).toFixed(2);
       console.log(cprice)
       this.setData({
         FLAg: false,

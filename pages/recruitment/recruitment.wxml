@@ -115,7 +115,11 @@
     </view>
   </form>
 </view>
- <view hidden='{{switch2}}' style='text-align:center;'>
+ <view hidden='{{switch2}}' style='position:absolute;top:50%;left:40%;'>
+ 
 正在审核，请等待
+</view> 
+ <view hidden='{{!(switch2&&switch1)}}' style='position:absolute;top:50%;left:40%;'>
+审核已通过
 </view> 
 

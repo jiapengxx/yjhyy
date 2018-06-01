@@ -242,7 +242,7 @@
 <view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>已完成</view>
 </view>
-<!--商品数据  -->
+<!--商品数据   如果是单品则在下方显示   如果是多品则在上方显示 -->
 
 <block wx:for="{{item.prolist}}" wx:for-index="index" wx:for-item="itm" > 
 <view style='height:140rpx;'bindtap='toDetail' data-pro_id='{{itm.pid}}'>
@@ -251,6 +251,7 @@
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>¥{{itm.price}}</view>
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{itm.num}}</view>
+<block wx:if="{{item.prolist.length!=1}}">
 <navigator style='position:relative;top:-160rpx;left:460rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'url="tuihuo?orderId={{item.id}}">申请售后</navigator>
  <block wx:if="{{itm.mstatus==1}}">
               <view style='position:relative;top:-206rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>已评价</view>
@@ -258,19 +259,22 @@
             <block wx:else>
               <navigator url="../comment/index?orderId={{item.id}}&pid={{itm.pid}}" style='position:relative;top:-206rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>未评价</navigator>
             </block>
+            </block> 
 </view>
 
- </block> 
+</block> 
 <!--功能  -->
 <view style='position:relative;top:10rpx;height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
 <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../ywcDetail/ywcDetail?orderId={{item.id}}">订单详情</navigator>
-<!-- <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'url="tuihuo?orderId={{item.id}}">申请售后</navigator> -->
-            <!-- <block wx:if="{{orderList3.mstatus==1}}">
+<block wx:if="{{item.prolist.length==1}}">
+<navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'url="tuihuo?orderId={{item.id}}">申请售后</navigator> 
+            <block wx:if="{{item.prolist[0].mstatus==1}}">
               <view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>已评价</view>
             </block>
             <block wx:else>
-              <view bindtap='toComment'data-orderId="{{item.id}}"  data-ID="{{idx}}" style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</view>
-            </block> -->
+              <navigator url="../comment/index?orderId={{item.id}}&pid={{item.prolist[0].pid}}" style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</navigator>
+            </block> 
+            </block> 
 
 </view>
 </view>

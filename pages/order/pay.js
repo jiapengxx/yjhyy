@@ -166,13 +166,14 @@ console.log(buff)
         this.setData({
           cgold: e.currentTarget.dataset.price,
           cygold: 0,
-          flag: 1
+          flag: 1,
         })
       } else {
         this.setData({
           cgold: 0,
           cygold: 0,
-          flag: 0
+          flag: 0,
+          code:''
         })
       }
       this.setData({
@@ -189,7 +190,8 @@ console.log(buff)
         this.setData({
           cgold: 0,
           cygold: 0,
-          flag1: 0
+          flag1: 0,
+          code:''
         })
       }
       this.setData({
@@ -218,7 +220,7 @@ console.log(buff)
   //微信支付
   createProductOrderByWX: function (e) {
     this.setData({
-      paytype: 'weixin',
+      paytypes: 'weixin',
     });
     this.createProductOrder();
   },
@@ -255,17 +257,14 @@ console.log(buff)
         });
       }
 
-      this.createProductOrder();
+      this.createProductOrderJK();
     }
   },
-
-  //确认订单
-  createProductOrder: function () {
+  //确认订单(健康币)
+  createProductOrderJK: function () {
     this.setData({
       btnDisabled: false,
     })
-    console.log("ctype:"+this.data.code)
-    console.log(this.data.paytype)
     //创建订单
     var that = this;
     wx.request({
@@ -280,6 +279,62 @@ console.log(buff)
         remark: that.data.remark,//用户备注
         price: that.data.total,//总价
         vid: that.data.vid,//优惠券ID
+        cygold: that.data.cygold,
+        cgold: that.data.cgold
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {     
+        var data = res.data;
+        if (data.status == 1) {
+          //创建订单成功
+          if (data.arr.pay_type == 'gold' || data.arr.pay_type == 'ygold') {
+            //健康币支付
+            wx.showToast({
+              title: "支付成功!",
+              duration: 2000,
+            });
+            setTimeout(function () {
+              wx.redirectTo({
+                url: '../user/dingdan?currentTab=1&otype=deliver',
+              });
+            }, 2500);
+          }
+        } else {
+          wx.showToast({
+            title: "下单失败!",
+            duration: 2500
+          });
+        }
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！err:createProductOrder',
+          duration: 2000
+        });
+      }
+    });
+  },
+  //确认订单(微信)
+  createProductOrder: function () {
+    this.setData({
+      btnDisabled: false,
+    })
+    //创建订单
+    var that = this;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Payment/payment',
+      method: 'post',
+      data: {
+        uid: that.data.userId,
+        cart_id: that.data.cartId,
+        buff: that.data.buff,
+        type: that.data.paytypes,
+        aid: that.data.addrId,//地址的id
+        remark: that.data.remark,//用户备注
+        price: that.data.total,//总价
+        vid: that.data.vid,//优惠券ID
         ctype: that.data.code,
         cygold: that.data.cygold,
         cgold: that.data.cgold
@@ -287,9 +342,7 @@ console.log(buff)
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
-        console.log(res)
-        //--init data        
+      success: function (res) {     
         var data = res.data;
         if (data.status == 1) {
           //创建订单成功
@@ -303,18 +356,6 @@ console.log(buff)
           if (data.arr.pay_type == 'weixin') {
             //微信支付
             that.wxpay(data.arr);
-          }
-          if (data.arr.pay_type == 'gold' || data.arr.pay_type == 'ygold') {
-            //健康币支付
-            wx.showToast({
-              title: "支付成功!",
-              duration: 2000,
-            });
-            setTimeout(function () {
-              wx.redirectTo({
-                url: '../user/dingdan?currentTab=1&otype=deliver',
-              });
-            }, 2500);
           }
         } else {
           wx.showToast({

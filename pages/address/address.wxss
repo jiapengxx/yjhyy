@@ -12,7 +12,7 @@ page {
 
 .section {
   height: 100rpx;
-  border-bottom: 1px lightgrey solid;
+  border-bottom: 1px #e0e0e0 solid;
   display: flex;
   align-items: center;
   margin: 0 30rpx;

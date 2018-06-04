@@ -96,8 +96,8 @@ Page({
     } else {
         wx.showToast({
           title: '请填写正确的手机号',
-          icon: '',
-          image: '',
+          icon: 'none',
+
         })
     }
     if(this.data.flag){

@@ -11,8 +11,12 @@ Page({
   onLoad: function (options) {
     var that = this;
     // 页面初始化 options为页面跳转所带来的参数
-    var cartId = options.cartId;
-    console.log(app.d.userId);
+    if (options.cartId){
+      var cartId = options.cartId;
+      this.setData({
+        cartId: cartId
+      })
+    }
     wx.request({
       url: app.d.ceshiUrl + '/Api/Address/index',
       data: {
@@ -22,18 +26,14 @@ Page({
       header: {// 设置请求的 header
         'Content-Type':  'application/x-www-form-urlencoded'
       },
-      
       success: function (res) {
         // success
         var address = res.data.adds;
-        console.log(address);
         if (address == '') {
           var address = []
-        }
-        
+        }   
         that.setData({
           address: address,
-          cartId: cartId,
         })
       },
       fail: function () {

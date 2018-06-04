@@ -1,70 +1,84 @@
 <view class="page">
-  <view class="shop df" wx:for="{{productData}}">
-        <image class="sh_slt" src="{{item.ImgUrl}}"></image>
-        <view class="df_1">            
-            <view class="sp_text">
-                <navigator url="../index/detail?productId={{item.ProID}}">
-                    <view class="sp_tit ovh1">{{item.ProductName}}</view>
-                </navigator>
-                <view class="sp_neb">数量：×{{item.BuyCount}}</view>
-                <view class="sp_jg">¥：{{item.Price}}</view>
-                <button class="dle" data-card-id="{{item.CartID}}" bindtap="removeShopCard">删除</button> 
-                <navigator class="dle" url="../order/pay?productId={{item.ProID}}&cartId={{item.CartID}}&buyCount={{item.BuyCount}}">下单</navigator>
-            </view>
-        </view>
-    </view> 
-<!--样式-->  
-<view class="container carts-list" wx:if="{{carts==''}}">
+<block wx:if="{{carts!=''}}">
+  <view style='height:80rpx;'>
+    <text style='position:absolute;right:24rpx;top:26rpx;font-size:28rpx;color:#ff0000;' bindtap='bjsp'>{{flag?'编辑商品':'完成'}}</text>
+  </view>
+  <view style='height:20rpx;background-color:#ebebeb;'></view>
+   </block>
+  <!-- <view class="shop df" wx:for="{{productData}}">
+    <image class="sh_slt" src="{{item.ImgUrl}}"></image>
+    <view class="df_1">
+      <view class="sp_text">
+        <navigator url="../index/detail?productId={{item.ProID}}">
+          <view class="sp_tit ovh1">{{item.ProductName}}</view>
+        </navigator>
+        <view class="sp_neb">数量：×{{item.BuyCount}}</view>
+        <view class="sp_jg">¥：{{item.Price}}</view>
+         <button class="dle" data-card-id="{{item.CartID}}" bindtap="removeShopCard">删除</button>   
+        <navigator class="dle" url="../order/pay?productId={{item.ProID}}&cartId={{item.CartID}}&buyCount={{item.BuyCount}}">下单</navigator>
+      </view>
+    </view>
+  </view> -->
+  <!--样式-->
+  <view class="container carts-list" wx:if="{{carts==''}}">
     <view class="pp">
-         <image class="kong" src="https://tanghuzhao.com.cn/Public/images/cart.jpg" mode="aspectFill"/>
-         <view class="cla">购物车空空如也</view>
+      <image class="kong" src="https://tanghuzhao.com.cn/Public/images/cart.jpg" mode="aspectFill" />
+      <view class="cla">购物车空空如也</view>
     </view>
-</view>
-<view class="container carts-list">
-<!--勾-->
-     <view wx:for="{{carts}}" class="carts-item" data-title="{{item.pro_name}}" id="{{item.id}}">
-         <icon wx:if="{{item.selected}}" type="success_circle"    size="20" bindtap="bindCheckbox" data-index="{{index}}"/>
-         <icon wx:else type="circle" size="20" bindtap="bindCheckbox" data-index="{{index}}"/>
-     <!--img-->
-     <view id='{{item.pid}}' bindtap='toDetail'>
-         <image class="carts-image" src="{{item.photo_x}}" mode="aspectFill"/>
+  </view>
+  <view class="container carts-list">
+    <!--勾-->
+    <view wx:for="{{carts}}" class="carts-item" data-title="{{item.pro_name}}" id="{{item.id}}">
+      <icon wx:if="{{item.selected}}" type="success_circle" size="20" bindtap="bindCheckbox" data-index="{{index}}" />
+      <icon wx:else type="circle" size="20" bindtap="bindCheckbox" data-index="{{index}}" />
+      <!--img-->
+      <view id='{{item.pid}}' bindtap='toDetail'>
+        <image class="carts-image" src="{{item.photo_x}}" mode="aspectFill" />
+      </view>
+      <!--文字-->
+      <view id='{{item.pid}}' class="carts-text" bindtap='toDetail'>
+        <text class="carts-title">{{item.pro_name}}</text>
+        <text wx:if="{{item.guige}}" style='position:relative;top:-16rpx;width:300rpx;font-size:24rpx;margin:10rpx;color:#666;'>{{item.guige.length==0?'默认':(item.guige[0]+(item.guige.length==1?'':('-'+item.guige[1]+(item.guige.length==2?'':('-'+item.guige[2]+item.guige.length==3?'':('-'+item.guige[3]))))))}}</text>
+        <!--对规格数据列表进行遍历  -->
+        <view class="carts-subtitle">
+          <text class="carts-price">¥ {{item.price}}</text>
+        </view>
+      </view>
+
+      <!--右边-->
+      <view class="title" style='position:absolute;right:30rpx;'>
+        <!-- <text bindtap="removeShopCard" data-cartid="{{item.id}}" class="modal-close">x</text> -->
+        <view class="stepper">
+          <!-- 减号 -->
+          <text class="{{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus" data-cartid="{{item.id}}">-</text>
+          <!-- 数值 -->
+          <input type="number" bindchange="bindManual" value="{{item.num}}" />
+          <!-- 加号 -->
+          <text class="normal" data-index="{{index}}" bindtap="bindPlus" data-cartid="{{item.id}}">+</text>
+        </view>
+      </view>
+
     </view>
-    <!--文字-->
-   <view id='{{item.pid}}' class="carts-text" bindtap='toDetail'>
-       <text class="carts-title">{{item.pro_name}}</text>
-       <text wx:if="{{item.guige}}" style='position:relative;top:-16rpx;width:300rpx;font-size:24rpx;margin:10rpx;color:#666;'>{{item.guige.length==0?'默认':(item.guige[0]+(item.guige.length==1?'':('-'+item.guige[1]+(item.guige.length==2?'':('-'+item.guige[2]+item.guige.length==3?'':('-'+item.guige[3]))))))}}</text>
-       <!--对规格数据列表进行遍历  -->
-    <view class="carts-subtitle">
-        <text class="carts-price">¥ {{item.price}}</text>
+  </view>
+
+
+  <!--底部-->
+  <view class="carts-footer">
+    <view bindtap="bindSelectAll">
+      <icon wx:if="{{selectedAllStatus}}" type="success_circle" size="24" />
+      <icon wx:else type="circle" size="24" />
+      <text>全选</text>
+        <block wx:if="{{flag&&carts!=''}}">
+      <text class="reds">{{total}}</text>
+       </block>
     </view>
-     </view>
-     
-<!--右边-->
-     <view class="title" style='position:absolute;right:30rpx;'>
-        <text bindtap="removeShopCard" data-cartid="{{item.id}}" class="modal-close">x</text>
-         <view class="stepper">
-       <!-- 减号 -->
-             <text class="{{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus" data-cartid="{{item.id}}">-</text>
-       <!-- 数值 -->
-                <input type="number" bindchange="bindManual" value="{{item.num}}" />
-       <!-- 加号 -->
-              <text class="normal" data-index="{{index}}" bindtap="bindPlus" data-cartid="{{item.id}}">+</text>
-      </view> 
-       </view>
+    <block wx:if="{{flag}}">
+        <view class="button" bindtap='bindCheckout'>立即结算</view>
+    </block>
+    <block wx:else>
+        <view class="button" bindtap='removeShopCard'>删除</view>
+    </block>
+
 
   </view>
 </view>
-
-
-<!--底部-->
-<view class="carts-footer">
-   <view bindtap="bindSelectAll">
-       <icon wx:if="{{selectedAllStatus}}" type="success_circle" size="24" />
-        <icon wx:else type="circle" size="24" />
-        <text>全选</text>
-        <text class="reds">{{total}}</text>
-   </view>
-       <view class="button" bindtap='bindCheckout'>立即结算             </view>
-</view>
-</view>
-

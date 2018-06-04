@@ -668,5 +668,5 @@ Page({
     wx.navigateTo({
       url: '../product/detail?pro_id=' + pro_id,
     })
-  }
+  },
 })

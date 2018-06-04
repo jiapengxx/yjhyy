@@ -1,18 +1,30 @@
 var app = getApp();
-// pages/cart/cart.js
 Page({
   data: {
     page: 1,
     minusStatuses: ['disabled', 'disabled', 'normal', 'normal', 'disabled'],
     total: 0,
-    carts: []
+    carts: [],
+    flag: true,
+    jiesuan: false
   },
-  toDetail:function(e){
+  bjsp: function () {
+    if (this.data.flag) {
+      this.setData({
+        flag: false
+      })
+    } else {
+      this.setData({
+        flag: true
+      })
+    }
+  },
+  toDetail: function (e) {
     var pro_id = e.currentTarget.id
     //去商品详情页,传入
-  wx.navigateTo({
-    url: '../product/detail?pro_id=' + pro_id,
-  })
+    wx.navigateTo({
+      url: '../product/detail?pro_id=' + pro_id,
+    })
   },
   bindMinus: function (e) {
     var that = this;
@@ -155,6 +167,7 @@ Page({
   },
 
   bindCheckout: function () {
+    var that=this
     // 初始化toastStr字符串
     var toastStr = '';
     // 遍历取出已勾选的cid
@@ -167,6 +180,7 @@ Page({
     if (toastStr == '') {
       wx.showToast({
         title: '请选择要结算的商品！',
+        icon: 'none',
         duration: 2000
       });
       return false;
@@ -175,6 +189,13 @@ Page({
     wx.navigateTo({
       url: '../order/pay?cartId=' + toastStr,
     })
+    this.setData({
+      jiesuan: true
+    })
+    setTimeout(function(){
+
+      that.removeShopCard()
+    },2000) 
   },
 
   bindToastChange: function () {
@@ -195,7 +216,7 @@ Page({
     // 写回经点击修改后的数组
     this.setData({
       carts: carts,
-      total: '¥ ' + total
+      total: '¥ ' + total.toFixed(2)
     });
   },
 
@@ -210,16 +231,24 @@ Page({
 
   removeShopCard: function (e) {
     var that = this;
-    var cardId = e.currentTarget.dataset.cartid;
-    wx.showModal({
-      title: '提示',
-      content: '你确认移除吗',
-      success: function (res) {
-        res.confirm && wx.request({
+    this.setData({
+      deleteList: []
+    })
+    for (var i = 0; i < this.data.carts.length; i++) {
+      if (this.data.carts[i].selected) {
+        this.setData({
+          deleteList: this.data.deleteList.concat(this.data.carts[i].id)
+        })
+      }
+    }
+
+    if (this.data.jiesuan) {
+      for (var i = 0; i < that.data.deleteList.length; i++) {
+        wx.request({
           url: app.d.ceshiUrl + '/Api/Shopping/delete',
           method: 'post',
           data: {
-            cart_id: cardId,
+            cart_id: that.data.deleteList[i],
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -227,7 +256,6 @@ Page({
           success: function (res) {
             var data = res.data;
             if (data.status == 1) {
-              //that.data.productData.length =0;
               that.loadProductData();
             } else {
               wx.showToast({
@@ -236,16 +264,66 @@ Page({
               });
             }
           },
-        });
-      },
-      fail: function () {
-        // fail
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
+          fail: function () {
+            wx.showToast({
+              title: '网络异常！',
+              duration: 2000
+            });
+          }
         });
       }
-    });
+      that.setData({
+        flag: true,
+        jiesuan: false
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        content: '你确认移除吗',
+        success: function (res) {
+          if (res.confirm) {
+            for (var i = 0; i < that.data.deleteList.length; i++) {
+              wx.request({
+                url: app.d.ceshiUrl + '/Api/Shopping/delete',
+                method: 'post',
+                data: {
+                  cart_id: that.data.deleteList[i],
+                },
+                header: {
+                  'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                  var data = res.data;
+                  if (data.status == 1) {
+                    that.loadProductData();
+                  } else {
+                    wx.showToast({
+                      title: '操作失败！',
+                      duration: 2000
+                    });
+                  }
+                },
+                fail: function () {
+                  wx.showToast({
+                    title: '网络异常！',
+                    duration: 2000
+                  });
+                }
+              });
+            }
+            that.setData({
+              flag: true
+            })
+          }
+        },
+        fail: function () {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        }
+      });
+    }
   },
 
   // 数据案例
@@ -266,8 +344,8 @@ Page({
         var cart = res.data.cart;
         that.setData({
           carts: (res.data.status == 0 ? '' : cart),
-          selectedAllStatus:false,
-          total:0
+          selectedAllStatus: false,
+          total: 0
           //交互－ －
         });
       },

@@ -17,6 +17,39 @@ Page({
     code: 0,
     cartId: 0
   },
+  nameCheck:function(e){
+    var names = e.detail.value
+    if (names.length === 0) {
+      wx.showToast({
+        title: '请填写姓名',
+        icon: 'none'
+      })
+    }
+  },
+  phoneCheck:function(e){
+    var telphone = e.detail.value
+    if (telphone.length === 0) {
+      wx.showToast({
+        title: '请填写手机号',
+        icon: 'none'
+      })
+    }
+    else if (!(/^1(3|4|5|7|8)\d{9}$/.test(telphone))) {
+      wx.showToast({
+        title: '手机号格式不正确',
+        icon:'none'
+      })
+    }
+  },
+  address:function(){
+    var addresses = e.detail.value
+    if (addresses.length === 0) {
+      wx.showToast({
+        title: '请填写地址',
+        icon: 'none'
+      })
+    }
+  },
   formSubmit: function (e) {
     var  that=this
     var adds = e.detail.value;
@@ -82,7 +115,6 @@ Page({
 
       },
       fail: function () {
-        // fail
         wx.showToast({
           title: '网络异常！',
           duration: 2000
@@ -118,7 +150,6 @@ Page({
         })
       },
       fail: function () {
-        // fail
         wx.showToast({
           title: '网络异常！',
           duration: 2000
@@ -129,57 +160,57 @@ Page({
   },
 
   bindPickerChangeshengArr: function (e) {
-    this.setData({
-      shengIndex: e.detail.value,
-      shiArr: [],
-      shiId: [],
-      quArr: [],
-      quiId: []
-    });
     var that = this;
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/Address/get_city',
-      data: { sheng: e.detail.value },
-      method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      header: {// 设置请求的 header
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        // success
-        var status = res.data.status;
-        var city = res.data.city_list;
-
-        var hArr = [];
-        var hId = [];
-        hArr.push('请选择');
-        hId.push('0');
-        for (var i = 0; i < city.length; i++) {
-          hArr.push(city[i].name);
-          hId.push(city[i].id);
-        }
-        that.setData({
-          sheng: res.data.sheng,
-          shiArr: hArr,
-          shiId: hId
-        })
-      },
-      fail: function () {
-        // fail
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-
-    })
+    if (e.detail.value!=0){
+      this.setData({
+        shengIndex: e.detail.value,
+        shiArr: [],
+        shiId: [],
+        quArr: [],
+        quiId: []
+      });
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Address/get_city',
+        data: { sheng: e.detail.value },
+        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        header: {// 设置请求的 header
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          // success
+          var status = res.data.status;
+          var city = res.data.city_list;
+          var hArr = [];
+          var hId = [];
+          hArr.push('请选择');
+          hId.push('0');
+          for (var i = 0; i < city.length; i++) {
+            hArr.push(city[i].name);
+            hId.push(city[i].id);
+          }
+          that.setData({
+            sheng: res.data.sheng,
+            shiArr: hArr,
+            shiId: hId
+          })
+        },
+        fail: function () {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        },
+      })
+    }
   },
   bindPickerChangeshiArr: function (e) {
+    var that = this;
+    if (e.detail.value != 0) {
     this.setData({
       shiIndex: e.detail.value,
       quArr: [],
       quiId: []
     })
-    var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Address/get_area',
       data: {
@@ -209,20 +240,20 @@ Page({
         })
       },
       fail: function () {
-        // fail
         wx.showToast({
           title: '网络异常！',
           duration: 2000
         });
       }
     })
+    }
   },
   bindPickerChangequArr: function (e) {
-    console.log(this.data.city)
+    var that = this;
+    if (e.detail.value != 0) {
     this.setData({
       quIndex: e.detail.value
     });
-    var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Address/get_code',
       data: {
@@ -240,7 +271,6 @@ Page({
         })
       },
       fail: function () {
-        // fail
         wx.showToast({
           title: '网络异常！',
           duration: 2000
@@ -248,5 +278,5 @@ Page({
       }
     })
   }
-
+  }
 })

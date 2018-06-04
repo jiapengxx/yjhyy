@@ -17,7 +17,7 @@
   </view>
   <view class="p_all01 mtt0">
     <view class="btnGreen">
-      <button type="primary" id="btnPay" formType="submit" bindtap="submitReturnData">确定</button>
+      <button type="primary" id="btnPay" formType="submit" bindtap="{{types=='ywc'?'submitReturn':'submitReturnData'}}">确定</button>
     </view>
   </view>
 </view>

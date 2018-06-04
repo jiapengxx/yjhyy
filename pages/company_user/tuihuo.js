@@ -8,14 +8,67 @@ Page({
     imgUrl:'',
   },
   onLoad:function(options){
-    this.setData({
+    console.log(options)
+    if (options.orderId && options.pro_id){
+      this.setData({
+        orderId: options.orderId,
+        pro_id: options.pro_id,
+        types:'ywc'
+      });
+    } else if (options.orderId){
+      this.setData({
       orderId: options.orderId,
+      types:'dfh'
+      });
+    }
+
+  },
+  //已完成退款   传入orderid proid
+  submitReturn: function () {
+    var that = this;
+    if (!this.data.remark) {
+      wx.showToast({
+        title: '请填写退款原因',
+        icon: 'success',
+        duration: 2000
+      });
+      return;
+    }
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Order/orders_edit',
+      method: 'post',
+      data: {
+        id: that.data.orderId,
+        type: 'refund',
+        back_remark: that.data.remark,
+        pro_id:that.data.pro_id
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var status = res.data.status;
+        if (status == 1) {
+          wx.showToast({
+            title: '您的申请已提交审核！',
+            duration: 2000
+          });
+          setTimeout(function () {
+            wx.redirectTo({
+              url: '../company_user/dingdan?currentTab=4',
+            });
+          }, 2000)
+        } else {
+          wx.showToast({
+            title: res.data.err,
+            duration: 2000
+          });
+        }
+      },
     });
   },
+  //待发货  退货 传入 orderid
   submitReturnData:function(){
-    //console.log(this.data);
-    //数据验证
-
     if(!this.data.remark){
       wx.showToast({
         title: '请填写退款原因',
@@ -45,8 +98,7 @@ Page({
       header: {
         'Content-Type':  'application/x-www-form-urlencoded'
       },
-      success: function (res) {
-        //--init data        
+      success: function (res) {     
         var status = res.data.status;
         if(status == 1){
           wx.showToast({

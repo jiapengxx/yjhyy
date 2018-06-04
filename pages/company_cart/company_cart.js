@@ -195,15 +195,13 @@ Page({
     // 写回经点击修改后的数组
     this.setData({
       carts: carts,
-      total: '¥ ' + total
+      total: '¥ ' + total.toFixed(2)
     });
   },
-
   onLoad: function (options) {
     this.loadProductData();
     this.sum();
   },
-
   onShow: function () {
     this.loadProductData();
   },

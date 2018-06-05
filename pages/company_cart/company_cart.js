@@ -189,13 +189,13 @@ Page({
     wx.navigateTo({
       url: '../order/pay?cartId=' + toastStr,
     })
-    this.setData({
-      jiesuan: true
-    })
-    setTimeout(function(){
+    // this.setData({
+    //   jiesuan: true
+    // })
+    // setTimeout(function(){
 
-      that.removeShopCard()
-    },2000) 
+    //   that.removeShopCard()
+    // },2000) 
   },
 
   bindToastChange: function () {

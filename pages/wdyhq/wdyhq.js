@@ -14,15 +14,12 @@ Page({
     wsy: [],
     ysy: [],
     ysx: [],
-
     start: 0,
     end: 0,
     times: [],
-
     start1: 0,
     end1: 0,
-    times1: [],
-    
+    times1: [], 
     start2: 0,
     end2: 0,
     times2: [],
@@ -92,7 +89,6 @@ Page({
         var time1 = ''
         var a11 = ''
         var b11 = ''
-
         var time2 = ''
         var a12 = ''
         var b12 = ''
@@ -168,8 +164,19 @@ Page({
         });
       },
     })
+    this.initSystemInfo()
   },
-
+  initSystemInfo: function () {
+    var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          winWidth: res.windowWidth,
+          winHeight: res.windowHeight
+        });
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

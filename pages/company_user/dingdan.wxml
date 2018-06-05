@@ -251,7 +251,7 @@
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>¥{{itm.price}}</view>
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{itm.num}}</view>
-<block wx:if="{{item.prolist.length!=1}}">
+<block wx:if="{{item.prolist.length>1}}">
 <navigator data-pro_id='{{itm.pid}}' style='position:relative;top:-160rpx;left:460rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'url="tuihuo?orderId={{item.id}}&&pro_id={{itm.pid}}">申请售后</navigator>
  <block wx:if="{{itm.mstatus==1}}">
               <view style='position:relative;top:-206rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>已评价</view>

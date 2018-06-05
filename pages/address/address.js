@@ -24,6 +24,11 @@ Page({
         title: '请填写姓名',
         icon: 'none'
       })
+    } else if (names.length>10){
+      wx.showToast({
+        title: '姓名不得超过10个字符',
+        icon: 'none'
+      })
     }
   },
   phoneCheck:function(e){
@@ -107,12 +112,12 @@ Page({
           }else{
             wx.showToast({
               title: res.data.err,
-              duration: 2000
+              duration: 2000,
+              icon:'none'
             });
           }
 
         }
-
       },
       fail: function () {
         wx.showToast({

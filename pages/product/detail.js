@@ -212,6 +212,13 @@ Page({
             }
           }
         })
+        this.setData({
+          bindUid: DAta[0],
+          pro_id: DAta[1],
+          store_id: DAta[2]
+        })
+        that.loadProductDetail();
+        that.loadProductEvaluate();
    }else{
         wx.showModal({
           title: '请先登录',
@@ -239,7 +246,6 @@ Page({
           uid: app.d.userId,
         });
       }
-      console.log("aaaaaaaaaaasdew")
       that.loadProductDetail();
       that.loadProductEvaluate();
 }

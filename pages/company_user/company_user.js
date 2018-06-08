@@ -100,7 +100,6 @@ Page({
   getUserSessionKey: function (code) {
     //用户的订单状态
     var that = this;
-    console.log(that.data.u_id + 'aaaaaaaaaaaaaaaaaaaaa');
     wx.request({
       url: app.d.ceshiUrl + '/Api/Login/getsessionkey',
       method: 'post',
@@ -123,15 +122,9 @@ Page({
         }
         app.globalData.userInfo['sessionId'] = data.session_key;
         app.globalData.userInfo['openid'] = data.openid;
-        console.log(that.data.u_id+'aaaaaaaaaaaaaaaaaaaaa');
-        console.log(data.openid + 'aaaaaaaaaaaaaaaaaaaaa');
         if (that.data.u_id){
-          console.log(that.data.u_id + 'aaaaaaaaaaaaaaaaaaaaa');
-          that.oneLogin(data.openid);
-        }else{
           that.oneLogin(data.openid);
         }
-
         that.onLoginUser();
       },
       fail: function (e) {
@@ -143,7 +136,6 @@ Page({
     });
   },
   oneLogin: function (openid) {
-    console.log(openid+"aaaaaaaaaaaaaaaaa");
     var openid= openid;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Login/oneLogin',
@@ -155,12 +147,14 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        console.log(openid + "aaaaaaaaaaaaaaaaa");
+        console.log(res.status);
+        console.log(openid + "bbbbbbbbbbb");
         //--init data        
         if(res.data.status==0){
           wx.showToast({
             title: res.data.err,
           });
+          return false;
         }
       },
       fail: function (e) {

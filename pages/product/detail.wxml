@@ -9,7 +9,7 @@
     </block>
   </swiper>
   <view style='width:750rpx;height:80rpx;'>
-    <image src='../../images/fenxiangD.png' style='width:750rpx;height:80rpx;'></image>
+    <image src='../../images/fenxiangD.jpg' style='width:750rpx;height:80rpx;'></image>
     <button open-type='share' style='position:relative;top:-122rpx;left:236rpx;height:148rpx;width:148rpx;border-radius:74rpx;background-color:#e03407;color:#fff000;font-size:40rpx;font-weight:600;z-index:10;'>
       <text style='position:relative;top:-3rpx;'>立即</text>
       <text style='position:relative;top:-51rpx;'>分享</text>

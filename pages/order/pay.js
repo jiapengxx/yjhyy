@@ -350,7 +350,7 @@ console.log(buff)
             });
             setTimeout(function () {
               wx.redirectTo({
-                url: (app.globalData.froms = 'company_user' ? '../company_user/dingdan?currentTab=1&otype=deliver' : '../user/dingdan?currentTab=1&otype=deliver') ,
+                url: (app.globalData.froms=='company_user' ? '../company_user/dingdan?currentTab=1&otype=deliver' : '../user/dingdan?currentTab=1&otype=deliver') ,
               });
             }, 2500);
           }

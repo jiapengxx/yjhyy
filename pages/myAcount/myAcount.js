@@ -13,6 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData.froms)
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/User/num ',
@@ -123,9 +124,16 @@ Page({
             content: '继续消费'+(199-res.data.amount)+'元，分享即可得金币！是否前往购物？',
             success: function (res) {
               if (res.confirm) {
-                wx.switchTab({
-                  url: '../company_index/company_index',
-                })
+                if (app.globalData.froms=='company_user'){
+                  wx.switchTab({
+                    url: '../company_index/company_index',
+                  })
+                }else{
+                  wx.redirectTo({
+                    url: '../index/index',
+                  })
+                }
+
               } 
             }
           })
@@ -151,23 +159,36 @@ Page({
       content: '您是否进入商城,购买商品即可获得银币',
       success: function (res) {
         if (res.confirm) {
-          wx.switchTab({
-            url: '../company_index/company_index',
-          })
+          if (app.globalData.froms=='company_user') {
+            wx.switchTab({
+              url: '../company_index/company_index',
+            })
+          } else {
+            wx.redirectTo({
+              url: '../index/index',
+            })
+          }
         } else if (res.cancel) {
         }
       }
     })
   },
   toUseCoin: function () {
+    console.log(app.globalData.froms =='company_user')
     wx.showModal({
       title: '提示',
       content: '您是否进入商城,购买商品时可用银币支付',
       success: function (res) {
         if (res.confirm) {
-          wx.switchTab({
-            url: '../company_index/company_index',
-          })
+          if (app.globalData.froms=='company_user') {
+            wx.switchTab({
+              url: '../company_index/company_index',
+            })
+          } else {
+            wx.redirectTo({
+              url: '../index/index',
+            })
+          }
         } else if (res.cancel) {
         }
       }

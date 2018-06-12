@@ -24,6 +24,7 @@
     "pages/listdetail/listdetail",
     "pages/address/address",
     "pages/searchPage/searchPage",
+    "pages/searchPageShop/searchPageShop",
     "pages/address/user-address/user-address",
     "pages/category/index",
     "pages/ritual/ritual",

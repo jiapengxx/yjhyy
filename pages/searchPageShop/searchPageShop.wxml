@@ -1,0 +1,73 @@
+
+<view class="page__bd">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+
+        <input type="text" class="weui-search-bar__input" placeholder="搜索产品、品牌" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch' bindblur='hideInput' focus="{{inputShowed}}" value="{{inputVal}}" />
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索产品、品牌</view>
+      </label>
+    </view>
+    <button class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="toSearch">搜索</button>
+  </view>
+</view>
+<scroll-view scroll-y style=" position:fixed;top:120rpx;height:90%;"> 
+
+ <view class="cont">
+      <navigator class="pr" url="../product/detail?pro_id={{item.id}}" hover-class="changestyle"  wx:for="{{prolist}}">
+        <image class="photo" src="{{item.photo_x}}"></image>
+        <view class="title" style='text-align:center;' >{{item.name}}</view>
+        <view style="display:flex;line-height:50rpx;padding:10rpx 0;">
+          <view class="gmxx" style="  color: red;">¥ {{item.price_yh}}</view>
+          <view class="gmx">¥ {{item.price}}</view>
+        </view>
+        <view style="display:flex;line-height:50rpx;color:#999">
+          <view class="gmxx" style="font-size:28rpx;width:30%">
+            <text wx:if="item.is_show==1">新品</text>
+            <text wx:elif="item.is_hot==1">热销</text>
+            <text wx:else>推荐</text>
+          </view>
+          <view class="ku" style="width:60%">销量：{{item.shiyong}}</view>
+        </view>
+      </navigator>
+    </view>
+   <view hidden="{{loadingMoreHidden ? false : true}}" class="clear mt10" bindtap="getMore">点击查看更多</view>
+  <view hidden="{{loadingHidden ? true : false}}" class="no-more-goods">没有更多啦</view>
+</scroll-view>
+ <!-- <block wx:for-items="{{goods}}" bindtap="toDetailsTap" wx:for-item="item" wx:key="id"wx:for-index="idx">
+        <view style='height:582rpx;width:702rpx;margin-left:24rpx;' >
+          <view id='{{item.store_id}}' bindtap='toBtoC'style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;' >
+          <view style='height:150rpx;width:150rpx;'>
+          <image  src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
+          </view>
+            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+              <text class='t1'>{{item.name}}\n</text>
+              <text class='t2'>{{item.introduce}}\n</text>
+              <text class='t4'>{{item.type_name}}</text>
+            </view>
+            <view style='position:relative;top:110rpx;left:-100rpx;width:80rpx;height:50rpx;'>
+             <text class='t5'>销量:{{item.num}}</text>
+            </view>
+           <view style='position:relative;top:10rpx;left:-60rpx;width:200rpx;'>
+              <image bindtap='callPhone'  src='../../images/callPhone.png'  style='position:relative;top:-20rpx;left:-130rpx;height:37rpx;width:37rpx;'></image>
+              <image bindtap='position'src='../../images/position.png' style='position:relative;top:-20rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;'></image>
+              <view class='t3'>{{distance1[idx].distance}}km</view>
+            </view>
+          </view>
+<view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
+<view wx:for="{{item.goods}}" wx:for-item="ite"  wx:for-index="index"  style='position:relative;top:80rpx;height:292rpx;width:212rpx;'>
+            <view id='{{item.goods[index].product_id}}' style='display:flex;flex-direction:column;justify-content:space-between;flex-wrap:wrap;width:212rpx;height:290rpx;text-align:center;line-height:25rpx;' bindtap='toGoodsDetail'>
+              <image style='width:212rpx;height:180rpx;' src='{{host}}/Data/{{item.goods[index].pro_photo_x}}'></image>
+              <text style='width:212rpx;height:48rpx;font-size:26rpx;color:#333333;'>{{item.goods[index].pro_name}}</text>
+              <text style='width:212rpx;height:30rpx;font-size:24rpx;color:#e91d1d'>￥{{item.goods[index].price}}</text>
+            </view>
+          </view>
+</view>
+        </view>
+        <view style='border-bottom: 0.1rpx solid #777;'></view>
+        </block>
+<view hidden="{{loadingMoreHidden ? true : false}}" class="no-more-goods">没有更多啦</view> -->

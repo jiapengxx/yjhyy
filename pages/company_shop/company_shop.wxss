@@ -34,7 +34,7 @@ page {
 }
 .t1 {
   position: relative;
-  top: 0rpx;
+  top: -10rpx;
   font-family: PingFangSC-Regular, sans-serif;
   color: #333;
   font-size: 26rpx;
@@ -42,8 +42,9 @@ page {
 
 .t2 {
   position: relative;
+  top: -10rpx;
   height: 56rpx;
-  width: 490rpx;
+  width: 450rpx;
   text-indent: 2em;
   display: -webkit-box;
   word-break: break-all;
@@ -67,7 +68,7 @@ page {
 
 .t4 {
   position: relative;
-  bottom: -8rpx;
+  top: -10rpx;
   width: 290rpx;
   height: 30rpx;
   background-color: ＃fde8e8;

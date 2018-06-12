@@ -92,7 +92,11 @@ Page({
     })
   },
 
-
+  showInput: function () {
+    wx.navigateTo({
+      url: '../searchPageShop/searchPageShop',
+    })
+  },
   tian: function (e) {
     var id = e.currentTarget.dataset.id;
     wx.navigateTo({
@@ -186,13 +190,14 @@ Page({
         var brand = res.data.brand;
         var course = res.data.course;
         var store = res.data.store;
-        //that.initProductData(data);
+
         that.setData({
           imgUrls: ggtop,
           proCat: procat,
           productData: prolist,
           brand: brand,
           course: course,
+          store:store
         });
         if (store!='null'){
           wx.setNavigationBarTitle({ title: store.name, })
@@ -305,9 +310,13 @@ Page({
     })
     }
   },
+  onShow:function(){
+    app.globalData.froms = 'user'
+    console.log(app.globalData.froms)
+  },
   onShareAppMessage: function () {
     return {
-      title: '北京医佳户健康医疗中心',
+      title: '' + this.data.store.name,
       path: '/pages/index/index',
       success: function (res) {
         // 分享成功

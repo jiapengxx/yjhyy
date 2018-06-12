@@ -117,6 +117,7 @@ Page({
         }
         app.globalData.userInfo['sessionId'] = data.session_key;
         app.globalData.userInfo['openid'] = data.openid;
+        console.log(that.data.pro_id)
          if(that.data.pro_id){
             wx.redirectTo({
               url: '../product/detail?pro_id='+that.data.pro_id,

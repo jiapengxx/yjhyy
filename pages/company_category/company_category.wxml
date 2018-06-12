@@ -3,11 +3,11 @@
       <view style='height:582rpx;width:702rpx;margin-left:24rpx;'>
         <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;'>
           <view style='height:150rpx;width:150rpx;'>
-            <image src='{{host}}{{item.img}}' style='height:150rpx;width:150rpx;'></image>
+            <image src='{{host}}/Data/{{item.logo}}' style='height:150rpx;width:150rpx;'></image>
           </view>
           <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
             <text class='t1'>{{item.name}}\n</text>
-            <text class='t2'>{{item.introduce}}\n</text>
+            <text class='t2'>{{item.intro}}\n</text>
             <text class='t4'>{{item.type_name}}</text>
           </view>
           <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>

@@ -99,9 +99,9 @@ Page({
     console.log(store_Id)
   },
   toGoodsDetail: function (e) {
-    var goods_Id = e.target.id;
+    var goods_Id = e.currentTarget.id;
     wx.navigateTo({
-      url: '../product/detail?goods_Id=' + goods_Id,
+      url: '../product/detail?pro_id=' + goods_Id,
     })
     console.log(goods_Id)
   },

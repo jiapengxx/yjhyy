@@ -212,13 +212,6 @@ Page({
             }
           }
         })
-        this.setData({
-          bindUid: DAta[0],
-          pro_id: DAta[1],
-          store_id: DAta[2]
-        })
-        that.loadProductDetail();
-        that.loadProductEvaluate();
    }else{
         wx.showModal({
           title: '请先登录',
@@ -286,7 +279,7 @@ Page({
   },
   // 商品详情数据获取
   loadProductDetail: function () {
-    console.log("aaa")
+    console.log("jiapeng1");
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/index',
@@ -295,7 +288,6 @@ Page({
         pro_id: that.data.pro_id,
         r_uid: app.d.userId,
         u_id: that.data.bindUid,
-        openid: app.globalData.userInfo.openid
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'

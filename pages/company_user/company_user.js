@@ -37,11 +37,14 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
-    if (option.u_id){
-      var u_id = option.u_id;
+    if (option.DAta) {
+      var u_id = option.DAta[0];
       this.setData({
-        u_id: option.u_id,
+        u_id: u_id,
+        pro_id: option.DAta[1]
       })
+      console.log(this.data.pro_id+"asdasdasd");
+      console.log(option.DAta)
     }
     if (app.globalData.userInfo) {
       this.setData({
@@ -112,7 +115,7 @@ Page({
       success: function (res) {
         //--init data        
         var data = res.data;
-       
+        
         if (data.status == 0) {
           wx.showToast({
             title: data.err,
@@ -122,9 +125,16 @@ Page({
         }
         app.globalData.userInfo['sessionId'] = data.session_key;
         app.globalData.userInfo['openid'] = data.openid;
-        if (that.data.u_id){
-          that.oneLogin(data.openid);
+        console.log("asdasd"+that.data.pro_id)
+        if (that.data.pro_id) {
+          console.log("15615616516")
+          wx.redirectTo({
+            url: '../product/detail?pro_id=' + that.data.pro_id,
+          })
         }
+        // if (that.data.u_id){
+        //   that.oneLogin(data.openid);
+        // }
         that.onLoginUser();
       },
       fail: function (e) {

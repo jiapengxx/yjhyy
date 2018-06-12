@@ -245,9 +245,15 @@ register:function(){
           title: '注册成功',
           })
       setTimeout(function () {
-        wx.reLaunch({
-          url: '../company_index/company_index',
-        })
+        if (app.globalData.froms == 'company_user') {
+          wx.switchTab({
+            url: '../company_index/company_index',
+          })
+        } else {
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        }
         }, 3000)
         }
       },

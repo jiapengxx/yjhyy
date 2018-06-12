@@ -37,13 +37,19 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
-    if (option.DAta) {
+    // if (option.DAta) {
+    //   var u_id = option.DAta[0];
+    //   this.setData({
+    //     u_id: u_id,
+    //     pro_id: option.DAta[1]
+    //   })
+    app.globalData.froms='company_user'
+    if (option.DAta){
       var u_id = option.DAta[0];
       this.setData({
-        u_id: u_id,
+        u_id:u_id,
         pro_id: option.DAta[1]
       })
-      console.log(this.data.pro_id+"asdasdasd");
       console.log(option.DAta)
     }
     if (app.globalData.userInfo) {
@@ -77,28 +83,19 @@ Page({
   },
   getUserInfo: function (cb) {
     var that = this
-    // if (app.globalData.userInfo) {
-    //   typeof cb == "function" && cb(this.globalData.userInfo)
-
-    // } else {
-      //调用登录接口
       wx.login({
         success: function (res) {
           console.log(res)
           var code = res.code;
-          //get wx user simple info
           wx.getUserInfo({
             success: function (res) {
               console.log(res)
               app.globalData.userInfo = res.userInfo
-              // typeof cb == "function" && cb(that.globalData.userInfo);
               that.getUserSessionKey(code);
             }
           });
         }
       });
-    // }
-
   },
   getUserSessionKey: function (code) {
     //用户的订单状态
@@ -125,16 +122,23 @@ Page({
         }
         app.globalData.userInfo['sessionId'] = data.session_key;
         app.globalData.userInfo['openid'] = data.openid;
-        console.log("asdasd"+that.data.pro_id)
-        if (that.data.pro_id) {
-          console.log("15615616516")
-          wx.redirectTo({
-            url: '../product/detail?pro_id=' + that.data.pro_id,
-          })
-        }
-        // if (that.data.u_id){
-        //   that.oneLogin(data.openid);
+        // console.log("asdasd"+that.data.pro_id)
+        // if (that.data.pro_id) {
+        //   console.log("15615616516")
+        //   wx.redirectTo({
+        //     url: '../product/detail?pro_id=' + that.data.pro_id,
+        //   })
         // }
+         if(that.data.pro_id){
+            wx.redirectTo({
+              url: '../product/detail?pro_id='+that.data.pro_id,
+            })
+          }
+        if (that.data.u_id){
+          that.oneLogin(data.openid);
+        }else{
+          that.oneLogin(data.openid);
+        }
         that.onLoginUser();
       },
       fail: function (e) {

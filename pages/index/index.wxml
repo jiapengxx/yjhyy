@@ -5,7 +5,7 @@
 <scroll-view scroll-y style=" position:fixed;top:0px;height:90%;"> 
 <view class="page">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <navigator url="../product/detail?productId={{item.product_id}}"  wx:for="{{imgUrls}}">
+    <navigator url="../product/detail?pro_id={{item.product_id}}"  wx:for="{{imgUrls}}">
       <swiper-item>
         <image src="{{item.photo}}" class="slide-image" width="100%" height="200"  />
       </swiper-item>

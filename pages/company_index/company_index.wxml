@@ -136,11 +136,11 @@
       <block wx:for="{{sseller}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
-            <image src="{{host}}/{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
+            <image src="{{host}}/Data/{{item.logo}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>{{item.name}}</text>
-            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance1[idx].distance}}km\n</text>
+            <text style='position:absolute;left:360rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance1[idx].distance}}km\n</text>
             <!-- {{item.distance}} -->
 
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
@@ -151,8 +151,8 @@
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
             </view>
-            <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
-            <text style='position:absolute;left:0rpx;top:100rpx;width:350rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.introduce}}</text>
+            <text style='position:absolute;left:360rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
+            <text style='position:absolute;left:0rpx;top:100rpx;width:350rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.intro}}</text>
           </view>
         </view>
       </block>
@@ -162,11 +162,11 @@
       <block wx:for="{{store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
-            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
+            <image src="{{host}}/Data/{{item.logo}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>{{item.name}}</text>
-            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance2[idx].distance}}km\n</text>
+            <text style='position:absolute;left:360rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance2[idx].distance}}km\n</text>
             <!-- {{item.distance}} -->
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
               评价:
@@ -176,8 +176,8 @@
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<4?(item.grade<3.5?1:2):3}}.png'></image>
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
             </view>
-            <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
-            <text style='position:absolute;left:0rpx;top:100rpx;width:350rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.introduce}}</text>
+            <text style='position:absolute;left:360rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
+            <text style='position:absolute;left:0rpx;top:100rpx;width:350rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.intro}}</text>
           </view>
         </view>
       </block>
@@ -187,11 +187,11 @@
       <block wx:for="{{store2}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
         <view id='{{item.store_id}}' bindtap='toBtoC' style='height:174rpx;border-bottom:0.1rpx solid grey;'>
           <view style="position:relative;top:13rpx;left:36rpx;margin-right:36rpx;width:148rpx;height:148rpx;border-radius:50%;">
-            <image src="{{host}}{{item.img}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
+            <image src="{{host}}/Data/{{item.logo}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
             <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>{{item.name}}</text>
-            <text style='position:absolute;left:400rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance3[idx].distance}}km\n</text>
+            <text style='position:absolute;left:360rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance3[idx].distance}}km\n</text>
             <!-- {{item.distance}} -->
 
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
@@ -203,8 +203,8 @@
               <image style='height:24rpx;width:24rpx;' src='../../images/{{item.grade<5?(item.grade<4.5?1:2):3}}.png'></image>
             </view>
 
-            <text style='position:absolute;left:400rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
-            <text style='position:absolute;left:0rpx;top:100rpx;width:350rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.introduce}}</text>
+            <text style='position:absolute;left:360rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>销量:{{item.num}}\n</text>
+            <text style='position:absolute;left:0rpx;top:100rpx;width:350rpx;font-family: PingFangSC-Regular, sans-serif;font-size:25rpx;color:#666666;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>介绍:{{item.intro}}</text>
           </view>
         </view>
       </block>
@@ -222,8 +222,8 @@
 </view> -->
 
 <view style='position:relative;top:30rpx;width:100%;text-align:center;background-color:whitesmoke;'>
-  <text bindtap='position' style='font-size:35rpx;color:#333333'>北京医佳护健康医疗科技有限公司</text>
+  <text bindtap='position' style='font-size:35rpx;color:#333333'>医佳护提供平台技术支持</text>
   <!-- <image src='../../images/position.jpg' style='position:relative;top:10rpx;left:30rpx;height:46rpx;width:46rpx;'></image> -->
   <text>\n</text>
-  <text bindtap='call' style='font-size:35rpx;color:#333333'>咨询电话:010-123456</text>
+  <text bindtap='call' style='font-size:35rpx;color:#333333'>咨询电话:13146666946</text>
 </view>

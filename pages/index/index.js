@@ -174,7 +174,7 @@ Page({
       url: app.d.ceshiUrl + '/Api/Index/index',
       method: 'post',
       data: {
-        store_Id: app.d.store_Id,
+        store_Id: (app.d.store_Id ? app.d.store_Id : options.store_Id),
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'

@@ -375,10 +375,18 @@ Page({
           isStatus:'',
         });
       }else{
-        that.setData({
-          currentTab: parseInt(current),
-          isStatus:e.target.dataset.otype,
-        });
+        //有问题！！！！
+        if (that.data.currentTab==4){
+          that.setData({
+            currentTab: parseInt(current),
+            isStatus: '',
+          });
+        }else{
+          that.setData({
+            currentTab: parseInt(current),
+            isStatus: e.target.dataset.otype,
+          });
+        }
       }
       //没有数据就进行加载
       switch (that.data.currentTab) {
@@ -661,5 +669,5 @@ Page({
     wx.navigateTo({
       url: '../product/detail?pro_id=' + pro_id,
     })
-  }
+  },
 })

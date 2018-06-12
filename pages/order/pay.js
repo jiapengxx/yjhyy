@@ -4,7 +4,9 @@ Page({
   data: {
     itemData: {},
     userId: 0,
+    pulldown: false,
     remark: '',
+    minusStatuses:[],
     cartId: 0,
     addrId: 0,//收货地址//测试--
     btnDisabled: false,
@@ -19,13 +21,13 @@ Page({
     flag1: 0
   },
   onLoad: function (options) {
+    var that=this
     console.log(options)
     console.log((typeof options.DATAs) != "undefined")
     var uid = app.d.userId;
     if ((typeof options.DATAs) != "undefined") {
     var DAta = options.DATAs.split(",")
     console.log((typeof options.DATA) != "undefined")
-
     this.setData({
       cartId: DAta[DAta.length-1],
       userId: uid,
@@ -47,6 +49,23 @@ console.log(buff)
     }
     this.loadProductDetail();
     this.loadCoin();
+    setTimeout(function(){
+        console.log(that.data.productData)
+        console.log(that.data.productData.length)
+        for (var i = 0; i < that.data.productData.length; i++) {
+          if (that.data.productData[i].num == 1) {
+            that.setData({
+              minusStatuses: that.data.minusStatuses.concat('disabled')
+        })
+          } else if (that.data.productData[i].num > 1) {
+            that.setData({
+              minusStatuses: that.data.minusStatuses.concat('normal')
+        })
+      }
+      console.log(i)
+    }
+        console.log(that.data.minusStatuses)
+    },2000)
   },
   loadProductDetail: function () {
     var that = this;
@@ -113,6 +132,7 @@ console.log(buff)
     }
   },
   loadCoin: function () {
+
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/User/num ',
@@ -141,7 +161,40 @@ console.log(buff)
       remark: e.detail.value,
     })
   },
-
+  changePulldown: function () {
+    
+    if (this.data.pulldown) {
+      this.setData({
+        pulldown: false
+      })
+    } else {
+      this.setData({
+        pulldown: true
+      })
+    }
+  },
+  bindMinus: function (e) {
+    var that = this;
+    //获取到数量    状态
+    var index = parseInt(e.currentTarget.dataset.index);
+    var num = that.data.productData[index].num;
+    // 如果只有1件了，就不允许再减了
+    if (num > 1) {
+      num--;
+    }
+          // 只有大于一件的时候，才能normal状态，否则disable状态
+          var minusStatus = num <= 1 ? 'disabled' : 'normal';
+  },
+  bindPlus: function (e) {
+    var that = this;
+    console.log(e)
+    var index = parseInt(e.currentTarget.dataset.index);
+    var num = that.data.productData[index].num;
+    // 自增
+    var productData=that.data.productData
+    that.data.productData[index].num == num++;
+    console.log(num);
+  },
   //选择优惠券
   getvou: function (e) {
     var vid = e.currentTarget.dataset.id;
@@ -297,13 +350,14 @@ console.log(buff)
             });
             setTimeout(function () {
               wx.redirectTo({
-                url: '../user/dingdan?currentTab=1&otype=deliver',
+                url: (app.globalData.froms = 'company_user' ? '../company_user/dingdan?currentTab=1&otype=deliver' : '../user/dingdan?currentTab=1&otype=deliver') ,
               });
             }, 2500);
           }
         } else {
           wx.showToast({
-            title: "下单失败!",
+            title:''+res.data.err,
+            icon: 'none',
             duration: 2500
           });
         }
@@ -359,7 +413,8 @@ console.log(buff)
           }
         } else {
           wx.showToast({
-            title: "下单失败!",
+            title:''+res.data.err,
+            icon:'none',
             duration: 2500
           });
         }
@@ -405,7 +460,7 @@ console.log(buff)
               });
               setTimeout(function () {
                 wx.redirectTo({
-                  url: '../user/dingdan?currentTab=1&otype=deliver',
+                  url: (app.globalData.froms =='company_user'?'../company_user/dingdan?currentTab=1&otype=deliver':'../user/dingdan?currentTab=1&otype=deliver'),
                 });
               }, 2500);
             },
@@ -417,7 +472,7 @@ console.log(buff)
                 success: function (res) {
                   if (res.confirm) {
                     wx.redirectTo({
-                    url: '../company_user/dingdan?currentTab=0&otype=pay',
+                      url: (app.globalData.froms == 'company_user' ? '../company_user/dingdan?currentTab=0&otype=pay' : '../user/dingdan?currentTab=0&otype=pay'),
                   })
                   }else{
                     wx.redirectTo({

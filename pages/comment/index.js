@@ -64,6 +64,11 @@ Page({
   //     pids:this.data.pids.concat(IDs[i+1])
   //   })
   // }
+  if(options.froms){
+      this.setData({
+        froms: options.froms
+      })
+  }
     console.log(options.orderId + ',' + options.pid)
     var order_id = options.orderId
     var pid = options.pid
@@ -132,9 +137,15 @@ Page({
             duration: 2000
           });
           setTimeout(function () {
-            wx.switchTab({
-              url: '../company_user/company_user',
-            })
+            if(that.data.froms=='user'){
+              wx.redirectTo({
+                url: '../user/user',
+              })
+            }else{
+              wx.switchTab({
+                url: '../company_user/company_user',
+              }) 
+            }
           }
             , 3000)
         },

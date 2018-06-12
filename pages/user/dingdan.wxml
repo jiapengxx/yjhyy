@@ -34,14 +34,15 @@
   <image src='{{host}}/Data/{{itm.photo_x}}' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
 <view style='position:relative;top:-118rpx;left:154rpx;font-size:26rpx;color:#333;width:300rpx;'>{{itm.name}}</view>
 <view style='position:relative;top:-107rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
-<view style='position:relative;top:-95rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>¥{{itm.price}}</view>
+<view style='position:relative;top:-95rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：¥{{itm.price}}</view>
 <view style='position:relative;top:-128rpx;left:695rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{itm.num}}</view>
 </view>
  </block> 
 <!--结算  -->
 <view style='height:74rpx;background-color:#fff;'>
-<view style='position:relative;top:15rpx;left:360rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
-<view style='position:relative;top:-20rpx;left:500rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+<view style='position:relative;top:24rpx;left:50rpx;font-size:24rpx;color:#333;width:150rpx;'>运费：{{item.yunfei}}</view>
+<view style='position:relative;top:-10rpx;left:350rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
+<view style='position:relative;top:-44rpx;left:500rpx;font-size:24rpx;color:#333;width:200rpx;'>需付款：¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
 </view>
 <!--功能  -->
 <view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
@@ -105,7 +106,7 @@
   <image src='{{host}}/Data/{{itm.photo_x}}' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
 <view style='position:relative;top:-118rpx;left:154rpx;font-size:26rpx;color:#333;width:300rpx;'>{{itm.name}}</view>
 <view style='position:relative;top:-107rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
-<view style='position:relative;top:-95rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>¥{{itm.price}}</view>
+<view style='position:relative;top:-95rpx;left:154rpx;font-size:22rpx;color:#666;width:240rpx;'>价格：¥{{itm.price}}</view>
 <view style='position:relative;top:-128rpx;left:695rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{itm.num}}</view>
 </view>
  </block> 
@@ -121,10 +122,19 @@
 </view> -->
 <!-- </block> -->
 <!--结算  -->
-<view style='height:74rpx;background-color:#fff;'>
+<!-- <view style='height:74rpx;background-color:#fff;'>
 <view style='position:relative;top:15rpx;left:360rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
 <view style='position:relative;top:-20rpx;left:500rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+</view> -->
+
+<view style='height:74rpx;background-color:#fff;'>
+<view style='position:relative;top:24rpx;left:50rpx;font-size:24rpx;color:#333;width:150rpx;'>运费：{{item.yunfei?item.yunfei:0.00}}</view>
+<view style='position:relative;top:-10rpx;left:340rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
+<view style='position:relative;top:-44rpx;left:490rpx;font-size:24rpx;color:#333;width:250rpx;'>实付款：¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
 </view>
+
+
+
 <!--功能  -->
 <view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
 <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../dfhDetail/dfhDetail?orderId={{item.id}}">订单详情</navigator>
@@ -175,23 +185,24 @@
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>等待收货</view>
 
   <image src='../../images/wuliu.png' style='height:30rpx;width:30rpx;position:relative;top:-30rpx;left:24rpx;'></image>
-<view style='position:relative;top:-78rpx;left:80rpx;font-size:26rpx;color:#333;width:640rpx;'>{{item.post.AcceptStation}}</view>
+<view style='position:relative;top:-84rpx;left:80rpx;font-size:26rpx;color:#333;width:640rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:2;letter-spacing: 1rpx;'>{{item.post.AcceptStation}}</view>
 
 </view>
 <!--商品数据  -->
 <block wx:for="{{item.prolist}}" wx:for-index="idx" wx:for-item="itm" > 
-<view style='height:140rpx;position:relative;top:10rpx;' bindtap='toDetail' data-pro_id='{{itm.pid}}'>
+<view style='height:140rpx;position:relative;top:0rpx;' bindtap='toDetail' data-pro_id='{{itm.pid}}'>
   <image src='{{host}}/Data/{{itm.photo_x}}' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
-<view style='position:relative;top:-118rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{itm.name}}</view>
-<view style='position:relative;top:-107rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
-<view style='position:relative;top:-95rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>¥{{itm.price}}</view>
+<view style='position:relative;top:-112rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{itm.name}}</view>
+<view style='position:relative;top:-104rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
+<view style='position:relative;top:-95rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：¥{{itm.price}}</view>
 <view style='position:relative;top:-128rpx;left:695rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{itm.num}}</view>
 </view>
  </block> 
 <!--结算  -->
 <view style='height:74rpx;background-color:#fff;'>
-<view style='position:relative;top:15rpx;left:360rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
-<view style='position:relative;top:-20rpx;left:500rpx;font-size:24rpx;color:#333;width:300rpx;'>需付款:¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+<view style='position:relative;top:24rpx;left:50rpx;font-size:24rpx;color:#333;width:150rpx;'>运费：{{item.yunfei?item.yunfei:0.00}}</view>
+<view style='position:relative;top:-10rpx;left:340rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
+<view style='position:relative;top:-44rpx;left:490rpx;font-size:24rpx;color:#333;width:250rpx;'>实付款：¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
 </view>
 <!--功能  -->
 <view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
@@ -242,35 +253,42 @@
 <view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:300rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>已完成</view>
 </view>
-<!--商品数据  -->
+<!--商品数据   如果是单品则在下方显示   如果是多品则在上方显示 -->
 
 <block wx:for="{{item.prolist}}" wx:for-index="index" wx:for-item="itm" > 
-<view style='height:140rpx;'bindtap='toDetail' data-pro_id='{{itm.pid}}'>
+<view style='height:140rpx;'>
+<view style='width:400rpx;height:140rpx;' bindtap='toDetail' data-pro_id='{{itm.pid}}'>
   <image src='{{host}}/Data/{{itm.photo_x}}' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{itm.name}}</view>
 <view style='position:relative;top:-116rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
-<view style='position:relative;top:-116rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>¥{{itm.price}}</view>
-<view style='position:relative;top:-116rpx;left:154rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{itm.num}}</view>
-<navigator style='position:relative;top:-160rpx;left:460rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'url="tuihuo?orderId={{item.id}}">申请售后</navigator>
- <block wx:if="{{itm.mstatus==1}}">
-              <view style='position:relative;top:-206rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>已评价</view>
-            </block>
-            <block wx:else>
-              <navigator url="../comment/index?orderId={{item.id}}&pid={{itm.pid}}" style='position:relative;top:-206rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>未评价</navigator>
-            </block>
+<view style='position:relative;top:-116rpx;left:154rpx;font-size:22rpx;color:#666;width:240rpx;'>价格：¥{{itm.price}}</view>
+<view style='position:relative;top:-116rpx;left:154rpx;font-size:24rpx;color:#666;width:200rpx;'>数量：{{itm.num}}</view>
 </view>
 
- </block> 
+<block wx:if="{{item.prolist.length>1}}">
+<navigator data-pro_id='{{itm.id}}'  style='position:relative;top:-80rpx;left:460rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'url="tuihuo?orderId={{item.id}}&&pro_id={{itm.id}}">申请售后</navigator>
+ <block wx:if="{{itm.mstatus==1}}">
+              <view style='position:relative;top:-126rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>已评价</view>
+            </block>
+            <block wx:else>
+              <navigator url="../comment/index?orderId={{item.id}}&pid={{itm.pid}}&froms='user'"  style='position:relative;top:-126rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>未评价</navigator>
+            </block>
+            </block> 
+</view>
+
+</block> 
 <!--功能  -->
 <view style='position:relative;top:10rpx;height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
 <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../ywcDetail/ywcDetail?orderId={{item.id}}">订单详情</navigator>
-<!-- <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'url="tuihuo?orderId={{item.id}}">申请售后</navigator> -->
-            <!-- <block wx:if="{{orderList3.mstatus==1}}">
+<block wx:if="{{item.prolist.length==1}}">
+<navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="tuihuo?orderId={{item.id}}&&pro_id={{item.prolist[0].id}}" >申请售后</navigator> 
+            <block wx:if="{{item.prolist[0].mstatus==1}}">
               <view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>已评价</view>
             </block>
             <block wx:else>
-              <view bindtap='toComment'data-orderId="{{item.id}}"  data-ID="{{idx}}" style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</view>
-            </block> -->
+              <navigator url="../comment/index?orderId={{item.id}}&pid={{item.prolist[0].pid}}&froms='user'" style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;'>未评价</navigator>
+            </block> 
+            </block> 
 
 </view>
 </view>
@@ -315,8 +333,8 @@
 <view style='position:relative;top:{{idx*20}}rpx;' >
 <!--顶部  -->
 <view style='height:70rpx;'>
-<view style='position:relative;top:15rpx;left:24rpx;font-size:22rpx;color:#333;width:360rpx;'>订单编号:<text>{{item.order_sn}}</text></view>
-<view style='position:relative;top:-20rpx;left:400rpx;font-size:22rpx;color:#333;width:300rpx;'>申请时间:<text>{{item.back_addtime}}</text></view>
+<view style='position:relative;top:15rpx;left:24rpx;font-size:22rpx;color:#333;width:360rpx;'>订单编号：<text>{{item.order_sn}}</text></view>
+<view style='position:relative;top:-20rpx;left:400rpx;font-size:22rpx;color:#333;width:300rpx;'>申请时间：<text>{{item.back_addtime}}</text></view>
 </view>
 <!--商品数据  -->
 <!-- <block wx:for=""> -->
@@ -324,7 +342,7 @@
   <image src='{{item.photo_x}}' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
 <view style='position:relative;top:-106rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{item.name}}</view>
 <view style='position:relative;top:-102rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{item.pro_buff?item.pro_buff:'默认'}}</view>
-<view style='position:relative;top:-100rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>¥{{item.price}}</view>
+<view style='position:relative;top:-100rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：¥{{item.price}}</view>
 <view style='position:relative;top:-128rpx;left:680rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{item.product_num}}</view>
 
 </view>

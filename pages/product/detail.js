@@ -194,11 +194,10 @@ Page({
   // 传值
   onLoad: function (option) {
     var that = this;
-    //先对登录做判断
-    console.log(app.globalData.userInfo + "2222")
-    console.log(option.DATA + "33331");
+    //未登录
     if (app.globalData.userInfo == null){
       if (typeof option.DATA != 'undefined'){
+        //分享
         var DAta = option.DATA.split(",");
         wx.showModal({
           title: '请先登录',
@@ -206,13 +205,14 @@ Page({
           showCancel: false,
           success: function (res) {
             if (res.confirm) {
-              wx.reLaunch({
-                url: '../company_user/company_user?u_id=' + DAta[0],
+              wx.redirectTo({
+                url: '../user/user?DAta=' + DAta,
               })
             }
           }
         })
    }else{
+     //不是分享
         wx.showModal({
           title: '请先登录',
           content: '登录获取更多信息',
@@ -227,7 +227,9 @@ Page({
         })
    }
 }else{
-      if ((typeof option.DATA) != "undefined") {
+        //登陆过
+      if ((typeof option.DATA) != 'undefined') {
+        var DAta = option.DATA.split(",");
         this.setData({
           bindUid: DAta[0],
           pro_id: DAta[1],
@@ -240,47 +242,18 @@ Page({
         });
       }
       that.loadProductDetail();
+      console.log("详情已加载")
       that.loadProductEvaluate();
+      console.log("评论已加载")
 }
 
-
-    // if (typeof option.DATA!='undefined'){
-    //   var DAta = option.DATA.split(",");
-    // }
-    // if (app.globalData.userInfo == null) {
-    //   wx.showModal({
-    //     title: '请先登录',
-    //     content: '登录获取更多信息',
-    //     showCancel: false,
-    //     success: function (res) {
-    //       if (res.confirm) {
-    //         wx.reLaunch({
-    //           url: '../company_user/company_user?u_id=' + DAta[0],
-    //         })
-    //       }
-    //     }
-    //   })
-    // } else {
-    //   if ((typeof option.DATA) != "undefined") {
-    //     this.setData({
-    //       bindUid: DAta[0],
-    //       pro_id: DAta[1],
-    //       store_id: DAta[2]
-    //     })
-    //   } else {
-    //     this.setData({
-    //       pro_id: option.pro_id,
-    //       uid: app.d.userId,
-    //     });
-    //   }
-    //   that.loadProductDetail();
-    //   that.loadProductEvaluate();
-    // }
   },
   // 商品详情数据获取
   loadProductDetail: function () {
-    console.log("jiapeng1");
     var that = this;
+    console.log(that.data.pro_id)
+    console.log(app.d.userId)
+    console.log(that.data.bindUid)
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/index',
       method: 'post',
@@ -293,6 +266,7 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(res)
         var status = res.data.status;
         if (status == 1) {
           var pro = res.data.pro;

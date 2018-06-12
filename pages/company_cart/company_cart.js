@@ -111,7 +111,7 @@ Page({
           var minusStatuses = that.data.minusStatuses;
           minusStatuses[index] = minusStatus;
           // 将数值与状态写回
-          that.setData({
+          that.setData({ 
             minusStatuses: minusStatuses
           });
           that.sum();

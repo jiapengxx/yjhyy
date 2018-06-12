@@ -84,7 +84,9 @@ Page({
               long2: long2,
               la2: la2
             })
-
+            app.globalData.latitude=res.latitude
+            app.globalData.longitude = res.longitude
+            console.log(app.globalData.latitude, app.globalData.longitude)
 
             for (var i = 0; i < that.data.sseller.length; i++) {
               var la1 = parseFloat(that.data.sseller[i].latitude)
@@ -491,7 +493,7 @@ wx.navigateTo({
   },
   call: function () {
     wx.makePhoneCall({
-      phoneNumber: '010-123456',
+      phoneNumber: '13146666946',
       success: function () {
         console.log("拨打电话成功！")
       },

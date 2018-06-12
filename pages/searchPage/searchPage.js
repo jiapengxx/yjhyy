@@ -103,7 +103,7 @@ Page({
     wx.navigateTo({
       url: '../product/detail?pro_id=' + goods_Id,
     })
-    console.log(goods_Id)
+    console.log(e)
   },
   listenerSearchInput: function (e) {
     this.setData({

@@ -22,7 +22,7 @@
 <view style='position:relative;top:-124rpx;left:146rpx;font-size:26rpx;color:#333;width:300rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-124rpx;left:146rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：<text>{{item.pro_buff?item.pro_buff:'默认'}}</text></view>
 <view style='position:relative;top:-122rpx;left:146rpx;font-size:22rpx;color:#666;width:400rpx;'>数量：{{item.num}}</view>
-<view style='position:relative;top:-120rpx;left:146rpx;font-size:22rpx;color:#333;width:400rpx;'>¥{{item.price}}</view>
+<view style='position:relative;top:-120rpx;left:146rpx;font-size:22rpx;color:#333;width:400rpx;'>价格：¥{{item.price}}</view>
 </view>
 </block> 
 

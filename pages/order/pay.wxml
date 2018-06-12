@@ -1,5 +1,4 @@
-<!--pay.wxml-->
-<view class="w100">
+<!-- <view class="w100">
   <view class="p_all bg_white df item" wx:for="{{productData}}">
     <view class="cp_photo">
       <image src="{{item.photo_x}}"></image>
@@ -12,7 +11,6 @@
       <text class="gm_ovh_1h pt10">数量：{{item.num}}</text>
     </view>
   </view>
-
   <view class="p_all bg_white mt10 font_14" wx:if="{{addemt==0}}">
     <navigator url="../address/user-address/user-address?cartId={{cartId}}" hover-class="none">
       <view class="df">
@@ -22,9 +20,6 @@
           </view>
           <view class="l_h20 mt5">地址：{{address.address_xq}}</view>
         </view>
-        <!-- <image class="x_right mt15" src="/images/x_right.png"></image> -->
-        <!-- 本地缺少图片  -->
-
       </view>
     </navigator>
   </view>
@@ -35,12 +30,9 @@
       </view>
     </navigator>
   </view>
-
   <view class="xuan" wx:if="{{vou!=''}}">
     <view class="hui">可使用优惠券：</view>
-    <!--设置监听器，当点击radio时调用-->
     <radio-group bindchange="listenerRadioGroup" class="hui">
-      <!--label通常与radio和checkbox结合使用-->
       <label style="display: flex" wx:for="{{vou}}" class="xuan" bindtap="getvou" data-id="{{item.vid}}" data-price="{{item.amount}}">
         <radio value="{{item.vid}}" />满{{item.full_money}}立减{{item.amount}}元
       </label>
@@ -49,50 +41,170 @@
       </label>
     </radio-group>
   </view>
-
   <view class="xuan">
     <view class="hui">可使用健康币：</view>
-    <!--设置监听器，当点击radio时调用-->
     <radio-group class="hui">
-      <!--label通常与radio和checkbox结合使用-->
       <label id='gold' style="display: flex" class="xuan" bindtap="useCoin" data-id="0" data-price="{{num.gold}}">
         <radio value="0" checked="{{flag==1}}" />金币:{{num.gold}}
       </label>
-
       <label id='ygold' style="display: flex" class="xuan" bindtap="useCoin" data-id="0" data-price="{{num.denarius}}">
         <radio value="0" checked="{{flag1==1}}" />银币:{{num.denarius}}
       </label>
-
-
     </radio-group>
   </view>
-
-
-
   <view class="p_all bg_white mt10 font_14">
     <textarea class="min_60" auto-height name="remark" placeholder="备注" bindinput="remarkInput" value="{{remark}}" />
   </view>
-
   <view class="zhifu mt10 tc">应支付：
     <span class="font_20 red">¥ {{total}}</span>
   </view>
-  <!-- <navigator url="##" hover-class="none" class="zhifu mt10">支付宝<image class="x_right" src="/images/x_right.png"></image></navigator> -->
-  <!-- <navigator url="##" hover-class="none" class="zhifu">银联支付<image class="x_right" src="/images/x_right.png"></image></navigator> -->
-  <!-- <navigator url="../order/downline" hover-class="none" class="zhifu">线下支付<image class="x_right" src="/images/x_right.png"></image></navigator>
-	<navigator url="../order/downline" hover-class="none" class="zhifu">线下支付<image class="x_right" src="/images/x_right.png"></image></navigator>
- -->
   <view class="p_all mt10">
     <view class="btnGreen">
-      <!-- <button type="primary" id="btnPay" formType="submit" loading="{{loading}}" disabled="{{disabled}}">微信支付</button> -->
-      <!-- <navigator url="../order/detail" hover-class="none">
-				<button class="wx_pay_submit" type="primary" id="wxPay" formType="submit" >微信支付</button>
-				<button class="xx_pay_submit" type="default" id="xxPay" formType="submit" >线下支付</button>
-			</navigator> -->
       <button hidden='{{FLAg}}' class="wx_pay_submit" type="primary" id="wxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByWX">微信支付</button>
       <button hidden='{{!FLAg}}' class="jj_pay_submit" type="primary" id="jjPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByJJ">使用健康币支付</button>
       <button hidden='{{FLAg}}' class="xx_pay_submit" type="primary" id="xxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByXX">线下支付</button>
-
     </view>
   </view>
+</view>  -->
 
+
+<block wx:if="{{addemt!=0}}">
+  <navigator url="../address/user-address/user-address?cartId={{cartId}}" hover-class="none" style='height:80rpx;margin-left:24rpx;margin-right:24rpx;text-align:center;font-size:26rpx;line-height:80rpx;border'>添加收货地址</navigator>
+</block>
+<block wx:else>
+  <navigator url="../address/user-address/user-address?cartId={{cartId}}" hover-class="none" style='height:196rpx;margin-left:24rpx;margin-right:24rpx;border-bottom:1rpx solid #ebebeb;'>
+    <view style='position:relative;top:14rpx;;'>
+      <text style='font-size:30rpx;color:#333;'>{{address.name}}</text>
+      <text style='position:relative;left:30rpx;font-size:30rpx;color:#333;'>{{address.tel}}</text>
+
+      <view style='position:relative;top:12rpx;;'>
+        <view style='height:70rpx;width:500rpx;'>
+          <view style='position:relative;top:20rpx;left:0rpx;border-radius:15rpx;width:70rpx;height:30rpx;font-size:20rpx;color:#fff;background-color:#ff0000;text-align:center;'>默认</view>
+          <text style='position:relative;top:-30rpx;left:85rpx;font-size:24rpx;color:#666;'>{{address.address_xq}}</text>
+        </view>
+        <image style='position:relative;top:-40rpx;left:640rpx;height:40rpx;width:22rpx;' src='../../images/right.png'></image>
+      </view>
+    </view>
+  </navigator>
+</block>
+
+
+ <block wx:if="{{!pulldown}}">
+<view style='height:298rpx;margin-left:24rpx;margin-right:24rpx;border-bottom:1rpx solid #ebebeb;'>
+  <view style='position:relative;top:40rpx;;'>
+    <image style='position:relative;height:32rpx;width:30rpx;' src='../../images/dianpu.png'></image>
+    <text style='position:relative;top:-6rpx;left:20rpx;font-size:26rpx;color:#333;'>{{productData[0].sname}}</text>
+  </view>
+  <view style='position:relative;top:56rpx;;'>
+    <image style='position:relative;height:110rpx;width:110rpx;' src='{{productData[0].photo_x}}'></image>
+    <text style='position:relative;top:-80rpx;left:20rpx;font-size:26rpx;color:#333;'>{{productData[0].name}}</text>
+    <view style='position:relative;top:-74rpx;left:136rpx;font-size:22rpx;color:#666;'>
+      规格分类：
+      <text style='position:relative;top:0rpx;left:0rpx;'>{{productData[0].buff==''?'默认':productData[0].buff}}</text>
+    </view>
+  </view>
+  <view style='position:relative;top:30rpx;left:0rpx;font-size:24rpx;color:#333;'>
+    购买数量
+    <view style='position:relative;top:-80rpx;left:480rpx;height:52rpx;width:190rpx;'>
+      <view class="stepper">
+        <text class="{{minusStatuses[0]}}"bindtap="bindMinus" data-index="0">-</text>
+        <input type="number"bindchange="bindManual"value="{{productData[0].num}}" />
+        <text class="normal" bindtap="bindPlus" data-index="0">+</text>
+      </view>
+    </view>
+  </view>
 </view>
+  </block>  
+
+ <block wx:if="{{pulldown&&productData.length>1}}" wx:for="{{productData}}" wx:for-index="idx" wx:for-item="itm" >  
+
+<view style='height:298rpx;margin-left:24rpx;margin-right:24rpx;border-bottom:1rpx solid #ebebeb;'>
+  <view style='position:relative;top:40rpx;;'>
+    <image style='position:relative;height:32rpx;width:30rpx;' src='../../images/dianpu.png'></image>
+    <text style='position:relative;top:-6rpx;left:20rpx;font-size:26rpx;color:#333;'>{{productData[idx].sname}}</text>
+  </view>
+  <view style='position:relative;top:56rpx;;'>
+    <image style='position:relative;height:110rpx;width:110rpx;' src='{{productData[idx].photo_x}}'></image>
+    <text style='position:relative;top:-80rpx;left:20rpx;font-size:26rpx;color:#333;'>{{productData[idx].name}}</text>
+    <view style='position:relative;top:-74rpx;left:136rpx;font-size:22rpx;color:#666;'>
+      规格分类：
+      <text style='position:relative;top:0rpx;left:0rpx;'>{{productData[idx].buff==''?'默认':productData[idx].buff}}</text>
+    </view>
+  </view>
+  <view style='position:relative;top:30rpx;left:0rpx;font-size:24rpx;color:#333;'>
+    购买数量
+    <view style='position:relative;top:-80rpx;left:480rpx;height:52rpx;width:190rpx;'>
+      <view class="stepper">
+        <text class="{{minusStatuses[idx]}}" data-index="{{idx}}" bindtap="bindMinus">-</text>
+        <input type="number" bindchange="bindManual" value="{{productData[idx].num}}" />
+        <text class="normal" data-index="{{idx}}" bindtap="bindPlus">+</text>
+      </view>
+    </view>
+  </view>
+</view>
+  </block>  
+ <view wx:if="{{productData.length>1}}" style='height:44rpx;text-align:center;'>
+ <image class="{{pulldown?'pulldownAfter':'pulldown'}}" bindtap='changePulldown' src='../../images/pulldown.jpg' ></image>
+ </view>
+<view style='height:288rpx;margin-left:24rpx;margin-right:24rpx;border-bottom:1rpx solid #ebebeb;'>
+  <!-- <view style='position:relative;top:40rpx;;font-size:26rpx;color:#666;'>优惠券</view>
+<text style='position:relative;top:40rpx;;font-size:26rpx;color:#333;'>无可用优惠券</text>
+<image style='position:relative;top:34rpx;left:450rpx;height:10rpx;width:54rpx;' src='../../images/btn_cancel.png'></image>
+<view style='position:relative;top:60rpx;;font-size:26rpx;color:#666;'>健康币</view>
+<text style='position:relative;top:70rpx;;font-size:30rpx;color:#333;'>金币</text>
+<text style='position:relative;top:70rpx;left:300rpx;font-size:30rpx;color:#333;'>银币</text> -->
+
+  <!-- <view wx:if="{{vou!=''}}">
+    <view style='position:relative;top:30rpx;;font-size:26rpx;color:#666;'>优惠券</view>
+    <radio-group bindchange="listenerRadioGroup" class="hui1">
+      <label style="display: flex" wx:for="{{vou}}" class="xuan" bindtap="getvou" data-id="{{item.vid}}" data-price="{{item.amount}}">
+        <radio value="{{item.vid}}" />满{{item.full_money}}立减{{item.amount}}元
+      </label>
+      <label style="display: flex" class="xuan" bindtap="getvou" data-id="0" data-price="0">
+        <radio value="0" />不使用优惠券
+      </label>
+    </radio-group>
+    <image style='position:relative;top:-30rpx;left:580rpx;height:10rpx;width:54rpx;' src='../../images/btn_cancel.png'></image>
+  </view> -->
+
+    <view wx:if="{{vou!=''}}">
+    <view style='position:relative;top:30rpx;;font-size:26rpx;color:#666;'>优惠券</view>
+    <view style='position:relative;top:30rpx;padding:10rpx 0;font-size:30rpx;'>无可用优惠券</view>
+    <image style='position:relative;top:-30rpx;left:580rpx;height:10rpx;width:54rpx;' src='../../images/btn_cancel.png'></image>
+  </view>
+
+    <view style='position:relative;top:10rpx;;font-size:26rpx;color:#666;'>健康币</view>
+    <radio-group class="hui2" >
+      <label id='gold' style="display: flex" style='padding:10rpx 0;font-size:30rpx;' bindtap="useCoin" data-id="0" data-price="{{num.gold}}">
+        <radio value="0" checked="{{flag==1}}" />金币:{{num.gold}}
+      </label>
+      <label id='ygold' style="display: flex" style='position:relative;left:50rpx;padding:10rpx 0;font-size:30rpx;' bindtap="useCoin" data-id="0" data-price="{{num.denarius}}">
+        <radio value="0" checked="{{flag1==1}}" />银币:{{num.denarius}}
+      </label>
+    </radio-group>
+  </view>
+<view style='height:152rpx;margin-left:24rpx;margin-right:24rpx;border-bottom:1rpx solid #ebebeb;'>
+  <view style='position:relative;top:40rpx;;font-size:26rpx;color:#333;'>
+    商品总额：¥
+    <text>{{total}}</text>
+  </view>
+  <view style='position:relative;top:60rpx;;font-size:26rpx;color:#333;'>
+    运费：
+    <text style='font-size:26rpx;color:#ff0000;'>＋¥0.00</text>
+  </view>
+</view>
+<view style='height:185rpx;margin-left:24rpx;margin-right:24rpx;'>
+  <view style='position:relative;top:40rpx;;font-size:26rpx;color:#333;'>
+    实付款：
+    <text style='font-size:36rpx;color:#ff0000;'>¥{{total}}</text>
+  </view>
+</view>
+<button hidden='{{FLAg}}'  style='height:88rpx;font-size:30rpx;color:#ffffff;background-color:#ff0000;'type="primary" id="wxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByWX">微信支付</button>
+ <button hidden='{{!FLAg}}' style='height:88rpx;font-size:30rpx;color:#ffffff;background-color:#ff0000;' type="primary" id="jjPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByJJ">健康币支付</button>
+
+
+    <!-- <view class="btnGreen">
+      <button hidden='{{FLAg}}' class="wx_pay_submit" type="primary" id="wxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByWX">微信支付</button>
+      <button hidden='{{!FLAg}}' class="jj_pay_submit" type="primary" id="jjPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByJJ">使用健康币支付</button>
+      <button hidden='{{FLAg}}' class="xx_pay_submit" type="primary" id="xxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByXX">线下支付</button>
+    </view> -->

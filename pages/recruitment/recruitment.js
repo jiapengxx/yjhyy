@@ -425,6 +425,7 @@ getTypes:function(){
     }
   },
   formSubmit: function (e) {
+    var that=this
     if (app.globalData.userInfo == null){
       wx.showModal({
         title: '请先登录',
@@ -441,8 +442,10 @@ getTypes:function(){
     }else{
       var counts = this.data.num1 + this.data.num2 + this.data.num3 + this.data.num4 + this.data.num5 + this.data.num6 + this.data.num7 + this.data.num8 + this.data.num9 + this.data.num10 + this.data.num11
       if (counts == 11) {
-        var that = this;
         console.log('form发生了submit事件，携带数据为：', e.detail.value)
+        console.log(that.data.region[0],
+          that.data.region[1],
+          that.data.region[2],)
         // var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
         app.uploadimg({
           url: app.d.hostUrl + '/Api/BIndex/seller_add',//这里是你图片上传的接口

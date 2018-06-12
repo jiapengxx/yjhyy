@@ -15,10 +15,10 @@ Page({
     num_store1: [],
     comment_store1: [],
     host: app.d.hostImg,
-    distance1:[],
-    distance2:[],
-    distance3:[],
-    distance4:[],
+    distance1: [],
+    distance2: [],
+    distance3: [],
+    distance4: [],
     page1: 2,
     page2: 2,
     page3: 2,
@@ -31,18 +31,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-        wx.getLocation({
-      type: 'gcj02',
-      success: function (res) {
-        var long2 = res.longitude
-        var la2 = res.latitude
-        that.setData({
-          long2: long2,
-          la2: la2
+        this.setData({
+          long2: app.globalData.longitude,
+          la2: app.globalData.latitude
         })
-        that.getShopList('all', 1)
-      }
-        }) 
+    this.getShopList('all', 1)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -56,7 +49,7 @@ Page({
    */
   onShow: function () {
 
-    
+
   },
 
   /**
@@ -114,9 +107,9 @@ Page({
   //点击切换触发两次
   swichNav: function (e) {
     var that = this;
-      this.setData({
-        currentTab: e.target.dataset.current
-      })
+    this.setData({
+      currentTab: e.target.dataset.current
+    })
     if (this.data.currentTab == 0) {
       this.getShopList('all', 1)
     } else if (this.data.currentTab == 1) {
@@ -145,7 +138,7 @@ Page({
         //综合
         if (that.data.currentTab == 0) {
           var hot_good = res.data.seller;
-          var distance1=[]
+          var distance1 = []
           that.setData({
             hot_good: hot_good,
             distance1: distance1
@@ -174,14 +167,14 @@ Page({
         //距离最近
         if (that.data.currentTab == 1) {
           var place_store1 = res.data.place_store;
-          var distance2= []
+          var distance2 = []
           that.setData({
             place_store1: place_store1,
             distance2: distance2
           });
           that.setData({
-      height2: 582 * that.data.place_store1.length + 140,
-          
+            height2: 582 * that.data.place_store1.length + 140,
+
           })
           for (var i = 0; i < that.data.place_store1.length; i++) {
             var la1 = parseFloat(that.data.place_store1[i].latitude)
@@ -202,13 +195,13 @@ Page({
           //销量最高
         } else if (that.data.currentTab == 2) {
           var num_store1 = res.data.num_store;
-          var distance3=[]
+          var distance3 = []
           that.setData({
             num_store1: num_store1,
             distance3: distance3
           });
           that.setData({
-        height3: 582 * that.data.num_store1.length + 140,
+            height3: 582 * that.data.num_store1.length + 140,
 
           })
           for (var i = 0; i < that.data.num_store1.length; i++) {
@@ -236,7 +229,7 @@ Page({
             distance4: distance4
           });
           that.setData({
-    height4: 582 * that.data.comment_store1.length + 140,
+            height4: 582 * that.data.comment_store1.length + 140,
           })
           for (var i = 0; i < that.data.comment_store1.length; i++) {
             var la1 = parseFloat(that.data.comment_store1[i].latitude)
@@ -251,9 +244,9 @@ Page({
               distance4: that.data.distance4.concat({ distance: distance.toFixed(1) })
             })
           }
-         that.setData({
-           page4:2
-         })
+          that.setData({
+            page4: 2
+          })
         }
       },
       fail: function (e) {
@@ -264,10 +257,10 @@ Page({
       },
     })
   },
-countDistance:function(){
-//传入 目标经纬度  数组长度  目标数组
-//
-},
+  countDistance: function () {
+    //传入 目标经纬度  数组长度  目标数组
+    //
+  },
   toBtoC: function (e) {
     var store_Id = e.currentTarget.id;
     wx.navigateTo({
@@ -358,7 +351,7 @@ countDistance:function(){
         page1: this.data.page1
       })
 
-    } 
+    }
     else if (this.data.currentTab == 1) {
       this.setData({
         types: 'place',
@@ -421,7 +414,7 @@ countDistance:function(){
           that.setData({
             height1: 582 * that.data.hot_good.length + 140
           })
-        }else if (that.data.currentTab == 1) {
+        } else if (that.data.currentTab == 1) {
           that.setData({
             page2: that.data.page2 + 1,
             place_store1: that.data.place_store1.concat(place_store)
@@ -449,9 +442,9 @@ countDistance:function(){
             num_store1: that.data.num_store1.concat(num_store)
           });
           that.setData({
-            
+
             height3: 582 * that.data.num_store1.length + 140,
-           
+
           })
           for (var i = 0; i < num_store.length; i++) {
             var la1 = parseFloat(num_store[i].latitude)

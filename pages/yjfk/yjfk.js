@@ -26,7 +26,12 @@ Page({
     })
     console.log(this.data.Content)
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    if (options.froms) {
+      this.setData({
+        froms: options.froms
+      })
+    }
     new ImageUploader(this, 'img1');
   },
   upload: function () {
@@ -54,9 +59,15 @@ Page({
             duration: 2000
           });
           setTimeout(function () {
-            wx.switchTab({
-              url: '../company_user/company_user',
-            })
+            if (that.data.froms == 'user') {
+              wx.redirectTo({
+                url: '../user/user',
+              }) 
+            } else {
+              wx.switchTab({
+                url: '../company_user/company_user',
+              })
+            }
           }
             , 3000)
         },

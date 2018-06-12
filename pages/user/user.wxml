@@ -1,7 +1,4 @@
 <!--pages/user/user.wxml-->
-<import src="../../utils/tabBar.wxml" />
-<template is="tabBar" data="{{tabBar}}" />
-<scroll-view scroll-y style=" position:fixed;top:0px;height:90.5%;">
    <view class="userinfo">
      <button wx:if="{{!hasUserInfo && canIUse}}" style='position:relative;top:120rpx;width:260rpx;height:76rpx;font-size:36rpx;#fff;border:2rpx solid #fff;bprder-radius:8rpx;line-height:80rpx;' open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
   <block wx:else>
@@ -9,23 +6,10 @@
     <text class="fl_l">{{userInfo.nickName}}</text> 
   </block>
   </view> 
-  <!--<view class="sc mt10 df">
-        <view class="df_1 tc">
-        <navigator url="../user/shoucang" hover-class="none">
-          <view><image src="/images/use_sc.png"></image></view>
-          <text>我的收藏</text>
-          </navigator>
-        </view>
-        <view class="df_1 tc">
-        <navigator url="../qyry/qyry" hover-class="none">
-          <view><image src="/images/use_ry.png"></image></view>
-          <text>企业荣誉</text>
-          </navigator>
-        </view>
-    </view> -->
+
   <!--订单详情-->
 <view class="page" hidden="{{page}}">
-  <view class="qbdd mt10"> 
+  <view class="qbdd mt10">
     <span class="font_14 c3">全部订单</span>
     <navigator class="fl_r c9 font_12 l_h20" url="../user/dingdan?currentTab=0&otype=pay" hover-class="none">查看全部订单 ></navigator>
   </view>
@@ -37,10 +21,7 @@
       <text class="font_12">待付款<text style="color:red">({{orderInfo.pay_num}})</text></text>
     </navigator>
 
-    <!-- <navigator class="df_1" url="../user/dingdan" hover-class="none" >
-      <view><image src="/images/dfh.png"></image>{{orderInfo.HasSum}}</view>
-        <text class="font_12">待发货</text>      
-      </navigator> -->
+
 
     <navigator class="df_1" url="../user/dingdan?currentTab=2&otype=receive" hover-class="none">
       <view>
@@ -101,7 +82,7 @@
     </navigator>
   </view>
   <view class="qbdd mt10">
-    <navigator url="../yjfk/yjfk">
+    <navigator url="../yjfk/yjfk?froms='user'">
       <span class="font_14 c3">意见反馈</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
     </navigator>
@@ -128,4 +109,3 @@
 
 </view>
 <view hidden='{{!page}}' style='height:500rpx;text-align:center;line-height:500rpx;color:#999'>更多内容请登录</view>
-</scroll-view>

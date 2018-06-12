@@ -54,7 +54,13 @@ App({
         content: data.data.content,
         is_name: data.data.is_name,
         order_id: data.data.order_id,
-        type_id:data.data.type_id
+        type_id:data.data.type_id,
+
+        id: data.data.id,
+        type: data.data.type,
+        back_remark: data.data.back_remark,
+        pro_id: data.data.pro_id,
+        back: data.data.back
       },
       //这里是上传图片时一起上传的数据
       success: (resp) => {
@@ -106,15 +112,13 @@ App({
   },
   onLaunch: function () {
     var that=this
-    this.position();
-    //调用API从本地缓存中获取数据
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs);
-    //login
-    setTimeout(function(){
-      that.getUserInfo();
-    },2000)
+    // this.position();
+    // var logs = wx.getStorageSync('logs') || []
+    // logs.unshift(Date.now())
+    // wx.setStorageSync('logs', logs);
+
+      this.getUserInfo();
+ 
   },
   getUserInfo: function (cb) {
     console.log(cb+"111222")
@@ -291,7 +295,7 @@ App({
     userInfo: null,
     latitude:0,
     longitude:0,
-
+    froms:'',
     tabBar: {
       "color": "#858585",
       "selectedColor": "#008842",

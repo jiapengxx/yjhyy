@@ -1,23 +1,116 @@
 
-<!--pages/order/downline.wxml-->
-<view class="w100">
+<!-- <view class="w100">
   <view class="p_all">请认真填写好下面退货信息</view>
   <view class="p_all01 mt10 bg">
-    <!--<view class=" mt10">
-      <input class="inputStyle" name="input" bindinput="reasonInput" placeholder="退货原因" value="{{reason}}" />
-    </view>-->
     <view class=" mt10">
-      <!-- <view class="c3">退货描述</view> -->
+      <input class="inputStyle" name="input" bindinput="reasonInput" placeholder="退货原因" value="{{reason}}" />
+    </view>
+    <view class=" mt10">
+       <view class="c3">退货描述</view> 
       <textarea class="min_60 inputStyle" auto-height name="remark" placeholder="退款原因" bindinput="remarkInput" value="{{remark}}"/> 
     </view>
-    <!--<view class=" mt10">
+    <view class=" mt10">
       <view class="c3">图片凭证</view>
       <button bindtap="uploadImgs">上传图片</button>
-    </view>-->
+    </view>
   </view>
   <view class="p_all01 mtt0">
     <view class="btnGreen">
-      <button type="primary" id="btnPay" formType="submit" bindtap="submitReturnData">确定</button>
+      <button type="primary" id="btnPay" formType="submit" bindtap="{{types=='ywc'?'submitReturn':'submitReturnData'}}">确定</button>
     </view>
   </view>
+</view> -->
+
+
+<block wx:if="{{types=='ywc'}}">
+ <view style='height:198rpx;'>
+<view style='position:relative;top:40rpx;left:24rpx;font-size:30rpx;color:#333;'>服务类型</view>
+<view bindtap='xzlx' data-types="退货" class="{{yw=='退货'?'thCheck':'th'}}" >退货</view>
+<view bindtap='xzlx' data-types="换货" class="{{yw=='换货'?'hhCheck':'hh'}}"  >换货</view>
 </view>
+<view style='height:20rpx;background-color:#ebebeb;'></view>
+
+<view style='height:180rpx;position:relative;'>
+  <image src='{{host}}/Data/{{product[0].photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
+<view style='position:relative;top:-74rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{product[0].name}}</view>
+<view style='position:relative;top:-76rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：{{product[0].price}}</view>
+<view style='position:relative;top:-78rpx;left:154rpx;font-size:24rpx;color:#666;width:100rpx;'>数量：{{product[0].num}}</view>
+</view>
+
+<view style='height:20rpx;background-color:#ebebeb;'></view>
+
+<import src="../common/image_uploader/image_uploader.wxml" />
+<view style='height:100rpx;width:100%;background-color:#ffffff;'>
+<view style='position:relative;font-size:30rpx;left:24rpx;top:40rpx;color:#333;'>问题描述</view>
+</view>
+<view style='position:relative;left:24rpx;top:0rpx;height:300rpx;width:702rpx;left:24rpx;top:0rpx;background-color:#f7f7f7;'>
+<textarea name="reason" bindinput="reasonInput" value="{{reason}}" style='position:relative;height:130px;font-size:24rpx;color:333;width:330px;left:10px;top:10px;background-color:#f7f7f7; ' placeholder='请描述详细问题和意见' placeholder-style='position:relative;font-size:24rpx;left:40rpx;top:40rpx;color:#666;'></textarea>
+</view>
+
+
+<view style='position:relative;height:150rpx;width:702rpx;' hidden='{{picSwitch}}'>
+  <template is="image_uploader" data="{{...img1}}" />
+</view>
+
+<view style='height:20rpx;width:100%;background-color:#ebebeb;'>
+</view>
+<block wx:if="{{yw=='换货'}}">
+<view class="section">
+      <view style='font-size:26rpx;color:#666;'>联系人：</view>
+      <input style='font-size:26rpx;color:#333;' type="text" name="name" placeholder="收货人姓名" bindblur='nameCheck'placeholder-style='font-size:24rpx;color:#d0d0d0;' />
+    </view>
+    <view class="section">
+    <view style='font-size:26rpx;color:#666;'>联系电话：</view>
+      <input style='font-size:26rpx;color:#333;' type="text" name="phone" placeholder="电话号码" bindblur='phoneCheck' placeholder-style='font-size:26rpx;color:#d0d0d0;' />
+    </view>
+    <view style='height:206rpx;border-bottom:1px #e0e0e0 solid;margin-left:24rpx;margin-right:24rpx;'>
+    <view style='position:relative;top:40rpx;left:24rpx;font-size:26rpx;color:#666;'>收货地址：</view>
+    <view style='position:relative;top:70rpx;left:24rpx;height:100rpx;width:680rpx;font-size:26rpx;color:#666;'><image src='../../images/dizhi.png' style='height:32rpx;width:32rpx;'></image><textarea style='position:relative;top:-40rpx;left:50rpx;width:90%;height:100rpx;font-size:26rpx;color:#333;' type="text" name="address" placeholder="收货地址" bindblur='addressCheck' placeholder-style='font-size:26rpx;color:#d0d0d0;' /></view>
+    </view>
+</block>
+<view style='position:relative;top:40rpx;height:180rpx;width:100%;text-align:center;'>
+<button bindtap="submitReturn" style='position:relative;top:40rpx;height:74rpx;width:300rpx;font-size:26rpx;color:#ffffff;background-color:#fe0100;'>提交</button>
+</view> 
+</block>
+
+<!--  两种样式  -->
+
+<block wx:else>
+<view style='height:198rpx; '>
+<view style='position:relative;top:40rpx;left:24rpx;font-size:30rpx;color:#333;'>服务类型</view>
+<view style='position:relative;top:70rpx;left:24rpx;border:1rpx solid #ff0000;font-size:26rpx;color:#ff0000;width:140rpx;height:48rpx;text-align:center;line-height:48rpx;'>退款</view>
+</view>
+<view style='height:20rpx;background-color:#ebebeb;'></view>
+ <block wx:if="{{!pulldown}}">
+<view style='height:180rpx;position:relative;' bindtap='toDetail' data-pro_id='{{itm.pid}}'>
+  <image src='{{host}}/Data/{{product[0].photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
+<view style='position:relative;top:-78rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{product[0].name}}</view>
+<view style='position:relative;top:-80rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：{{product[0].price}}</view>
+<view style='position:relative;top:-82rpx;left:154rpx;font-size:24rpx;color:#666;width:100rpx;'>数量：{{product[0].num}}</view>
+</view>
+  </block>  
+
+ <block wx:if="{{pulldown&&product.length>1}}" wx:for="{{product}}" wx:for-index="idx" wx:for-item="itm" >  
+<view style='height:180rpx;position:relative;' >
+  <image src='{{host}}/Data/{{itm.photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
+<view style='position:relative;top:-78rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{itm.name}}</view>
+<view style='position:relative;top:-80rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：{{itm.price}}</view>
+<view style='position:relative;top:-82rpx;left:154rpx;font-size:24rpx;color:#666;width:100rpx;'>数量：{{itm.num}}</view>
+</view>
+  </block>  
+ <view wx:if="{{product.length>1}}" style='height:44rpx;text-align:center;'>
+ <image class="{{pulldown?'pulldownAfter':'pulldown'}}" bindtap='changePulldown' src='../../images/pulldown.jpg' ></image>
+ </view>
+<view style='height:20rpx;background-color:#ebebeb;'></view>
+<!--问题描述-->
+<view style='height:100rpx;width:100%;background-color:#ffffff;'>
+<view style='position:relative;font-size:30rpx;left:24rpx;top:{{pulldown?(product.length-1)*210+40:40}}rpx;color:#333;'>问题描述</view>
+</view>
+<view style='position:relative;left:24rpx;top:0rpx;height:300rpx;width:702rpx;left:24rpx;top:0rpx;background-color:#f7f7f7;'>
+<textarea name="reason" bindinput="reasonInput" value="{{reason}}" style='position:relative;height:130px;font-size:24rpx;color:333;width:330px;left:10px;top:10px;background-color:#f7f7f7; ' placeholder='请描述详细问题和意见' placeholder-style='position:relative;font-size:24rpx;left:40rpx;top:40rpx;color:#666;'></textarea>
+</view>
+<view style='position:relative;top:80rpx;height:180rpx;width:100%;text-align:center;'>
+<button bindtap="submitReturnData" style='position:relative;top:40rpx;height:74rpx;width:300rpx;font-size:26rpx;color:#ffffff;background-color:#fe0100;'>提交</button>
+</view>
+</block>
+

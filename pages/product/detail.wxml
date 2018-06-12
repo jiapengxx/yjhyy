@@ -23,6 +23,7 @@
     </view>
     <view class="font_14 c6" style='width:500rpx;'>品牌：{{itemData.brand}}</view>
     <view class="font_14 c6" style='width:500rpx;'>支付：微信支付</view>
+    <view class="font_14 c6" style='width:500rpx;'>快递：¥8.00</view>
   </view>
 </view>
 
@@ -118,7 +119,8 @@
     <view class="bre swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">产品参数</view>
     <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">评价</view>
   </view>
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==0?(winHeight-31):(currentTab==1?500:(flag==1?(All.length*300+250):(flag==2?(Good.length*300+250):(flag==3?(Medium.length*300+250):(Bad.length*300+250)))))}}rpx" bindchange="bindChange">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==0?(winHeight-31):(currentTab==1?500:(flag==1?(All.length*300+250):(flag==2?(Good.length*300+250):(flag==3?(Medium.length*300+250):(Bad.length*300+250)))))}}rpx"
+    bindchange="bindChange">
     <!--需对高度分开设定  不同swiper不同内容高度不定-->
 
     <!-- 图文详情 -->
@@ -175,7 +177,7 @@
             <text style='position:relative;top:4rpx;left:50rpx;'>{{Medium.length}}</text>
           </view>
 
-          <view id='4' bindtap='getFlag' class="{{flag==4?'xz':'wxz'}}" >
+          <view id='4' bindtap='getFlag' class="{{flag==4?'xz':'wxz'}}">
             <text style='position:relative;top:4rpx;left:40rpx;'>差评</text>
             <text style='position:relative;top:4rpx;left:50rpx;'>{{Bad.length}}</text>
           </view>
@@ -207,9 +209,9 @@
             <!--图集  -->
             <view wx:if="{{item.img!=''}}" style='position:relative;width:600rpx;height:130rpx;top:-10rpx;left:40rpx;font-size:24rpx;color:#333;display:flex;flex-wrap:wrap;justify-content:space-between;'>
               <image src='{{host}}/Data/{{item.img[0]}}' style='width:114rpx;height:122rpx;'></image>
-              <image wx:if="{{item.img.length>=2}}"  src='{{host}}/Data/{{item.img[1]}}' style='width:114rpx;height:122rpx;'></image>
-              <image wx:if="{{item.img.length>=3}}"  src='{{host}}/Data/{{item.img[2]}}' style='width:114rpx;height:122rpx;'></image>
-              <image wx:if="{{item.img.length==4}}"  src='{{host}}/Data/{{item.img[3]}}' style='width:114rpx;height:122rpx;'></image>
+              <image wx:if="{{item.img.length>=2}}" src='{{host}}/Data/{{item.img[1]}}' style='width:114rpx;height:122rpx;'></image>
+              <image wx:if="{{item.img.length>=3}}" src='{{host}}/Data/{{item.img[2]}}' style='width:114rpx;height:122rpx;'></image>
+              <image wx:if="{{item.img.length==4}}" src='{{host}}/Data/{{item.img[3]}}' style='width:114rpx;height:122rpx;'></image>
             </view>
           </view>
         </view>

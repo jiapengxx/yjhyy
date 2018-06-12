@@ -6,7 +6,7 @@
     color: #FF8247;
     font-size: 14px;
     width: 94%;
-}
+} 
 .shop{
     background: #fff;
     padding: 4%;

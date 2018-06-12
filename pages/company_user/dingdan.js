@@ -375,6 +375,7 @@ Page({
           isStatus:'',
         });
       }else{
+        //有问题！！！！
         if (that.data.currentTab==4){
           that.setData({
             currentTab: parseInt(current),

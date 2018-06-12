@@ -286,7 +286,10 @@ getShopList:function(types,page){
     })
   },
 
-
+onShow:function(){
+  app.globalData.froms = 'company_user'
+  console.log(app.globalData.froms)
+},
   /**     * 滑动切换tab     */
   bindChange: function (e) {
     var that = this;

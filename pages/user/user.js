@@ -37,7 +37,7 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
-    app.globalData.froms = 'user'
+
     if (option.DAta){
       var u_id = option.DAta[0];
       this.setData({

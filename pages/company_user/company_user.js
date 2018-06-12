@@ -37,13 +37,6 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
-    // if (option.DAta) {
-    //   var u_id = option.DAta[0];
-    //   this.setData({
-    //     u_id: u_id,
-    //     pro_id: option.DAta[1]
-    //   })
-    app.globalData.froms='company_user'
     if (option.DAta){
       var u_id = option.DAta[0];
       this.setData({

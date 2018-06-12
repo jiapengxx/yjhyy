@@ -190,7 +190,7 @@
   </view>
   <view style='position:relative;top:60rpx;;font-size:26rpx;color:#333;'>
     运费：
-    <text style='font-size:26rpx;color:#ff0000;'>＋¥0.00</text>
+    <text style='font-size:26rpx;color:#ff0000;'>＋¥{{yunfei}}</text>
   </view>
 </view>
 <view style='height:185rpx;margin-left:24rpx;margin-right:24rpx;'>

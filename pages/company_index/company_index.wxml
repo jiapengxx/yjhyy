@@ -139,7 +139,7 @@
             <image src="{{host}}/Data/{{item.logo}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
-            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>{{item.name}}</text>
+            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;width:365rpx;'>{{item.name}}</text>
             <text style='position:absolute;left:360rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance1[idx].distance}}km\n</text>
             <!-- {{item.distance}} -->
 
@@ -165,7 +165,7 @@
             <image src="{{host}}/Data/{{item.logo}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
-            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>{{item.name}}</text>
+            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;width:365rpx;'>{{item.name}}</text>
             <text style='position:absolute;left:360rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance2[idx].distance}}km\n</text>
             <!-- {{item.distance}} -->
             <view style='position:absolute;left:0rpx;top:52rpx;font-family: PingFangSC-Regular, sans-serif;font-size:24rpx;color:#666666;'>
@@ -190,7 +190,7 @@
             <image src="{{host}}/Data/{{item.logo}}" style='width:148rpx;height:148rpx;border-radius:50%;'></image>
           </view>
           <view style="position:relative;top:-130rpx;left:220rpx;width:530rpx;">
-            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;'>{{item.name}}</text>
+            <text style='position:absolute;left:0rpx;font-family: PingFangSC-Regular,sans-serif;font-size:28rpx;color:#333333;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;width:365rpx;'>{{item.name}}</text>
             <text style='position:absolute;left:360rpx;font-family: PingFangSC-Regular, sans-serif;font-size:22rpx;color:#666666;'>距离:{{distance3[idx].distance}}km\n</text>
             <!-- {{item.distance}} -->
 

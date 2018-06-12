@@ -14,23 +14,21 @@
             <view id='{{item.store_id}}' bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
               <image src='{{host}}/Data/{{item.logo}}' style='height:150rpx;width:150rpx;'></image>
             </view>
-            <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;left:30rpx;width:320rpx;height:150rpx;'>
+            <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
               <text class='t1'>{{item.name}}\n</text>
               <text class='t2'>{{item.intro}}\n</text>
               <text class='t4'>{{item.type_name}}</text>
             </view>
-            <view style='position:relative;top:110rpx;left:176rpx;width:80rpx;height:50rpx;'>
+            <view style='position:relative;top:110rpx;left:40rpx;width:80rpx;height:50rpx;'>
               <text class='t5'>销量:{{item.num}}</text>
             </view>
 
-            <view style='position:relative;top:0rpx;left:110rpx;width:200rpx;'>
+            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
               <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-16rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance1[idx].distance}}km</view>
             </view>
           </view>
-
-
 
 
           <view style='display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>
@@ -61,16 +59,16 @@
             <view style='height:150rpx;width:150rpx;'>
               <image src='{{host}}/Data/{{item.logo}}' style='height:150rpx;width:150rpx;'></image>
             </view>
-            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+             <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
               <text class='t1'>{{item.name}}\n</text>
               <text class='t2'>{{item.intro}}\n</text>
               <text class='t4'>{{item.type_name}}</text>
             </view>
-
-            <view style='position:relative;top:110rpx;left:16rpx;width:80rpx;height:50rpx;'>
+            <view style='position:relative;top:110rpx;left:40rpx;width:80rpx;height:50rpx;'>
               <text class='t5'>销量:{{item.num}}</text>
             </view>
-            <view style='position:relative;top:0rpx;left:-54rpx;width:200rpx;'>
+
+            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
               <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-16rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance2[idx].distance}}km</view>
@@ -102,16 +100,16 @@
             <view style='height:150rpx;width:150rpx;'>
               <image src='{{host}}/Data/{{item.logo}}' style='height:150rpx;width:150rpx;'></image>
             </view>
-            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+             <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
               <text class='t1'>{{item.name}}\n</text>
               <text class='t2'>{{item.intro}}\n</text>
               <text class='t4'>{{item.type_name}}</text>
             </view>
-
-            <view style='position:relative;top:110rpx;left:16rpx;width:80rpx;height:50rpx;'>
+            <view style='position:relative;top:110rpx;left:40rpx;width:80rpx;height:50rpx;'>
               <text class='t5'>销量:{{item.num}}</text>
             </view>
-            <view style='position:relative;top:0rpx;left:-54rpx;width:200rpx;'>
+
+            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
               <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-16rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance3[idx].distance}}km</view>
@@ -141,19 +139,19 @@
             <view style='height:150rpx;width:150rpx;'>
               <image src='{{host}}/Data/{{item.logo}}' style='height:150rpx;width:150rpx;'></image>
             </view>
-            <view style='position:relative;left:30rpx;width:480rpx;height:150rpx;'>
+           <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
               <text class='t1'>{{item.name}}\n</text>
               <text class='t2'>{{item.intro}}\n</text>
               <text class='t4'>{{item.type_name}}</text>
             </view>
-
-            <view style='position:relative;top:110rpx;left:16rpx;width:80rpx;height:50rpx;'>
+            <view style='position:relative;top:110rpx;left:40rpx;width:80rpx;height:50rpx;'>
               <text class='t5'>销量:{{item.num}}</text>
             </view>
-            <view style='position:relative;top:0rpx;left:-54rpx;width:200rpx;'>
+
+            <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
               <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-16rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
-              <view class='t3'>{{distance4[idx].distance}}km</view>
+              <view class='t3'>{{distance1[idx].distance}}km</view>
             </view>
           </view>
 

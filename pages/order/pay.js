@@ -96,6 +96,7 @@ console.log(buff)
             total: res.data.price,
             vprice: res.data.price,
             vou: res.data.vou,
+            yunfei: res.data.yunfei
           })
         }
       })
@@ -126,6 +127,7 @@ console.log(buff)
             total: res.data.price,
             vprice: res.data.price,
             vou: res.data.vou,
+            yunfei: res.data.yunfei
           })
         }
       })
@@ -350,7 +352,7 @@ console.log(buff)
             });
             setTimeout(function () {
               wx.redirectTo({
-                url: (app.globalData.froms = 'company_user' ? '../company_user/dingdan?currentTab=1&otype=deliver' : '../user/dingdan?currentTab=1&otype=deliver') ,
+                url: (app.globalData.froms=='company_user' ? '../company_user/dingdan?currentTab=1&otype=deliver' : '../user/dingdan?currentTab=1&otype=deliver') ,
               });
             }, 2500);
           }

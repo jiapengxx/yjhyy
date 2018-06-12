@@ -1,8 +1,27 @@
 <!-- index.wxml -->
+<view style='position:relative;height:88rpx;width:100%;background-color:#efeff4;'>
+  <view style='position:relative;top:12rpx;left:120rpx;width:510rpx;'>
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input bindblur='hideInput' type="text" class="weui-search-bar__input" placeholder="搜索产品、品牌" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索产品、品牌</view>
+      </label>
+    </view>
+    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length>0}}">
+    </view>
+  </view>
+</view>
 <import src="../../utils/tabBar.wxml"/>
 <template is="tabBar" data="{{tabBar}}"/>
 <button bindtap='gzsj' hidden='{{gz}}' style='position:fixed;right:0rpx;bottom:150rpx;width:150rpx;height:50rpx;font-size:30rpx;z-index:10;line-height:50rpx;background-color:red;color:#fff'>关  注</button> 
-<scroll-view scroll-y style=" position:fixed;top:0px;height:90%;"> 
+<scroll-view scroll-y style=" position:fixed;top:88rpx;height:80%;"> 
 <view class="page">
   <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
     <navigator url="../product/detail?pro_id={{item.product_id}}"  wx:for="{{imgUrls}}">

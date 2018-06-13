@@ -12,17 +12,17 @@ var phoneNum = null, identifyCode = null, password = null, rePassword = null;
 
 Page({
   data: {
-    telphone:'',
-    check:'',
+    telphone: '',
+    check: '',
     time: currentTime,
     switch_one: false,
     switch_two: true,
     switch_three: true,
-    flag:false
+    flag: false
 
   },
   onLoad: function () {
- 
+
   },
   onUnload: function () {
     currentTime = maxTime
@@ -39,7 +39,7 @@ Page({
     if (e.detail.value.length === 0) {
       this.setData({
         tel: '',
-        flag:false
+        flag: false
       })
       // wx.showToast({
       //   title: '手机号不许为空',
@@ -55,9 +55,9 @@ Page({
       //   title: '手机号格式不正确',
       //   icon:'loading'
       // })
-    }else{
+    } else {
       this.setData({
-        flag:true
+        flag: true
       })
     }
 
@@ -94,13 +94,13 @@ Page({
         step: step_g
       })
     } else {
-        wx.showToast({
-          title: '请填写正确的手机号',
-          icon: 'none',
+      wx.showToast({
+        title: '请填写正确的手机号',
+        icon: 'none',
 
-        })
+      })
     }
-    if(this.data.flag){
+    if (this.data.flag) {
       wx.request({
         url: app.d.ceshiUrl + '/Api/User/check_do',
         method: 'post',
@@ -162,39 +162,39 @@ Page({
         }
       }, 1000)
       wx.request({
-      url: app.d.ceshiUrl + '/Api/User/check_do',
-      method: 'post',
-      data: {
-        uid:app.d.userId,
-        tel: that.data.telphone,
-        check:that.data.check
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        var check = res.data.check;
-        var time =res.data.time;
-        console.log(that.check);
-        //that.initProductData(data);
-        // that.setData({
-        //   checks: check,
-        //   times:time
-        // });
-        if(res.data.status==0){
+        url: app.d.ceshiUrl + '/Api/User/check_do',
+        method: 'post',
+        data: {
+          uid: app.d.userId,
+          tel: that.data.telphone,
+          check: that.data.check
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          var check = res.data.check;
+          var time = res.data.time;
+          console.log(that.check);
+          //that.initProductData(data);
+          // that.setData({
+          //   checks: check,
+          //   times:time
+          // });
+          if (res.data.status == 0) {
+            wx.showToast({
+              title: res.data.err,
+              duration: 2000
+            });
+          }
+        },
+        fail: function (e) {
           wx.showToast({
-            title: res.data.err,
+            title: '网络异常！',
             duration: 2000
           });
-        }
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    })
+        },
+      })
     } else {
       wx.showToast({
         title: '短信已发到您的手机，请稍后重试!',
@@ -203,58 +203,58 @@ Page({
       })
     }
   },
-  checkInput:function(e){
+  checkInput: function (e) {
     var check = e.detail.value
     this.setData({
-      check:check,
+      check: check,
     })
     console.log(this.data.check)
   },
-register:function(){
-  var that = this
-  console.log('phone:' + that.data.telphone, 'check:' + that.data.check)
+  register: function () {
+    var that = this
+    console.log('phone:' + that.data.telphone, 'check:' + that.data.check)
     wx.request({
       url: app.d.ceshiUrl + '/Api/User/register',
       method: 'post',
       data: {
-        uid:app.d.userId,
+        uid: app.d.userId,
         tel: that.data.telphone,
-        check:that.data.check
+        check: that.data.check
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
         var check = res.data.check;
-        var time =res.data.time;
+        var time = res.data.time;
         console.log(that.check);
         //that.initProductData(data);
         // that.setData({
         //   checks: check,
         //   times:time
         // });
-        if(res.data.status==0||that.data.flag==false){
+        if (res.data.status == 0 || that.data.flag == false) {
           wx.showToast({
             title: res.data.err,
             duration: 2000
           });
         }
         //status=1时验证码输入正确
-        if(res.data.status==1&&that.data.flag){
+        if (res.data.status == 1 && that.data.flag) {
           wx.showToast({
-          title: '注册成功',
+            title: '注册成功',
           })
-      setTimeout(function () {
-        if (app.globalData.froms == 'company_user') {
-          wx.switchTab({
-            url: '../company_index/company_index',
-          })
-        } else {
-          wx.redirectTo({
-            url: '../index/index',
-          })
-        }
-        }, 3000)
+          setTimeout(function () {
+            if (app.globalData.froms == 'company_user') {
+              wx.switchTab({
+                url: '../company_index/company_index',
+              })
+            } else {
+              wx.redirectTo({
+                url: '../index/index',
+              })
+            }
+          }, 3000)
         }
       },
       fail: function (e) {
@@ -264,7 +264,7 @@ register:function(){
         });
       },
     })
-},
+  },
 
 
   nextStep: function () {

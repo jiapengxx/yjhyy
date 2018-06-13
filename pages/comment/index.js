@@ -65,6 +65,7 @@ Page({
   //   })
   // }
   if(options.froms){
+    console.log(options.froms)
       this.setData({
         froms: options.froms
       })
@@ -137,6 +138,7 @@ Page({
             duration: 2000
           });
           setTimeout(function () {
+            console.log(that.data.froms)
             if(that.data.froms=='user'){
               wx.redirectTo({
                 url: '../user/user',

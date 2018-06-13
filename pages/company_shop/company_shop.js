@@ -268,16 +268,25 @@ Page({
     })
     app.d.store_Id = store_Id;
   },
-  callPhone: function () {
-    wx.makePhoneCall({
-      phoneNumber: '010-123456',
-      success: function () {
-        console.log("拨打电话成功！")
-      },
-      fail: function () {
-        console.log("拨打电话失败！")
-      }
-    })
+  callPhone: function (e) {
+    console.log(e)
+    if (e.currentTarget.dataset.tel){
+      wx.makePhoneCall({
+        phoneNumber: '' + e.currentTarget.dataset.tel,
+        success: function () {
+          console.log("拨打电话成功！")
+        },
+        fail: function () {
+          console.log("拨打电话失败！")
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '商家未设置联系方式',
+        icon: 'none',
+      })
+    }
+
   },
   getPosition: function (e) {
     var that = this

@@ -107,6 +107,12 @@ Page({
         itemId: item_id,
         flag: false
       })
+      setTimeout(function () {
+        this.setData({
+          itemId: 9999,
+          flag: true
+        })
+      }.bind(this),1300)
     }
     else {
       this.setData({

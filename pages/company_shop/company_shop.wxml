@@ -24,7 +24,7 @@
             </view>
 
             <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
-              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
+              <image bindtap='callPhone' data-tel="{{item.tel}}"src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-16rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance1[idx].distance}}km</view>
             </view>
@@ -54,12 +54,12 @@
     <swiper-item>
       <block wx:for="{{place_store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
 
-        <view style='height:582rpx;width:702rpx;margin-left:24rpx;'>
-          <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;'>
-            <view style='height:150rpx;width:150rpx;'>
+       <view style='height:582rpx;width:702rpx;margin-left:24rpx;'>
+          <view id='{{item.store_id}}' style='position:relative;top:40rpx;height:150rpx;width:500rpx;display:flex;flex-direction:row;'>
+            <view id='{{item.store_id}}' bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
               <image src='{{host}}/Data/{{item.logo}}' style='height:150rpx;width:150rpx;'></image>
             </view>
-             <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
+            <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
               <text class='t1'>{{item.name}}\n</text>
               <text class='t2'>{{item.intro}}\n</text>
               <text class='t4'>{{item.type_name}}</text>
@@ -69,7 +69,7 @@
             </view>
 
             <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
-              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
+              <image bindtap='callPhone' data-tel="{{item.tel}}"src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-16rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance2[idx].distance}}km</view>
             </view>
@@ -96,11 +96,11 @@
       <block wx:for="{{num_store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
 
         <view style='height:582rpx;width:702rpx;margin-left:24rpx;'>
-          <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;'>
-            <view style='height:150rpx;width:150rpx;'>
+          <view id='{{item.store_id}}' style='position:relative;top:40rpx;height:150rpx;width:500rpx;display:flex;flex-direction:row;'>
+            <view id='{{item.store_id}}' bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
               <image src='{{host}}/Data/{{item.logo}}' style='height:150rpx;width:150rpx;'></image>
             </view>
-             <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
+            <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
               <text class='t1'>{{item.name}}\n</text>
               <text class='t2'>{{item.intro}}\n</text>
               <text class='t4'>{{item.type_name}}</text>
@@ -110,7 +110,7 @@
             </view>
 
             <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
-              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
+              <image bindtap='callPhone' data-tel="{{item.tel}}"src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-16rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance3[idx].distance}}km</view>
             </view>
@@ -135,11 +135,11 @@
       <block wx:for="{{comment_store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
 
         <view style='height:582rpx;width:702rpx;margin-left:24rpx;'>
-          <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:40rpx;height:150rpx;width:702rpx;display:flex;flex-direction:row;'>
-            <view style='height:150rpx;width:150rpx;'>
+          <view id='{{item.store_id}}' style='position:relative;top:40rpx;height:150rpx;width:500rpx;display:flex;flex-direction:row;'>
+            <view id='{{item.store_id}}' bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
               <image src='{{host}}/Data/{{item.logo}}' style='height:150rpx;width:150rpx;'></image>
             </view>
-           <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
+            <view id='{{item.store_id}}' bindtap='toBtoC' style='position:relative;top:30rpx;left:30rpx;width:450rpx;height:120rpx;'>
               <text class='t1'>{{item.name}}\n</text>
               <text class='t2'>{{item.intro}}\n</text>
               <text class='t4'>{{item.type_name}}</text>
@@ -149,7 +149,7 @@
             </view>
 
             <view style='position:relative;top:0rpx;left:0rpx;width:200rpx;'>
-              <image bindtap='callPhone' src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
+              <image bindtap='callPhone' data-tel="{{item.tel}}"src='../../images/callPhone.png' style='position:relative;top:-16rpx;left:-130rpx;height:37rpx;width:37rpx;z-index:100;'></image>
               <image id='{{item.store_id}}' bindtap='getPosition' src='../../images/position.png' style='position:relative;top:-16rpx;left:-120rpx;space:emsp;height:37rpx;width:29rpx;z-index:100;'></image>
               <view class='t3'>{{distance1[idx].distance}}km</view>
             </view>

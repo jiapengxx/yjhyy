@@ -61,7 +61,7 @@
 }
 .t1 {
   position: relative;
-  top: 0rpx;
+  top: -10rpx;
   font-family: PingFangSC-Regular, sans-serif;
   color: #333;
   font-size: 26rpx;
@@ -69,8 +69,9 @@
 
 .t2 {
   position: relative;
+  top: -10rpx;
   height: 56rpx;
-  width: 490rpx;
+  width: 450rpx;
   text-indent: 2em;
   display: -webkit-box;
   word-break: break-all;
@@ -87,23 +88,24 @@
   position: relative;
   width: 100rpx;
   left: -40rpx;
-  top: -70rpx;
+  top: -60rpx;
   color: #666;
   font-size: 20rpx;
 }
 
 .t4 {
   position: relative;
-  bottom: 0rpx;
+  top: -10rpx;
   width: 290rpx;
   height: 30rpx;
-  background-color: pink;
+  background-color: ＃fde8e8;
   font-size: 20rpx;
   color: #e91d1d;
+  border-radius: 8rpx;
 }
 .t5 {
-  background-color: pink;
-  font-size: 30rpx;
-  color: #e91d1d;
+
+  font-size: 20rpx;
+  color: #666;
   word-break:keep-all;  
 }

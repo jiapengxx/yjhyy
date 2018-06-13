@@ -164,7 +164,7 @@
     /*border-left:1px solid #fff ;*/
 }
 .stepper input {
-  width: 43px;
+  width: 35px;
   height: 25px;
   text-align: center;
   /*background-color: #f2f2f2;*/

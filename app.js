@@ -73,11 +73,18 @@ App({
             content: '即将跳转到用户中心',
             showCancel: false,
             success: function () {
+              console.log(that.globalData.froms)
+              if (that.globalData.froms=='user'){
+              wx.redirectTo({
+                url: '../user/user',
+              })
+            }else{
               wx.switchTab({
                 url: '../company_user/company_user',
-              })
+              }) 
             }
-          })
+            }
+          }) 
 
         }
           , 2000)

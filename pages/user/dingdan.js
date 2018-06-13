@@ -391,16 +391,20 @@ Page({
       //没有数据就进行加载
       switch (that.data.currentTab) {
         case 0:
-          !that.data.orderList0.length && that.loadOrderList();
+          that.data.orderList0.length = 0;
+          that.loadOrderList();
           break;
         case 1:
-          !that.data.orderList1.length && that.loadOrderList();
+          that.data.orderList1.length = 0;
+          that.loadOrderList();
           break;
         case 2:
-          !that.data.orderList2.length && that.loadOrderList();
+          that.data.orderList2.length = 0;
+          that.loadOrderList();
           break;
         case 3:
-          !that.data.orderList3.length && that.loadOrderList();
+          that.data.orderList3.length = 0;
+          that.loadOrderList();
           break;
         case 4:
           that.data.orderList4.length = 0;

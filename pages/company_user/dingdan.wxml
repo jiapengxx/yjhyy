@@ -334,19 +334,18 @@
 <!--顶部  -->
 <view style='height:70rpx;'>
 <view style='position:relative;top:15rpx;left:24rpx;font-size:22rpx;color:#333;width:360rpx;'>订单编号：<text>{{item.order_sn}}</text></view>
-<view style='position:relative;top:-20rpx;left:400rpx;font-size:22rpx;color:#333;width:300rpx;'>申请时间：<text>{{item.back_addtime}}</text></view>
+<view style='position:relative;top:-20rpx;left:400rpx;font-size:22rpx;color:#333;width:320rpx;'>申请时间：<text>{{item.back_addtime}}</text></view>
 </view>
 <!--商品数据  -->
-<!-- <block wx:for=""> -->
-<view style='height:140rpx;' bindtap='toDetail' data-pro_id='{{item.pid}}'>
-  <image src='{{item.photo_x}}' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
-<view style='position:relative;top:-106rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{item.name}}</view>
-<view style='position:relative;top:-102rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{item.pro_buff?item.pro_buff:'默认'}}</view>
-<view style='position:relative;top:-100rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：¥{{item.price}}</view>
-<view style='position:relative;top:-128rpx;left:680rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{item.product_num}}</view>
-
+ <block wx:for="{{item.prolist}}" wx:for-item="itm" wx:for-index="index"> 
+<view style='height:140rpx;' bindtap='toDetail' data-pro_id='{{itm.pid}}'>
+  <image src='{{itm.photo_x}}' style='position:relative;top:15rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
+<view style='position:relative;top:-106rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{itm.name}}</view>
+<view style='position:relative;top:-102rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
+<view style='position:relative;top:-100rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：¥{{itm.price_yh}}</view>
+<view style='position:relative;top:-128rpx;left:680rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{itm.num}}</view>
 </view>
-<!-- </block> -->
+ </block> 
 <!--功能  -->
 <view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
 <view style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;margin-right:10rpx;text-align:center;line-height:54rpx;' >{{item.desc}}</view>

@@ -18,7 +18,8 @@ Page({
     addemt: 1,
     vou: [],
     flag: 0,
-    flag1: 0
+    flag1: 0,
+    OK:false
   },
   onLoad: function (options) {
     var that=this
@@ -177,25 +178,190 @@ console.log(buff)
   },
   bindMinus: function (e) {
     var that = this;
-    //获取到数量    状态
     var index = parseInt(e.currentTarget.dataset.index);
     var num = that.data.productData[index].num;
     // 如果只有1件了，就不允许再减了
     if (num > 1) {
       num--;
     }
+    console.log(num);
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Shopping/up_cart',
+      method: 'post',
+      data: {
+        user_id: app.d.userId,
+        num: num,
+        cart_id: that.data.productData[index].cart_id
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var status = res.data.status;
+        if (status == 1) {
           // 只有大于一件的时候，才能normal状态，否则disable状态
           var minusStatus = num <= 1 ? 'disabled' : 'normal';
+          // 购物车数据
+          var productData = that.data.productData;
+          productData[index].num = num;
+          that.setData({
+            productData: productData
+          })
+          // 按钮可用状态
+          var minusStatuses = that.data.minusStatuses;
+          minusStatuses[index] = minusStatus;
+          // 将数值与状态写回
+          that.setData({
+            minusStatuses: minusStatuses
+          });
+          that.reLoadProductDetail();
+        } else {
+          wx.showToast({
+            title: '操作失败！',
+            duration: 2000
+          });
+        }
+      },
+      fail: function () {
+        // fail
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    });
+  },
+  bindManual:function(e){
+    var that = this;
+    var index = parseInt(e.currentTarget.dataset.index);
+    var num = e.detail.value;
+    if(num>=1){
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Shopping/up_cart',
+        method: 'post',
+        data: {
+          user_id: app.d.userId,
+          num: num,
+          cart_id: that.data.productData[index].cart_id
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          var productData = that.data.productData;
+          productData[index].num = num;
+          that.setData({
+            productData: productData,
+            OK: false
+          })
+          that.reLoadProductDetail();
+        },
+        fail: function () {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        }
+      });
+    }else{
+      wx.showToast({
+        title: '请输入合理的数量',
+        icon:'none'
+      });
+      this.setData({
+        OK:true
+      })
+    }
   },
   bindPlus: function (e) {
     var that = this;
-    console.log(e)
     var index = parseInt(e.currentTarget.dataset.index);
     var num = that.data.productData[index].num;
     // 自增
-    var productData=that.data.productData
-    that.data.productData[index].num == num++;
+    num++;
     console.log(num);
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Shopping/up_cart',
+      method: 'post',
+      data: {
+        user_id: app.d.userId,
+        num: num,
+        cart_id: that.data.productData[index].cart_id
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var status = res.data.status;
+        if (status == 1) {
+          // 只有大于一件的时候，才能normal状态，否则disable状态
+          var minusStatus = num <= 1 ? 'disabled' : 'normal';
+          var productData = that.data.productData;
+          productData[index].num = num;
+          that.setData({
+            productData: productData
+          })
+          var minusStatuses = that.data.minusStatuses;
+          minusStatuses[index] = minusStatus;
+          that.setData({
+            minusStatuses: minusStatuses
+          });
+        that.reLoadProductDetail();
+        } else {
+          wx.showToast({
+            title: '操作失败！',
+            duration: 2000
+          });
+        }
+      },
+      fail: function () {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    });
+  },
+  reLoadProductDetail: function () {
+    var that = this;
+    if (this.data.HAVE) {
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
+        method: 'post',
+        data: {
+          cart_id: that.data.cartId,
+          uid: that.data.userId,
+          buff: that.data.buff
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          that.setData({
+            total: res.data.price,
+            vprice: res.data.price,
+          })
+        }
+      })
+    } else {
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Payment/buy_cart',
+        method: 'post',
+        data: {
+          cart_id: that.data.cartId,
+          uid: that.data.userId,
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          that.setData({
+            total: res.data.price,
+            vprice: res.data.price,
+          })
+        }
+      })
+    }
   },
   //选择优惠券
   getvou: function (e) {

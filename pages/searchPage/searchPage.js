@@ -20,7 +20,7 @@ Page({
     hasNoCoupons: true,
     coupons: [],
     searchInput: '',
-    distance1:[],
+    distance1: [],
     host: app.d.hostImg
   },
   getGoodsList: function (categoryId) {
@@ -38,10 +38,10 @@ Page({
         keyword: that.data.searchInput,
         uid: app.d.userId
       },
-      success: function (res) {    
+      success: function (res) {
         var Goods = res.data.search_store;
         that.setData({
-          goods:Goods,
+          goods: Goods,
           loadingMoreHidden: true
         });
         console.log(that.data.goods)
@@ -59,8 +59,8 @@ Page({
               var a = rad1 - rad2;
               var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
               var r = 6378.137;
-              var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a/2),2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b/ 2),2)))
-              console.log(typeof(distance))
+              var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+              console.log(typeof (distance))
               that.setData({
                 distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
               })
@@ -89,7 +89,7 @@ Page({
         });
       }
     })
-      
+
   },
   toBtoC: function (e) {
     var store_Id = e.currentTarget.id;
@@ -135,5 +135,40 @@ Page({
     this.setData({
       inputVal: e.detail.value
     });
-  }
+  },
+  callPhone: function (e) {
+    console.log(e)
+    if (e.currentTarget.dataset.tel) {
+      wx.makePhoneCall({
+        phoneNumber: '' + e.currentTarget.dataset.tel,
+        success: function () {
+          console.log("拨打电话成功！")
+        },
+        fail: function () {
+          console.log("拨打电话失败！")
+        }
+      })
+    } else {
+      wx.showToast({
+        title: '商家未设置联系方式',
+        icon: 'none',
+      })
+    }
+  },
+  getPosition: function (e) {
+    var that = this
+    console.log(e.currentTarget.dataset.latitude)
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        wx.openLocation({
+          latitude: parseFloat(e.currentTarget.dataset.latitude),
+          longitude: parseFloat(e.currentTarget.dataset.longitude),
+          // address: '',
+        })
+      }
+    })
+  },
 });

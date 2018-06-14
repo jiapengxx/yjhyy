@@ -33,12 +33,13 @@ Page({
     this.initSystemInfo();
     this.setData({
       currentTab: parseInt(options.currentTab),
-      isStatus: options.otype
     });
-
     if (this.data.currentTab == 4) {
       this.loadReturnOrderList();
     } else {
+      this.setData({
+        isStatus: options.otype
+      });
       this.loadOrderList();
     }
   },

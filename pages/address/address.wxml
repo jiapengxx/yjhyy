@@ -1,16 +1,16 @@
 <view class="container">
   <form bindsubmit="formSubmit" bindreset="formReset">
     <view class="section">
-      <view style='font-size:24rpx;color:#666;'>收货人：</view>
-      <input style='font-size:28rpx;color:#333;' type="text" name="name" placeholder="收货人姓名" bindblur='nameCheck'placeholder-style='font-size:28rpx;color:#d0d0d0;' />
+      <view style='font-size:26rpx;color:#666;'>收货人：</view>
+      <input style='font-size:28rpx;color:#333;' type="text" name="name" placeholder="收货人姓名" bindblur='nameCheck'placeholder-style='font-size:28rpx;color:#d0d0d0;' >{{name?name:''}}</input>
     </view>
     <view class="section">
-    <view style='font-size:24rpx;color:#666;'>联系方式：</view>
-      <input style='font-size:28rpx;color:#333;' type="text" name="phone" placeholder="电话号码" bindblur='phoneCheck' placeholder-style='font-size:28rpx;color:#d0d0d0;' />
+    <view style='font-size:26rpx;color:#666;'>联系方式：</view>
+      <input style='font-size:28rpx;color:#333;' type="text" name="phone" placeholder="电话号码" bindblur='phoneCheck' placeholder-style='font-size:28rpx;color:#d0d0d0;' >{{tel?tel:''}}</input>
     </view>
     <view class="section">
       <picker bindchange="bindPickerChangeshengArr" value="{{shengIndex}}" range="{{shengArr}}" data-id="{{shengId[shengIndex]}}">
-        <view style='font-size:24rpx;color:#666;' class="picker" >
+        <view style='font-size:26rpx;color:#666;' class="picker" >
           选择省份：{{shengArr[shengIndex]}}
           <input style='font-size:28rpx;color:#333;' hidden="true" name="province" value="{{shengArr[shengIndex]}}"/>
         </view>
@@ -18,7 +18,7 @@
     </view>
     <view class="section">
       <picker bindchange="bindPickerChangeshiArr" value="{{shiIndex}}" range="{{shiArr}}">
-        <view style='font-size:24rpx;color:#666;' class="picker">
+        <view style='font-size:26rpx;color:#666;' class="picker">
           选择城市：{{shiArr[shiIndex]}}
           <input style='font-size:28rpx;color:#333;' hidden="true" name="city" value="{{shiArr[shiIndex]}}"/>
         </view>
@@ -26,15 +26,15 @@
     </view>
     <view class="section">
       <picker bindchange="bindPickerChangequArr" value="{{quIndex}}" range="{{quArr}}">
-        <view style='font-size:24rpx;color:#666;' class="picker">
+        <view style='font-size:26rpx;color:#666;' class="picker">
           选择地区：{{quArr[quIndex]}}
           <input style='font-size:28rpx;color:#333;' hidden="true" name="town" value="{{quArr[quIndex]}}"/>
         </view>
       </picker>
     </view>
     <view class="section">
-    <view style='font-size:24rpx;color:#666;'>详细地址：</view>
-      <input style='font-size:28rpx;color:#333;' type="text" class="ww" name="address" placeholder="街道、楼牌号等"placeholder-style='font-size:28rpx;color:#d0d0d0;' />
+    <view style='font-size:26rpx;color:#666;'>详细地址：</view>
+      <input style='font-size:28rpx;color:#333;' type="text" class="ww" name="address" placeholder="街道、楼牌号等"placeholder-style='font-size:28rpx;color:#d0d0d0;' >{{address?address:''}}</input>
     </view>
     <view class="btn-area">
       <button formType="submit">保存地址</button>

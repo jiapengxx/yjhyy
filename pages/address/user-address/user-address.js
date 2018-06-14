@@ -107,6 +107,15 @@ Page({
       }
     })
   },
+  updateAddress:function(e){
+    //进入地址页   填充数据   修改数据   保存
+    var addrId = e.currentTarget.dataset.id
+    console.log(addrId)
+    wx.navigateTo({
+      url: '../address?addrId=' + addrId,
+    })
+   
+  },
   delAddress: function (e) {
     var that = this;
     var addrId = e.currentTarget.dataset.id;

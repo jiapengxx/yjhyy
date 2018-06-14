@@ -55,9 +55,9 @@ page{
 .c9{  color: #999;}
 .white{  color: #fff;}
 .font_16{  font-size: 32rpx;}
-.font_14{  font-size: 26rpx;}
-.font_12{  font-size: 24rpx;}
-.font_10{  font-size: 20rpx;}
+.font_14{  font-size: 28rpx;}
+.font_12{  font-size: 26rpx;}
+.font_10{  font-size: 22rpx;}
 .l_h20{
   line-height: 40rpx;
 }

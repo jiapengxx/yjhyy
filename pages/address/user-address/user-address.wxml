@@ -19,7 +19,9 @@
       </view>
       <view>
         <text hidden="{{item.is_default==0?false:true}}" bindtap="setDefault" data-id="{{item.id}}">设置默认</text>
-        <text hidden="{{item.is_default==0?false:true}}"> | </text>
+        <text hidden="{{item.is_default==0?false:true}}">    |    </text>
+        <text data-id="{{item.id}}" bindtap="updateAddress" >修改</text>
+        <text >    |    </text>
         <text data-id="{{item.id}}" bindtap="delAddress">删除</text>
       </view>
     </view>

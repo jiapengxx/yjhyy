@@ -1,5 +1,5 @@
 <view class="page">
-<block wx:if="{{carts!=''}}">
+<block wx:if="{{carts!=''}}"> 
   <view style='height:80rpx;'>
     <text style='position:absolute;right:24rpx;top:26rpx;font-size:28rpx;color:#ff0000;' bindtap='bjsp'>{{flag?'编辑商品':'完成'}}</text>
   </view>
@@ -52,7 +52,7 @@
           <!-- 减号 -->
           <text class="{{minusStatuses[index]}}" data-index="{{index}}" bindtap="bindMinus" data-cartid="{{item.id}}">-</text>
           <!-- 数值 -->
-          <input type="number" bindchange="bindManual" value="{{item.num}}" />
+          <input type="number" bindinput="bindManual" data-index="{{index}}"    value="{{item.num}}" />
           <!-- 加号 -->
           <text class="normal" data-index="{{index}}" bindtap="bindPlus" data-cartid="{{item.id}}">+</text>
         </view>

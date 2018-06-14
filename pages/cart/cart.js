@@ -79,7 +79,59 @@ Page({
       }
     });
   },
-
+  bindManual: function (e) {
+    var that = this;
+    var index = parseInt(e.currentTarget.dataset.index);
+    var num = e.detail.value;
+    if (num >= 1) {
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Shopping/up_cart',
+        method: 'post',
+        data: {
+          user_id: app.d.userId,
+          num: num,
+          cart_id: that.data.carts[index].id
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          var status = res.data.status;
+          if (status == 1) {
+            // 只有大于一件的时候，才能normal状态，否则disable状态
+            var minusStatus = num <= 1 ? 'disabled' : 'normal';
+            // 购物车数据
+            var carts = that.data.carts;
+            carts[index].num = num;
+            // 按钮可用状态
+            var minusStatuses = that.data.minusStatuses;
+            minusStatuses[index] = minusStatus;
+            // 将数值与状态写回
+            that.setData({
+              minusStatuses: minusStatuses
+            });
+            that.sum();
+          } else {
+            wx.showToast({
+              title: '操作失败！',
+              duration: 2000
+            });
+          }
+        },
+        fail: function () {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        }
+      });
+    } else {
+      wx.showToast({
+        title: '请输入合理的数量',
+        icon: 'none'
+      });
+    }
+  },
   bindPlus: function (e) {
     var that = this;
     var index = parseInt(e.currentTarget.dataset.index);

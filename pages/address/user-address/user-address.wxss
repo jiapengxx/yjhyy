@@ -28,8 +28,8 @@ page {
 
 .address-name-phone {
   margin-bottom: 20rpx;
-  font-size: 11pt;
-  font-weight: 900;
+  font-size: 30rpx;
+  font-weight: 700;
 }
 
 .address-name{
@@ -38,6 +38,7 @@ page {
 
 .address-info {
   margin-bottom: 30rpx;
+  font-size:30rpx;
 }
 
 .address-edit {
@@ -46,6 +47,8 @@ page {
   flex-wrap: wrap;
   border-top: 1px #efeff4 solid;
   padding-top: 30rpx;
+  font-size:30rpx;
+
 }
 
 .add-address {

@@ -707,12 +707,7 @@ Page({
             buff: this.data.buff + this.data.includeGroup[0].attrValueList[i].id
           })
         }
-
-
-        // var buff = '' + this.data.includeGroup[0].attrValueList[0].id + ',' + this.data.includeGroup[0].attrValueList[1].id + ',' + this.data.includeGroup[0].attrValueList[2].id
       }
-
-
       var value = [];
       for (var i = 0; i < this.data.attrValueList.length; i++) {
         if (!this.data.attrValueList[i].selectedValue) {
@@ -739,6 +734,7 @@ Page({
             console.log("qqq"+that.data.tids)
           }
         }
+        var ptype = e.currentTarget.dataset.type;
         wx.request({
           url: app.d.ceshiUrl + '/Api/Shopping/add',
           method: 'post',
@@ -747,7 +743,8 @@ Page({
             pid: that.data.pro_id,
             num: that.data.buynum,
             buff: that.data.buff,
-            tid: that.data.tids
+            tid: that.data.tids,
+            type: (ptype =='buynow'?'buy':'')
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -756,7 +753,7 @@ Page({
             var data = res.data;
             if (data.status == 1) {
               var DATAs = that.data.buff + ',' + data.cart_id
-              var ptype = e.currentTarget.dataset.type;
+              
               if (ptype == 'buynow') {
                 wx.redirectTo({
                   url: '../order/pay?DATAs=' + DATAs

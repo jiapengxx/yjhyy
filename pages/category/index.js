@@ -30,22 +30,20 @@ Page({
                 var status = res.data.status;
                 if(status==1) { 
                     var list = res.data.list;
+                    console.log(list[0].id)
                     var catList = res.data.catList;
                     that.setData({
                         types:list,
                         typeTree:catList,
+                        currType:list[0].id
                     });
+                    
                 } else {
                     wx.showToast({
                         title:res.data.err,
                         duration:2000,
                     });
                 }
-     that.setData({
-            currType: 2
-        });    
-      console.log(list)
-
             },
             error:function(e){
                 wx.showToast({
@@ -56,9 +54,6 @@ Page({
 
         });
     },    
- 
-
-
     tapType: function (e){
         var that = this;
         const currType = e.currentTarget.dataset.typeId;

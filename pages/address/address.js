@@ -128,39 +128,70 @@ Page({
     })
   },
   onLoad: function (options) {
-    // 生命周期函数--监听页面加载
     var that = this;
-    that.setData({
-      cartId: options.cartId
-    })
-    //获取省级城市
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/Address/get_province',
-      data: {},
-      method: 'POST',
-      success: function (res) {
-        var status = res.data.status;
-        var province = res.data.list;
-        var sArr = [];
-        var sId = [];
-        sArr.push('请选择');
-        sId.push('0');
-        for (var i = 0; i < province.length; i++) {
-          sArr.push(province[i].name);
-          sId.push(province[i].id);
+    if (options.cartId){
+      that.setData({
+        cartId: options.cartId
+      })
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Address/get_province',
+        data: {},
+        method: 'POST',
+        success: function (res) {
+          var status = res.data.status;
+          var province = res.data.list;
+          var sArr = [];
+          var sId = [];
+          sArr.push('请选择');
+          sId.push('0');
+          for (var i = 0; i < province.length; i++) {
+            sArr.push(province[i].name);
+            sId.push(province[i].id);
+          }
+          that.setData({
+            shengArr: sArr,
+            shengId: sId
+          })
+        },
+        fail: function () {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        },
+      })
+    } else if (options.addrId){
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/Address/index',
+        data: {
+          id: options.addrId,
+          user_id: app.d.userId,
+        },
+        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        header: {// 设置请求的 header
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          var adds = res.data.adds
+          console.log(adds)
+          // that.setData({
+          //   name: adds.name,
+          //   tel: adds.tel,
+          //   shengArr[shengIndex]: adds.sheng,
+          //   shiArr[shiIndex]:adds.city,
+          //   quArr[quIndex]:adds.quyu,
+          //   address:adds.address
+          // })
+        },
+        fail: function () {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
         }
-        that.setData({
-          shengArr: sArr,
-          shengId: sId
-        })
-      },
-      fail: function () {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    })
+      })
+    }
+
 
   },
 

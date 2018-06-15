@@ -94,7 +94,7 @@ console.log(buff)
           that.setData({
             addemt: res.data.addemt,
             productData: res.data.pro,
-            total: res.data.price,
+            total: res.data.gprice,
             vprice: res.data.price,
             vou: res.data.vou,
             yunfei: res.data.yunfei
@@ -125,7 +125,7 @@ console.log(buff)
           that.setData({
             addemt: res.data.addemt,
             productData: res.data.pro,
-            total: res.data.price,
+            total: res.data.gprice,
             vprice: res.data.price,
             vou: res.data.vou,
             yunfei: res.data.yunfei
@@ -339,7 +339,7 @@ console.log(buff)
         },
         success: function (res) {
           that.setData({
-            total: res.data.price,
+            total: res.data.gprice,
             vprice: res.data.price,
           })
         }
@@ -357,7 +357,7 @@ console.log(buff)
         },
         success: function (res) {
           that.setData({
-            total: res.data.price,
+            total: res.data.gprice,
             vprice: res.data.price,
           })
         }
@@ -411,7 +411,7 @@ console.log(buff)
       } else {
         this.setData({
           cgold: 0,
-          cygold: 0,
+          cygold: -(this.data.cygold),
           flag1: 0,
           code:''
         })
@@ -429,9 +429,9 @@ console.log(buff)
       console.log(cprice)
       this.setData({
         FLAg: false,
-        total: cprice,
+        vprice: cprice,
       })
-      console.log(this.data.total)
+      console.log(this.data.vprice)
     } else {
       this.setData({
         FLAg: true

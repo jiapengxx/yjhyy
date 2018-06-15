@@ -124,7 +124,7 @@ App({
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs);
 
-      this.getUserInfo();
+      // this.getUserInfo();
  
   },
   getUserInfo: function (cb) {

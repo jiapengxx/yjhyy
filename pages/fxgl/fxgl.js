@@ -13,6 +13,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData.froms)
+    console.log(app.d.store_id)
     if (options.height){
       this.setData({
         scrollTop: options.height

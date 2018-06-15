@@ -37,13 +37,23 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
-    if (option.DAta){
-      var u_id = option.DAta[0];
+    console.log("0")
+    console.log(option.DAta)
+    var aaaa = option.DAta.split(",")
+    console.log(aaaa[0])
+    console.log(aaaa[1])
+    console.log(aaaa[2])
+    if (option.DAta) {
       this.setData({
-        u_id:u_id,
-        pro_id: option.DAta[1]
+        u_id: aaaa[0],
+        pro_id: aaaa[1]
       })
-      console.log(option.DAta)
+
+      var DATA = '' + this.data.u_id + ',' + this.data.pro_id + ',' + aaaa[2]
+      console.log(DATA)
+      this.setData({
+        DATA: DATA
+      })
     }
     if (app.globalData.userInfo) {
       this.setData({
@@ -51,10 +61,11 @@ Page({
         hasUserInfo: true,
         page:false
       })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
+    }
+     else if (this.data.canIUse) {
       app.userInfoReadyCallback = res => {
+        console.log("1")
+        console.log(res)
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true,
@@ -64,6 +75,8 @@ Page({
     } else {
       wx.getUserInfo({
         success: res => {
+          console.log("2")
+          console.log(res)
           app.globalData.userInfo = res.userInfo
           this.setData({
             userInfo: res.userInfo,
@@ -104,8 +117,7 @@ Page({
       },
       success: function (res) {
         //--init data        
-        var data = res.data;
-        
+        var data = res.data; 
         if (data.status == 0) {
           wx.showToast({
             title: data.err,
@@ -115,22 +127,11 @@ Page({
         }
         app.globalData.userInfo['sessionId'] = data.session_key;
         app.globalData.userInfo['openid'] = data.openid;
-        // console.log("asdasd"+that.data.pro_id)
-        // if (that.data.pro_id) {
-        //   console.log("15615616516")
-        //   wx.redirectTo({
-        //     url: '../product/detail?pro_id=' + that.data.pro_id,
-        //   })
-        // }
-         if(that.data.pro_id){
-            wx.redirectTo({
-              url: '../product/detail?pro_id='+that.data.pro_id,
-            })
-          }
+
         if (that.data.u_id){
           that.oneLogin(data.openid);
         }else{
-          that.oneLogin(data.openid);
+
         }
         that.onLoginUser();
       },
@@ -211,7 +212,6 @@ Page({
           return false;
         }
         app.d.userId = userId;
-
         that.setData({
           hasUserInfo: true,
           userInfo: app.globalData.userInfo,
@@ -272,6 +272,11 @@ Page({
         });
       }
     });
+    if (this.data.DATA) {
+      wx.redirectTo({
+        url: '../product/detail?DATA=' + this.data.DATA,
+      })
+    }
   },
   onShareAppMessage: function () {
     return {

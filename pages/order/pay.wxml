@@ -203,7 +203,7 @@
 <view style='height:185rpx;margin-left:24rpx;margin-right:24rpx;'>
   <view style='position:relative;top:40rpx;;font-size:26rpx;color:#333;'>
     实付款：
-    <text style='font-size:36rpx;color:#ff0000;'>¥{{total}}</text>
+    <text style='font-size:36rpx;color:#ff0000;'>¥{{vprice}}</text>
   </view>
 </view>
 <button hidden='{{FLAg||OK}}' style='height:88rpx;font-size:30rpx;color:#ffffff;background-color:#ff0000;' type="primary" id="wxPay" disabled="{{btnDisabled}}" formType="submit" bindtap="createProductOrderByWX">微信支付</button>

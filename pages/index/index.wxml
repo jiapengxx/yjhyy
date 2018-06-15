@@ -35,9 +35,9 @@
 
   
 
-      <contact-button style='position:relative;top:-17rpx;width:144rpx;height:160rpx;' type="default-light" >
+      <contact-button style='position:relative;top:6rpx;width:144rpx;height:160rpx;' type="default-light" >
       <contact-button style='position:absolute;top:70rpx;left: 56rpx;opacity:0;width:120rpx;height:120rpx;' size='300'></contact-button>
-      <image id='2' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/jkmr.png' bindtap='fiveBlocks'>
+      <image id='2' style='position:relative;top:-22rpx;margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/jkmr.png' bindtap='fiveBlocks'>
       <text style='position:relative;top:18rpx;'>健康咨询</text>
       </image>
       </contact-button>   

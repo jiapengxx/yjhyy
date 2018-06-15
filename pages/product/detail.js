@@ -179,9 +179,7 @@ Page({
   },
   // 传值
   onLoad: function(option) {
-
     var that = this;
-
     if (app.globalData.froms == 'user') {
       wx.setNavigationBarColor({
         frontColor: '#ffffff',
@@ -194,10 +192,14 @@ Page({
       })
     }
     //未登录
+
+    console.log(app.globalData.userInfo)
     if (app.globalData.userInfo == null) {
+      console.log("未登录")
+      console.log(option.DATA)
       if (typeof option.DATA != 'undefined') {
         //分享
-        var DAta = option.DATA.split(",");
+        var DAta = option.DATA
         wx.showModal({
           title: '请先登录',
           content: '登录获取更多信息',
@@ -227,8 +229,15 @@ Page({
       }
     } else {
       //登陆过
+      console.log(typeof option.DATA)
+      console.log(option.DATA)
+      
       if ((typeof option.DATA) != 'undefined') {
-        var DAta = option.DATA.split(",");
+        this.setData({
+          DAta:option.DATA
+        })
+        var DAta = option.DATA.split(",")
+        console.log(DAta[0] + ',' + DAta[1] + ',' + DAta[2])
         this.setData({
           bindUid: DAta[0],
           pro_id: DAta[1],
@@ -239,6 +248,9 @@ Page({
           pro_id: option.pro_id,
           uid: app.d.userId,
         });
+      }
+      if (option.pro_id){
+        pro_id: option.pro_id
       }
       that.loadProductDetail();
       console.log("详情已加载")
@@ -875,10 +887,11 @@ Page({
    */
   onShareAppMessage: function(res) {
     var DATA = '' + app.d.userId + ',' + this.data.pro_id + ',' + this.data.store_id
+    console.log(DATA )
     if (res.from === 'button') {
       return {
         title: '' + this.data.itemData.name,
-        path: '/pages/product/detail?DATA=' + DATA,
+        path: '/pages/product/detail?DATA='+DATA,
         imageUrl: '' + this.data.itemData.photo_x,
         success: function(res) {
           // 转发成功

@@ -49,6 +49,7 @@ Page({
     });
   },
   onLoad: function (options) {
+    
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/BIndex/show_getmore',

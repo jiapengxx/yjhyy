@@ -12,6 +12,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData.froms)
+    console.log(app.d.userId)
     var that = this;
     console.log(app.d.userId);
     wx.request({

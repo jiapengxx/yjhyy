@@ -13,9 +13,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      scrollTop:options.height 
-    })
+    if (options.height){
+      this.setData({
+        scrollTop: options.height
+      })
+    }
   },
 
   /**
@@ -64,6 +66,8 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (res) {
+    //进入分享的入口   分享之后的效果
+
     // var DATA = '' + app.d.userId 
     // if (res.from === 'button') {
     //   return {

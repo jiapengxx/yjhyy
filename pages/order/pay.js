@@ -135,7 +135,7 @@ console.log(buff)
     }
   },
   loadCoin: function () {
-
+    console.log(app.d.userId)
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Company/num_list',
@@ -147,6 +147,7 @@ console.log(buff)
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
+        console.log(res)
         that.setData({
           num: res.data.num
         })

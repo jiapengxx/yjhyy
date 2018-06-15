@@ -339,7 +339,6 @@ Page({
         wx.openLocation({
           latitude: la1,
           longitude: long1,
-          // address: '北京市朝阳区时代凌宇大厦容创路17号(容创路与创达二路交叉口)',
         })
       }
     })

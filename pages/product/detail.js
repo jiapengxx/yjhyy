@@ -1,4 +1,3 @@
-
 //获取应用实例  
 var app = getApp();
 //引入这个插件，使html内容自动转换成wxml内容
@@ -25,12 +24,12 @@ Page({
     interval: 5000,
     duration: 1000,
     attrValueList: [],
-    buff:'',
-    tids:[],
+    buff: '',
+    tids: [],
   },
 
   // 立即购买弹窗
-  setModalStatus: function (e) {
+  setModalStatus: function(e) {
     var animation = wx.createAnimation({
       duration: 200,
       timingFunction: "linear",
@@ -42,100 +41,25 @@ Page({
       animationData: animation.export()
     })
     if (e.currentTarget.dataset.status == 1) {
-      this.setData(
-        {
-          showModalStatus: true,
-          buynum: 1
-        }
-      );
+      this.setData({
+        showModalStatus: true,
+        buynum: 1
+      });
     }
 
     //当规格数据存在时执行  true
     if (this.data.HAVE) {
-      setTimeout(function () {
+      setTimeout(function() {
         animation.translateY(0).step()
         this.setData({
           animationData: animation
         })
         if (e.currentTarget.dataset.status == 0) {
-          this.setData(
-            {
-              showModalStatus: false,
-              attrValueList: [],
-              buynum: 1
-            }
-          );
-        }
-      }.bind(this), 200)
-      this.setData({
-        includeGroup: this.data.commodityAttr,
-        totalPrice: this.data.itemData.price_yh * this.data.buynum
-      });
-      this.distachAttrValue(this.data.commodityAttr);
-      if (this.data.commodityAttr.length == 1) {
-        for (var i = 0; i < this.data.commodityAttr[0].attrValueList.length; i++) {
-          this.data.attrValueList[i].selectedValue = this.data.commodityAttr[0].attrValueList[i].attrValue;
-        }
-        this.setData({
-          attrValueList: this.data.attrValueList
-        });
-      }
-    }
-    else {
-      //当规格数据不存在时
-      setTimeout(function () {
-        animation.translateY(0).step()
-        this.setData({
-          animationData: animation
-        })
-        if (e.currentTarget.dataset.status == 0) {
-          this.setData(
-            {
-              showModalStatus: false,
-              buynum: 1
-            }
-          );
-        }
-      }.bind(this), 200)
-      this.setData({
-        totalPrice: this.data.itemData.price_yh * this.data.buynum
-      });
-    }
-  },
-  // 加入购物车弹窗
-  setModalStatu: function (e) {
-    var animation = wx.createAnimation({
-      duration: 200,
-      timingFunction: "linear",
-      delay: 0
-    })
-    this.animation = animation
-    animation.translateY(300).step();
-    this.setData({
-      animationData: animation.export()
-    })
-    if (e.currentTarget.dataset.status == 1) {
-      this.setData(
-        {
-          showModalStatu: true,
-          buynum: 1
-        }
-      );
-    }
-    if (this.data.HAVE) {
-      setTimeout(function () {
-        animation.translateY(0).step()
-        this.setData({
-          animationData: animation
-        })
-        if (e.currentTarget.dataset.status == 0) {
-          this.setData(
-            {
-              showModalStatu: false,
-              attrValueList: [],
-              buynum: 1
-            }
-          );
+          this.setData({
+            showModalStatus: false,
+            attrValueList: [],
+            buynum: 1
+          });
         }
       }.bind(this), 200)
       this.setData({
@@ -152,18 +76,80 @@ Page({
         });
       }
     } else {
-      setTimeout(function () {
+      //当规格数据不存在时
+      setTimeout(function() {
         animation.translateY(0).step()
         this.setData({
           animationData: animation
         })
         if (e.currentTarget.dataset.status == 0) {
-          this.setData(
-            {
-              showModalStatu: false,
-              buynum:1
-            }
-          );
+          this.setData({
+            showModalStatus: false,
+            buynum: 1
+          });
+        }
+      }.bind(this), 200)
+      this.setData({
+        totalPrice: this.data.itemData.price_yh * this.data.buynum
+      });
+    }
+  },
+  // 加入购物车弹窗
+  setModalStatu: function(e) {
+    var animation = wx.createAnimation({
+      duration: 200,
+      timingFunction: "linear",
+      delay: 0
+    })
+    this.animation = animation
+    animation.translateY(300).step();
+    this.setData({
+      animationData: animation.export()
+    })
+    if (e.currentTarget.dataset.status == 1) {
+      this.setData({
+        showModalStatu: true,
+        buynum: 1
+      });
+    }
+    if (this.data.HAVE) {
+      setTimeout(function() {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation
+        })
+        if (e.currentTarget.dataset.status == 0) {
+          this.setData({
+            showModalStatu: false,
+            attrValueList: [],
+            buynum: 1
+          });
+        }
+      }.bind(this), 200)
+      this.setData({
+        includeGroup: this.data.commodityAttr,
+        totalPrice: this.data.itemData.price_yh * this.data.buynum
+      });
+      this.distachAttrValue(this.data.commodityAttr);
+      if (this.data.commodityAttr.length == 1) {
+        for (var i = 0; i < this.data.commodityAttr[0].attrValueList.length; i++) {
+          this.data.attrValueList[i].selectedValue = this.data.commodityAttr[0].attrValueList[i].attrValue;
+        }
+        this.setData({
+          attrValueList: this.data.attrValueList
+        });
+      }
+    } else {
+      setTimeout(function() {
+        animation.translateY(0).step()
+        this.setData({
+          animationData: animation
+        })
+        if (e.currentTarget.dataset.status == 0) {
+          this.setData({
+            showModalStatu: false,
+            buynum: 1
+          });
         }
       }.bind(this), 200)
       this.setData({
@@ -173,12 +159,13 @@ Page({
   },
 
   // 加减
-  changeNum: function (e) {
+  changeNum: function(e) {
     var that = this;
     if (e.target.dataset.alphaBeta == 0) {
       if (this.data.buynum <= 1) {
         buynum: 1
-      } else {
+      }
+      else {
         this.setData({
           buynum: this.data.buynum - 1
         })
@@ -191,18 +178,31 @@ Page({
     this.count()
   },
   // 传值
-  onLoad: function (option) {
+  onLoad: function(option) {
+
     var that = this;
+
+    if (app.globalData.froms == 'user') {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#008842',
+      })
+    } else {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#4BA3FE',
+      })
+    }
     //未登录
-    if (app.globalData.userInfo == null){
-      if (typeof option.DATA != 'undefined'){
+    if (app.globalData.userInfo == null) {
+      if (typeof option.DATA != 'undefined') {
         //分享
         var DAta = option.DATA.split(",");
         wx.showModal({
           title: '请先登录',
           content: '登录获取更多信息',
           showCancel: false,
-          success: function (res) {
+          success: function(res) {
             if (res.confirm) {
               wx.redirectTo({
                 url: '../user/user?DAta=' + DAta,
@@ -210,13 +210,13 @@ Page({
             }
           }
         })
-   }else{
-     //不是分享
+      } else {
+        //不是分享
         wx.showModal({
           title: '请先登录',
           content: '登录获取更多信息',
           showCancel: false,
-          success: function (res) {
+          success: function(res) {
             if (res.confirm) {
               wx.switchTab({
                 url: '../company_user/company_user',
@@ -224,9 +224,9 @@ Page({
             }
           }
         })
-   }
-}else{
-        //登陆过
+      }
+    } else {
+      //登陆过
       if ((typeof option.DATA) != 'undefined') {
         var DAta = option.DATA.split(",");
         this.setData({
@@ -244,11 +244,11 @@ Page({
       console.log("详情已加载")
       that.loadProductEvaluate();
       console.log("评论已加载")
-}
+    }
 
   },
   // 商品详情数据获取
-  loadProductDetail: function () {
+  loadProductDetail: function() {
     var that = this;
     console.log(that.data.pro_id)
     console.log(app.d.userId)
@@ -264,7 +264,7 @@ Page({
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         var status = res.data.status;
         if (status == 1) {
@@ -296,7 +296,7 @@ Page({
           });
         }
       },
-      error: function (e) {
+      error: function(e) {
         wx.showToast({
           title: '网络异常！',
           duration: 2000,
@@ -305,7 +305,7 @@ Page({
     });
   },
   //商品评价数据获取
-  loadProductEvaluate: function () {
+  loadProductEvaluate: function() {
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/Comment/comment_show',
@@ -316,25 +316,27 @@ Page({
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         if (res.data.product_dp.length != 0) {
           that.setData({
-            All:(typeof (res.data.product_dp.all) != 'undefined' ? res.data.product_dp.all : []),
-            Good:(typeof(res.data.product_dp.good)!= 'undefined' ? res.data.product_dp.good:[]),
-            Medium: (typeof (res.data.product_dp.medium) != 'undefined' ? res.data.product_dp.medium : []),
-            Bad: (typeof (res.data.product_dp.bad) != 'undefined' ? res.data.product_dp.bad : [])
+            All: (typeof(res.data.product_dp.all) != 'undefined' ? res.data.product_dp.all : []),
+            Good: (typeof(res.data.product_dp.good) != 'undefined' ? res.data.product_dp.good : []),
+            Medium: (typeof(res.data.product_dp.medium) != 'undefined' ? res.data.product_dp.medium : []),
+            Bad: (typeof(res.data.product_dp.bad) != 'undefined' ? res.data.product_dp.bad : [])
           })
+
           function checkTime(num) {
-            if (num < 10)
-            { num = "0" + num }
+            if (num < 10) {
+              num = "0" + num
+            }
             return num
           }
-          if(that.data.All.length!=0){
+          if (that.data.All.length != 0) {
             that.setData({
-              all:[]
+              all: []
             })
             for (var i = 0; i < that.data.All.length; i++) {
-              var dateTime = new Date(that.data.All[i].addtime*1000)
+              var dateTime = new Date(that.data.All[i].addtime * 1000)
               that.setData({
                 time: dateTime.getFullYear() + '.' + (dateTime.getMonth() + 1) + '.' + dateTime.getDate() + '  ' + checkTime(dateTime.getHours()) + ':' + checkTime(dateTime.getMinutes()),
               })
@@ -403,7 +405,7 @@ Page({
         }
 
       },
-      error: function (e) {
+      error: function(e) {
         wx.showToast({
           title: '网络异常！',
           duration: 2000,
@@ -411,7 +413,7 @@ Page({
       },
     });
   },
-  getFlag: function (e) {
+  getFlag: function(e) {
     console.log(e)
     var ID = e.currentTarget.id
     if (ID == 1) {
@@ -437,13 +439,13 @@ Page({
 
   },
   // 属性选择
-  onShow: function () {
+  onShow: function() {
 
     // this.loadProductDetail();
     // this.loadProductEvaluate();
   },
   /* 获取数据 */
-  distachAttrValue: function (commodityAttr) {
+  distachAttrValue: function(commodityAttr) {
     /** 
     将后台返回的数据组合成类似 
     { 
@@ -487,7 +489,7 @@ Page({
       attrValueList: attrValueList
     });
   },
-  getAttrIndex: function (attrName, attrValueList) {
+  getAttrIndex: function(attrName, attrValueList) {
     // 判断数组中的attrKey是否有该属性值 
     for (var i = 0; i < attrValueList.length; i++) {
       if (attrName == attrValueList[i].attrKey) {
@@ -496,7 +498,7 @@ Page({
     }
     return i < attrValueList.length ? i : -1;
   },
-  isValueExist: function (value, valueArr) {
+  isValueExist: function(value, valueArr) {
     // 判断是否已有属性值 
     for (var i = 0; i < valueArr.length; i++) {
       if (valueArr[i] == value) {
@@ -506,7 +508,7 @@ Page({
     return i < valueArr.length;
   },
   /* 选择属性值事件 */
-  selectAttrValue: function (e) {
+  selectAttrValue: function(e) {
     /* 
     点选属性值，联动判断其他属性值是否可选 
     { 
@@ -518,7 +520,7 @@ Page({
     console.log(e.currentTarget.dataset); 
     */
     var attrValueList = this.data.attrValueList;
-    var index = e.currentTarget.dataset.index;//属性索引 
+    var index = e.currentTarget.dataset.index; //属性索引 
     var key = e.currentTarget.dataset.key;
     var price = e.currentTarget.dataset.price;
     var id = e.currentTarget.dataset.id;
@@ -534,7 +536,7 @@ Page({
     }
   },
   /* 选中 */
-  selectValue: function (attrValueList, index, key, value, unselectStatus) {
+  selectValue: function(attrValueList, index, key, value, unselectStatus) {
     // console.log('firstIndex', this.data.firstIndex); 
     var includeGroup = [];
     if (index == this.data.firstIndex && !unselectStatus) { // 如果是第一个选中的属性值，则该属性所有值可选 
@@ -595,7 +597,7 @@ Page({
         }
       }
     }
-    if (count < 2) {// 第一次选中，同属性的值都可选 
+    if (count < 2) { // 第一次选中，同属性的值都可选 
       this.setData({
         firstIndex: index
       });
@@ -608,7 +610,7 @@ Page({
 
   },
   /* 取消选中 */
-  disSelectValue: function (attrValueList, index, key, value) {
+  disSelectValue: function(attrValueList, index, key, value) {
     var commodityAttr = this.data.commodityAttr;
     attrValueList[index].selectedValue = '';
 
@@ -632,7 +634,7 @@ Page({
     this.count()
   },
 
-  initProductData: function (data) {
+  initProductData: function(data) {
     data["LunBoProductImageUrl"] = [];
     var imgs = data.LunBoProductImage.split(';');
     for (let url of imgs) {
@@ -644,7 +646,7 @@ Page({
   },
 
   //添加到收藏
-  addFavorites: function (e) {
+  addFavorites: function(e) {
     var that = this;
     if (this.data.collect == 0) {
       this.setData({
@@ -665,7 +667,7 @@ Page({
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         var data = res.data;
         if (data.status == 1) {
           wx.showToast({
@@ -680,7 +682,7 @@ Page({
           });
         }
       },
-      fail: function () {
+      fail: function() {
         wx.showToast({
           title: '网络异常！',
           duration: 2000
@@ -688,19 +690,20 @@ Page({
       }
     });
   },
-  addShopCart: function (e) { //添加到购物车
+  addShopCart: function(e) { //添加到购物车
     var that = this;
+    var ptype = e.currentTarget.dataset.type;
     //当存在规格数据时
     if (this.data.HAVE) {
       this.setData({
-        buff:''
+        buff: ''
       })
-      for (var i = 0; i < this.data.includeGroup[0].attrValueList.length;i++){
-        if (i!=this.data.includeGroup[0].attrValueList.length-1){
+      for (var i = 0; i < this.data.includeGroup[0].attrValueList.length; i++) {
+        if (i != this.data.includeGroup[0].attrValueList.length - 1) {
           this.setData({
             buff: this.data.buff + this.data.includeGroup[0].attrValueList[i].id + ','
           })
-        }else{
+        } else {
           console.log(this.data.includeGroup[0].attrValueList[i].id)
           this.setData({
             buff: this.data.buff + this.data.includeGroup[0].attrValueList[i].id
@@ -722,18 +725,17 @@ Page({
         })
       } else {
         that.setData({
-          tids:[]
+          tids: []
         })
-        for (var i = 0; i < that.data.includeGroup[0].attrValueList.length;i++){
-          console.log("www"+i)
-          if (that.data.includeGroup[0].attrValueList[i].tid){
+        for (var i = 0; i < that.data.includeGroup[0].attrValueList.length; i++) {
+          console.log("www" + i)
+          if (that.data.includeGroup[0].attrValueList[i].tid) {
             that.setData({
               tids: that.data.tids.concat(that.data.includeGroup[0].attrValueList[i].tid)
             })
-            console.log("qqq"+that.data.tids)
+            console.log("qqq" + that.data.tids)
           }
         }
-        var ptype = e.currentTarget.dataset.type;
         wx.request({
           url: app.d.ceshiUrl + '/Api/Shopping/add',
           method: 'post',
@@ -743,16 +745,15 @@ Page({
             num: that.data.buynum,
             buff: that.data.buff,
             tid: that.data.tids,
-            type: (ptype =='buynow'?'buy':'')
+            type: (ptype == 'buynow' ? 'buy' : '')
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
           },
-          success: function (res) {
+          success: function(res) {
             var data = res.data;
             if (data.status == 1) {
               var DATAs = that.data.buff + ',' + data.cart_id
-              
               if (ptype == 'buynow') {
                 wx.redirectTo({
                   url: '../order/pay?DATAs=' + DATAs
@@ -764,7 +765,7 @@ Page({
                   icon: 'success',
                   duration: 1000
                 });
-                setTimeout(function () {
+                setTimeout(function() {
                   that.setData({
                     showModalStatu: false,
                     attrValueList: [],
@@ -779,7 +780,7 @@ Page({
               });
             }
           },
-          fail: function () {
+          fail: function() {
             wx.showToast({
               title: '网络异常！',
               duration: 2000
@@ -796,16 +797,16 @@ Page({
           uid: app.d.userId,
           pid: that.data.pro_id,
           num: that.data.buynum,
+          type: (ptype == 'buynow' ? 'buy' : '')
         },
         header: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        success: function (res) {
-          if (res.data.status == 1) { 
-            var ptype = e.currentTarget.dataset.type;
+        success: function(res) {
+          if (res.data.status == 1) {
             if (ptype == 'buynow') {
               wx.redirectTo({
-                url: '../order/pay?cartId='+res.data.cart_id
+                url: '../order/pay?cartId=' + res.data.cart_id
               });
               return;
             } else {
@@ -814,7 +815,7 @@ Page({
                 icon: 'success',
                 duration: 1000
               });
-              setTimeout(function () {
+              setTimeout(function() {
                 that.setData({
                   showModalStatu: false,
                   buynum: 1
@@ -828,7 +829,7 @@ Page({
             });
           }
         },
-        fail: function () {
+        fail: function() {
           wx.showToast({
             title: '网络异常！',
             duration: 2000
@@ -837,14 +838,16 @@ Page({
       });
     }
   },
-  bindChange: function (e) {//滑动切换tab 
+  bindChange: function(e) { //滑动切换tab 
     var that = this;
-    that.setData({ currentTab: e.detail.current });
+    that.setData({
+      currentTab: e.detail.current
+    });
   },
-  initNavHeight: function () {////获取系统信息
+  initNavHeight: function() { ////获取系统信息
     var that = this;
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         that.setData({
           winWidth: res.windowWidth,
           winHeight: res.windowHeight
@@ -852,12 +855,12 @@ Page({
       }
     });
   },
-  bannerClosed: function () {
+  bannerClosed: function() {
     this.setData({
       bannerApp: false,
     })
   },
-  swichNav: function (e) {//点击tab切换
+  swichNav: function(e) { //点击tab切换
     var that = this;
     if (that.data.currentTab === e.target.dataset.current) {
       return false;
@@ -868,31 +871,31 @@ Page({
     }
   },
   /**
- * 用户点击右上角分享
- */
-  onShareAppMessage: function (res) {
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function(res) {
     var DATA = '' + app.d.userId + ',' + this.data.pro_id + ',' + this.data.store_id
     if (res.from === 'button') {
       return {
         title: '' + this.data.itemData.name,
         path: '/pages/product/detail?DATA=' + DATA,
         imageUrl: '' + this.data.itemData.photo_x,
-        success: function (res) {
+        success: function(res) {
           // 转发成功
         },
-        fail: function (res) {
+        fail: function(res) {
           // 转发失败
         }
       }
     }
   },
-  toBtoC: function () {
+  toBtoC: function() {
     wx.navigateTo({
       url: '../index/index?store_Id=' + this.data.store_id,
     })
     app.d.store_Id = this.data.store_id;
   },
-  count: function () {
+  count: function() {
     if (!this.data.HAVE) {
       this.setData({
         totalPrice: this.data.itemData.price_yh * this.data.buynum
@@ -913,4 +916,3 @@ Page({
     // }
   }
 });
-

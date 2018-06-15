@@ -693,6 +693,7 @@ Page({
   },
   addShopCart: function(e) { //添加到购物车
     var that = this;
+    var ptype = e.currentTarget.dataset.type;
     //当存在规格数据时
     if (this.data.HAVE) {
       this.setData({
@@ -736,7 +737,6 @@ Page({
             console.log("qqq" + that.data.tids)
           }
         }
-        var ptype = e.currentTarget.dataset.type;
         wx.request({
           url: app.d.ceshiUrl + '/Api/Shopping/add',
           method: 'post',
@@ -755,7 +755,6 @@ Page({
             var data = res.data;
             if (data.status == 1) {
               var DATAs = that.data.buff + ',' + data.cart_id
-
               if (ptype == 'buynow') {
                 wx.redirectTo({
                   url: '../order/pay?DATAs=' + DATAs
@@ -799,13 +798,13 @@ Page({
           uid: app.d.userId,
           pid: that.data.pro_id,
           num: that.data.buynum,
+          type: (ptype == 'buynow' ? 'buy' : '')
         },
         header: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         success: function(res) {
           if (res.data.status == 1) {
-            var ptype = e.currentTarget.dataset.type;
             if (ptype == 'buynow') {
               wx.redirectTo({
                 url: '../order/pay?cartId=' + res.data.cart_id

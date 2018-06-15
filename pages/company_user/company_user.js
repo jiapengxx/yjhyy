@@ -127,11 +127,9 @@ Page({
               url: '../product/detail?pro_id='+that.data.pro_id,
             })
           }
-        if (that.data.u_id){
-          that.oneLogin(data.openid);
-        }else{
-          that.oneLogin(data.openid);
-        }
+        // if (that.data.u_id){
+        //   that.oneLogin(data.openid);
+        // }
         that.onLoginUser();
       },
       fail: function (e) {
@@ -154,7 +152,6 @@ Page({
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        console.log(res.status);
         console.log(openid + "bbbbbbbbbbb");
         //--init data        
         if(res.data.status==0){

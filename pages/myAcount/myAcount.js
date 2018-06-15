@@ -1,31 +1,29 @@
 // pages/myAcount/myAcount.js
 var app=getApp()
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
   
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(app.globalData.froms)
     var that = this;
+    console.log(app.d.userId);
     wx.request({
-      url: app.d.ceshiUrl + '/Api/User/num ',
+      url: app.d.ceshiUrl + '/Api/Company/num_list',
       method: 'post',
       data: {
-        uid: app.d.userId
+        uid: app.d.userId,
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        console.log(res)
        that.setData({
            num: res.data.num
        })

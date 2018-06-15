@@ -138,7 +138,7 @@ console.log(buff)
 
     var that = this;
     wx.request({
-      url: app.d.ceshiUrl + '/Api/User/num ',
+      url: app.d.ceshiUrl + '/Api/Company/num_list',
       method: 'post',
       data: {
         uid: app.d.userId

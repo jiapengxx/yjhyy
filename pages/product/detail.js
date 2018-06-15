@@ -102,7 +102,6 @@ Page({
       });
     }
   },
-
   // 加入购物车弹窗
   setModalStatu: function (e) {
     var animation = wx.createAnimation({

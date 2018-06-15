@@ -1,15 +1,15 @@
 // app.js
 App({
   d: {
-    // hostUrl: 'https://tanghuzhao.com.cn/index.php',
-    hostUrl: 'http://www.xshoph.com/index.php',
+    hostUrl: 'https://tanghuzhao.com.cn/index.php',
+    // hostUrl: 'http://www.xshoph.com/index.php',
     hostImg: 'https://tanghuzhao.com.cn',
     hostVideo: 'http://zhubaotong-file.oss-cn-beijing.aliyuncs.com',
     userId: 0,
     appId: "",
     appKey: "",
-    ceshiUrl: 'http://www.xshoph.com/index.php',
-    // ceshiUrl: 'https://tanghuzhao.com.cn/index.php',
+    // ceshiUrl: 'http://www.xshoph.com/index.php',
+    ceshiUrl: 'https://tanghuzhao.com.cn/index.php',
   },
   position: function () {
     var that = this
@@ -97,7 +97,7 @@ App({
         fail++;//图片上传失败，图片上传失败的变量+1
         console.log('fail:' + i + "fail:" + fail);
         wx.showToast({
-          title: '网络异常！',
+          title: '上传图网络异常！',
           duration: 2000
         });
       },
@@ -128,7 +128,6 @@ App({
  
   },
   getUserInfo: function (cb) {
-    console.log(cb+"111222")
     var that = this
     if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
@@ -189,12 +188,13 @@ App({
           return false;
         }
         that.globalData.userInfo['sessionId'] = data.session_key;
+        console.log(data.openid+"佳鹏");
         that.globalData.userInfo['openid'] = data.openid;
         that.onLoginUser();
       },
       fail: function (e) {
         wx.showToast({
-          title: '网络异常！err:getsessionkeys',
+          title: 'session网络异常！err:getsessionkeys',
           duration: 2000
         });
       },
@@ -242,7 +242,7 @@ App({
       },
       fail: function (e) {
         wx.showToast({
-          title: '网络异常！err:authlogin',
+          title: 'loginuser网络异常！err:authlogin',
           duration: 2000
         });
       },

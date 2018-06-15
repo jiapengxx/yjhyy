@@ -32,7 +32,18 @@
   </swiper>
   <view class='mContainer'>
 <image id='1' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/lsyd.png' bindtap='fiveBlocks' >直播</image>
-  <image id='2' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/jkmr.png' bindtap='fiveBlocks'>健康美容</image>
+
+  
+
+      <contact-button style='position:relative;top:-17rpx;width:144rpx;height:160rpx;' type="default-light" >
+      <contact-button style='position:absolute;top:70rpx;left: 56rpx;opacity:0;width:120rpx;height:120rpx;' size='300'></contact-button>
+      <image id='2' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/jkmr.png' bindtap='fiveBlocks'>
+      <text style='position:relative;top:18rpx;'>健康咨询</text>
+      </image>
+      </contact-button>   
+
+
+
   <image id='3' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/jkysl.png' bindtap='fiveBlocks'>健康饮食</image>
   <image id='4' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/xyl.png' bindtap='fiveBlocks'>西药类</image>
     <image id='5' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/zyzyl.png' bindtap='fiveBlocks'>中医中药</image>

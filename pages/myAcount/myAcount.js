@@ -14,6 +14,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData.froms)
+    console.log(app.d.userId)
     var that = this;
     wx.request({
       url: app.d.ceshiUrl + '/Api/User/num ',

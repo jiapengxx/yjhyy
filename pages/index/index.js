@@ -172,6 +172,10 @@ Page({
     })
   },
   onLoad: function (options) {
+    if (options.store_Id){
+      console.log(options.store_Id)
+    }
+    
     app.editTabBar2();
     var that = this;
     wx.request({
@@ -190,7 +194,6 @@ Page({
         var brand = res.data.brand;
         var course = res.data.course;
         var store = res.data.store;
-
         that.setData({
           imgUrls: ggtop,
           proCat: procat,
@@ -317,7 +320,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '' + this.data.store.name,
-      path: '/pages/index/index',
+      path: '/pages/index/index?store_Id=' + app.d.store_Id,
       success: function (res) {
         // 分享成功
       },

@@ -113,7 +113,6 @@ Page({
       success: function (res) {
         //--init data        
         var data = res.data;
-       
         if (data.status == 0) {
           wx.showToast({
             title: data.err,

@@ -37,18 +37,12 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
-    console.log("0")
-    console.log(option.DAta)
-    var aaaa = option.DAta.split(",")
-    console.log(aaaa[0])
-    console.log(aaaa[1])
-    console.log(aaaa[2])
     if (option.DAta) {
+      var aaaa = option.DAta.split(",")
       this.setData({
         u_id: aaaa[0],
         pro_id: aaaa[1]
       })
-      
       var DATA = '' + this.data.u_id + ',' + this.data.pro_id + ',' + aaaa[2]
       console.log(DATA)
       this.setData({

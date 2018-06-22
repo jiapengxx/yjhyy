@@ -27,6 +27,17 @@ Page({
     }),
   },
   onLoad: function (options) {
+    if (app.globalData.froms == 'user') {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#008842',
+      })
+    } else {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#4BA3FE',
+      })
+    }
     console.log(options)
     new ImageUploader(this, 'img1');
     if (options.orderId && options.pro_id) {

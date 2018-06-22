@@ -51,7 +51,6 @@ Page({
                     duration:2000,
                 });
             },
-
         });
     },    
     tapType: function (e){

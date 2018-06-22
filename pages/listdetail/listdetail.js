@@ -4,7 +4,6 @@ Page({
     current: 0,
     shopList: [],
     ptype:'',
-    title:'北京医佳户健康医疗中心',
     page:2,
     catId:0,
     brandId: 0

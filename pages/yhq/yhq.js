@@ -21,6 +21,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (app.globalData.froms == 'user') {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#008842',
+      })
+    } else {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#4BA3FE',
+      })
+    }
     var count1 = this.data.sjyhq.length
     var count2 = this.data.gryhq.length
     this.setData({

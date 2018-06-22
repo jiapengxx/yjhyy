@@ -25,7 +25,7 @@
 <!--顶部  -->
 <view style='height:90rpx;'>
   <image src='../../images/dianpu.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;'></image>
-<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:400rpx;'>{{item.name}}</view>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:500rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>等待付款</view>
 </view>
 <!--商品数据  -->
@@ -97,7 +97,7 @@
 <!--顶部  -->
 <view style='height:90rpx;'>
   <image src='../../images/dianpu.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;'></image>
-<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:400rpx;'>{{item.name}}</view>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:500rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>等待发货</view>
 </view>
 <!--商品数据  -->
@@ -181,7 +181,7 @@
 <!--顶部  -->
 <view style='height:150rpx;'>
   <image src='../../images/dianpu.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;'></image>
-<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:400rpx;'>{{item.name}}</view>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:500rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>等待收货</view>
 
   <image src='../../images/wuliu.png' style='height:30rpx;width:30rpx;position:relative;top:-30rpx;left:24rpx;'></image>
@@ -250,7 +250,7 @@
 <!--顶部  -->
 <view style='height:90rpx;'>
   <image src='../../images/dianpu.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:24rpx;'></image>
-<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:400rpx;'>{{item.name}}</view>
+<view style='position:relative;top:-15rpx;left:80rpx;font-size:26rpx;color:#333;width:500rpx;'>{{item.name}}</view>
 <view style='position:relative;top:-53rpx;left:624rpx;font-size:24rpx;color:#ff0000;width:120rpx;'>已完成</view>
 </view>
 <!--商品数据   如果是单品则在下方显示   如果是多品则在上方显示 -->

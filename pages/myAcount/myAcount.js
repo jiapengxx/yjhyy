@@ -6,15 +6,23 @@ Page({
    */
   data: {
   
-  },
+  }, 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData.froms)
-    console.log(app.d.userId)
     var that = this;
-    console.log(app.d.userId);
+    if (app.globalData.froms == 'user') {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#008842',
+      })
+    } else {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#4BA3FE',
+      })
+    }
     wx.request({
       url: app.d.ceshiUrl + '/Api/Company/num_list',
       method: 'post',

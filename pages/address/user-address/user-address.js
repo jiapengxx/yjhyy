@@ -10,6 +10,17 @@ Page({
   },
   onLoad: function (options) {
     var that = this;
+    if (app.globalData.froms == 'user') {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#008842',
+      })
+    } else {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#4BA3FE',
+      })
+    }
     // 页面初始化 options为页面跳转所带来的参数
     if (options.cartId){
       var cartId = options.cartId;
@@ -109,12 +120,15 @@ Page({
   },
   updateAddress:function(e){
     //进入地址页   填充数据   修改数据   保存
-    var addrId = e.currentTarget.dataset.id
-    console.log(addrId)
-    wx.navigateTo({
-      url: '../address?addrId=' + addrId,
+    wx.showToast({
+      title: '暂未开放',
+      icon:'loading'
     })
-   
+    // var addrId = e.currentTarget.dataset.id
+    // console.log(addrId)
+    // wx.navigateTo({
+    //   url: '../address?addrId=' + addrId,
+    // })
   },
   delAddress: function (e) {
     var that = this;

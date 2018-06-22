@@ -1,26 +1,20 @@
 <view style='height:30rpx;background-color:#fafafa;'></view>
-<view style='position:relative;height:134rpx;margin-left:24rpx;margin-right:24rpx;background-color:#fff;'>
-  <image src='../../images/wuliu.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:0rpx;'></image>
-<view style='position:relative;top:-20rpx;left:60rpx;font-size:26rpx;color:#333;width:300rpx;'>您的订单正在出库</view>
-<view style='position:relative;top:-6rpx;left:60rpx;font-size:20rpx;color:#666;width:300rpx;'>2018-03-03  21:23:56</view>
-</view>
-<view style='height:30rpx;background-color:#fafafa;'></view>
 <view style='position:relative;height:140rpx;margin-left:24rpx;margin-right:24rpx;background-color:#fff;'>
   <image src='../../images/dizhi.png' style='height:30rpx;width:30rpx;position:relative;top:30rpx;left:0rpx;'></image>
 <view style='position:relative;top:-20rpx;left:60rpx;font-size:26rpx;color:#333;width:500rpx;'>{{orderData.receiver}}<text style='position:relative;left:70rpx;'>{{orderData.tel}}</text></view>
-<view style='position:relative;top:-6rpx;left:60rpx;font-size:22rpx;color:#666;width:640rpx;height:80rpx;'>地址：<text style=''>{{orderData.address_xq}}</text></view>
+<view style='position:relative;top:-6rpx;left:60rpx;font-size:22rpx;color:#666;width:600rpx;height:70rpx;'>地址：<text style=''>{{orderData.address_xq}}</text></view>
 </view>
 <view style='height:30rpx;background-color:#fafafa;'></view>
 
 <view style='position:relative;left:24rpx;height:60rpx;width:702rpx;position:relative;background-color:#fff;'>
   <image src='../../images/dianpu.png' style='height:30rpx;width:30rpx;position:relative;top:14rpx;left:0rpx;'></image>
-<view style='position:relative;top:-28rpx;left:56rpx;font-size:26rpx;color:#333;width:300rpx;'>{{orderData.name}}</view>
+<view style='position:relative;top:-28rpx;left:56rpx;font-size:26rpx;color:#333;width:600rpx;'>{{orderData.name}}</view>
 </view>
  <block wx:for="{{proData}}" wx:for-item="item" wx:for-index="idx"> 
  <view style='height:160rpx;margin-left:24rpx;'>
   <image src='{{item.photo_x}}' style='position:relative;top:15rpx;left:0rpx;width:120rpx;height:120rpx;'></image>
-<view style='position:relative;top:-124rpx;left:146rpx;font-size:26rpx;color:#333;width:300rpx;'>{{item.name}}</view>
-<view style='position:relative;top:-124rpx;left:146rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：<text>{{item.pro_buff?item.pro_buff:'默认'}}</text></view>
+<view style='position:relative;top:-124rpx;left:146rpx;font-size:26rpx;color:#333;width:500rpx;'>{{item.name}}</view>
+<view style='position:relative;top:-124rpx;left:146rpx;font-size:22rpx;color:#666;width:500rpx;'>规格分类：<text>{{item.pro_buff?item.pro_buff:'默认'}}</text></view>
 <view style='position:relative;top:-122rpx;left:146rpx;font-size:22rpx;color:#666;width:400rpx;'>数量：{{item.num}}</view>
 <view style='position:relative;top:-120rpx;left:146rpx;font-size:22rpx;color:#333;width:400rpx;'>价格：¥{{item.price}}</view>
 </view>

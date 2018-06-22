@@ -127,30 +127,11 @@ Page({
         }
         app.globalData.userInfo['sessionId'] = data.session_key;
         app.globalData.userInfo['openid'] = data.openid;
-<<<<<<< HEAD
-        // console.log("asdasd"+that.data.pro_id)
-        // if (that.data.pro_id) {
-        //   console.log("15615616516")
-        //   wx.redirectTo({
-        //     url: '../product/detail?pro_id=' + that.data.pro_id,
-        //   })
-        // }
-         if(that.data.pro_id){
-            wx.redirectTo({
-              url: '../product/detail?pro_id='+that.data.pro_id,
-            })
-          }
-        // if (that.data.u_id){
-        //   that.oneLogin(data.openid);
-        // }
-=======
-
         if (that.data.u_id){
           that.oneLogin(data.openid);
         }else{
 
         }
->>>>>>> 7858d0191e7aed4df6b8c149609ccfa554e1f8b9
         that.onLoginUser();
       },
       fail: function (e) {

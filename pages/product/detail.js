@@ -220,9 +220,17 @@ Page({
           showCancel: false,
           success: function(res) {
             if (res.confirm) {
-              wx.switchTab({
-                url: '../company_user/company_user',
-              })
+              //如果从BtoB进，去BtoB登录
+              if (app.globalData.froms == 'company_user') {
+                wx.switchTab({
+                  url: '../company_user/company_user',
+                })
+              } else {
+                //如果从BtoC进，去BtoC登录
+                wx.redirectTo({
+                  url: '../user/user',
+                })
+              }
             }
           }
         })

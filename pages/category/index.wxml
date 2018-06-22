@@ -8,7 +8,6 @@
             {{item.name}}
         </view>
     </scroll-view>
-
     <!-- 右侧数据 -->
     <scroll-view scroll-y="true" class="right">
         <view class="typeTree">

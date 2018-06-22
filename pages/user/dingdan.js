@@ -85,6 +85,9 @@ Page({
                 duration: 2000
               });
               that.loadOrderList();
+              that.setData({
+                page0: 2
+              })
             } else {
               wx.showToast({
                 title: res.data.err,

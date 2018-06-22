@@ -7,7 +7,7 @@ Page({
     page:2,
     catId:0,
     brandId: 0
-  },
+  }, 
 showModal: function () {
     // 显示遮罩层
     var animation = wx.createAnimation({
@@ -58,8 +58,9 @@ getMore:function(e){
       method:'post',
       data: {
         page:page,
-        ptype:that.data.ptype,
         cat_id:that.data.catId,
+        //参数的作用
+        ptype: that.data.ptype,
         brand_id: that.data.brandId
       },
       header: {
@@ -105,9 +106,9 @@ onLoad: function (options) {
     var brandId = options.brandId;
     var that = this;
     that.setData({
-      ptype: ptype,
       catId: cat_id,
-      brandId: brandId
+      // ptype: ptype,
+      // brandId: brandId
     })
     //ajax请求数据
     wx.request({
@@ -115,8 +116,8 @@ onLoad: function (options) {
       method:'post',
       data: {
         cat_id:cat_id,
-        ptype:ptype,
-        brand_id: brandId
+        // ptype:ptype,
+        // brand_id: brandId
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'

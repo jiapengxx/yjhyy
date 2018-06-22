@@ -120,15 +120,15 @@ Page({
   },
   updateAddress:function(e){
     //进入地址页   填充数据   修改数据   保存
-    wx.showToast({
-      title: '暂未开放',
-      icon:'loading'
-    })
-    // var addrId = e.currentTarget.dataset.id
-    // console.log(addrId)
-    // wx.navigateTo({
-    //   url: '../address?addrId=' + addrId,
+    // wx.showToast({
+    //   title: '暂未开放',
+    //   icon:'loading'
     // })
+    var addrId = e.currentTarget.dataset.id
+    console.log(addrId)
+    wx.navigateTo({
+      url: '../address?addrId=' + addrId,
+    })
   },
   delAddress: function (e) {
     var that = this;

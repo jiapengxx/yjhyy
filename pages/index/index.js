@@ -19,7 +19,9 @@ Page({
     lastcat: [],
     course: [],
     store_Id:'',
-    gz:false
+    gz:false,
+    store:[]
+    
   },
   //跳转商品列表页   
   listdetail: function (e) {
@@ -330,6 +332,9 @@ Page({
     }
   },
   toPosition:function(){
+    
+    var that=this
+    console.log(that.data.store.longitude, that.data.store.latitude)
     //获取当前坐标   结合店铺坐标
     wx.getLocation({
       type: 'gcj02',
@@ -337,8 +342,8 @@ Page({
         var latitude = res.latitude;
         var longitude = res.longitude;
         wx.openLocation({
-          latitude: la1,//
-          longitude: long1,//
+          latitude: parseFloat(that.data.store.latitude),
+          longitude: parseFloat(that.data.store.longitude),
         })
       }
     })

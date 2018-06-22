@@ -328,8 +328,19 @@ Page({
         // 分享失败
       }
     }
+  },
+  toPosition:function(){
+    //获取当前坐标   结合店铺坐标
+    wx.getLocation({
+      type: 'gcj02',
+      success: function (res) {
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+        wx.openLocation({
+          latitude: la1,//
+          longitude: long1,//
+        })
+      }
+    })
   }
-
-
-
 });

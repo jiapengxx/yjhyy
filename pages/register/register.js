@@ -22,7 +22,17 @@ Page({
 
   },
   onLoad: function () {
-
+    if (app.globalData.froms == 'user') {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#008842',
+      })
+    } else {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#4BA3FE',
+      })
+    }
   },
   onUnload: function () {
     currentTime = maxTime

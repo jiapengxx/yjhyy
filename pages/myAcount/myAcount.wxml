@@ -1,4 +1,4 @@
-<button bindtap='wdyhk'>我的银行卡</button>
+<!-- <button bindtap='wdyhk'>我的银行卡</button>    银行卡暂不开放-->
 <view style='width:750rpx;height:250rpx;background-color:#ee8411;'>
 <view style='position:relative;width:150rpx;top:30rpx;left:340rpx;font-size:20rpx;color:#fff;'>
 <text>金币（个）</text>

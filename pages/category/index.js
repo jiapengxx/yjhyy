@@ -11,8 +11,7 @@ Page({
         "types": [
         ],
         typeTree: [],
-    },
-        
+    },   
     onLoad: function (option){
         app.editTabBar2();
         var that = this;

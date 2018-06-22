@@ -7,6 +7,7 @@ Page({
     shiArr: [],//城市数组
     shiId: [],//城市id数组
     quArr: [],//区数组
+    Province:'',
     shengIndex: 0,
     shiIndex: 0,
     quIndex: 0,
@@ -15,7 +16,8 @@ Page({
     city: 0,
     area: 0,
     code: 0,
-    cartId: 0
+    cartId: 0,
+    addrId:0
   },
   nameCheck:function(e){
     var names = e.detail.value
@@ -75,12 +77,13 @@ Page({
     wx.request({
       url: app.d.ceshiUrl + '/Api/Address/add_adds',
       data: {
+        id: this.data.addrId,
         user_id: app.d.userId,
         receiver: adds.name,
         tel: that.data.phone,
-        sheng: this.data.sheng,
-        city: this.data.city,
-        quyu: this.data.area,
+        sheng: (this.data.sheng ? this.data.sheng : this.data.ShengId),
+        city: (this.data.city ? this.data.city : this.data.ShiId),
+        quyu: (this.data.area ? this.data.area : this.data.QuId),
         adds: adds.address,
         code: this.data.code,
       },
@@ -172,27 +175,63 @@ Page({
         },
       })
     } else if (options.addrId){
+      this.setData({
+        addrId: options.addrId 
+      })
       wx.request({
-        url: app.d.ceshiUrl + '/Api/Address/index',
+        url: app.d.ceshiUrl + '/Api/address/get_address',
         data: {
           id: options.addrId,
-          user_id: app.d.userId,
+          // user_id: app.d.userId,
         },
         method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         header: {// 设置请求的 header
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         success: function (res) {
-          var adds = res.data.adds
-          console.log(adds)
-          // that.setData({
-          //   name: adds.name,
-          //   tel: adds.tel,
-          //   shengArr[shengIndex]: adds.sheng,
-          //   shiArr[shiIndex]:adds.city,
-          //   quArr[quIndex]:adds.quyu,
-          //   address:adds.address
-          // })
+          console.log(res.data.address)
+          var adds = res.data.address
+
+          // that.getProvince(adds.sheng)
+          that.setData({  
+            ShengId: adds.sheng,
+            ShiId: adds.city,
+            QuId: adds.quyu,
+            sheng1: adds.sheng1,
+            city1: adds.city1,
+            quyu1: adds.quyu1,
+            name: adds.name,
+            tel: adds.tel,
+            address:adds.address,
+            code: adds.code
+          })
+          wx.request({
+            url: app.d.ceshiUrl + '/Api/Address/get_province',
+            data: {},
+            method: 'POST',
+            success: function (res) {
+              var status = res.data.status;
+              var province = res.data.list;
+              var sArr = [];
+              var sId = [];
+              sArr.push('请选择');
+              sId.push('0');
+              for (var i = 0; i < province.length; i++) {
+                sArr.push(province[i].name);
+                sId.push(province[i].id);
+              }
+              that.setData({
+                shengArr: sArr,
+                shengId: sId
+              })
+            },
+            fail: function () {
+              wx.showToast({
+                title: '网络异常！',
+                duration: 2000
+              });
+            },
+          })
         },
         fail: function () {
           wx.showToast({
@@ -202,10 +241,115 @@ Page({
         }
       })
     }
-
-
   },
 
+
+  getProvince: function (shengId){
+  var that = this
+  wx.request({
+    url: app.d.ceshiUrl + '/Api/Address/get_province',
+    data: {},
+    method: 'POST',
+    success: function (res) {
+      var status = res.data.status;
+      var province = res.data.list;
+      var sArr = [];
+      var sId = [];
+      sArr.push('请选择');
+      sId.push('0');
+      for (var i = 0; i < province.length; i++) {
+        sArr.push(province[i].name);
+        sId.push(province[i].id);
+      }
+      that.setData({
+        shengArr: sArr,
+        shengIndex: shengId
+      })
+      that.getCity(sArr[shengId])
+    },
+    fail: function () {
+      wx.showToast({
+        title: '网络异常！',
+        duration: 2000
+      });
+    },
+  })
+},
+  getCity: function (){
+  var that=this
+  wx.request({
+    url: app.d.ceshiUrl + '/Api/Address/get_city',
+    data: { 
+      sheng: this.data.shengId
+    },
+    method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    header: {// 设置请求的 header
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+      // success
+      var status = res.data.status;
+      var city = res.data.city_list;
+      var hArr = [];
+      var hId = [];
+      hArr.push('请选择');
+      hId.push('0');
+      for (var i = 0; i < city.length; i++) {
+        hArr.push(city[i].name);
+        hId.push(city[i].id);
+      }
+      that.setData({
+        sheng: res.data.sheng,
+        shiArr: hArr,
+        shiIndex: that.data.shiId
+      })
+      that.getArea()
+    },
+    fail: function () {
+      wx.showToast({
+        title: '网络异常！',
+        duration: 2000
+      });
+    },
+  })
+},
+  getArea: function (){
+  var that = this
+  wx.request({
+    url: app.d.ceshiUrl + '/Api/Address/get_area',
+    data: {
+      city: this.data.shiId,
+      sheng: this.data.shengId
+    },
+    method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+    header: {// 设置请求的 header
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    success: function (res) {
+      var status = res.data.status;
+      var area = res.data.area_list;
+      var qArr = [];
+      var qId = [];
+      qArr.push('请选择');
+      qId.push('0');
+      for (var i = 0; i < area.length; i++) {
+        qArr.push(area[i].name)
+        qId.push(area[i].id)
+      }
+      that.setData({
+        city: res.data.city,
+        quArr: qArr,
+        quIndex: that.data.quId
+      })
+    },
+    fail: function () {
+      wx.showToast({
+        title: '网络异常！',
+        duration: 2000
+      });
+    }
+  })
+},
   bindPickerChangeshengArr: function (e) {
     var that = this;
     if (e.detail.value!=0){

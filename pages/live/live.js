@@ -24,10 +24,17 @@ Page({
   },
   onLoad: function () {
     var that = this
-    this.setData({
-  
-      
-    })
+    if (app.globalData.froms == 'user') {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#008842',
+      })
+    } else {
+      wx.setNavigationBarColor({
+        frontColor: '#ffffff',
+        backgroundColor: '#4BA3FE',
+      })
+    }
     /**     * 获取系统信息     */
     wx.getSystemInfo({
       success: function (res) {

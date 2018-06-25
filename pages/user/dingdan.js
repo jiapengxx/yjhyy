@@ -378,49 +378,49 @@ Page({
   },
   swichNav: function (e) {
     var that = this;
+    console.log(e)
     if (that.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
       var current = e.target.dataset.current;
-      console.log(typeof (e.target.dataset.otype) == 'undefined')
-      if (typeof (e.target.dataset.otype) == 'undefined'){
+      that.setData({
+        currentTab: parseInt(current),
+      });
+      if (that.data.currentTab == 4) {
+        console.log("aaa1")
         that.setData({
-          currentTab: parseInt(current),
-          isStatus:'',
+          isStatus: '',
         });
-      }else{
-        //有问题！！！！
-        if (that.data.currentTab==4){
-          that.setData({
-            currentTab: parseInt(current),
-            isStatus: '',
-          });
-        }else{
-          that.setData({
-            currentTab: parseInt(current),
-            isStatus: e.target.dataset.otype,
-          });
-        }
+      } else {
+        console.log("aaa2" + e.target.dataset.otype)
+        that.setData({
+          isStatus: e.target.dataset.otype,
+        });
       }
       //没有数据就进行加载
       switch (that.data.currentTab) {
         case 0:
+          that.data.page0 = 2
           that.data.orderList0.length = 0;
           that.loadOrderList();
           break;
         case 1:
+          that.data.page1 = 2
           that.data.orderList1.length = 0;
           that.loadOrderList();
           break;
         case 2:
+          that.data.page2 = 2
           that.data.orderList2.length = 0;
           that.loadOrderList();
           break;
         case 3:
+          that.data.page3 = 2
           that.data.orderList3.length = 0;
           that.loadOrderList();
           break;
         case 4:
+          that.data.page4 = 2
           that.data.orderList4.length = 0;
           that.loadReturnOrderList();
           break;

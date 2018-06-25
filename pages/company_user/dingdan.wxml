@@ -40,9 +40,18 @@
  </block> 
 <!--结算  -->
 <view style='height:74rpx;background-color:#fff;'>
+<block wx:if="{{item.denarius||item.gold}}">
+<view style='position:relative;top:24rpx;left:40rpx;font-size:24rpx;color:#333;width:150rpx;'>运费:{{item.yunfei}}</view>
+<view  style='position:relative;top:-10rpx;left:160rpx;font-size:24rpx;color:#333;width:220rpx;'>健康币:¥{{(item.denarius?item.denarius:(item.gold?item.gold:''))}}</view>
+<view style='position:relative;top:-44rpx;left:370rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
+<view style='position:relative;top:-80rpx;left:520rpx;font-size:24rpx;color:#333;width:200rpx;'>需付款:¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+</block>
+<block wx:else>
 <view style='position:relative;top:24rpx;left:50rpx;font-size:24rpx;color:#333;width:150rpx;'>运费：{{item.yunfei}}</view>
 <view style='position:relative;top:-10rpx;left:350rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
 <view style='position:relative;top:-44rpx;left:500rpx;font-size:24rpx;color:#333;width:200rpx;'>需付款：¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+</block>
+
 </view>
 <!--功能  -->
 <view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
@@ -128,9 +137,18 @@
 </view> -->
 
 <view style='height:74rpx;background-color:#fff;'>
-<view style='position:relative;top:24rpx;left:50rpx;font-size:24rpx;color:#333;width:150rpx;'>运费：{{item.yunfei?item.yunfei:0.00}}</view>
-<view style='position:relative;top:-10rpx;left:340rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
-<view style='position:relative;top:-44rpx;left:490rpx;font-size:24rpx;color:#333;width:250rpx;'>实付款：¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+<block wx:if="{{item.denarius||item.gold}}">
+<view style='position:relative;top:24rpx;left:40rpx;font-size:24rpx;color:#333;width:150rpx;'>运费:{{item.yunfei}}</view>
+<view  style='position:relative;top:-10rpx;left:160rpx;font-size:24rpx;color:#333;width:220rpx;'>健康币:¥{{(item.denarius?item.denarius:(item.gold?item.gold:''))}}</view>
+<view style='position:relative;top:-44rpx;left:370rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
+<view style='position:relative;top:-80rpx;left:520rpx;font-size:24rpx;color:#333;width:200rpx;'>需付款:¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+</block>
+<block wx:else>
+<view style='position:relative;top:24rpx;left:50rpx;font-size:24rpx;color:#333;width:150rpx;'>运费：{{item.yunfei}}</view>
+<view style='position:relative;top:-10rpx;left:350rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
+<view style='position:relative;top:-44rpx;left:500rpx;font-size:24rpx;color:#333;width:200rpx;'>需付款：¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+</block>
+
 </view>
 
 
@@ -199,11 +217,28 @@
 </view>
  </block> 
 <!--结算  -->
-<view style='height:74rpx;background-color:#fff;'>
+<!-- <view style='height:74rpx;background-color:#fff;'>
 <view style='position:relative;top:24rpx;left:50rpx;font-size:24rpx;color:#333;width:150rpx;'>运费：{{item.yunfei?item.yunfei:0.00}}</view>
 <view style='position:relative;top:-10rpx;left:340rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
 <view style='position:relative;top:-44rpx;left:490rpx;font-size:24rpx;color:#333;width:250rpx;'>实付款：¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+</view> -->
+
+<view style='height:74rpx;background-color:#fff;'>
+<block wx:if="{{item.denarius||item.gold}}">
+<view style='position:relative;top:24rpx;left:40rpx;font-size:24rpx;color:#333;width:150rpx;'>运费:{{item.yunfei}}</view>
+<view  style='position:relative;top:-10rpx;left:160rpx;font-size:24rpx;color:#333;width:220rpx;'>健康币:¥{{(item.denarius?item.denarius:(item.gold?item.gold:''))}}</view>
+<view style='position:relative;top:-44rpx;left:370rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
+<view style='position:relative;top:-80rpx;left:520rpx;font-size:24rpx;color:#333;width:200rpx;'>需付款:¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+</block>
+<block wx:else>
+<view style='position:relative;top:24rpx;left:50rpx;font-size:24rpx;color:#333;width:150rpx;'>运费：{{item.yunfei}}</view>
+<view style='position:relative;top:-10rpx;left:350rpx;font-size:24rpx;color:#333;width:150rpx;'>共{{item.product_num}}件商品</view>
+<view style='position:relative;top:-44rpx;left:500rpx;font-size:24rpx;color:#333;width:200rpx;'>需付款：¥<text style='font-size:28rpx;color:#333;'>{{item.price}}</text></view>
+</block>
+
 </view>
+
+
 <!--功能  -->
 <view style='height:68rpx;border-top:1rpx solid #e0e0e0;flex-direction:row;flex-wrap:nowrap;justify-content:flex-end;display:flex;padding-top:26rpx;background-color:#fff;'>
 <navigator style='height:54rpx;width:150rpx;font-size:26rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:54rpx;' url="../dshDetail/dshDetail?orderId={{item.id}}">订单详情</navigator>

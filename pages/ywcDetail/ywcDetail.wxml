@@ -36,8 +36,9 @@
 </view>
 <view style='height:30rpx;background-color:#fafafa;'></view>
 <view style='position:relative;height:132rpx;border-bottom:1rpx solid #e0e0e0;margin-left:24rpx;margin-right:24rpx;'>
-<view style='position:relative;top:24rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>商品总额：¥{{orderData.goods_price}}</view>
-<view style='position:relative;top:44rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>运费：＋¥{{orderData.yunfei}}</view>
+<view style='position:relative;top:10rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>商品总额：¥{{orderData.goods_price}}</view>
+<view wx:if="{{orderData.denarius||orderData.gold}}" style='position:relative;top:16rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>健康币：－¥{{(orderData.denarius?orderData.denarius:(orderData.gold?orderData.gold:''))}}</view>
+<view style='position:relative;top:20rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>运费：＋¥{{orderData.yunfei}}</view>
 </view>
 
 <view style='position:relative;height:84rpx;margin-left:24rpx;margin-right:24rpx;'>

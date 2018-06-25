@@ -6,7 +6,6 @@ Page({
     reason: '',
     remark: '',
     imgUrl: '',
-    host: app.d.hostImg,
     pulldown: false,
     aaa: [{ a: 1, b: 2 }, { a: 3, b: 4 }],
     // th:false,
@@ -71,6 +70,7 @@ Page({
       },
       success: function (res) {
         that.setData({
+          host: app.d.hostImg,
           product: res.data.order_product
         })
       },
@@ -89,6 +89,7 @@ Page({
       },
       success: function (res) {
         that.setData({
+          host: app.d.hostImg,
           product: res.data.order_product
         })
       },

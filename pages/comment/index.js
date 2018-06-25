@@ -4,6 +4,7 @@ const ImageUploader = require('../common/image_uploader/image_uploader.js');
 Page({
   data: {
     content: '',
+    
     flag:0,
     num1:0,
     num2:0, 
@@ -101,6 +102,7 @@ Page({
     },
     success: function (res) {
       that.setData({
+        srcs: 'https://tanghuzhao.com.cn/Data/',
         photo_x:res.data.product.photo_x
       })
     },

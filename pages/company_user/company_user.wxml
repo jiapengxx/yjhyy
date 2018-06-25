@@ -37,7 +37,7 @@
     </navigator>
 
 
-    <navigator class="df_1" url="../company_user/dingdan?currentTab=4" hover-class="none">
+    <navigator class="df_1" url="../company_user/dingdan?currentTab=4&otype=''" hover-class="none">
       <view>
         <image src="https://tanghuzhao.com.cn/Public/images/tksh.png"></image>
       </view>

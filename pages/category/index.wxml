@@ -13,8 +13,8 @@
         <view class="typeTree">
             <view  class="brand" wx:for="{{typeTree}}" wx:for-item="data">
                 <navigator url="../listdetail/listdetail?cat_id={{data.id}}&title={{data.name}}" wx:key="typeId" class="item">
-                    <image src="{{data.bz_1}}"></image>
-                    <text>{{data.name}}</text>
+                    <image style='height:200rpx;width:200rpx;' src="{{data.bz_1}}"></image>
+                    <text style='width:200rpx;text-align:center;overflow: hidden;white-space: nowrap;'>{{data.name}}</text>
                 </navigator>
                     
             </view>

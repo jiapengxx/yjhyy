@@ -8,7 +8,7 @@
         <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
           <icon type="clear" size="14"></icon>
         </view>
-      </view>
+      </view> 
       <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
         <icon class="weui-icon-search" type="search" size="14"></icon>
         <view class="weui-search-bar__text">搜索产品、品牌</view>
@@ -32,25 +32,18 @@
       </swiper-item>
     </navigator>
   </swiper>
-  <view class='mContainer'>
-<image id='1' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/lsyd.png' bindtap='fiveBlocks' >直播</image>
-
-  
-
-      <contact-button style='position:relative;top:6rpx;width:144rpx;height:160rpx;' type="default-light" >
+   <view class='mContainer'>
+<image id='0' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[0].src}}' bindtap='fiveBlocks' >{{tttype[0].type_name}}</image>
+  <image id='1' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[1].src}}' bindtap='fiveBlocks'>{{tttype[1].type_name}}</image>
+  <image id='2' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[2].src}}' bindtap='fiveBlocks'>{{tttype[2].type_name}}</image>
+        <contact-button style='position:relative;top:6rpx;width:144rpx;height:160rpx;' type="default-light" >
       <contact-button style='position:absolute;top:70rpx;left: 56rpx;opacity:0;width:120rpx;height:120rpx;' size='300'></contact-button>
-      <image id='2' style='position:relative;top:-22rpx;margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/jkmr.png' bindtap='fiveBlocks'>
-      <text style='position:relative;top:18rpx;'>健康咨询</text>
+      <image id='3' style='position:relative;top:-22rpx;margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[3].src}}' bindtap='fiveBlocks'>
+      <text style='position:relative;top:18rpx;'>{{tttype[3].type_name}}</text>
       </image>
-      </contact-button>   
-
-
-
-  <image id='3' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/jkysl.png' bindtap='fiveBlocks'>健康饮食</image>
-  <image id='4' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/xyl.png' bindtap='fiveBlocks'>西药类</image>
-    <image id='5' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='https://tanghuzhao.com.cn/Public/images/zyzyl.png' bindtap='fiveBlocks'>中医中药</image>
-</view>
-  
+      </contact-button> 
+    <image id='4' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[4].src}}' bindtap='fiveBlocks'>{{tttype[4].type_name}}</image>
+</view> 
     
     <view class="cont">
       <navigator class="pr" url="../product/detail?pro_id={{item.id}}" hover-class="changestyle"  wx:for="{{productData}}">

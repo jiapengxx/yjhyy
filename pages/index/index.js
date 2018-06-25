@@ -9,6 +9,7 @@ Page({
     duration: 1000,
     circular: true,
     productData: [],
+    tttype: [],
     proCat: [],
     page: 2,
     index: 2,
@@ -76,6 +77,7 @@ Page({
       });
     }
   },
+
 
   //品牌街跳转商家详情页
   jj: function (e) {
@@ -177,7 +179,6 @@ Page({
     if (options.store_Id){
       console.log(options.store_Id)
     }
-    
     app.editTabBar2();
     var that = this;
     wx.request({
@@ -207,7 +208,6 @@ Page({
         if (store!='null'){
           wx.setNavigationBarTitle({ title: store.name, })
         }
-
       },
       fail: function (e) {
         wx.showToast({
@@ -217,6 +217,29 @@ Page({
       },
     })
     this.loadCollect()
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/BIndex/show_getmore',
+      method: 'post',
+      data: {
+        type: 'all',
+        page: 1
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var ttype = res.data.type;
+        that.setData({
+          tttype: ttype,
+        });
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      },
+    })
   },
   loadCollect: function () {
     var that = this
@@ -248,29 +271,34 @@ Page({
       },
     })
   },
-  fiveBlocks:function(e){
-    var Id=e.target.id
-    if(Id==1){
-      wx.navigateTo({
-        url: '../live/live',
+  fiveBlocks: function (e) {
+
+    var id = e.target.id
+    console.log(id)
+    if (id == 0) {
+      this.setData({
+        url: '../live/live'
       })
-    } else if (Id == 2){
-      wx.navigateTo({
-        url: '',
+    } else if (id == 1) {
+      this.setData({
+        url: '../jkbk/jkbk'
       })
-    } else if (Id == 3) {
-      wx.navigateTo({
-        url: '',
+    } else if (id == 2) {
+      this.setData({
+        url: '../jkbg/jkbg'
       })
-    } else if (Id == 4) {
-      wx.navigateTo({
-        url: '',
+    } else if (id == 3) {
+      this.setData({
+        url: '../jkzx/jkzx'
       })
-    } else if (Id == 5) {
-      wx.navigateTo({
-        url: '',
+    } else {
+      this.setData({
+        url: '../fxgl/fxgl'
       })
     }
+    wx.navigateTo({
+      url: this.data.url,
+    })
   },
   gzsj:function(){
     if (app.globalData.userInfo == null) {

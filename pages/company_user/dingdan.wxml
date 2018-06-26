@@ -370,7 +370,7 @@
 <view style='height:70rpx;'>
 <view style='position:relative;top:15rpx;left:24rpx;font-size:22rpx;color:#333;width:360rpx;'>订单编号：<text>{{item.order_sn}}</text></view>
 <view style='position:relative;top:-20rpx;left:390rpx;font-size:22rpx;color:#333;width:320rpx;'>申请时间：<text>{{item.back_addtime}}</text></view>
-</view>
+</view> 
 <!--商品数据  -->
  <block wx:for="{{item.prolist}}" wx:for-item="itm" wx:for-index="index"> 
 <view style='height:140rpx;' bindtap='toDetail' data-pro_id='{{itm.pid}}'>

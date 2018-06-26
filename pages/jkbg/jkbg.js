@@ -1,4 +1,5 @@
 // pages/jkbg/jkbg.js
+var app = getApp();
 Page({
 
   /**

@@ -40,6 +40,7 @@
       <view id='{{item.pid}}' class="carts-text" bindtap='toDetail'>
         <text class="carts-title">{{item.pro_name}}</text>
         <text wx:if="{{item.guige}}" style='position:relative;top:-16rpx;width:300rpx;font-size:24rpx;margin:10rpx;color:#666;'>{{item.guige.length==0?'默认':(item.guige[0]+(item.guige.length==1?'':('-'+item.guige[1]+(item.guige.length==2?'':('-'+item.guige[2]+item.guige.length==3?'':('-'+item.guige[3]))))))}}</text>
+        <text wx:if="{{!item.guige}}" style='position:relative;top:-16rpx;width:300rpx;font-size:24rpx;margin:10rpx;color:#666;'>默认</text>
         <!--对规格数据列表进行遍历  -->
         <view class="carts-subtitle">
           <text class="carts-price">¥ {{item.price}}</text>

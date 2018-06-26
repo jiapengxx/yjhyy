@@ -37,6 +37,7 @@ Page({
     loadingHidden: false,
   },
   onLoad: function (option) {
+    app.editTabBar2();
     if (option.DAta) {
       var aaaa = option.DAta.split(",")
       this.setData({

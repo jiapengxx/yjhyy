@@ -1,4 +1,5 @@
 <!--pages/user/user.wxml-->
+<import src="../../utils/tabBar.wxml"/> 
    <view class="userinfo">
      <button wx:if="{{!hasUserInfo && canIUse}}" style='position:relative;top:120rpx;width:260rpx;height:76rpx;font-size:36rpx;#fff;border:2rpx solid #fff;bprder-radius:8rpx;line-height:80rpx;' open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
   <block wx:else>
@@ -46,66 +47,62 @@
     </navigator>
   </view>
 
-
+<navigator url="../myAcount/myAcount">
   <view class="qbdd mt10">
-    <navigator url="../myAcount/myAcount">
       <span class="font_14 c3">我的账户</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
-    </navigator>
   </view>
-
-  <view class="qbdd mt10">
+</navigator>
     <navigator url="../register/register">
+  <view class="qbdd mt10">
       <span class="font_14 c3">绑定手机号</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
-    </navigator>
   </view>
-
-
-  <view class="qbdd mt10">
+    </navigator>
     <navigator url="../address/user-address/user-address">
+  <view class="qbdd mt10">
       <span class="font_14 c3">地址管理</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
-    </navigator>
   </view>
-
-  <view class="qbdd mt10">
+    </navigator>
     <navigator url="../yhq/yhq">
+  <view class="qbdd mt10">
       <span class="font_14 c3">优惠劵</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
-    </navigator>
   </view>
-  <view class="qbdd mt10">
+      </navigator>
     <navigator url="../wdgz/wdgz">
+  <view class="qbdd mt10">
+
       <span class="font_14 c3">我的关注/收藏</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
-    </navigator>
   </view>
+      </navigator>
+    <navigator url="../yjfk/yjfk?froms='company_user'">
   <view class="qbdd mt10">
-    <navigator url="../yjfk/yjfk?froms='user'">
       <span class="font_14 c3">意见反馈</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
-    </navigator>
   </view>
+      </navigator>
+          <navigator url="../wdtz/wdtz">
   <view class="qbdd mt10">
-    <navigator url="../wdtz/wdtz">
       <span class="font_14 c3">我的通知</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
-    </navigator>
   </view>
-  <view class="qbdd mt10">
+      </navigator>
     <navigator url="../wdyhq/wdyhq">
+  <view class="qbdd mt10">
       <span class="font_14 c3">我的优惠券</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
-    </navigator>
   </view>
-
-  <view class="qbdd mt10">
+      </navigator>
     <navigator url="../glyh/glyh">
+  <view class="qbdd mt10">
       <span class="font_14 c3">关联用户</span>
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
-    </navigator>
   </view>
+    </navigator>
 
 </view>
 <view hidden='{{!page}}' style='height:500rpx;text-align:center;line-height:500rpx;color:#999'>更多内容请登录</view>
+<template is="tabBar" data="{{tabBar}}"/> 

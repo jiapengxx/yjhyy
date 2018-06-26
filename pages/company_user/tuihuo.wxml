@@ -31,7 +31,7 @@
 <view style='height:20rpx;background-color:#ebebeb;'></view>
 
 <view style='height:180rpx;position:relative;'>
-  <image src='{{host}}/Data/{{product[0].photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
+  <image src='{{host}}{{product[0].photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
 <view style='position:relative;top:-74rpx;left:154rpx;font-size:26rpx;color:#333;width:500rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{product[0].name}}</view>
 <view style='position:relative;top:-76rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：{{product[0].price}}</view>
 <view style='position:relative;top:-78rpx;left:154rpx;font-size:24rpx;color:#666;width:100rpx;'>数量：{{product[0].num}}</view>
@@ -83,7 +83,7 @@
 <view style='height:20rpx;background-color:#ebebeb;'></view>
  <block wx:if="{{!pulldown}}">
 <view style='height:180rpx;position:relative;' bindtap='toDetail' data-pro_id='{{itm.pid}}'>
-  <image src='{{host}}/Data/{{product[0].photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
+  <image src='{{host}}{{product[0].photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
 <view style='position:relative;top:-78rpx;left:154rpx;font-size:26rpx;color:#333;width:500rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{product[0].name}}</view>
 <view style='position:relative;top:-80rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：{{product[0].price}}</view>
 <view style='position:relative;top:-82rpx;left:154rpx;font-size:24rpx;color:#666;width:100rpx;'>数量：{{product[0].num}}</view>
@@ -92,7 +92,7 @@
 
  <block wx:if="{{pulldown&&product.length>1}}" wx:for="{{product}}" wx:for-index="idx" wx:for-item="itm" >  
 <view style='height:180rpx;position:relative;' >
-  <image src='{{host}}/Data/{{itm.photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
+  <image src='{{host}}{{itm.photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
 <view style='position:relative;top:-78rpx;left:154rpx;font-size:26rpx;color:#333;width:500rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{itm.name}}</view>
 <view style='position:relative;top:-80rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：{{itm.price}}</view>
 <view style='position:relative;top:-82rpx;left:154rpx;font-size:24rpx;color:#666;width:100rpx;'>数量：{{itm.num}}</view>

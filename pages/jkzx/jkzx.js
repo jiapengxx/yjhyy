@@ -1,4 +1,5 @@
 // pages/jkzx/jkzx.js
+var app = getApp();
 Page({
 
   /**

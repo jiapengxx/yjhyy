@@ -70,7 +70,7 @@ Page({
       },
       success: function (res) {
         that.setData({
-          host: app.d.hostImg,
+          host: app.d.hostImg + '/Data/',
           product: res.data.order_product
         })
       },
@@ -89,7 +89,7 @@ Page({
       },
       success: function (res) {
         that.setData({
-          host: app.d.hostImg,
+          host: app.d.hostImg + '/Data/',
           product: res.data.order_product
         })
       },

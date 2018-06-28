@@ -222,15 +222,19 @@ Page({
       },
     });
   },
-
   onShow: function () {
+    app.globalData.froms = 'company_user'
+    console.log(app.globalData.froms)
     if (app.globalData.userInfo){
+      this.setData({
+        userInfo: app.globalData.userInfo,
+        hasUserInfo: true,
+        page: false
+      })
       this.loadOrderStatus();
     }
-
   },
   loadOrderStatus: function () {
-
     //获取用户订单数据
     var that = this;
     wx.request({
@@ -272,8 +276,8 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: '北京医佳户健康医疗中心',
-      path: '/pages/index/index',
+      title: '云康医护',
+      path: '/pages/company_user/company_user',
       success: function (res) {
         // 分享成功
       },

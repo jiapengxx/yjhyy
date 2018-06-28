@@ -177,8 +177,9 @@ Page({
   },
   onLoad: function (options) {
     if (options.store_Id){
-      console.log(options.store_Id)
-    }
+      console.log(options.store_Id+"eqwe")
+      app.d.store_Id = options.store_Id;
+    } 
     app.editTabBar2();
     var that = this;
     wx.request({

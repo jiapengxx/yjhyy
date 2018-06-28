@@ -6,6 +6,7 @@
     <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">评价</view>
   </view>
   <swiper current="{{currentTab}}" class="swiper-box" duration="300" style='height:{{currentTab==0?height1:(currentTab==1?height2:(currentTab==2?height3:height4))}}rpx;' bindchange="bindChange">
+
     <swiper-item>
       <block wx:for="{{hot_good}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
 
@@ -42,18 +43,12 @@
             </view>
           </view>
         </view>
-
-
-
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>
-
     </swiper-item>
-
 
     <swiper-item>
       <block wx:for="{{place_store1}}" wx:key="id" wx:for-item="item" wx:for-index="idx">
-
        <view style='height:582rpx;width:702rpx;margin-left:24rpx;'>
           <view id='{{item.store_id}}' style='position:relative;top:40rpx;height:150rpx;width:500rpx;display:flex;flex-direction:row;'>
             <view id='{{item.store_id}}' bindtap='toBtoC' style='height:150rpx;width:150rpx;'>
@@ -88,7 +83,6 @@
         </view>
         <view style='border-bottom: 0.1rpx solid #777;'></view>
       </block>
-
     </swiper-item>
 
 

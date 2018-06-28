@@ -48,7 +48,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    app.globalData.froms = 'company_user'
+    console.log(app.globalData.froms)
 
   },
 

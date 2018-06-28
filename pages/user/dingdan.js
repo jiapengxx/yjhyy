@@ -20,7 +20,7 @@ Page({
     page0: 2,
     page1: 2,
     page2: 2,
-    page3: 2,
+    page3: 2, 
     page4: 2,
     host: app.d.hostImg,
     count1:0,

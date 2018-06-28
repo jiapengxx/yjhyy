@@ -276,6 +276,8 @@ Page({
     this.sum();
   },
   onShow: function () {
+    app.globalData.froms = 'company_user'
+    console.log(app.globalData.froms)
     this.loadProductData();
   },
 

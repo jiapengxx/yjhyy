@@ -12,7 +12,8 @@
           <icon wx:else type="circle" size="24" />
           <text>全选</text>
         </view>
-        <button style='position:relative;top:24rpx;left:-16rpx;height:50rpx;width:240rpx;background-color:#fd0000;color:#fff;line-height:50rpx;' bindtap='cancelGZ'>取消关注</button>
+        <!-- <button style='position:relative;top:24rpx;left:-16rpx;height:50rpx;width:240rpx;background-color:#fd0000;color:#fff;line-height:50rpx;' bindtap='cancelGZ'>取消关注</button> -->
+                <button style='position:absolute;width:240rpx;background-color:#fd0000;color:#fff;right:0rpx;font-size:40rpx;' bindtap='cancelGZ'>取消关注</button>
       </view>
 
       <view style='margin-left:33rpx;margin-right:33rpx;display:flex;flex-direction:row;justify-content:space-between;flex-wrap:wrap;'>

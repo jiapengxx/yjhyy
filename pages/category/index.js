@@ -52,6 +52,10 @@ Page({
             },
         });
     },    
+    onShow:function(){
+      app.globalData.froms = 'user'
+      console.log(app.globalData.froms)
+    },
     tapType: function (e){
         var that = this;
         const currType = e.currentTarget.dataset.typeId;

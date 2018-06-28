@@ -460,9 +460,7 @@ Page({
   },
   // 属性选择
   onShow: function() {
-
-    // this.loadProductDetail();
-    // this.loadProductEvaluate();
+    
   },
   /* 获取数据 */
   distachAttrValue: function(commodityAttr) {
@@ -775,7 +773,7 @@ Page({
             if (data.status == 1) {
               var DATAs = that.data.buff + ',' + data.cart_id
               if (ptype == 'buynow') {
-                wx.redirectTo({
+                wx.navigateTo({
                   url: '../order/pay?DATAs=' + DATAs
                 });
                 return;

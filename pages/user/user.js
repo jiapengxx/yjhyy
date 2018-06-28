@@ -228,6 +228,8 @@ Page({
   },
 
   onShow: function () {
+    app.globalData.froms = 'user'
+    console.log(app.globalData.froms)
     if (app.globalData.userInfo){
       this.loadOrderStatus();
     }

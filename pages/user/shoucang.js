@@ -45,6 +45,7 @@ Page({
       }
     });
   },
+
   loadProductData:function(){
     var that = this;
     console.log(this.data);
@@ -80,6 +81,18 @@ Page({
       item.Price = item.Price/100;
       item.ImgUrl = app.d.hostImg + item.ImgUrl;
 
+    }
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '',
+      path: '',
+      success: function (res) {
+        // 分享成功
+      },
+      fail: function (res) {
+        // 分享失败
+      }
     }
   },
 });

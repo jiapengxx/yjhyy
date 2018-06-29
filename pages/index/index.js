@@ -347,7 +347,7 @@ Page({
   onShow:function(){
     app.globalData.froms = 'user'
     console.log(app.globalData.froms)
-  },
+  }, 
   onShareAppMessage: function () {
     return {
       title: '' + this.data.store.name,

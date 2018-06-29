@@ -331,6 +331,18 @@ Page({
   input_rePassword: function (e) {
     rePassword = e.detail.value
   },
+  onShareAppMessage: function () {
+    return {
+      title: '',
+      path: '',
+      success: function (res) {
+        // 分享成功
+      },
+      fail: function (res) {
+        // 分享失败
+      }
+    }
+  },
   reSendPhoneNum: function () {
     if (currentTime < 0) {
       var that = this

@@ -506,4 +506,16 @@ wx.navigateTo({
       }
     })
   },
+  onShareAppMessage: function () {
+    return {
+      title: '',
+      path: '',
+      success: function (res) {
+        // 分享成功
+      },
+      fail: function (res) {
+        // 分享失败
+      }
+    }
+  },
 })

@@ -276,8 +276,8 @@ Page({
   },
   onShareAppMessage: function () {
     return {
-      title: '云康医护',
-      path: '/pages/company_user/company_user',
+      title: '',
+      path: '',
       success: function (res) {
         // 分享成功
       },
@@ -285,5 +285,5 @@ Page({
         // 分享失败
       }
     }
-  }
+  },
 })

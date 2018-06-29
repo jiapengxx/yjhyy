@@ -906,6 +906,18 @@ Page({
           // 转发失败
         }
       }
+    }else{
+      return {
+        title: '' + this.data.itemData.name,
+        path: '/pages/product/detail?DATA=' + DATA,
+        imageUrl: '' + this.data.itemData.photo_x,
+        success: function (res) {
+          // 转发成功
+        },
+        fail: function (res) {
+          // 转发失败
+        }
+      }
     }
   },
   toBtoC: function() {

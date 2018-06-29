@@ -89,9 +89,6 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
-  },
   //对手机号填充值进行检查
   tel: function (e) {
     var telphone = e.detail.value
@@ -333,6 +330,18 @@ Page({
   },
   input_rePassword: function (e) {
     rePassword = e.detail.value
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '',
+      path: '',
+      success: function (res) {
+        // 分享成功
+      },
+      fail: function (res) {
+        // 分享失败
+      }
+    }
   },
   reSendPhoneNum: function () {
     if (currentTime < 0) {

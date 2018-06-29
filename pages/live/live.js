@@ -78,6 +78,18 @@ Page({
     wx.navigateTo({
       url: "/pages/live/live_do"
     })
-  }
+  },
+  onShareAppMessage: function () {
+    return {
+      title: '',
+      path: '',
+      success: function (res) {
+        // 分享成功
+      },
+      fail: function (res) {
+        // 分享失败
+      }
+    }
+  },
 
 })

@@ -120,12 +120,7 @@ App({
   onLaunch: function () {
     var that=this
     // this.position();
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs);
-
-      // this.getUserInfo();
- 
+      this.getUserInfo();
   },
   getUserInfo: function (cb) {
     var that = this
@@ -188,7 +183,6 @@ App({
           return false;
         }
         that.globalData.userInfo['sessionId'] = data.session_key;
-        console.log(data.openid+"佳鹏");
         that.globalData.userInfo['openid'] = data.openid;
         that.onLoginUser();
       },

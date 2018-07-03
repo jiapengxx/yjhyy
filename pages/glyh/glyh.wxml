@@ -6,7 +6,7 @@
   <!--判断内容的样式  -->
     <view style='position:relative;top:30rpx;width:702rpx;height:170rpx;margin-left:24rpx;background-color:#fff;'>
     <image style='position:relative;top:20rpx;left:20rpx;width:102rpx;height:102rpx;border-radius:51rpx;' src='{{item.photo}}'></image>
-    <view style='position:relative;width:300rpx;top:-96rpx;left:143rpx;font-size:28rpx;color:#999999;'>{{item.name}}</view>
+    <view style='position:relative;top:-96rpx;left:143rpx;font-size:28rpx;color:#999999;'>{{item.name}}</view>
     <view style='position:relative;width:200rpx;top:-92rpx;left:143rpx;font-size:24rpx;color:#999999;'>未购买商品</view>
     <view style='position:relative;width:200rpx;top:-84rpx;left:143rpx;font-size:24rpx;color:#999999;'>未返金币</view>
     <view style='position:relative;width:168rpx;top:-90rpx;left:516rpx;font-size:20rpx;color:#999999;'>{{times[idx].time}}</view>
@@ -16,9 +16,9 @@
 <block wx:else>
     <view style='position:relative;top:60rpx;width:702rpx;height:170rpx;margin-left:24rpx;background-color:#fff;'>
     <image style='position:relative;top:20rpx;left:20rpx;width:102rpx;height:102rpx;border-radius:51rpx;' src='{{item.photo}}'></image>
-    <view style='position:relative;width:300rpx;top:-96rpx;left:143rpx;font-size:28rpx;color:#333;'>{{item.name}}</view>
+    <view style='position:relative;top:-96rpx;left:143rpx;font-size:28rpx;color:#333;'>{{item.name}}</view>
     <view style='position:relative;width:200rpx;top:-92rpx;left:143rpx;font-size:24rpx;color:#333;'>消费{{item.pay_money_one}}元</view>
-    <view style='position:relative;width:200rpx;top:-84rpx;left:143rpx;font-size:24rpx;color:#ff0300;'>返金币{{item.pay_money_one}}</view>
+    <view style='position:relative;width:200rpx;top:-84rpx;left:143rpx;font-size:24rpx;color:#ff0300;'>返金币{{item.pay_gold_one}}</view>
     <view style='position:relative;width:168rpx;top:-90rpx;left:516rpx;font-size:20rpx;color:#333;'>{{times[idx].time}}</view>
     </view>
 </block>

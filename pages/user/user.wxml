@@ -6,7 +6,7 @@
        <image class="userinfo-avatar fl_l" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="fl_l">{{userInfo.nickName}}</text> 
   </block>
-  </view> 
+  </view>  
 
   <!--订单详情-->
 <view class="page" hidden="{{page}}">
@@ -102,7 +102,7 @@
       <span class="fl_r c9 font_12 l_h20" hover-class="none"> ></span>
   </view>
     </navigator>
-
+<view style='height:120rpx;'></view>
 </view>
 <view hidden='{{!page}}' style='height:500rpx;text-align:center;line-height:500rpx;color:#999'>更多内容请登录</view>
 <template is="tabBar" data="{{tabBar}}"/> 

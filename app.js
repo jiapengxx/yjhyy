@@ -120,7 +120,8 @@ App({
   onLaunch: function () {
     var that=this
     // this.position();
-      this.getUserInfo();
+    this.getUserInfo();
+    
   },
   getUserInfo: function (cb) {
     var that = this
@@ -233,6 +234,7 @@ App({
           return false;
         }
         that.d.userId = userId;
+
       },
       fail: function (e) {
         wx.showToast({

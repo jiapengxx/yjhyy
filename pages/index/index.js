@@ -187,27 +187,55 @@ Page({
       method: 'post',
       data: {
         store_Id: (app.d.store_Id ? app.d.store_Id : options.store_Id),
+        user_id: app.d.userId,
       },
       header: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
       success: function (res) {
-        var ggtop = res.data.ggtop;
-        var procat = res.data.procat;
-        var prolist = res.data.prolist;
-        var brand = res.data.brand;
-        var course = res.data.course;
-        var store = res.data.store;
-        that.setData({
-          imgUrls: ggtop,
-          proCat: procat,
-          productData: prolist,
-          brand: brand,
-          course: course,
-          store:store
-        });
-        if (store!='null'){
-          wx.setNavigationBarTitle({ title: store.name, })
+        console.log(res)
+        if (res.data.store_id) {
+          if (res.data.store_id != app.d.store_Id){
+            wx.redirectTo({
+              url: '../index/index?store_Id=' + res.data.store_id,
+            })
+          }else{
+            var ggtop = res.data.ggtop;
+            var procat = res.data.procat;
+            var prolist = res.data.prolist;
+            var brand = res.data.brand;
+            var course = res.data.course;
+            var store = res.data.store;
+            that.setData({
+              imgUrls: ggtop,
+              proCat: procat,
+              productData: prolist,
+              brand: brand,
+              course: course,
+              store: store
+            });
+            if (store != 'null') {
+              wx.setNavigationBarTitle({ title: store.name, })
+            }
+          }
+        }else{
+          var ggtop = res.data.ggtop;
+          var procat = res.data.procat;
+          var prolist = res.data.prolist;
+          var brand = res.data.brand;
+          var course = res.data.course;
+          var store = res.data.store;
+          that.setData({
+            imgUrls: ggtop,
+            proCat: procat,
+            productData: prolist,
+            brand: brand,
+            course: course,
+            store: store
+          });
+          if (store != 'null') {
+            wx.setNavigationBarTitle({ title: store.name, })
+          }
         }
       },
       fail: function (e) {

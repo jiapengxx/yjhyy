@@ -265,7 +265,6 @@ Page({
       that.loadProductEvaluate();
       console.log("评论已加载")
     }
-
   },
   // 商品详情数据获取
   loadProductDetail: function() {
@@ -277,6 +276,7 @@ Page({
       url: app.d.ceshiUrl + '/Api/Product/index',
       method: 'post',
       data: {
+        store_id: that.data.store_id,
         pro_id: that.data.pro_id,
         r_uid: app.d.userId,
         u_id: that.data.bindUid,

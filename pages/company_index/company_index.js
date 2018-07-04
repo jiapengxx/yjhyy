@@ -28,9 +28,6 @@ Page({
     wx.navigateTo({
       url: '../searchPage/searchPage',
     })
-    // this.setData({
-    //   inputShowed: true
-    // });
   },
   hideInput: function () {
     this.setData({
@@ -49,96 +46,103 @@ Page({
     });
   },
   onLoad: function (options) {
-    
     var that = this;
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/BIndex/show_getmore',
-      method: 'post',
-      data: {
-        type:'all',
-        page:1
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        console.log(res)
-        var ad = res.data.ad;
-        var ttype  = res.data.type;
-        var seller = res.data.place_store;
-        var hotgood=  res.data.bpro
-        that.setData({  
-          banners: ad,
-          tttype: ttype,
-          sseller:seller,
-          hotGoods:hotgood       
-        });
-        that.setData({
-          height: 176 * that.data.sseller.length,
-        })
-       wx.getLocation({
-          type: 'gcj02',
-          success: function (res) {
-            var long2 = res.longitude
-            var la2 = res.latitude
-            that.setData({
-              long2: long2,
-              la2: la2
+    setTimeout(function () {
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/BIndex/show_getmore',
+        method: 'post',
+        data: {
+          user_id: app.d.userId,
+          type: 'all',
+          page: 1
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          console.log(res)
+          if (res.data.store_id) {
+            wx.redirectTo({
+              url: '../index/index?store_Id=' + res.data.store_id,
             })
-            app.globalData.latitude=res.latitude
-            app.globalData.longitude = res.longitude
-            console.log(app.globalData.latitude, app.globalData.longitude)
-
-            for (var i = 0; i < that.data.sseller.length; i++) {
-              var la1 = parseFloat(that.data.sseller[i].latitude)
-              var long1 = parseFloat(that.data.sseller[i].longitude)
-              var rad1 = la1 * Math.PI / 180.0;
-              var rad2 = la2 * Math.PI / 180.0;
-              var a = rad1 - rad2;
-              var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
-              var r = 6378.137;
-              var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
-              that.setData({
-                distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
-              })
-            }
-          },
-          fail: function (e) {
-            wx.showToast({
-              title: '网络异常！',
-              duration: 2000
+          } else {
+            var ad = res.data.ad;
+            var ttype = res.data.type;
+            var seller = res.data.place_store;
+            var hotgood = res.data.bpro
+            that.setData({
+              banners: ad,
+              tttype: ttype,
+              sseller: seller,
+              hotGoods: hotgood
             });
-          },
-        })
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    })
+            that.setData({
+              height: 176 * that.data.sseller.length,
+            })
+            wx.getLocation({
+              type: 'gcj02',
+              success: function (res) {
+                var long2 = res.longitude
+                var la2 = res.latitude
+                that.setData({
+                  long2: long2,
+                  la2: la2
+                })
+                app.globalData.latitude = res.latitude
+                app.globalData.longitude = res.longitude
+                console.log(app.globalData.latitude, app.globalData.longitude)
 
-    wx.request({
-      url: app.d.ceshiUrl + '/Api/News/list',
-      method: 'post',
-      data: {
-      },
-      header: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-        that.setData({
-          list:res.data.list
-        })
-      },
-      fail: function (e) {
-        wx.showToast({
-          title: '网络异常！',
-          duration: 2000
-        });
-      },
-    })
+                for (var i = 0; i < that.data.sseller.length; i++) {
+                  var la1 = parseFloat(that.data.sseller[i].latitude)
+                  var long1 = parseFloat(that.data.sseller[i].longitude)
+                  var rad1 = la1 * Math.PI / 180.0;
+                  var rad2 = la2 * Math.PI / 180.0;
+                  var a = rad1 - rad2;
+                  var b = long1 * Math.PI / 180.0 - long2 * Math.PI / 180.0;
+                  var r = 6378.137;
+                  var distance = r * 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(rad1) * Math.cos(rad2) * Math.pow(Math.sin(b / 2), 2)))
+                  that.setData({
+                    distance1: that.data.distance1.concat({ distance: distance.toFixed(1) })
+                  })
+                }
+              },
+              fail: function (e) {
+                wx.showToast({
+                  title: '网络异常！',
+                  duration: 2000
+                });
+              },
+            })
+          }
+        },
+        fail: function (e) {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        },
+      })
+      wx.request({
+        url: app.d.ceshiUrl + '/Api/News/list',
+        method: 'post',
+        data: {
+        },
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          that.setData({
+            list: res.data.list
+          })
+        },
+        fail: function (e) {
+          wx.showToast({
+            title: '网络异常！',
+            duration: 2000
+          });
+        },
+      })
+    }, 1000);
     this.setData({
       icon: base64.icon20,
     })

@@ -127,7 +127,7 @@ Page({
             content: '分享即可得金币！是否前往分享？',
             success: function (res) {
               if (res.confirm) {
-                wx.switchTab({
+                wx.navigateTo({
                   url: '../fxgl/fxgl',
                 })
               }

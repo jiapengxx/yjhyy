@@ -1,0 +1,11 @@
+<view style='position:absolute;top:160rpx;left:252rpx;font-size:50rpx;color:#333;'>药品、药店</view>
+<view style='position:absolute;top:250rpx;left:196rpx;font-size:30rpx;color:#999;'>随时随地查找药店药品信息</view>
+<image style='position:absolute;top:380rpx;height:530rpx;width:750rpx;' src='../../images/firstPage.jpg'></image>
+<button wx:if="{{bt}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" style='position:absolute;top:1000rpx;left:260rpx;height:74rpx;width:228rpx;font-size:30rpx;color:#3080ff;border-radius:37rpx;border:1rpx solid #468cff;line-height:74rpx;background-color:#fff;'>进入商城</button>
+
+
+<!-- <view class="userinfo">
+       <image class="userinfo-avatar fl_l" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="fl_l">{{userInfo.nickName}}</text> 
+  </view> 
+    <button style='position:relative;top:120rpx;width:260rpx;height:76rpx;font-size:36rpx;#fff;border:2rpx solid #fff;bprder-radius:8rpx;line-height:80rpx;' open-type="getUserInfo" bindgetuserinfo="getUserInfo">进商场</button> -->

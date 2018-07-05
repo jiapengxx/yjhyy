@@ -52,7 +52,7 @@ Page({
         url: app.d.ceshiUrl + '/Api/BIndex/show_getmore',
         method: 'post',
         data: {
-          user_id: app.d.userId,
+          // user_id: app.d.userId,
           type: 'all',
           page: 1
         },
@@ -61,11 +61,11 @@ Page({
         },
         success: function (res) {
           console.log(res)
-          if (res.data.store_id) {
-            wx.redirectTo({
-              url: '../index/index?store_Id=' + res.data.store_id,
-            })
-          } else {
+          // if (res.data.store_id) {
+          //   wx.redirectTo({
+          //     url: '../index/index?store_Id=' + res.data.store_id,
+          //   })
+          // } else {
             var ad = res.data.ad;
             var ttype = res.data.type;
             var seller = res.data.place_store;
@@ -113,7 +113,7 @@ Page({
                 });
               },
             })
-          }
+          // }
         },
         fail: function (e) {
           wx.showToast({

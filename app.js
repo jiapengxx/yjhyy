@@ -131,7 +131,6 @@ App({
       //调用登录接口
       wx.login({
         success: function (res) {
-          console.log(res)
           var code = res.code;
           wx.getUserInfo({
             success: function (res) {
@@ -234,7 +233,7 @@ App({
           return false;
         }
         that.d.userId = userId;
-
+        console.log(that.d.userId)
       },
       fail: function (e) {
         wx.showToast({

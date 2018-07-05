@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/FirstPage/FirstPage",
     "pages/company_index/company_index",
     "pages/company_shop/company_shop",
     "pages/company_search/company_search",

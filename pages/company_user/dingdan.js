@@ -243,11 +243,11 @@ Page({
             });
             for (var i = 0; i < that.data.orderList4.length; i++) {
               that.setData({
-                count5: that.data.count5 
+                count5: that.data.count5 + that.data.orderList4[i].prolist.length
               })
             }
             that.setData({
-              num5: that.data.count5 
+              num5: that.data.count5 - that.data.orderList4.length
             })
             console.log(that.data.count5)
             console.log(that.data.num5)
@@ -285,14 +285,14 @@ Page({
             orderList4: that.data.orderList4.concat(data),
             count5: 0,
           });
-          // for (var i = 0; i < that.data.orderList4.length; i++) {
-          //   that.setData({
-          //     count5: that.data.count5 
-          //   })
-          // }
-          // that.setData({
-          //   num5: that.data.count5 - that.data.orderList4.length
-          // })
+          for (var i = 0; i < that.data.orderList4.length; i++) {
+            that.setData({
+              count5: that.data.count5 + that.data.orderList4[i].prolist.length
+            })
+          }
+          that.setData({
+            num5: that.data.count5 - that.data.orderList4.length
+          })
           console.log(that.data.orderList4.length)
         } else {
           wx.showToast({
@@ -344,11 +344,11 @@ Page({
           });
           for (var i = 0; i < that.data.orderList4.length; i++) {
             that.setData({
-              count5: that.data.count5
+              count5: that.data.count5 + that.data.orderList4[i].prolist.length
             })
           }
           that.setData({
-            num5: that.data.count5
+            num5: that.data.count5 - that.data.orderList4.length
           })
         }
       },
@@ -648,11 +648,11 @@ Page({
           });
           for (var i = 0; i < that.data.orderList4.length; i++) {
             that.setData({
-              count5: that.data.count5
+              count5: that.data.count5 + that.data.orderList4[i].prolist.length
             })
           }
           that.setData({
-            num5: that.data.count5
+            num5: that.data.count5 - that.data.orderList4.length
           })
         }
       },

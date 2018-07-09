@@ -8,7 +8,7 @@
   </view>
   <view class="c_t60"></view>
 <!-- +(orderList0.prolist.length-1)*140 -->
-  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:(430*orderList0.length+num1*180)+80):(currentTab==1?(orderList1.length==0?winHeight*2:430*orderList1.length+num2*150+80):(currentTab==2?(orderList2.length==0?winHeight*2:500*orderList2.length+num3*180+80):(currentTab==3?(orderList3.length==0?winHeight*2:410*orderList3.length+num4*180+90):(orderList4.length==0?winHeight*2:330*orderList4.length+80))))}}rpx"bindchange="bindChange">
+  <swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{currentTab==0?(orderList0.length==0?winHeight*2:(430*orderList0.length+num1*180)+80):(currentTab==1?(orderList1.length==0?winHeight*2:430*orderList1.length+num2*150+80):(currentTab==2?(orderList2.length==0?winHeight*2:500*orderList2.length+num3*180+80):(currentTab==3?(orderList3.length==0?winHeight*2:410*orderList3.length+num4*180+90):(orderList4.length==0?winHeight*2:380*orderList4.length+num5*140+80))))}}rpx"bindchange="bindChange">
 
     <!-- 待付款 -->
 <swiper-item >
@@ -293,7 +293,9 @@
 </view>
 
 <block wx:if="{{item.prolist.length>1}}">
-<navigator data-pro_id='{{itm.id}}'  style='position:relative;top:-80rpx;left:460rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'url="tuihuo?orderId={{item.id}}&&pro_id={{itm.id}}">申请售后</navigator>
+<navigator wx:if="{{item.prolist[index].back_status==0}}" data-pro_id='{{itm.id}}' style='position:relative;top:-80rpx;left:460rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'url="tuihuo?orderId={{item.id}}&&pro_id={{itm.id}}">申请售后</navigator>
+<view wx:if="{{item.prolist[index].back_status!=0}}" style='position:relative;top:-80rpx;left:460rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>{{item.prolist[index].back_status==1?'退款中':(item.prolist[index].back_status==2?'已退款':(item.prolist[index].back_status==3?'退货中':(item.prolist[index].back_status==4?'已退货':(item.prolist[index].back_status==5?'换货中':(item.prolist[index].back_status==6?'已换货':'')))))}}</view>
+
  <block wx:if="{{itm.mstatus==1}}">
               <view style='position:relative;top:-126rpx;left:606rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>已评价</view>
             </block>

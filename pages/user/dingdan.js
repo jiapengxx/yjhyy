@@ -243,14 +243,14 @@ Page({
             });
             for (var i = 0; i < that.data.orderList4.length; i++) {
               that.setData({
-                count5: that.data.count5 
+                count5: that.data.count5 + that.data.orderList4[i].prolist.length
               })
             }
             that.setData({
-              num5: that.data.count5 
+              num5: that.data.count5 - that.data.orderList4.length
             })
-            console.log(that.data.count5)
-            console.log(that.data.num5)
+            console.log("www"+that.data.count5)
+            console.log("eee"+that.data.num5)
             break;
         }
       },
@@ -297,14 +297,14 @@ Page({
             orderList4: that.data.orderList4.concat(data),
             count5: 0,
           });
-          // for (var i = 0; i < that.data.orderList4.length; i++) {
-          //   that.setData({
-          //     count5: that.data.count5 
-          //   })
-          // }
-          // that.setData({
-          //   num5: that.data.count5 - that.data.orderList4.length
-          // })
+          for (var i = 0; i < that.data.orderList4.length; i++) {
+            that.setData({
+              count5: that.data.count5 + that.data.orderList4[i].prolist.length
+            })
+          }
+          that.setData({
+            num5: that.data.count5 - that.data.orderList4.length
+          })
           console.log(that.data.orderList4.length)
         } else {
           wx.showToast({
@@ -356,7 +356,7 @@ Page({
           });
           for (var i = 0; i < that.data.orderList4.length; i++) {
             that.setData({
-              count5: that.data.count5
+              count5: that.data.count5 + that.data.orderList4[i].prolist.length
             })
           }
           that.setData({
@@ -574,8 +574,8 @@ Page({
       data: {
         page:
         (that.data.currentTab == 0 ? that.data.page0 : (that.data.currentTab == 1 ? that.data.page1 : (that.data.currentTab == 2 ? that.data.page2 : that.data.page3))),
-        status:
-        (that.data.currentTab == 0 ? 10 : (that.data.currentTab == 1 ? 20 : (that.data.currentTab == 2?30:50))),
+        order_type:
+        (that.data.currentTab == 0 ? 'pay' : (that.data.currentTab == 1 ? 'deliver' : (that.data.currentTab == 2 ? 'receive' :'finish'))),
         uid: app.d.userId,
       },
       header: {
@@ -658,11 +658,11 @@ Page({
           });
           for (var i = 0; i < that.data.orderList4.length; i++) {
             that.setData({
-              count5: that.data.count5
+              count5: that.data.count5 + that.data.orderList4[i].prolist.length
             })
           }
           that.setData({
-            num5: that.data.count5
+            num5: that.data.count5 - that.data.orderList4.length
           })
         }
       },

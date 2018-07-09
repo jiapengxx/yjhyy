@@ -22,7 +22,6 @@ Page({
     store_Id:'',
     gz:false,
     store:[]
-    
   },
   //跳转商品列表页   
   listdetail: function (e) {

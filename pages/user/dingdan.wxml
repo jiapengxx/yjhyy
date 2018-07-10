@@ -373,6 +373,9 @@
 <view style='position:relative;top:-102rpx;left:154rpx;font-size:22rpx;color:#666;width:400rpx;'>规格分类：{{itm.pro_buff?itm.pro_buff:'默认'}}</view>
 <view style='position:relative;top:-100rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：¥{{itm.price_yh}}</view>
 <view style='position:relative;top:-128rpx;left:680rpx;font-size:24rpx;color:#666;width:50rpx;'>x{{itm.num}}</view>
+
+<view style='position:relative;top:-240rpx;left:600rpx;height:42rpx;width:120rpx;font-size:20rpx;color:#ff0000;border:1rpx solid #ff0000;border-radius:27rpx;margin-right:10rpx;text-align:center;line-height:46rpx;'>{{itm.back_status==1?'退款中':(itm.back_status==2?'已退款':(itm.back_status==3?'退货中':(itm.back_status==4?'已退货':(itm.back_status==5?'换货中':(itm.back_status==6?'已换货':'')))))}}</view>
+
 </view>
  </block> 
 <!--功能  -->

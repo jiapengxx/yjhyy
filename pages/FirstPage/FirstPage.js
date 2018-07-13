@@ -126,6 +126,7 @@ Page({
     }); 
   },
   getUserInfo: function (cb) {
+    console.log(cb)
     var that = this
     if (app.globalData.userInfo){
       this.getStore_Id()

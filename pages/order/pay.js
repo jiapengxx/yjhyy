@@ -57,7 +57,6 @@ console.log(buff)
         userId: uid,
         HAVE:false
       })
-
     }
     this.loadProductDetail();
     this.loadCoin();

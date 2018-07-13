@@ -21,7 +21,7 @@
 </view>
 <view class="swiper-container">
   <swiper class="swiper_box" autoplay="true" interval="3000" duration="1000" bindchange="swiperchange">
-    <navigator url="../{{item.module}}/{{item.function}}" wx:for="{{banners}}">
+    <navigator url="../{{item.module}}/{{item.function}}?pro_id={{(item.p_id&&item.p_id!=0)?item.p_id:''}}&store_Id={{(item.store_id&&item.store_id!=0)?item.store_id:''}}" wx:for="{{banners}}">
       <swiper-item>
         <image src="{{host}}/Data/{{item.src}}" class="slide-image" width="100%" height="300rpx" />
       </swiper-item>

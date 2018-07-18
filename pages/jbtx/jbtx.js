@@ -112,47 +112,69 @@ Page({
 
   },
   totixian:function(){
-    //转出前判断数量 点击转出时未提示
-    var that = this
-    if(0){
-      wx.request({
-        url: app.d.ceshiUrl + '/Api/Wxmon/wxpay',
-        method: 'post',
-        data: {
-          enc_bank_no: 213123,  //银行卡账号
-          enc_true_name: 213123,//银行卡名字
-          amount: 123123        //金额
-        },
-        header: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        success: function (res) {
-          var status = res.data.status;
-          if (status == 1) {
-            wx.showToast({
-              title: res.data.err,
+ var that = this
+ if (this.data.outNum>0){
+   wx.request({
+     url: app.d.ceshiUrl + '/Api/wxmoney/pay_with ',
+     method: 'post',
+     data: {
+       price: that.data.outNum
+     },
+     header: {
+       'Content-Type': 'application/x-www-form-urlencoded'
+     },
+     success: function (res) {
+
+     },
+   })
+ }else{
+               wx.showToast({
+              title: '转出失败',
               duration: 2000
             });
-          } else {
-            wx.showToast({
-              title: res.data.err,
-              duration: 2000
-            });
-          }
-        },
-        error: function (e) {
-          wx.showToast({
-            title: '网络异常！',
-            duration: 2000
-          });
-        },
-      })
-    }else{
-wx.showToast({
-  title: '暂未开放',
-  icon:'loading'
-})
-    }
+ }
+
+    
+
+//     if(0){
+//       wx.request({
+//         url: app.d.ceshiUrl + '/Api/Wxmon/wxpay',
+//         method: 'post',
+//         data: {
+//           enc_bank_no: 213123,  银行卡账号
+//           enc_true_name: 213123,银行卡名字
+//           amount: 123123        金额
+//         },
+//         header: {
+//           'Content-Type': 'application/x-www-form-urlencoded'
+//         },
+//         success: function (res) {
+//           var status = res.data.status;
+//           if (status == 1) {
+//             wx.showToast({
+//               title: res.data.err,
+//               duration: 2000
+//             });
+//           } else {
+//             wx.showToast({
+//               title: res.data.err,
+//               duration: 2000
+//             });
+//           }
+//         },
+//         error: function (e) {
+//           wx.showToast({
+//             title: '网络异常！',
+//             duration: 2000
+//           });
+//         },
+//       })
+//     }else{
+// wx.showToast({
+//   title: '暂未开放',
+//   icon:'loading'
+// })
+//     }
 
   }
 })

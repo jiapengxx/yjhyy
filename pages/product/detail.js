@@ -179,92 +179,109 @@ Page({
   },
   // 传值
   onLoad: function(option) {
+    console.log(option)
     var that = this;
-    if (app.globalData.froms == 'user') {
-      wx.setNavigationBarColor({
-        frontColor: '#ffffff',
-        backgroundColor: '#008842',
-      })
-    } else {
-      wx.setNavigationBarColor({
-        frontColor: '#ffffff',
-        backgroundColor: '#4BA3FE',
-      })
-    }
     //未登录
-
-    console.log(app.globalData.userInfo)
-    if (app.globalData.userInfo == null) {
-      console.log("未登录")
-      console.log(option.DATA)
-      if (typeof option.DATA != 'undefined') {
-        //分享
-        var DAta = option.DATA
-        wx.showModal({
-          title: '请先登录',
-          content: '登录获取更多信息',
-          showCancel: false,
-          success: function(res) {
-            if (res.confirm) {
-              wx.redirectTo({
-                url: '../user/user?DAta=' + DAta,
-              })
-            }
-          }
-        })
-      } else {
-        //不是分享
-        wx.showModal({
-          title: '请先登录',
-          content: '登录获取更多信息',
-          showCancel: false,
-          success: function(res) {
-            if (res.confirm) {
-              //如果从BtoB进，去BtoB登录
-              if (app.globalData.froms == 'company_user') {
-                wx.switchTab({
-                  url: '../company_user/company_user',
-                })
-              } else {
-                //如果从BtoC进，去BtoC登录
+    // wx.showToast({
+    //   title: '加载中',
+    //   icon: 'loading'
+    // })
+    setTimeout(function() {
+      console.log(app.globalData.userInfo)
+      if (app.globalData.userInfo == null) {
+        console.log("未登录")
+        console.log(option.DATA)
+        if (typeof option.DATA != 'undefined') {
+          //分享
+          var DAta = option.DATA
+          wx.showModal({
+            title: '请先登录',
+            content: '登录获取更多信息',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
                 wx.redirectTo({
-                  url: '../user/user',
+                  url: '../user/user?DAta=' + DAta,
                 })
               }
             }
-          }
-        })
-      }
-    } else {
-      //登陆过
-      console.log(typeof option.DATA)
-      console.log(option.DATA)
-      
-      if ((typeof option.DATA) != 'undefined') {
-        this.setData({
-          DAta:option.DATA
-        })
-        var DAta = option.DATA.split(",")
-        console.log(DAta[0] + ',' + DAta[1] + ',' + DAta[2])
-        this.setData({
-          bindUid: DAta[0],
-          pro_id: DAta[1],
-          store_id: DAta[2]
-        })
+          })
+        } else if (typeof option.pro_id != 'undefined') {
+          wx.showModal({
+            title: '请先登录',
+            content: '登录获取更多信息',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                wx.redirectTo({
+                  url: '../user/user?pro_id=' + option.pro_id,
+                })
+              }
+            }
+          })
+        } else {
+          //不是分享
+          wx.showModal({
+            title: '请先登录',
+            content: '登录获取更多信息',
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                //如果从BtoB进，去BtoB登录
+                if (app.globalData.froms == 'company_user') {
+                  wx.switchTab({
+                    url: '../company_user/company_user',
+                  })
+                } else {
+                  //如果从BtoC进，去BtoC登录
+                  wx.redirectTo({
+                    url: '../user/user',
+                  })
+                }
+              }
+            }
+          })
+        }
       } else {
-        this.setData({
-          pro_id: option.pro_id,
-          uid: app.d.userId,
-        });
+        //登陆过
+        // console.log(app.globalData.froms)
+        // if (app.globalData.froms == 'company_user') {
+        //   wx.setNavigationBarColor({
+        //     frontColor: '#ffffff',
+        //     backgroundColor: '#4BA3FE',
+        //   })
+        // } else {
+        //   wx.setNavigationBarColor({
+        //     frontColor: '#ffffff',
+        //     backgroundColor: '#008842',
+        //   })
+        // }
+        if ((typeof option.DATA) != 'undefined') {
+          that.setData({
+            DAta: option.DATA
+          })
+          var DAta = option.DATA.split(",")
+          console.log(DAta[0] + ',' + DAta[1] + ',' + DAta[2])
+          that.setData({
+            bindUid: DAta[0],
+            pro_id: DAta[1],
+            store_id: DAta[2]
+          })
+        } else {
+          that.setData({
+            pro_id: option.pro_id,
+            uid: app.d.userId,
+          });
+        }
+        if (option.pro_id) {
+          pro_id: option.pro_id
+        }
+        that.loadProductDetail();
+        console.log("详情已加载")
+        that.loadProductEvaluate();
+        console.log("评论已加载")
       }
-      if (option.pro_id){
-        pro_id: option.pro_id
-      }
-      that.loadProductDetail();
-      console.log("详情已加载")
-      that.loadProductEvaluate();
-      console.log("评论已加载")
-    }
+    }, 500)
   },
   // 商品详情数据获取
   loadProductDetail: function() {
@@ -460,7 +477,7 @@ Page({
   },
   // 属性选择
   onShow: function() {
-    
+
   },
   /* 获取数据 */
   distachAttrValue: function(commodityAttr) {
@@ -893,11 +910,11 @@ Page({
    */
   onShareAppMessage: function(res) {
     var DATA = '' + app.d.userId + ',' + this.data.pro_id + ',' + this.data.store_id
-    console.log(DATA )
+    console.log(DATA)
     if (res.from === 'button') {
       return {
         title: '' + this.data.itemData.name,
-        path: '/pages/product/detail?DATA='+DATA,
+        path: '/pages/product/detail?DATA=' + DATA,
         imageUrl: '' + this.data.itemData.photo_x,
         success: function(res) {
           // 转发成功
@@ -906,22 +923,22 @@ Page({
           // 转发失败
         }
       }
-    }else{
+    } else {
       return {
         title: '' + this.data.itemData.name,
         path: '/pages/product/detail?DATA=' + DATA,
         imageUrl: '' + this.data.itemData.photo_x,
-        success: function (res) {
+        success: function(res) {
           // 转发成功
         },
-        fail: function (res) {
+        fail: function(res) {
           // 转发失败
         }
       }
     }
   },
   toBtoC: function() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../index/index?store_Id=' + this.data.store_id,
     })
     app.d.store_Id = this.data.store_id;

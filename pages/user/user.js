@@ -49,6 +49,11 @@ Page({
       this.setData({
         DATA: DATA 
       })
+    } else if (option.pro_id){
+      this.setData({
+        proId: option.pro_id
+      })
+      console.log(this.data.proId)
     }
     if (app.globalData.userInfo) {
       this.setData({
@@ -273,6 +278,10 @@ Page({
     if (this.data.DATA) {
       wx.redirectTo({
         url: '../product/detail?DATA=' + this.data.DATA,
+      })
+    } else if (this.data.proId){
+      wx.redirectTo({
+        url: '../product/detail?pro_id=' + this.data.proId,
       })
     }
   },

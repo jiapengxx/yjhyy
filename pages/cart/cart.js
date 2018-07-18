@@ -281,7 +281,7 @@ Page({
   onShow: function () {
     app.globalData.froms = 'user'
     console.log(app.globalData.froms)
-    this.loadProductData();
+    // this.loadProductData();
   },
 
   removeShopCard: function (e) {

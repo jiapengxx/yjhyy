@@ -21,13 +21,30 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": 0,
+					"name": "商品码",
+					"pathName": "pages/product/detail",
+					"query": "pro_id=519&store_Id=5"
+				},
+				{
+					"id": 1,
+					"name": "店铺码",
+					"pathName": "pages/index/index",
+					"query": "store_Id=2"
+				}
+			]
 		}
 	}
 }

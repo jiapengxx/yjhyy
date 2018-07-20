@@ -5,6 +5,7 @@ Page({
     winWidth: 0, winHeight: 0,
     // tab切换   
     height: 0,
+    Flag: true,
     currentTab: 0,
     banners: [
       { id: 1, businessId: 1001, picUrl: "https://tanghuzhao.com.cn/Public/images/sp-banner.png" },
@@ -17,9 +18,11 @@ Page({
     ],
     switch2: [
       {
-        id: 1, pic1: "https://tanghuzhao.com.cn/Public/images/course-pic1.png", title: "感冒吃什么食物课程1-1.1", content: "生姜，红糖，清热去火茶，热水。专家说过，适当的感冒发热对身体有好处。人体的免疫系统是逐步建立起来的。对婴幼儿而言，身体的免疫系统确实没有成人的那么强大，更容易感冒，在医学上，会把6岁以前的小孩子称为“生理性免疫功能低下状态”，就是这个意思。", count: "1.3万次",
+        id: 1, srcs: "https://gslb.miaopai.com/stream/F2KJhPLmKj2mNXoDvL~SdmO5XPIa6mDqwb4xnQ__.mp4", title: "脑梗的最佳治疗方法是什么", content: "脑梗分两种治疗方法，急性期和缓解期。急性期建议用西医治疗，对症支持治疗药。到恢复期时，用一些中医治疗，根据中医辨证或补气活血或温阳等方法治疗，治疗因人而异，具体治疗方法需要到医院请专业医生制定方案，不可病人自行解决。", count: "1.3万次",
       },
-      { id: 2, pic1: "https://tanghuzhao.com.cn/Public/images/course-pic1.png", title: "感冒吃什么食物课程1-1.1", content: "生姜，红糖，清热去火茶，热水。专家说过，适当的感冒发热对身体有好处。人体的免疫系统是逐步建立起来的。对婴幼儿而言，身体的免疫系统确实没有成人的那么强大，更容易感冒，在医学上，会把6岁以前的小孩子称为“生理性免疫功能低下状态”，就是这个意思。", count: "1.3万次", },
+      { id: 2, srcs: "https://gslb.miaopai.com/stream/DzqeJ1AoVeXGrgSmAH2GZOkb~bcY1ncE~I8C3w__.mp4", title: "年轻人为什么也会脑梗", content: "年轻人脑梗分两种情况，一种是脑血管先天崎形。先天崎形后，在过度劳累或血压高情况下会导致小的血管堵塞。另一种是后天因素。长期劳累或有高血压、糖尿病、高脂血症在劳累、熬夜、过度饮酒的情况下，都会诱发脑梗塞发生。注意饮食合理，避免情绪过于激动。", count: "1.3万次", },
+      { id: 3, srcs: "https://gslb.miaopai.com/stream/VYTcBGuwBELGxM7gw5iGavhg0F2V8ZLGa7tylw__.mp4", title: "脑梗塞是什么病？", content: "脑梗塞是临床上最常见的一种脑血管疾病，是由于粥样硬化斑块脱落导致脑血管闭塞，包括脑血栓形成和脑栓塞。导致脑梗塞的原因包括： 1、在动脉粥样硬化基础上形成血栓； 2、动脉粥样硬化斑块脱落，堵塞脑血管导致脑梗塞； 3、心脏内脱落的栓子堵塞脑血管，造成脑梗塞。", },
+      { id: 4, srcs: "https://vde.jiankang.com/mingyi/chenlukui/60.mp4", title: "脑梗和脑血栓有什么区别", content: "一般而言，脑梗塞和脑血栓都是由于脑血管堵塞造成的脑组织缺血缺氧性坏死。脑梗塞是由于动脉粥样硬化斑块脱落，堵塞脑血管所致，其范围更广，包括脑血栓和脑栓塞；脑血栓是脑梗塞的一种类型，是由于动脉粥样硬化导致脑血管局部形成血栓。", count: "1.3万次", },
     ]
   },
   onLoad: function () {
@@ -44,13 +47,35 @@ Page({
         });
       }
     })
+    this.setData({
+      H1: (this.data.switch1.length/2).toFixed(0),
+      H2:this.data.switch2.length,
+    })
   },
+  onReady: function () {
+
+  },
+
   /**     * 滑动切换tab     */
   bindChange: function (e) {
     var that = this;
     that.setData({
       currentTab: e.detail.current
     });
+  },
+  bindPlay: function (e) {
+    this.videoContext = wx.createVideoContext(''+e.currentTarget.id)
+    if (this.data.Flag) {
+      this.videoContext.play()
+      this.setData({
+        Flag: false
+      })
+    } else {
+      this.videoContext.pause()
+      this.setData({
+        Flag: true
+      })
+    }
   },
   /**    * 点击tab切换    */
   swichNav: function (e) {
@@ -79,6 +104,7 @@ Page({
       url: "/pages/live/live_do"
     })
   },
+  
   onShareAppMessage: function () {
     return {
       title: '',

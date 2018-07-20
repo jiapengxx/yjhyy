@@ -23,10 +23,10 @@
     </view>
     <view class="font_14 c6" style='width:500rpx;'>品牌：{{itemData.brand}}</view>
     <view class="font_14 c6" style='width:500rpx;'>支付：微信支付</view>
-    <view class="font_14 c6" style='width:500rpx;'>快递：¥8.00</view>
+       <view class="font_14 c6" style='width:500rpx;'>运费：{{itemData.yunfei&&itemData.yunfei!=0?('￥'+itemData.yunfei+'，'+(itemData.post_num?(itemData.post_num+'件内'):'')+'，'+(itemData.myunfei?('满'+itemData.myunfei+'免邮'):'')):'免邮'}}</view>  
+       <!-- <view class="font_14 c6" style='width:500rpx;'>运费：{{itemData.myunfei&&itemData.myunfei!=0?'￥'+itemData.yunfei+','+'满'+itemData.myunfei+'包邮':(itemData.yunfei==0?'包邮':itemData.yunfei)}}</view>    -->
   </view>
 </view>
-
 <!--立即购买的弹窗>
 <!--配置数据  设置默认第一 -->
 <view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>

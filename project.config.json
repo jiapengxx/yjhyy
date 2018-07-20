@@ -43,6 +43,18 @@
 					"name": "店铺码",
 					"pathName": "pages/index/index",
 					"query": "store_Id=2"
+				},
+				{
+					"id": -1,
+					"name": "视频",
+					"pathName": "pages/live/live",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "商品详情",
+					"pathName": "pages/product/detail",
+					"query": "pro_id=519"
 				}
 			]
 		}

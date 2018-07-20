@@ -12,14 +12,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    try {
+      var res = wx.getSystemInfoSync()
+      console.log(res.windowWidth)
+      console.log(res.windowHeight)
+      this.setData({
+        windowWidth: res.windowWidth,
+        windowHeight: res.windowHeight
+      })
+    } catch (e) {
+      // Do something when catch error
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+ 
   },
 
   /**

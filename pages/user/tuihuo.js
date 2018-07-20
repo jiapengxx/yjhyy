@@ -95,6 +95,77 @@ Page({
       },
     });
   },
+  //name检查
+  nameCheck: function (e) {
+    var names = e.detail.value
+    if (names.length === 0) {
+      wx.showToast({
+        title: '请填写姓名',
+        icon: 'none'
+      })
+      this.setData({
+        name: false
+      })
+    } else if (names.length > 10) {
+      wx.showToast({
+        title: '姓名不得超过10个字符',
+        icon: 'none'
+      })
+      this.setData({
+        name: false
+      })
+    } else {
+      this.setData({
+        name: true,
+        names: names
+      })
+    }
+  },
+  //phone检查
+  phoneCheck: function (e) {
+    var telphone = e.detail.value
+    if (telphone.length === 0) {
+      wx.showToast({
+        title: '请填写手机号',
+        icon: 'none'
+      })
+      this.setData({
+        phone: false
+      })
+    }
+    else if (!(/^1(3|4|5|7|8)\d{9}$/.test(telphone))) {
+      wx.showToast({
+        title: '手机号格式不正确',
+        icon: 'none'
+      })
+      this.setData({
+        phone: false
+      })
+    } else {
+      this.setData({
+        phone: true,
+        telphone: telphone
+      })
+    }
+  },
+  //地址检查
+  addressCheck: function (e) {
+    var addresses = e.detail.value
+    if (addresses.length === 0) {
+      wx.showToast({
+        title: '请填写地址',
+        icon: 'none'
+      })
+      this.setData({
+        address: false
+      })
+    } else {
+      this.setData({
+        address: true,
+        addresses: addresses
+      })
+    }
+  },
   //已完成
   submitReturn: function () {
     var that = this;
@@ -110,10 +181,17 @@ Page({
         icon: 'none',
       });
       return;
-    } else {
+    } else if (!(this.data.name && this.data.address && this.data.phone)) {
+      //当选择换货时，应判断是否填写收货信息
+      wx.showToast({
+        title: '请正确填写收货信息',
+        icon: 'none',
+      });
+    }
+    else {
       //有图片的提交
       if (this.data.img1.uploadedImagesPaths != '') {
-        var uploadedImagesPaths=this.data.img1.uploadedImagesPaths;
+        var uploadedImagesPaths = this.data.img1.uploadedImagesPaths;
         app.uploadimg({
           url: app.d.hostUrl + '/Api/Order/orders_edit',
           path: uploadedImagesPaths,
@@ -122,7 +200,10 @@ Page({
             type: 'refund',
             back_remark: that.data.reason,
             pro_id: that.data.product[0].id,
-            back: (that.data.yw == '退货' ? 3 : 5)
+            back: (that.data.yw == '退货' ? 3 : 5),
+            addresses: (that.data.addresses ? that.data.addresses : ''),
+            telphone: (that.data.telphone ? that.data.telphone : ''),
+            names: (that.data.names ? that.data.names : '')
           },
         });
       } else {
@@ -135,7 +216,11 @@ Page({
             type: 'refund',
             back_remark: that.data.reason,
             pro_id: that.data.product[0].id,
-            back: (that.data.yw == '退货' ? 3 : 5)
+            back: (that.data.yw == '退货' ? 3 : 5),
+            addresses: (that.data.addresses ? that.data.addresses : ''),
+            telphone: (that.data.telphone ? that.data.telphone : ''),
+            names: (that.data.names ? that.data.names : '')
+
           },
           header: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -149,7 +234,7 @@ Page({
               });
               setTimeout(function () {
                 wx.redirectTo({
-                  url: '../user/dingdan?currentTab=4',
+                  url: '../company_user/dingdan?currentTab=4',
                 });
               }, 2000)
             } else {

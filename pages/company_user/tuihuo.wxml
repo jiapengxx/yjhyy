@@ -14,7 +14,7 @@
       <button bindtap="uploadImgs">上传图片</button>
     </view>
   </view>
-  <view class="p_all01 mtt0">
+  <view class="p_all01 mtt0"> 
     <view class="btnGreen">
       <button type="primary" id="btnPay" formType="submit" bindtap="{{types=='ywc'?'submitReturn':'submitReturnData'}}">确定</button>
     </view>
@@ -55,7 +55,7 @@
 <view style='height:20rpx;width:100%;background-color:#ebebeb;'>
 </view>
 <block wx:if="{{yw=='换货'}}">
-<view class="section">
+<view class="section"> 
       <view style='font-size:26rpx;color:#666;'>联系人：</view>
       <input style='font-size:26rpx;color:#333;' type="text" name="name" placeholder="收货人姓名" bindblur='nameCheck'placeholder-style='font-size:24rpx;color:#d0d0d0;' />
     </view>

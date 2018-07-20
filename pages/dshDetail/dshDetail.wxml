@@ -1,8 +1,8 @@
 <view style='height:30rpx;background-color:#fafafa;'></view>
 <view style='position:relative;height:134rpx;border-bottom:1rpx solid #e0e0e0;margin-left:24rpx;margin-right:24rpx;background-color:#fff;'>
   <image src='../../images/wuliu.png' style='height:30rpx;width:30rpx;position:relative;top:20rpx;left:0rpx;'></image>
-<view style='position:relative;top:-30rpx;left:60rpx;font-size:26rpx;color:#333;width:650rpx;'>您的订单由[广东东岗公司]发往[北京中转部]</view>
-<view style='position:relative;top:-20rpx;left:60rpx;font-size:20rpx;color:#666;width:300rpx;'>2018-03-03  21:23:56</view>
+<view style='position:relative;top:-30rpx;left:60rpx;font-size:26rpx;color:#333;width:650rpx;'>{{orderData.post?orderData.post:'暂无信息'}}</view>
+<view style='position:relative;top:-20rpx;left:60rpx;font-size:20rpx;color:#666;width:300rpx;'>{{orderData.time?orderData.time:'暂无信息'}}</view>
 </view> 
 <view style='height:30rpx;background-color:#fafafa;'></view>
 <view style='position:relative;height:170rpx;margin-left:24rpx;margin-right:24rpx;background-color:#fff;'>
@@ -44,7 +44,7 @@
 <view style='height:30rpx;background-color:#fafafa;'></view>
 <view style='position:relative;height:132rpx;border-bottom:1rpx solid #e0e0e0;margin-left:24rpx;margin-right:24rpx;'>
 <view style='position:relative;top:10rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>商品总额：¥{{orderData.goods_price}}</view>
-<view wx:if="{{orderData.denarius||orderData.gold}}" style='position:relative;top:16rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>健康币：－¥{{(orderData.denarius?orderData.denarius:(orderData.gold?orderData.gold:''))}}</view>
+<view wx:if="{{orderData.denarius||orderData.gold}}" style='position:relative;top:16rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>健康币：－¥{{(orderData.denarius&&orderData.denarius!=0?orderData.denarius:(orderData.gold&&orderData.gold!=0?orderData.gold:0))}}</view>
 <view style='position:relative;top:20rpx;left:0rpx;font-size:26rpx;color:#333;width:400rpx;'>运费：＋¥{{orderData.yunfei}}</view>
 </view>
 

@@ -32,7 +32,7 @@
 
 <view style='height:180rpx;position:relative;'>
   <image src='{{host}}{{product[0].photo_x}}' style='position:relative;top:40rpx;left:24rpx;width:110rpx;height:110rpx;'></image>
-<view style='position:relative;top:-74rpx;left:154rpx;font-size:26rpx;color:#333;width:400rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{product[0].name}}</view>
+<view style='position:relative;top:-74rpx;left:154rpx;font-size:26rpx;color:#333;width:500rpx;overflow: hidden;text-overflow: ellipsis; display: -webkit-box ;word-break: break-all; -webkit-box-orient: vertical;-webkit-line-clamp:1;'>{{product[0].name}}</view>
 <view style='position:relative;top:-76rpx;left:154rpx;font-size:22rpx;color:#666;width:200rpx;'>价格：{{product[0].price}}</view>
 <view style='position:relative;top:-78rpx;left:154rpx;font-size:24rpx;color:#666;width:100rpx;'>数量：{{product[0].num}}</view>
 </view>
@@ -55,7 +55,7 @@
 <view style='height:20rpx;width:100%;background-color:#ebebeb;'>
 </view>
 <block wx:if="{{yw=='换货'}}">
-<view class="section">
+<view class="section"> 
       <view style='font-size:26rpx;color:#666;'>联系人：</view>
       <input style='font-size:26rpx;color:#333;' type="text" name="name" placeholder="收货人姓名" bindblur='nameCheck'placeholder-style='font-size:24rpx;color:#d0d0d0;' />
     </view>

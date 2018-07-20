@@ -48,7 +48,7 @@ Page({
       })
     }
   },
-  address:function(){
+  address:function(e){
     var addresses = e.detail.value
     if (addresses.length === 0) {
       wx.showToast({

@@ -60,7 +60,11 @@ App({
         type: data.data.type,
         back_remark: data.data.back_remark,
         pro_id: data.data.pro_id,
-        back: data.data.back
+        back: data.data.back,
+        //退货
+        addresses: data.data.addresses,
+        telphone: data.data.telphone,
+        names: data.data.names
       },
       //这里是上传图片时一起上传的数据
       success: (resp) => {

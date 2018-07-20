@@ -26,6 +26,7 @@ list:[]
       },
       success: function (res) {
         that.setData({
+          LogisticCode: res.data.logisticResult.LogisticCode,
           OrderCode: res.data.logisticResult.OrderCode,
           ShipperCode: res.data.logisticResult.ShipperCode,
           EBusinessID: res.data.logisticResult.EBusinessID,

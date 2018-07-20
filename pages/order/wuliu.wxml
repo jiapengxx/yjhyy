@@ -1,5 +1,6 @@
 <view style='border-top:1rpx solid #ebebeb;'>
-<text style='margin-left:24rpx;font-size:26rpx;color:#333333;'>运单号：</text><text  style='font-size:28rpx;color:#333333;'>{{LogisticCode}}\n</text>
+<text style='margin-left:24rpx;font-size:26rpx;color:#333333;'>运单号：</text>
+<text  style='font-size:28rpx;color:#333333;'>{{LogisticCode}}\n</text>
 <text style='margin-left:24rpx;font-size:26rpx;color:#333333;'>承运人：{{ShipperCode}}\n</text>
 <text style='margin-left:24rpx;font-size:26rpx;color:#333333;'>承运人电话：</text>
 <text style='font-size:26rpx;color:#0a84fc;'>{{EBusinessID}}</text>

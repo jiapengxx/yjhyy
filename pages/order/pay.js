@@ -42,7 +42,7 @@ Page({
     console.log((typeof options.DATA) != "undefined")
     this.setData({
       cartId: DAta[DAta.length-1],
-      userId: uid,
+      userId: uid, 
     })
 DAta.splice(DAta.length-1,1)
 var buff=DAta

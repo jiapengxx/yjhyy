@@ -57,21 +57,46 @@
 <block wx:if="{{yw=='换货'}}">
 <view class="section"> 
       <view style='font-size:26rpx;color:#666;'>联系人：</view>
-      <input style='font-size:26rpx;color:#333;' type="text" name="name" placeholder="收货人姓名" bindblur='nameCheck'placeholder-style='font-size:24rpx;color:#d0d0d0;' />
+      <input style='font-size:26rpx;color:#333;' type="text" name="name" placeholder="收货人姓名" bindblur='nameCheck'placeholder-style='font-size:24rpx;color:#d0d0d0;' value='{{receiver}}'/> 
     </view>
     <view class="section">
     <view style='font-size:26rpx;color:#666;'>联系电话：</view>
-      <input style='font-size:26rpx;color:#333;' type="text" name="phone" placeholder="电话号码" bindblur='phoneCheck' placeholder-style='font-size:26rpx;color:#d0d0d0;' />
+      <input style='font-size:26rpx;color:#333;' type="text" name="phone" placeholder="电话号码" bindblur='phoneCheck' placeholder-style='font-size:26rpx;color:#d0d0d0;' value='{{tel}}'/>
     </view>
     <view style='height:206rpx;border-bottom:1px #e0e0e0 solid;margin-left:24rpx;margin-right:24rpx;'>
-    <view style='position:relative;top:40rpx;left:24rpx;font-size:26rpx;color:#666;'>收货地址：</view>
-    <view style='position:relative;top:70rpx;left:24rpx;height:100rpx;width:680rpx;font-size:26rpx;color:#666;'><image src='../../images/dizhi.png' style='height:32rpx;width:32rpx;'></image><textarea style='position:relative;top:-40rpx;left:50rpx;width:90%;height:100rpx;font-size:26rpx;color:#333;' type="text" name="address" placeholder="收货地址" bindblur='addressCheck' placeholder-style='font-size:26rpx;color:#d0d0d0;' /></view>
+    <view style='position:relative;top:40rpx;left:10rpx;font-size:26rpx;color:#666;'>收货地址：</view>
+    <view style='position:relative;top:70rpx;left:24rpx;height:100rpx;width:680rpx;font-size:26rpx;color:#666;'><image src='../../images/dizhi.png' style='height:32rpx;width:32rpx;'></image><textarea style='position:relative;top:-40rpx;left:50rpx;width:90%;height:100rpx;font-size:26rpx;color:#333;' type="text" name="address" placeholder="收货地址" bindblur='addressCheck' placeholder-style='font-size:26rpx;color:#d0d0d0;' value='{{address_xq}}'/></view>
     </view>
 </block>
 <view style='position:relative;top:40rpx;height:180rpx;width:100%;text-align:center;'>
 <button bindtap="submitReturn" style='position:relative;top:40rpx;height:74rpx;width:300rpx;font-size:26rpx;color:#ffffff;background-color:#fe0100;'>提交</button>
 </view> 
 </block>
+
+<!-- <block wx:if="{{addemt!=0}}">
+  <navigator url="../address/user-address/user-address?cartId={{cartId}}" hover-class="none" style='height:80rpx;margin-left:24rpx;margin-right:24rpx;text-align:center;font-size:26rpx;line-height:80rpx;border'>添加收货地址</navigator>
+</block>
+<block wx:else>
+  <navigator url="../address/user-address/user-address?cartId={{cartId}}" hover-class="none" style='height:196rpx;margin-left:24rpx;margin-right:24rpx;border-bottom:1rpx solid #ebebeb;'>
+    <view style='position:relative;top:14rpx;;'>
+      <text style='font-size:30rpx;color:#333;'>{{address.name}}</text>
+      <text style='position:relative;left:30rpx;font-size:30rpx;color:#333;'>{{address.tel}}</text>
+
+      <view style='position:relative;top:12rpx;;'>
+        <view style='height:70rpx;width:500rpx;'>
+          <view style='position:relative;top:20rpx;left:0rpx;border-radius:15rpx;width:70rpx;height:30rpx;font-size:20rpx;color:#fff;background-color:#ff0000;text-align:center;'>默认</view>
+          <text style='position:relative;top:-30rpx;left:85rpx;font-size:24rpx;color:#666;'>{{address.address_xq}}</text>
+        </view>
+        <image style='position:relative;top:-40rpx;left:640rpx;height:40rpx;width:22rpx;' src='../../images/right.png'></image>
+      </view>
+    </view>
+  </navigator>
+</block> -->
+
+
+
+
+
 
 <!--  两种样式  -->
 

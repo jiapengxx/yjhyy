@@ -95,6 +95,32 @@ Page({
       },
     });
   },
+  getAddress:function(){
+    var that = this;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Order/order_details',
+      method: 'post',
+      data: {
+        order_id: that.data.orderId,
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+          that.setData({
+            receiver: res.data.ord.receiver,
+            tel: res.data.ord.tel,
+            address_xq: res.data.ord.address_xq,
+          });
+      },
+      fail: function () {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    });
+  },
   //name检查
   nameCheck: function (e) {
     var names = e.detail.value
@@ -340,6 +366,7 @@ this.setData({
         // hh:true,
         yw: '换货'
       })
+      this.getAddress()
     }
   },
   changePulldown: function () {

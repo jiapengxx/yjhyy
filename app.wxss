@@ -4,6 +4,19 @@
 page{ 
    background: #fff
    }
+ .count {
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  background: #ff4611;
+  padding: 0 6px;
+  border-radius: 10px;
+  color: #fff;
+  position: absolute;
+  left: 34px;
+  top: 0;
+}
 .container {
   height: 100%;
   display: flex;

@@ -1,4 +1,7 @@
 <!-- index.wxml -->
+<import src="../../utils/tabBar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+
 <view style='position:relative;height:88rpx;width:100%;background-color:#efeff4;'>
   <view style='position:relative;top:12rpx;left:120rpx;width:510rpx;'>
     <view class="weui-search-bar__form">
@@ -8,7 +11,7 @@
         <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
           <icon type="clear" size="14"></icon>
         </view>
-      </view> 
+      </view>
       <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
         <icon class="weui-icon-search" type="search" size="14"></icon>
         <view class="weui-search-bar__text">搜索产品、品牌</view>
@@ -18,51 +21,100 @@
     </view>
   </view>
   <image src='../../images/shopPosition.jpg' style='position:absolute;right:24rpx;top:22rpx;height:44rpx;width:44rpx;' bindtap='toPosition'></image>
-</view> 
+</view>
 
-<import src="../../utils/tabBar.wxml"/>
-<template is="tabBar" data="{{tabBar}}"/>
-<button bindtap='gzsj' hidden='{{gz}}' style='position:fixed;right:0rpx;bottom:150rpx;width:150rpx;height:50rpx;font-size:30rpx;z-index:10;line-height:50rpx;background-color:red;color:#fff'>关  注</button> 
-<scroll-view scroll-y style=" position:fixed;top:88rpx;height:80%;"> 
-<view class="page">
-  <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-    <navigator url="../product/detail?pro_id={{item.product_id}}"  wx:for="{{imgUrls}}">
-      <swiper-item>
-        <image src="{{item.photo}}" class="slide-image" width="100%" height="200"  />
-      </swiper-item>
-    </navigator>
-  </swiper>
-   <view class='mContainer'>
-<image id='0' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[0].src}}' bindtap='fiveBlocks' >{{tttype[0].type_name}}</image>
-  <image id='1' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[1].src}}' bindtap='fiveBlocks'>{{tttype[1].type_name}}</image>
-  <image id='2' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[2].src}}' bindtap='fiveBlocks'>{{tttype[2].type_name}}</image>
-        <contact-button style='position:relative;top:6rpx;width:144rpx;height:160rpx;' type="default-light" >
-      <contact-button style='position:absolute;top:70rpx;left: 56rpx;opacity:0;width:120rpx;height:120rpx;' size='300'></contact-button>
-      <image id='3' style='position:relative;top:-22rpx;margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[3].src}}' bindtap='fiveBlocks'>
-      <text style='position:relative;top:18rpx;'>{{tttype[3].type_name}}</text>
-      </image>
-      </contact-button> 
-    <image id='4' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[4].src}}' bindtap='fiveBlocks'>{{tttype[4].type_name}}</image>
-</view> 
-    
+<button bindtap='gzsj' hidden='{{gz}}' style='position:fixed;right:0rpx;bottom:150rpx;width:150rpx;height:50rpx;font-size:30rpx;z-index:10;line-height:50rpx;background-color:red;color:#fff'>关 注</button>
+<scroll-view scroll-y style=" position:fixed;top:88rpx;height:80%;">
+  <view class="page">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <navigator url="../product/detail?pro_id={{item.product_id}}" wx:for="{{imgUrls}}">
+        <swiper-item>
+          <image src="{{item.photo}}" class="slide-image" width="100%" height="200" />
+        </swiper-item>
+      </navigator>
+    </swiper>
+    <view class='mContainer'>
+      <image id='0' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[0].src}}' bindtap='fiveBlocks'>{{tttype[0].type_name}}</image>
+      <image id='1' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[1].src}}' bindtap='fiveBlocks'>{{tttype[1].type_name}}</image>
+      <image id='2' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[2].src}}' bindtap='fiveBlocks'>{{tttype[2].type_name}}</image>
+      <contact-button style='position:relative;top:6rpx;width:144rpx;height:160rpx;' type="default-light">
+        <contact-button style='position:absolute;top:70rpx;left: 56rpx;opacity:0;width:120rpx;height:120rpx;' size='300'></contact-button>
+        <image id='3' style='position:relative;top:-22rpx;margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[3].src}}' bindtap='fiveBlocks'>
+          <text style='position:relative;top:18rpx;'>{{tttype[3].type_name}}</text>
+        </image>
+      </contact-button>
+      <image id='4' style='margin-top:20rpx;margin-left:25rpx;height:120rpx;width:120rpx;font-family: PingFangSC-Regular, sans-serif;color:#333333;font-size:27rpx;overflow:visible;text-align:center;' src='{{tttype[4].src}}' bindtap='fiveBlocks'>{{tttype[4].type_name}}</image>
+    </view>
+
     <view class="cont">
-      <navigator class="pr" url="../product/detail?pro_id={{item.id}}" hover-class="changestyle"  wx:for="{{productData}}">
-        <image class="photo" src="{{item.photo_x}}"></image>
-        <view class="title" style='text-align:center;' >{{item.name}}</view>
+      <view class="pr" wx:for="{{productData}}">
+        <navigator url="../product/detail?pro_id={{item.id}}" hover-class="changestyle">
+          <image class="photo" src="{{item.photo_x}}"></image>
+          <view class="title" style='text-align:center;'>{{item.name}}</view>
+        </navigator> 
         <view style="display:flex;line-height:50rpx;padding:10rpx 0;">
           <view class="gmxx" style="  color: red;">¥ {{item.price_yh}}</view>
           <view class="gmx">¥ {{item.price}}</view>
+ 
         </view>
         <view style="display:flex;line-height:50rpx;color:#999">
-          <view class="gmxx" style="font-size:28rpx;width:30%">
+          <!-- <view class="gmxx" style="font-size:28rpx;width:30%">
             <text wx:if="item.is_show==1">新品</text>
             <text wx:elif="item.is_hot==1">热销</text>
             <text wx:else>推荐</text>
-          </view>
+          </view> -->
           <view class="ku" style="width:60%">销量：{{item.shiyong}}</view>
+          <view class="ku" style="width:40%">
+            <image bindtap='setModalStatu'data-flag="true" data-proid="{{item.id}}" data-status="1" src='../../images/kstj.jpg' style='height:50rpx;width:50rpx;margin-left:20rpx;'></image>
+          </view>
         </view>
-      </navigator>
+
+      </view>
+
     </view>
     <view class="clear mt10" bindtap="getMore">点击查看更多</view>
   </view>
-</scroll-view > 
+</scroll-view>
+
+
+<!--加入购物车的弹窗>
+<!--配置数据  设置默认第一 -->
+<view class="drawer_screen" bindtap="setModalStatu" data-flag="false"data-status="0" wx:if="{{showModalStatu}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatu}}">
+  <view class="close_icon" bindtap="setModalStatu" data-flag="false"data-status="0">×</view>
+  <view class="drawer_attr_content">
+    <view class="text_center">
+      <image class="drawer_image" src="{{itemData.photo_x}}"></image>
+      <view class="mingcheng">
+        <view>{{itemData.name}}</view>
+        <view style="font-size:29rpx;color:red">¥ {{itemData.price_yh}}</view>
+        <view style="font-size:26rpx;color:#ccc">库存：{{itemData.num}}</view>
+      </view>
+    </view>
+    <view class="commodity_attr_list">
+      <view class="attr_box" wx:for="{{attrValueList}}" wx:for-item="attrValueObj" wx:for-index="attrIndex">
+        <view class="attr_name">{{attrValueObj.attrKey}}</view>
+        <view class="attr_value_box">
+          <view class="attr_value {{attrIndex==firstIndex || attrValueObj.attrValueStatus[valueIndex]?(value==attrValueObj.selectedValue?'attr_value_active':''):'attr_value_disabled'}}" bindtap="selectAttrValue" data-status="{{attrValueObj.attrValueStatus[valueIndex]}}"
+            data-value="{{value}}" data-key="{{attrValueObj.attrKey}}" data-index="{{attrIndex}}" data-selectedvalue="{{attrValueObj.selectedValue}}" wx:for="{{attrValueObj.attrValues}}" wx:for-item="value" wx:for-index="valueIndex">{{value}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="shu">
+      <text class="cun">购买数量</text>
+      <view class="dian">
+        <view class="stepper">
+          <!-- 减号 -->
+          <text class="{{minusStatuses[index]}}" data-alpha-beta="0" bindtap="changeNum">-</text>
+          <!-- 数值 -->
+          <view class="nownum">{{buynum}}</view>
+          <!-- 加号 -->
+          <text class="normal" data-alpha-beta="1" bindtap="changeNum">+</text>
+        </view>
+      </view>
+    </view>
+    <view class="footc" bindtap="addShopCart" data-status="1">
+      加入购物车
+    </view>
+  </view>
+</view>

@@ -19,7 +19,7 @@ Page({
             url: app.d.ceshiUrl + '/Api/Category/index',
             method:'post',
             data: {
-              store_id:app.d.store_Id
+              store_id: (app.d.store_Id ? app.d.store_Id : option.store_id)
             },
             header: {
                 'Content-Type':  'application/x-www-form-urlencoded'

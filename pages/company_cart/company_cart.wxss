@@ -115,7 +115,7 @@
 .carts-list {
   display: flex;
   flex-direction: column;
-  padding: 20rpx 40rpx;
+  padding: 20rpx 35rpx;
    background: #fff;
 }
  
@@ -156,9 +156,9 @@
     overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  width: 201rpx;
+  width: 230rpx;
 } 
 /*右下部分价格与数量*/
 .carts-subtitle {

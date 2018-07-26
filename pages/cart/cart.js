@@ -276,6 +276,7 @@ Page({
     app.editTabBar2();
     this.loadProductData();
     this.sum();
+    
   },
 
   onShow: function () {
@@ -283,6 +284,7 @@ Page({
     console.log(app.globalData.froms)
     // this.loadProductData();
   },
+
 
   removeShopCard: function (e) {
     var that = this;

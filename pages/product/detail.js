@@ -181,11 +181,6 @@ Page({
   onLoad: function(option) {
     console.log(option)
     var that = this;
-    //未登录
-    // wx.showToast({
-    //   title: '加载中',
-    //   icon: 'loading'
-    // })
     setTimeout(function() {
       console.log(app.globalData.userInfo)
       if (app.globalData.userInfo == null) {
@@ -286,9 +281,6 @@ Page({
   // 商品详情数据获取
   loadProductDetail: function() {
     var that = this;
-    console.log(that.data.pro_id)
-    console.log(app.d.userId)
-    console.log(that.data.bindUid)
     wx.request({
       url: app.d.ceshiUrl + '/Api/Product/index',
       method: 'post',
@@ -308,7 +300,6 @@ Page({
           var pro = res.data.pro;
           var content = pro.content;
           WxParse.wxParse('content', 'html', content, that, 3);
-          // console.log(res.data.commodityAttr+"111");
           that.setData({
             itemData: pro,
             bannerItem: pro.img_arr,

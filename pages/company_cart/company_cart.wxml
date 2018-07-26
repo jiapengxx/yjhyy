@@ -45,7 +45,6 @@
           <text class="carts-price">¥ {{item.price}}</text>
         </view>
       </view>
-
       <!--右边-->
       <view class="title" style='position:absolute;right:30rpx;'>
         <!-- <text bindtap="removeShopCard" data-cartid="{{item.id}}" class="modal-close">x</text> -->
@@ -58,11 +57,8 @@
           <text class="normal" data-index="{{index}}" bindtap="bindPlus" data-cartid="{{item.id}}">+</text>
         </view>
       </view>
-
     </view>
   </view>
-
-
   <!--底部-->
   <view class="carts-footer">
     <view bindtap="bindSelectAll">
@@ -79,7 +75,5 @@
     <block wx:else>
         <view class="button" bindtap='removeShopCard'>删除</view>
     </block>
-
-
   </view>
 </view>

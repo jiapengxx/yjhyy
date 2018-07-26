@@ -58,7 +58,8 @@
     "pages/dfkDetail/dfkDetail",
     "pages/dfhDetail/dfhDetail",
     "pages/dshDetail/dshDetail",
-    "pages/ywcDetail/ywcDetail"
+    "pages/ywcDetail/ywcDetail",
+    "pages/categoryProduct/categoryProduct"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -27,7 +27,8 @@
       <view class="cla">购物车空空如也</view>
     </view>
   </view>
-  <view class="container carts-list">
+<scroll-view scroll-y style=" position:fixed;top:100rpx;height:75%;">
+ <view class="carts-list">
     <!--勾-->
     <view wx:for="{{carts}}" class="carts-item" data-title="{{item.pro_name}}" id="{{item.id}}">
       <icon wx:if="{{item.selected}}" type="success_circle" size="20" bindtap="bindCheckbox" data-index="{{index}}" />
@@ -63,6 +64,9 @@
     </view>
   </view>
 
+</scroll-view>
+ 
+  
 
   <!--底部-->
   <view class="carts-footer">
@@ -80,7 +84,6 @@
     <block wx:else>
         <view class="button" bindtap='removeShopCard'>删除</view>
     </block>
-
-
   </view>
+
 <template is="tabBar" data="{{tabBar}}"/> 

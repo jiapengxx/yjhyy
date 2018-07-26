@@ -4,9 +4,12 @@
     <navigator url="{{item.pagePath}}" open-type="redirect" class="{{item.clas}}" style="{{item.active? 'color: '+(item.selectedColor? item.selectedColor : tabBar.selectedColor) : ''}}">    
       <image src="{{item.selectedIconPath}}" wx:if="{{item.active}}" class="img"></image>    
       <image src="{{item.iconPath}}" wx:if="{{!item.active}}" class="img"></image>  
-      <text style='font-size:26rpx;'>{{item.text}}</text>    
+      <text style='font-size:26rpx;'>{{item.text}}</text>
+ <!-- <view style='position:absolute;left:230px;bottom:40px;width:10px;height:10px;border-radius:6px;border:1rpx solid #ff4611;font-size:20rpx;color:red;'>12</view> -->
     </navigator>    
     </block>  
     <view class="clear"></view>    
   </view>    
 </template>  
+
+    <!-- <view class="count" hidden="{{hideCount}}">{{count}}</view> -->

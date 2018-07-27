@@ -21,9 +21,9 @@
       <span class="jiage">¥：{{itemData.price_yh}}</span>
       <span class="c6 fl_r font_14" style='color:#ccc'>库存：{{itemData.num}}</span>
     </view>
-    <view class="font_14 c6" style='width:500rpx;'>品牌：{{itemData.brand}}</view>
-    <view class="font_14 c6" style='width:500rpx;'>支付：微信支付</view>
-       <view class="font_14 c6" style='width:500rpx;'>运费：{{itemData.yunfei&&itemData.yunfei!=0?('￥'+itemData.yunfei+'，'+(itemData.post_num?(itemData.post_num+'件内'):'')+'，'+(itemData.myunfei?('满'+itemData.myunfei+'免邮'):'')):'免邮'}}</view>  
+    <view class="font_14 c6" style='width:100%;'>品牌：{{itemData.brand}}</view>
+    <view class="font_14 c6" style='width:100%;'>支付：微信支付</view>
+       <view class="font_14 c6" style='width:100%;'>运费：{{itemData.yunfei&&itemData.yunfei!=0?('￥'+itemData.yunfei+(itemData.is_syunfei==1?('，店铺满'+itemData.b_yunfei+'免邮'):'')+(itemData.is_myunfei==1?('，商品满'+itemData.myunfei+'免邮'):'')):'免邮'}}</view>
        <!-- <view class="font_14 c6" style='width:500rpx;'>运费：{{itemData.myunfei&&itemData.myunfei!=0?'￥'+itemData.yunfei+','+'满'+itemData.myunfei+'包邮':(itemData.yunfei==0?'包邮':itemData.yunfei)}}</view>    -->
   </view>
 </view>

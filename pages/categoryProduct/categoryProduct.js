@@ -1,66 +1,239 @@
-// pages/categoryProduct/categoryProduct.js
+var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    current: 0,
+    shopList: [],
+    ptype: '',
+    page: 2,
+    catId: 0,
+    brandId: 0,
+    style:'normal',
+    checked:1
+  },
+  // showModal: function () {
+  //   // 显示遮罩层
+  //   var animation = wx.createAnimation({
+  //     duration: 200,
+  //     timingFunction: "linear",
+  //     delay: 0
+  //   })
+  //   this.animation = animation
+  //   animation.translateY(300).step()
+  //   this.setData({
+  //     animationData: animation.export(),
+  //     showModalStatus: true
+  //   })
+  //   setTimeout(function () {
+  //     animation.translateY(0).step()
+  //     this.setData({
+  //       animationData: animation.export()
+  //     })
+  //   }.bind(this), 200)
+  // },
+  // hideModal: function () {
+  //   // 隐藏遮罩层
+  //   var animation = wx.createAnimation({
+  //     duration: 200,
+  //     timingFunction: "linear",
+  //     delay: 0
+  //   })
+  //   this.animation = animation
+  //   animation.translateY(300).step()
+  //   this.setData({
+  //     animationData: animation.export(),
+  //   })
+  //   setTimeout(function () {
+  //     animation.translateY(0).step()
+  //     this.setData({
+  //       animationData: animation.export(),
+  //       showModalStatus: false
+  //     })
+  //   }.bind(this), 200)
+  // },
+
+  //点击加载更多
+  getMore: function (e) {
+    var that = this;
+    var page = that.data.page;
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Product/get_more',
+      method: 'post',
+      data: {
+        page: page,
+        cat_id: that.data.catId,
+        //参数的作用
+        ptype: that.data.ptype,
+        brand_id: that.data.brandId
+      },
+      header: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var prolist = res.data.pro;
+        if (prolist == '') {
+          wx.showToast({
+            title: '没有更多数据！',
+            duration: 2000
+          });
+          return false;
+        }
+        //that.initProductData(data);
+        that.setData({
+          page: page + 1,
+          shopList: that.data.shopList.concat(prolist)
+        });
+        //endInitData
+      },
+      fail: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
-  },
+    var objectId = options.title;
+    //更改头部标题
+    wx.setNavigationBarTitle({
+      title: objectId,
+      success: function () {
+      },
+    });
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+    //页面初始化 options为页面跳转所带来的参数
+    var cat_id = options.cat_id;
+    var ptype = options.ptype;
+    var brandId = options.brandId;
+    var that = this;
+    that.setData({
+      catId: cat_id,
+      // ptype: ptype,
+      // brandId: brandId
+    })
+    //ajax请求数据
+    wx.request({
+      url: app.d.ceshiUrl + '/Api/Product/lists',
+      method: 'post',
+      data: {
+        cat_id: cat_id,
+        // ptype:ptype,
+        // brand_id: brandId
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        var shoplist = res.data.pro;
+        that.setData({
+          shopList: shoplist
+        })
+      },
+      error: function (e) {
+        wx.showToast({
+          title: '网络异常！',
+          duration: 2000
+        });
+      }
+    })
+
+  },
+  //详情页跳转
+  lookdetail: function (e) {
+    console.log(e)
+    var lookid = e.currentTarget.dataset;
+    console.log(e.currentTarget.dataset);
+    wx.navigateTo({
+      url: "../index/detail?id=" + lookid.id
+    })
+  },
+  switchSlider: function (e) {
+    this.setData({
+      current: e.target.dataset.index
+    })
+  },
+  changeSlider: function (e) {
+    this.setData({
+      current: e.detail.current
+    })
+  },
   onReady: function () {
-  
+    // 页面渲染完成
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-  
+    // 页面显示
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide: function () {
-  
+    // 页面隐藏
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload: function () {
-  
+    // 页面关闭
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
-  
+    return {
+      title: '',
+      path: '',
+      success: function (res) {
+        // 分享成功
+      },
+      fail: function (res) {
+        // 分享失败
+      }
+    }
+  },
+  changeStyle:function(){
+    
+  },
+  changeContent:function(e){
+   var style_id=e.currentTarget.dataset.id
+   console.log(style_id) 
+    if (style_id==1){
+          this.setData({
+            checked:1
+          })
+      if (this.data.style != 'normal') {
+        this.setData({
+          style: 'normal'
+        })
+      }
+    } else if (style_id==2){
+      this.setData({
+        checked: 2
+      })
+      if (this.data.style != 'normal') {
+        this.setData({
+          style: 'normal'
+        })
+      }
+    } else if (style_id==3){
+      this.setData({
+        checked: 3
+      })
+      if (this.data.style!= 'normal') {
+        this.setData({
+          style: 'normal'
+        })
+      }
+      
+   }else{
+      if (this.data.style=='normal'){
+          this.setData({
+            style:'up'
+          })
+      } else if (this.data.style == 'up'){
+        this.setData({
+          style: 'down'
+        })
+     } else{
+        this.setData({
+          style: 'up'
+        })
+     }
+      this.setData({
+        checked: 4
+      })
+   }
   }
+
 })

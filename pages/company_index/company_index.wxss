@@ -1,4 +1,4 @@
-@import "/wxSearch/wxSearch.wxss";
+
 page{
     background-color:#ffffff;
     font-family:-apple-system-font,Helvetica Neue,Helvetica,sans-serif;  

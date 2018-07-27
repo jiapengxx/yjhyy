@@ -1,5 +1,4 @@
 <view style='position:relative;height:88rpx;width:100%;background-color:#efeff4;'>
-  <!-- <text style='position:relative;top:20rpx;left:30rpx;font-family:font-size:24rpx;color:#ffffff;'>商家版</text> -->
   <view style='position:relative;top:20rpx;left:120rpx;width:510rpx;'>
     <view class="weui-search-bar__form">
       <view class="weui-search-bar__box">

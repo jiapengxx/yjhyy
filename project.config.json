@@ -63,7 +63,7 @@
 					"query": "store_id=5"
 				},
 				{
-					"id": -1,
+					"id": 5,
 					"name": "分类产品",
 					"pathName": "pages/categoryProduct/categoryProduct",
 					"query": ""

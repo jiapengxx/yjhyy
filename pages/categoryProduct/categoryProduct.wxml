@@ -1,2 +1,72 @@
+<view style='position:relative;height:88rpx;width:100%;'>
+  <view style='position:relative;top:15rpx;left:12rpx;width:620rpx;'>
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input bindblur='hideInput' type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells searchbar-result" wx:if="{{inputVal.length>0}}">
+    </view>
+  </view>
 
+<!-- <import src="/wxSearch/wxSearch.wxml"/>
+
+<view class="wxSearch-section">
+  <view class="wxSearch-pancel">
+    <input bindinput="wxSearchInput" bindfocus="wxSerchFocus" value="{{wxSearchData.value}}" bindblur="wxSearchBlur" class="wxSearch-input" placeholder="搜索" />
+    <button class="wxSearch-button" bindtap="wxSearchFn" size="mini" plain="true">搜索</button>
+  </view>
+</view>
+<template is="wxSearch" data="{{wxSearchData}}"/> -->
+
+
+
+
+
+  <image src='../../images/changeStyle.png' style='position:absolute;right:24rpx;top:22rpx;height:44rpx;width:44rpx;' bindtap='changeStyle'></image>
+</view>
+<view style='display:flex;flex-direction:row;flex-wrap: nowrap;text-align:center;color:#333;font-size:26rpx;position:relative;top:15rpx;'>
+<view bindtap='changeContent' data-id='1' style="width:25%;color:{{checked==1?'#ff0000':'#333'}}">新品优先</view>
+<view bindtap='changeContent' data-id='2' style="width:25%;color:{{checked==2?'#ff0000':'#333'}}">评价</view>
+<view bindtap='changeContent' data-id='3' style="width:25%;color:{{checked==3?'#ff0000':'#333'}}">销量</view>
+<view bindtap='changeContent' data-id='4' style="width:25%;color:{{checked==4?'#ff0000':'#333'}}">价格
+<image src='../../images/{{style}}.jpg' style='height:26rpx;width:13rpx;'></image>
+</view>
+</view>
+<view class="list">
+    <block wx:for="{{shopList}}" wx:key="*this" data-id="{{item.id}}">
+        <view class="ban">
+            <navigator url="../product/detail?pro_id={{item.id}}" class="cover flex-wrp">
+                <image class="banner" style='height:189.685px;' src="{{item.photo_x}}" ></image>
+          <view style='width:100%;'>
+              <text class="name">{{item.name}}</text>
+            </view>
+              <view >
+                <text class="type">{{item.intro?item.intro:'暂无'}}</text>
+            </view>
+            <view>
+                <text class='price'>¥ {{item.price_yh}}</text>
+            </view>
+              <view>
+                <text class='counts'>已有{{item.shiyong}}人购买</text>
+            </view>
+            </navigator>
+        </view> 
+        <!-- <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}"></view>  -->
+    </block>
+
+   <view class="search_no" wx:if="{{shopList.length==0}}">
+    <view class="font_14">
+      <image class="scimg" src="https://tanghuzhao.com.cn/Public/images/search_no.png"></image>
+    </view>
+    <text>空空如也/(ㄒoㄒ)/~~</text>
+  </view>
+
+<view wx:if="{{shopList.length!=0}}" class="clear mt10" bindtap="getMore">点击查看更多</view>    
+</view>
 

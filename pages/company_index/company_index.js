@@ -1,6 +1,6 @@
 const app = getApp()
 var base64 = require("../../images/base64");
-var WxSearch = require('../../wxSearch/wxSearch.js')
+
 Page({
   data: {
 

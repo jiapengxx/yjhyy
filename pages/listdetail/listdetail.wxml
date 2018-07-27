@@ -1,6 +1,6 @@
 <view class="list">
     <block wx:for="{{shopList}}" wx:key="*this" data-id="{{item.id}}">
-        <view class="ban">
+        <view class="ban"> 
             <navigator url="../product/detail?pro_id={{item.id}}" class="cover flex-wrp">
                 <image class="banner" style='height:189.685px;' src="{{item.photo_x}}" ></image>
           <view class="act-item ellipsis">

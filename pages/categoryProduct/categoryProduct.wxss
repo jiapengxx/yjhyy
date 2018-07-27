@@ -1,1 +1,446 @@
-/* pages/categoryProduct/categoryProduct.wxss */
+/**index.wxss**/
+@import "/wxSearch/wxSearch.wxss";
+.page {
+  background-color: #fff;
+}
+
+.list {
+  background: #fff;
+  width: 100%;
+}
+
+.ban {
+  width: 46%;
+  padding: 10rpx;
+  border: 2rpx solid #ccc;
+  display: inline-block;
+  margin-left: 4rpx;
+}
+
+.ban image {
+  width: 100%;
+}
+
+
+
+.df_1 {
+  width: 25%;
+}
+
+/*搜索*/
+
+.sousuo {
+  display: inline-block;
+  width: 96%;
+  margin-left: 15rpx;
+}
+
+.weui-search-bar {
+  margin-top: 13rpx;
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+  display: block;
+  height: 63rpx;
+  line-height: 63rpx;
+}
+
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+  flex: auto;
+  border-radius: 30rpx;
+  background: #ebebeb;
+}
+
+.weui-search-bar__input {
+  height: 65rpx;
+  line-height: 65rpx;
+  font-size: 24rpx;
+  text-align: left;
+  color: #666;
+}
+
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 20rpx;
+  top: 19rpx;
+}
+
+icon {
+  vertical-align: middle;
+}
+
+.weui-search-bar__cancel-btn {
+  margin-left: 10px;
+  line-height: 28px;
+  color: #09bb07;
+  white-space: nowrap;
+}
+
+.mt10 {
+  margin: 0 auto;
+  text-align: center;
+  height: 70rpx;
+  width: 450rpx;
+  line-height: 70rpx;
+  border-radius: 10rpx;
+  border: 1px solid #999;
+  font-size: 30rpx;
+  margin-top: 30rpx;
+}
+
+/* 快速购买 */
+
+.footc {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: red;
+  z-index: 100;
+  width: 100%;
+  font-size: 28rpx;
+  border-top: 2rpx solid #eee;
+  line-height: 100rpx;
+  font-weight: 700;
+  color: snow;
+  text-align: center;
+}
+
+/*弹窗*/
+
+.drawer_screen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.2;
+  overflow: hidden;
+  z-index: 1000;
+  color: #fff;
+}
+
+.drawer_attr_box {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2000;
+  background: #fff;
+}
+
+.close_icon {
+  width: 25rpx;
+  height: 25rpx;
+  line-height: 20rpx;
+  font-size: 30rpx;
+  position: absolute;
+  right: 5rpx;
+  top: 5rpx;
+  padding: 10rpx;
+  color: #ccc;
+  /*border: 1rpx solid #ccc;*/
+  border-radius: 50%;
+  text-align: center;
+  background: #fff;
+}
+
+.drawer_attr_content {
+  padding: 20rpx;
+  /*height: 600rpx;*/
+  overflow-y: scroll;
+}
+
+.text_center {
+  width: 100%;
+}
+
+.drawer_image {
+  width: 28%;
+  height: 200rpx;
+}
+
+.mingcheng {
+  width: 60%;
+  display: inline-block;
+  font-size: 35rpx;
+  line-height: 50rpx;
+  margin-left: 40rpx;
+}
+
+.commodity_attr_list {
+  background: #fff;
+  padding: 0 20rpx;
+  font-size: 26rpx;
+  overflow: hidden;
+  width: 100%;
+}
+
+/*全部属性的主盒子*/
+
+.commodity_attr_list {
+  background: #fff;
+  padding: 0 20rpx;
+  font-size: 26rpx;
+  overflow: hidden;
+  width: 100%;
+}
+
+/*每组属性的主盒子*/
+
+.attr_box {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1rpx solid #ececec;
+}
+
+/*属性名*/
+
+.attr_name {
+  width: 20%;
+  float: left;
+  padding: 15rpx 0;
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+
+/*属性值*/
+
+.attr_value_box {
+  width: 80%;
+  float: left;
+  padding: 15rpx 0;
+  overflow: hidden;
+}
+
+/*每个属性值*/
+
+.attr_value {
+  padding: 10rpx 20rpx;
+  float: left;
+  /*padding: 0 20rpx;*/
+  margin: 5rpx;
+  border: 1rpx solid #ececec;
+  font-size: 33rpx;
+}
+
+/*每个属性选中的当前样式*/
+
+.attr_value_active {
+  background: #dd2727;
+  border-radius: 10rpx;
+  color: #fff;
+  /*padding: 0 20rpx;*/
+  padding: 10rpx 20rpx;
+}
+
+/*禁用属性*/
+
+.attr_value_disabled {
+  color: #ccc;
+}
+
+.cun {
+  margin: 5px;
+  font-size: 30rpx;
+  padding-left: 20rpx;
+  width: 20%;
+}
+
+.list-tab {
+  height: 106rpx;
+  box-sizing: border-box;
+  padding: 5px 10px;
+}
+
+.list-tab ul {
+  display: flex;
+  height: 72rpx;
+  border: 1px solid #b6aaec;
+  border-radius: 12rpx;
+}
+
+.list-tab li {
+  flex: 1;
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  color: #b6aaec;
+}
+
+.list-tab .active {
+  background: #b6aaec;
+  color: #fff;
+}
+
+/*list-box*/
+
+.list-view {
+  border-top: 1px solid #ccc;
+}
+
+.list-box {
+  display: flex;
+  padding: 5px 10px;
+  border-bottom: 1px solid #aaa;
+}
+
+.list-images image {
+  width: 170rpx;
+  height: 170rpx;
+}
+
+.list-text {
+  font-size: 14px;
+  color: #666;
+  flex: 1;
+  background-size: 60rpx;
+}
+
+.list-text .name {
+  display: block;
+  height: 80rpx;
+  padding: 5px;
+}
+
+.list-text .txt {
+  padding: 5px;
+  color: #aaa;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-text .price {
+  font-size: 18px;
+  color: red;
+}
+
+.swiper-box {
+  height: 100%;
+}
+
+.scroll-box {
+  height: 100%;
+}
+
+.addcart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addcart image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.list {
+  position: relative;
+  top: 30rpx;
+  background: #fff;
+  width: 100%;
+}
+
+.ban {
+  width: 46%;
+  padding: 10rpx;
+  border: 2rpx solid #ccc;
+  display: inline-block;
+  margin-left: 6rpx;
+}
+
+.ban image {
+  width: 100%;
+}
+
+.name {
+  font-size: 26rpx;
+  font-weight: 700;
+  margin-left: 10rpx;
+  color: #333;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.type {
+  font-size: 24rpx;
+  font-weight: 400;
+  margin-left: 10rpx;
+  color: #666;
+    text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.price {
+  font-size: 22rpx;
+  margin-left: 10rpx;
+  color: #f00;
+}
+
+.counts {
+  font-size: 20rpx;
+  margin-left: 10rpx;
+  color: #999;
+}
+
+/* .commodity_screen {
+ width: 100%;
+ height: 100%;
+ position: fixed;
+ top: 0;
+ left: 0;
+ background: #000;
+ opacity: 0.2;
+ overflow: hidden;
+ z-index: 1000;
+ color: #fff;
+}
+.commodity_attr_box {
+ width: 100%;
+ overflow: hidden;
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ z-index: 2000;
+ background: #fff;
+ padding-top: 20rpx;
+} */
+
+.mt10 {
+  margin: 0 auto;
+  text-align: center;
+  height: 70rpx;
+  width: 450rpx;
+  line-height: 70rpx;
+  border-radius: 10rpx;
+  border: 1px solid #999;
+  font-size: 30rpx;
+  margin-top: 30rpx;
+  position: relative;
+  bottom: 15rpx;
+}
